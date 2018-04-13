@@ -39,7 +39,7 @@ angular
                 controller: 'FinalizationController'
             })
             .state('user-assignment', {
-                url: "/user-assignment",
+                url: "/user-assignment/:param",
                 templateUrl: "resources/user-assignment/view/user-assignment.html",
                 controller: 'UserAssignmentController'
             })
@@ -52,6 +52,11 @@ angular
                 url: "/claim-registration",
                 templateUrl: "resources/registration/view/registration.html",
                 controller: 'RegistrationController'
+            })
+            .state('reimbursement-processing', {
+                url: "/reimbursement-processing",
+                templateUrl: "resources/reimbursement-claims/view/reimbursement-processing.html",
+                controller: 'ReimbursmentProcessingController'
             })
         $urlRouterProvider.otherwise("/");    
     }

@@ -102,7 +102,7 @@
                                     <tr ng-repeat="c in claimList | orderBy:orderByField:reverseSort">
                                         <td>
                                             <div class="text-nowrap">
-                                                <span class="d-inline-block pr-2">Claim No: <a ui-sref="eclaim">#{{c.climeNo}}</a></span> <span class="d-inline-block pr-2">Member No: {{c.memberNo}}</span>
+                                                <span class="d-inline-block pr-2">Claim No: <a href="javascript:void(0);" ng-click="navigateTo();">#{{c.climeNo}}</a></span> <span class="d-inline-block pr-2">Member No: {{c.memberNo}}</span>
                                             </div>
                                             <div class="text-nowrap">
                                                 <strong class="d-inline-block pr-2">Voucher No: {{c.voucherNo}}</strong> <strong class="d-inline-block pr-2">Encounter Type: {{c.encounterType}}</strong>

@@ -39,7 +39,7 @@
                 {name:'action', displayName:'', cellTemplate:staticTemplate,width:80, pinnedLeft:true, enableCellEdit:false},
                 {name:'serviceType', displayName:'Service Type', cellTemplate:textTemplate,width:100},
                 {name:'serviceCode', displayName:'Service code', cellTemplate:textTemplate,width:120},
-                {name:'serviceFrmDate', displayName:'Service From', cellTemplate:dateTemplate,width:130},
+                {name:'serviceFrmDate', displayName:'Service From', cellTemplate:dateTemplate,width:130, enableCellEdit:false},
                 {name:'days', displayName:'Days', cellTemplate:numTemplate,width:60},
                 {name:'quantity', displayName:'QTY', cellTemplate:numTemplate,width:60},
                 {name:'treatmentCode', displayName:'Treatment Code', cellTemplate:textTemplate,width:140},

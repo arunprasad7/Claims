@@ -80,12 +80,17 @@
                     <uib-accordion-heading> Medical Claims </uib-accordion-heading>    
                     <uib-accordion close-others="true">
                         <div uib-accordion-group class="panel-default child-panel" is-open="true">
-                            <uib-accordion-heading> <h3>Reimbursement Claims</h3> </uib-accordion-heading>
+                            <uib-accordion-heading> <h3>Eclaims Claims</h3> </uib-accordion-heading>
                             <h4 ui-sref="claim-registration">Registration</h4>
-                            <h4 ui-sref="user-assignment">User Assignment</h4>
+                            <h4 ui-sref="user-assignment({ param: 'eclaims' })">User Assignment</h4>
                             <h4 ui-sref="finalization">Finalization</h4>
                         </div>
-                        <h3>Eclaims</h3>
+                        <div uib-accordion-group class="panel-default child-panel" is-open="true">
+                            <uib-accordion-heading> <h3>Reimbursement Claims</h3> </uib-accordion-heading>
+                            <h4 ui-sref="claim-registration">Registration</h4>
+                            <h4 ui-sref="user-assignment({ param: 'reimburs' })">User Assignment</h4>
+                            <h4 ui-sref="finalization">Finalization</h4>
+                        </div>
                         <h3>PBM Cliams</h3>
                         <h3>Provider Paper Claims</h3>
                         <h3>Pre-Authorization</h3>
@@ -127,4 +132,7 @@
     <!-- Eclaim -->    
     <script src="resources/eclaim/controller/eclaim.controller.js"></script>
     <script src="resources/eclaim/service/eclaim.service.js"></script>
+    <!-- Reimbursement Claims : processing -->
+    <script src="resources/reimbursement-claims/controller/reimbursement-processing.controller.js"></script>
+    <script src="resources/reimbursement-claims/service/reimbursement-processing.service.js"></script>
 </html>

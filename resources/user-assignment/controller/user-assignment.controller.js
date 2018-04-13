@@ -4,9 +4,10 @@
         .module('claims')
         .controller('UserAssignmentController', UserAssignmentController)
 
-    UserAssignmentController.$inject = ['$scope', '$rootScope', 'UserAssignmentService', '$filter'];
+    UserAssignmentController.$inject = ['$scope', '$rootScope', 'UserAssignmentService', '$filter', '$state', '$stateParams'];
 
-    function UserAssignmentController($scope, $rootScope, UserAssignmentService, $filter) {
+    function UserAssignmentController($scope, $rootScope, UserAssignmentService, $filter, $state, $stateParams) {
+        $scope.selectedClaim = $stateParams.param;
         $scope.states = [{ display: 'Alabama', state: 'Alabama' }, { display: 'Alaska' }, { display: 'Arizona' }, { display: 'Arkansas' }, { display: 'Arkansas' }];
         $scope.name = '$scopevalue comes'
         $scope.memberNumber;
@@ -378,6 +379,11 @@
                 $scope.userssearch.splice(index, 1);
             }
             $scope.users = $scope.userssearch;
+        }
+
+        $scope.navigateTo = function() {
+            //{{ selectedClaim == 'eclaims' ? eclaim : reimbursement-processing }}
+            $state.go($scope.selectedClaim == 'eclaims' ? 'eclaim' : 'reimbursement-processing');
         }
 
         function createFilterFor(query) {
