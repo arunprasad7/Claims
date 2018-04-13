@@ -382,7 +382,6 @@
         }
 
         $scope.navigateTo = function() {
-            //{{ selectedClaim == 'eclaims' ? eclaim : reimbursement-processing }}
             $state.go($scope.selectedClaim == 'eclaims' ? 'eclaim' : 'reimbursement-processing');
         }
 
@@ -403,6 +402,8 @@
             $scope.waitingforapproval = $filter('filter')($scope.claim, { status: 'Waitingforapproval' });
             $scope.assigned = $filter('filter')($scope.claim, { status: 'Assigned' });
             $scope.tab = "newRequest";
+            $scope.option = "receivedDateDesc";
+            $scope.sorting($scope.option);
         }
 
         init();
