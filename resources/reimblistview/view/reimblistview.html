@@ -1,0 +1,74 @@
+<section>
+        <div class="row">
+            <div class="searchBar col-sm-8">
+                <div class="searchBarRow">
+                    <div layout-gt-sm="row">
+                        <div class="col-sm-4" style="border-left: 1px solid #e6e6e6;">
+                            <md-input-container flex-gt-sm>
+                                <label>Policy Number</label>
+                                <input ng-model="memberNumber" />
+                            </md-input-container>
+                        </div>
+                        <div class="col-sm-4" style="border-left: 1px solid #e6e6e6;">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Member Card Number</label>
+                                <input ng-model="memberCardNumber">
+                            </md-input-container>
+                        </div>
+                        <div class="col-sm-3" style="border-left: 1px solid #e6e6e6;">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Reference Number</label>
+                                <input ng-model="referenceNumber">
+                            </md-input-container>
+                        </div>
+                        <div ng-click="searchBtn()" class="col-sm-1" style="border-left: 1px solid #e6e6e6;padding-top: 10px;">
+                            <a href="javascript:;" class="searBtn mt-1 ml-3 mr-3 align-middle" style="float:middle;"><span class="oi align-middle" data-glyph="magnifying-glass"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <a href="javascript:;" class="btn btn-primary createNewBtn mt-3 ml-4">Create new</a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="contentPart pt-3 pb-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <div class="reimbListTabl">
+                            <h3 class="innerHeadText mt-2 mb-2 ml-2 d-inline-block">Claim Treatment/Service Level</h3>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Reference Number</th>
+                                        <th>Member Number</th>
+                                        <th>Member Name</th>
+                                        <th>Mobile Number</th>
+                                        <th>Alternate Email</th>
+                                        <th>Payment Type</th>
+                                        <th>IBAN Number</th>
+                                        <th>IBAN Document</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="claim in claimTreatMent">
+                                        <td>{{claim.referenceNumber}}</td>
+                                        <td>{{claim.memberNumber}}</td>
+                                        <td>{{claim.memberName}}</td>
+                                        <td>{{claim.mobileNumber}}</td>
+                                        <td>{{claim.alternateEmail}}</td>
+                                        <td>{{claim.paymentType}}</td>
+                                        <td>{{claim.iBANNumber}}</td>
+                                        <td class="text-center">
+                                            <a class="oi" data-glyph="paperclip" href="resources/img/dis.png" download></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

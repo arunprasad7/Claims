@@ -1,0 +1,121 @@
+<div class="searchBar">
+    <div class="searchBarRow">
+        <div layout-gt-sm="row">
+            <div class="col-sm-3">
+                <md-input-container flex-gt-sm>
+                    <label>Provider</label>
+                    <input ng-model="Provider">
+                </md-input-container>
+            </div>
+            <div class="col-sm-3" style="border-left: 1px solid #e6e6e6;">
+                <md-input-container flex-gt-sm>
+                    <label>Select Batch</label>
+                    <input ng-model="SelectBatch">
+                </md-input-container>
+            </div>
+            <div class="col-sm-2" style="border-left: 1px solid #e6e6e6;">
+                <md-input-container flex-gt-sm>
+                    <label>Batch ID</label>
+                    <input ng-model="BatchId">
+                </md-input-container>
+            </div>
+            <div class="col-sm-2" style="border-left: 1px solid #e6e6e6; min-width:230px;">
+                <md-input-container flex-gt-sm>
+                    <label>Batch Filename</label>
+                    <input ng-model="BatchFileName">
+                </md-input-container>
+            </div>
+            <div class="searchColm align-middle text-center col-sm-2">
+                <a ng-click="click()" href="javascript:;" class="searBtn searBtnWithText mt-1 ml-3 mr-3 align-middle">
+                    <span class="oi align-middle" data-glyph="magnifying-glass"></span> Search
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="contentPart pt-3 pb-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="p-3" id="finilizationCont">
+                    <div class="resultInfo pl-2">
+                        <strong class="d-inline-block pr-3">Search Result :</strong>
+                        <span class="d-inline-block pr-5">{{recordTotal}} Result Found</span>
+                        <div class="d-inline-block pl-5">Sort:</div>
+                        <select class="custom-select innerFilter" ng-change="sorting(option)" ng-model="option">
+                            <option value=""> Select</option>
+                            <option value="receivedDateDesc">By Date Asc</option>
+                            <option value="receivedDate">By Date Desc</option>
+                        </select>
+                    </div>
+                    <table class="table mt-2">
+                        <tbody>
+                            <tr ng-repeat="d in data | orderBy:orderByField:reverseSort">
+                                <td>
+                                    <span class="d-inline-block pr-2">Batch ID: {{d.batch}}</span>{{d.name}}
+                                    <div class="text-nowrap">
+                                        <strong class="d-inline-block">Batch file Name: {{d.batchFileName}}</strong>
+                                    </div>
+                                    <div class="text-nowrap clearfix">
+                                        <span class="oi"></span>
+                                        <div class="receiveInfo d-inline-block pr-3 float-left">
+                                            <span class="oi" data-glyph="timer"></span>Received Date {{d.receivedDate}}
+                                        </div>
+                                        <div ng-if="d.status == 'Rejected'" class="statusInfo d-inline-block text-danger float-right">
+                                            <span class="oi" data-glyph="thumb-down"></span> Rejected
+                                        </div>
+                                        <div ng-if="d.status == 'Approved'" class="statusInfo d-inline-block text-success float-right">
+                                            <span class="oi" data-glyph="thumb-up"></span> Approved
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-nowrap">
+                                        <span class="tablLal">Paid To Provider Code:</span>
+                                        <span class="tablCont">{{d.PaidToProviderCode}}</span>
+                                    </div>
+                                    <div class="text-nowrap">
+                                        <span class="tablLal">Paid To Provider Name:</span>
+                                        <span class="tablCont">{{d.PaidToProviderName}}</span>
+                                    </div>
+                                    <div class="text-nowrap">
+                                        <span class="tablLal">Paid To:</span>
+                                        <span class="tablCont">{{d.PaidTo}}</span>
+                                    </div>
+                                </td>
+                                <td class="processedStatus">
+                                    <div class="btn btn-outline-success btn-sm d-block">Processed: {{d.Processed}}</div>
+                                    <div class="btn btn-outline-danger btn-sm d-block">Un Processed: {{d.unProcessed}}</div>
+                                </td>
+                                <td>
+                                    <div class="text-nowrap">
+                                        <strong class="tablLal tablLal1">Rejected Amount:</strong>
+                                        <strong>Rs.{{d.rejectedAmount}}</strong>
+                                    </div>
+                                    <div class="text-nowrap">
+                                        <strong class="tablLal tablLal1">Batch Paid Amount:</strong>
+                                        <strong>Rs.{{d.batchPaidAmount}}</strong>
+                                    </div>
+                                    <div class="text-nowrap">
+                                        <strong class="tablLal tablLal1">Payment Way:</strong>
+                                        <strong>{{d.paymentWay}}</strong>
+                                    </div>
+                                </td>
+                                <td class="text-right">
+                                    <div class="text-nowrap">
+                                        Total Claims
+                                        <h4>Rs.{{d.totalClaims}}</h4>
+                                        Payment Date: {{d.paymentDate}} <br /> Payment Reference: {{d.paymentReference}}
+                                    </div>
+                                </td>
+                                <td class="align-middle">
+                                    <a href="javascript:;" class="btn btn-primary btn-sm finlizeBtn" ng-click="d.final = !d.final" ng-class="{Finalize :d.final}">Finalize</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

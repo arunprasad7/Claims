@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/Font-Awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bower_components/angular-ui-carousel/dist/ui-carousel.css">
+        <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.min.css">
+        <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css"/>
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"/>
+        <link rel="stylesheet" href="css/open-iconic.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/page.css" />
+        <link rel="stylesheet" type="text/css" href="css/jPushMenu.css" />
+        <title>Beyontec</title>
+    </head>
+    <body ng-app="claims">
+        <!-- <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td valign="top">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="topheader">
+                            <tbody>
+                                <tr>
+                                    <td width="3%" align="center"><i class="fa fa-bars toggle-menu menu-left" style="font-size: 24px; color: #666; cursor: pointer;" ng-click="navbar = !navbar"></i>
+                                    <td width="30%" align="left"><img src="img/Beyontec_logo1.png" alt=""/></td>
+                                    <td height="67">&nbsp;</td>
+                                    <td width="25%" align="right"><img src="img/Beyontec_Identity_CMYK_Y60p-Horizontal-BG-Alpha.png" alt=""/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <ui-view></ui-view>
+                    </td>
+                </tr>
+            </tbody>
+        </table> -->
+        <header class="clearfix">
+            <div class="">
+                <span class="float-left" ng-click="navbar = !navbar"><i class="fa fa-bars toggle-menu menu-left"></i></span>
+                <span ><img class="headLeft float-left" src="img/Beyontec_logo1.png" alt=""/></span>
+                <span>&nbsp;</span>
+                <span ><img class="headRight float-right" src="img/Beyontec_Identity_CMYK_Y60p-Horizontal-BG-Alpha.png" alt=""/></span>
+            </div>
+        </header>
+        <nav id="navbar" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" ng-class="{'menu-open' : navbar}">
+            <uib-accordion close-others="true">
+                <div uib-accordion-group class="panel-default" is-open="true">
+                    <uib-accordion-heading> Transaction </uib-accordion-heading> 
+                    <h3>Underwriting</h3>
+                    <h3>Reinsurance</h3>
+                    <h3>Claims</h3>
+                    <h4>TPA Claims</h4>
+                    <h4 >Export Claims</h4>
+                </div>
+                <div uib-accordion-group class="panel-default">
+                    <uib-accordion-heading> Processing </uib-accordion-heading>    
+                    <span>
+                        <h3>Renewal Query Screen</h3>
+                        <h3>RTA Resubmission</h3>                   
+                    </span>
+                </div>
+                <div uib-accordion-group class="panel-default">
+                    <uib-accordion-heading> Reports and Queries </uib-accordion-heading>    
+                    <span>
+                        <h3>Report</h3>                   
+                    </span>
+                </div>
+                <div uib-accordion-group class="panel-default">
+                    <uib-accordion-heading> Admin </uib-accordion-heading>    
+                    <span>
+                        <h3>TPA Claims Import Mapping</h3>                   
+                    </span>
+                </div>
+                <div uib-accordion-group class="panel-default">
+                    <uib-accordion-heading> Medical Claims </uib-accordion-heading>    
+                    <uib-accordion close-others="true">
+                        <div uib-accordion-group class="panel-default child-panel" is-open="true">
+                            <uib-accordion-heading> <h3>Reimbursement Claims</h3> </uib-accordion-heading>
+                            <h4 ui-sref="claim-registration">Registration</h4>
+                            <h4 ui-sref="user-assignment">User Assignment</h4>
+                            <h4 ui-sref="finalization">Finalization</h4>
+                        </div>
+                        <h3>Eclaims</h3>
+                        <h3>PBM Cliams</h3>
+                        <h3>Provider Paper Claims</h3>
+                        <h3>Pre-Authorization</h3>
+                    <uib-accordion>
+                </div>
+            </uib-accordion>           
+        </nav>
+        <ui-view></ui-view> 
+    </body>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+    <script src="bower_components/angular-thumbnails/dist/angular-thumbnails.js"></script>
+    <script src="bower_components/pdfjs-dist/build/pdf.js"></script>
+    <script src="bower_components/angular-ui-carousel/dist/ui-carousel.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="bower_components/angular-daterangepicker/js/angular-daterangepicker.min.js"></script>
+    <script src="lib/ui-bootstrap-tpls-3.0.3.min.js"></script>
+
+    <script src="app.js"></script>
+    <!-- Registration -->
+    <script src="resources/registration/controller/registration-general.controller.js"></script>
+    <script src="resources/registration/controller/registration.controller.js"></script>
+    <script src="resources/registration/service/registration.service.js"></script>
+    <!-- Finalization -->
+    <script src="resources/finalization/controller/finalization.controller.js"></script>
+    <script src="resources/finalization/service/finalization.service.js"></script>
+    <!-- User Assignment -->    
+    <script src="resources/user-assignment/controller/user-assignment.controller.js"></script>
+    <script src="resources/user-assignment/service/user-assignment.service.js"></script>
+    <!-- Eclaim -->    
+    <script src="resources/eclaim/controller/eclaim.controller.js"></script>
+    <script src="resources/eclaim/service/eclaim.service.js"></script>
+</html>

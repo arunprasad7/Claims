@@ -1,0 +1,270 @@
+<nav class="navbar pt-1 pb-1">
+    <span class="navbar-brand p-0 m-0" ui-sref="claim-registration">Claims Registration</span>
+</nav>
+<section class="withRightContainer">
+    <div class="leftContainer">
+        <div class="searchBar">
+            <div class="searchBarRow">
+                <div layout-gt-sm="row">
+                    <div style="border-left: 1px solid #e6e6e6;">
+                        <md-input-container flex-gt-sm>
+                            <label>Member Number</label>
+                            <input ng-model="search.memberNumber">
+                        </md-input-container>
+                    </div>    
+                    <div style="border-left: 1px solid #e6e6e6;">
+                        <md-input-container flex-gt-sm>
+                            <label>Policy Number</label>
+                            <input ng-model="search.policyNumber">
+                        </md-input-container>
+                    </div>
+                    <div style="border-left: 1px solid #e6e6e6;">
+                        <md-input-container flex-gt-sm>
+                            <label>Voucher Number</label>
+                            <input ng-model="search.voucherNumber">
+                        </md-input-container>
+                    </div>
+                    <div style="border-left: 1px solid #e6e6e6; min-width:230px;">
+                        <md-input-container flex-gt-sm>
+                            <label>Previous Request Number</label>
+                            <input ng-model="search.requestNumber">
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="searchColm align-middle text-center" ng-click="searchClaims();">
+                    <a href="javascript:;" data-toggle="modal" data-target="#newRegClaims" class="searBtn mt-1 ml-3 mr-3 align-middle">
+                        <span class="oi align-middle" data-glyph="magnifying-glass"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="resultBox mt-3 mb-4">
+            <div class="fldsWrap clearfix">
+                <div layout-gt-sm="row">
+                    <div class="col-sm-12">
+                        <md-input-container flex-gt-sm>    
+                            <label>Member Name</label>
+                            <input type="text" ng-model="regDetail.memberName"/>
+                        </md-input-container>
+                    </div>
+                </div>    
+            </div>
+            <div class="fldsWrap clearfix">
+                <div layout-gt-sm="row">
+                    <div class="col-sm-6">
+                        <md-input-container flex-gt-sm>    
+                            <label>Mobile Number 1</label>
+                            <input type="number" ng-model="regDetail.mobileNum1" />
+                        </md-input-container>
+                    </div>
+                    <div class="col-sm-6 colborder">
+                        <md-input-container flex-gt-sm>
+                            <label>Email ID 1</label>
+                            <input type="email" ng-model="regDetail.email1"/>
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+            <div class="fldsWrap clearfix">
+                <div layout-gt-sm="row">
+                    <div class="col-sm-6">
+                        <md-input-container flex-gt-sm>
+                            <label>Mobile Number 2</label>
+                            <input type="number" ng-model="regDetail.mobileNum2" />
+                        </md-input-container>
+                    </div>
+                    <div class="col-sm-6 colborder">
+                        <md-input-container flex-gt-sm>
+                            <label>Email ID 2</label>
+                            <input type="email" ng-model="regDetail.email2"/>
+                        </md-input-container>
+                    </div>
+                </div>    
+            </div>
+            <div class="fldsWrap clearfix">
+                <div layout-gt-sm="row">
+                    <div class="col-sm-6">
+                        <md-input-container flex-gt-sm>
+                            <label>Previous Request</label>
+                            <input type="text" ng-model="regDetail.prevRequest"/>
+                        </md-input-container>                        
+                    </div>    
+                    <div class="col-sm-6 colborder">
+                        <md-input-container flex-gt-sm>
+                            <label>Requested Amount</label>
+                            <input type="number" ng-model="regDetail.requestAmt" />
+                        </md-input-container>
+                    </div>    
+                </div>
+            </div>
+            <div class="fldsWrap clearfix">
+                <div layout-gt-sm="row">
+                    <div class="col-sm-6">
+                        <md-input-container flex-gt-sm>
+                            <label class="focuslabel">Encounter Type</label>
+                            <md-select name="EncounterType" ng-model="regDetail.encType">
+                                <md-option value="inPatient">In Patient</md-option>
+                                <md-option value="outPatient">Out Patient</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div class="col-sm-6 colborder">
+                        <md-input-container flex-gt-sm>
+                            <label>Request Type</label>
+                            <md-select name="EncounterType" ng-model="regDetail.reqType">
+                                <md-option value="newRequest">New Request</md-option>
+                                <md-option value="resubmission">Resubmission</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                </div>        
+            </div>
+            <div class="fldsWrap clearfix">
+                <div layout-gt-sm="row">
+                    <div class="col-sm-6">
+                        <md-input-container>
+                            <label>Request Received Date</label>
+                            <md-datepicker ng-model="regDetail.reqReceivedDate" md-open-on-focus></md-datepicker>
+                        </md-input-container>
+                    </div>
+                    <div class="col-sm-6 colborder">
+                        <md-input-container>
+                            <label>Service From Date</label>
+                            <md-datepicker ng-model="regDetail.serviceFmDate" md-open-on-focus></md-datepicker>
+                        </md-input-container>
+                    </div>    
+                </div>        
+            </div>
+            <div class="fldsWrap clearfix">
+                <div class="fieldsCol fieldsFilledCol">
+                    <label class="top_4">Document Type</label>
+                    <div class="buttonGroups">
+                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : documentType == 'inPerson'}" ng-click="setDcoumentType('inPerson')">In Person</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : documentType == 'email'}" ng-click="setDcoumentType('email')">Email</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : documentType == 'post'}" ng-click="setDcoumentType('post')">Post</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : documentType == 'tpa'}" ng-click="setDcoumentType('tpa')">TPA</button>
+                    </div>
+                </div>
+            </div>
+            <div class="fldsWrap clearfix b0">
+                <div class="fieldsCol fieldsFilledCol pb-2">
+                    <label class="top_4">Payment Way</label>
+                    <div class="buttonGroups">
+                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : paymentWay == 'iban'}" ng-click="setPaymentWay('iban')">IBAN</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : paymentWay == 'cheque'}" ng-click="setPaymentWay('cheque')">Cheque</button>
+                    </div>
+                </div>
+                <div class="fldsWrap clearfix b0 row" ng-show="paymentWay == 'iban'">
+                    <div class="col-sm-4">
+                        <div layout-gt-sm="row">
+                            <!-- <div class="claimReqColm">
+                                <md-input-container flex-gt-sm>    
+                                    <label>IBAN Number</label>
+                                    <input type="text" ng-model="regDetail.ibanNum" />
+                                </md-input-container>
+                            </div>     -->
+                            <div class="claimReqColm float-left">
+                                <div class="filedsWrap" ng-init="ibanNum=false" ng-class="{inputFilled : ibanNum || regDetail.ibanNum}">
+                                    <label>IBAN Number</label>
+                                    <input type="text" class="claimReqIput" ng-model="regDetail.ibanNum" ng-focus="ibanNum=true" ng-blur="ibanNum=false">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 fieldsCol fieldsFilledCol d-inline-block b0">
+                        <label class="top_4 d-block grayText">Upload IBAN Document if any</label>
+                        <div class="fileuploadWrap">
+                            <span class="oi align-middle mr-1" data-glyph="cloud-upload"></span> Browser Files
+                            <input type="file" class="fileupload"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fldsWrap pr-4 pb-4 clearfix">
+                <button type="button" class="btn btn-primary float-right" ng-click="registerClaim()">Submit</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="rightContainer uploadList">
+        <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="1" slides-to-scroll="1" initial-slide="$parent.previewIndex" style="width:100%;height:100%;margin-bottom:0px;margin-left:2px"
+            infinite="false" name="previewSlider" ng-if = "fileInfos.length > 0 && isPreview">
+            <carousel-item>
+                <div class="row">
+                    <div class="col-sm-6" style="float:left;">
+                        <button type="button" class="btn" style="background-color: #00aeef; color:white" ng-click="hidePreview();">Upload
+                            <i class="fa fa-cloud-upload" style="color:white"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="{{item.previewUrl}}" download="{{item.name}}">
+                            <button type="button" class="btn" style="background-color: #00aeef; color:white; float: right;">Download
+                                <i class="fa fa-cloud-download" style="color:white"></i>
+                            </button>                            
+                        </a>
+                    </div>    
+                </div>
+                <div ng-show="item.ext != 'docx'">
+                    <iframe ng-src="{{trustUrl(item)}}" width="100%" height="590px"></iframe>
+                </div>
+                <div ng-show="item.ext == 'docx'" style="width:98%; height:500px;color:white;font-size:25px;text-align:center">
+                    <br><br><br>No Preview Available
+                </div>
+            </carousel-item>
+            <carousel-prev>
+                <i class="fa fa-angle-left" style="font-size: 25px;" style="color:white"></i>
+            </carousel-prev>
+            <carousel-next>
+                <i class="fa fa-angle-right" style="font-size: 25px;" style="color:white"></i>
+            </carousel-next>
+        </ui-carousel>
+        <div class="uploadPlaceHolder" ng-hide="isPreview">
+            <h2>Upload your Claim scaned copy</h2>
+            <div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                ngf-change="uploadFiles($files)">
+                <span class="oi align-middle mr-1" data-glyph="cloud-upload" style="color:#00aeef"></span>
+                Drop Files or click to upload
+            </div>
+            <div ng-repeat="f in files" ng-style="{'padding-top' : $first ? '25px' : '20px'}">
+                {{f.name}}
+                <div style="background : #ccc!important; height:3px !important">
+                    <div class="fprogress" style="width:{{f.progress}}%" ng-show="f.progress >= 0"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-if = "fileInfos.length > 0 && !isPreview">
+            <div class="box-container">
+                <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="2" slides-to-scroll="2" initial-slide="0" style="width:450px;"
+                    infinite="false" name="thumbnailSlider">
+                    <carousel-item>
+                        <div ng-class="{'img-padding' : $odd }">
+                            <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}"  max-height="80" class="pdf-view" ng-show="item.ext == 'image'" ></thumbnail>
+                            <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}" class="pdf-view" max-height="80" ng-show="item.ext == 'pdf'"></thumbnail>
+                            <div ng-show="item.ext == 'docx'">
+                                <i class="fa fa-file-word-o center" style="font-size:80px; color:#26559a; width:150px; height: 85px; text-align:center"></i>
+                            </div>
+                            <p style="white-space: nowrap; width: 100%; overflow: hidden; text-overflow: ellipsis; font-size:small; border-top:1px solid #d3d8de;padding-top:12px;">
+                                <a href="" ng-click="showPreview($index, item)">
+                                    <span>{{item.name}}</span><br>
+                                    <span>Uploaded on {{item.uploadedDate | date: 'mediumDate'}}</span>
+                                </a>
+                            </p>
+                            <p>
+                                <i class="fa fa-file-picture-o upload-file-icon" ng-show = "item.ext == 'image'" style="color:#00aeef;"></i>
+                                <i class="fa fa-file-pdf-o upload-file-icon" ng-show = "item.ext == 'pdf'" style="color:red;"></i>
+                                <i class="fa fa-file-word-o upload-file-icon" ng-show = "item.ext == 'docx'" style="color:#26559a;"></i>
+                            </p>                            
+                        </div>                        
+                    </carousel-item>
+                    <carousel-prev>
+                        <i class="fa fa-angle-left" style="font-size: 20px;"></i>
+                    </carousel-prev>
+                    <carousel-next>
+                        <i class="fa fa-angle-right" style="font-size: 20px;"></i>
+                    </carousel-next>
+                </ui-carousel>
+            </div>
+        </div>
+    </div>
+</section>
