@@ -423,7 +423,7 @@ top: 4px;
 #resultTabContent td .receiveInfo, #finilizationCont td .receiveInfo {
 	color: #9b9b9b;
 }
-#resultTabContent tr:hover td, #finilizationCont tr:hover td {
+#resultTabContent tr:hover td, #finilizationCont tr:hover td, #reimbListTabl tr:hover td {
 	background: #f7fcff;
 }
 .statusInfo {
