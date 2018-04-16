@@ -9,13 +9,16 @@
                     <uib-accordion close-others="true">
                         <div uib-accordion-group class="panel-default" is-open="true">
                             <div>
-                                <uib-accordion-heading>
+                                <div uib-accordion-heading ng-click="isOpen = ! isOpen">
                                     <div class="p-1">
                                         <h5 class="mb-0">
-                                            <button class="btn accordionBtn">Provider Details <span class="oi" data-glyph="minus"></span></button>
+                                            <button class="btn accordionBtn">Provider Details 
+                                                <span class="oi expanded" data-glyph="minus"></span>
+                                                <span class="oi collapsed" data-glyph="plus"></span>
+                                            </button>
                                         </h5>
                                     </div>
-                                </uib-accordion-heading> 
+                                </div> 
                                 <div class="accordion-input">
                                     <div class="fldsWrap clearfix">
                                         <md-input-container flex-gt-sm>    
@@ -50,7 +53,10 @@
                                 <uib-accordion-heading>
                                     <div class="p-1">
                                         <h5 class="mb-0">
-                                            <button class="btn accordionBtn">Policy Details <span class="oi" data-glyph="plus"></span></button>
+                                            <button class="btn accordionBtn">Policy Details 
+                                                <span class="oi expanded" data-glyph="minus"></span>
+                                                <span class="oi collapsed" data-glyph="plus"></span>
+                                            </button>
                                         </h5>
                                     </div>
                                 </uib-accordion-heading>
@@ -76,7 +82,10 @@
                                 <uib-accordion-heading>
                                     <div class="p-1">
                                         <h5 class="mb-0">
-                                            <button class="btn accordionBtn">Member Details <span class="oi" data-glyph="plus"></span></button>
+                                            <button class="btn accordionBtn">Member Details 
+                                                <span class="oi expanded" data-glyph="minus"></span>
+                                                <span class="oi collapsed" data-glyph="plus"></span>
+                                            </button>
                                         </h5>
                                     </div>
                                 </uib-accordion-heading>
@@ -168,7 +177,7 @@
                 <div class="requestListWrap clearfix">
                     <div class="requstListSlidePart">
                         <div class="requstList">
-                            <ui-carousel slides="claimReqList" class="eclaim" style="width:{{getWidth()}};" slides-to-show="5" slides-to-scroll="1" initial-slide="0" infinite="false">
+                            <ui-carousel slides="claimReqList" class="eclaim" style="width:{{getWidth()}};" slides-to-show="noOfSlides" slides-to-scroll="1" initial-slide="0" infinite="false" style="">
                                 <carousel-item  class="eclaim-item">
                                     <li>
                                         <span>Request Number: #{{item.reqNum}}</span><strong class="text-danger ml-2">Rejected</strong>
@@ -213,449 +222,6 @@
                     <div class="table eclaimRequestTabl">
                         <div ui-grid="gridOptions" ui-grid-pinning="" ui-grid-edit="" class="eclaimRequestTabl"></div>
                     </div>
-                    <!-- <table class="table eclaimRequestTabl">
-                        <thead>
-                            <tr>
-                                <th colspan="2"></th>
-                                <th>Service Type</th>
-                                <th>Service code</th>
-                                <th>Service Form</th>
-                                <th>Days</th>
-                                <th>QTY</th>
-                                <th>Treatment Code</th>
-                                <th>HAAD/DHA Price</th>
-                                <th>Price</th>
-                                <th>Requested Amount</th>
-                                <th>Ded Amount</th>
-                                <th>Approved Amount</th>
-                                <th>Rejected Amount</th>
-                                <th>Rejected Code</th>
-                                <th>Shortfall Amount</th>
-                                <th>Status</th>
-                                <th>Internal Remarks</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <a href="javascript:;" class="custCheckboxBtn">
-                                        <span class="oi" data-glyph="check"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="oi" data-glyph="wrench"></span>
-                                    </a>
-                                    <div class="dropdown-menu eclaimReqSetOption">
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="reload"></span> Undo</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="check"></span> Validate</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Reinsurance</a>
-                                        <a class="dropdown-item" href="#">History</a>
-                                        <a class="dropdown-item" href="#">Policy Rules</a>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>90807</td>
-                                <td>12/07/2017</td>
-                                <td>365</td>
-                                <td>365</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>Approved</td>
-                                <td><span>Lorem Ipsum is simple</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="javascript:;" class="custCheckboxBtn">
-                                        <span class="oi" data-glyph="check"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="oi" data-glyph="wrench"></span>
-                                    </a>
-                                    <div class="dropdown-menu eclaimReqSetOption">
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="reload"></span> Undo</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="check"></span> Validate</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Reinsurance</a>
-                                        <a class="dropdown-item" href="#">History</a>
-                                        <a class="dropdown-item" href="#">Policy Rules</a>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>90807</td>
-                                <td>12/07/2017</td>
-                                <td>365</td>
-                                <td>365</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>Approved</td>
-                                <td><span>Lorem Ipsum is simple</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="javascript:;" class="custCheckboxBtn">
-                                        <span class="oi" data-glyph="check"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="oi" data-glyph="wrench"></span>
-                                    </a>
-                                    <div class="dropdown-menu eclaimReqSetOption">
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="reload"></span> Undo</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="check"></span> Validate</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Reinsurance</a>
-                                        <a class="dropdown-item" href="#">History</a>
-                                        <a class="dropdown-item" href="#">Policy Rules</a>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>90807</td>
-                                <td>12/07/2017</td>
-                                <td>365</td>
-                                <td>365</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>Approved</td>
-                                <td><span>Lorem Ipsum is simple</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="javascript:;" class="custCheckboxBtn">
-                                        <span class="oi" data-glyph="check"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="oi" data-glyph="wrench"></span>
-                                    </a>
-                                    <div class="dropdown-menu eclaimReqSetOption">
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="reload"></span> Undo</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="check"></span> Validate</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Reinsurance</a>
-                                        <a class="dropdown-item" href="#">History</a>
-                                        <a class="dropdown-item" href="#">Policy Rules</a>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>90807</td>
-                                <td>12/07/2017</td>
-                                <td>365</td>
-                                <td>365</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>Approved</td>
-                                <td><span>Lorem Ipsum is simple</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="javascript:;" class="custCheckboxBtn">
-                                        <span class="oi" data-glyph="check"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="oi" data-glyph="wrench"></span>
-                                    </a>
-                                    <div class="dropdown-menu eclaimReqSetOption">
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="reload"></span> Undo</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="check"></span> Validate</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Reinsurance</a>
-                                        <a class="dropdown-item" href="#">History</a>
-                                        <a class="dropdown-item" href="#">Policy Rules</a>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>90807</td>
-                                <td>12/07/2017</td>
-                                <td>365</td>
-                                <td>365</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>Approved</td>
-                                <td><span>Lorem Ipsum is simple</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="javascript:;" class="custCheckboxBtn">
-                                        <span class="oi" data-glyph="check"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="oi" data-glyph="wrench"></span>
-                                    </a>
-                                    <div class="dropdown-menu eclaimReqSetOption">
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="reload"></span> Undo</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="check"></span> Validate</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Reinsurance</a>
-                                        <a class="dropdown-item" href="#">History</a>
-                                        <a class="dropdown-item" href="#">Policy Rules</a>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>90807</td>
-                                <td>12/07/2017</td>
-                                <td>365</td>
-                                <td>365</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>Approved</td>
-                                <td><span>Lorem Ipsum is simple</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="javascript:;" class="custCheckboxBtn">
-                                        <span class="oi" data-glyph="check"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="oi" data-glyph="wrench"></span>
-                                    </a>
-                                    <div class="dropdown-menu eclaimReqSetOption">
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="reload"></span> Undo</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="check"></span> Validate</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Reinsurance</a>
-                                        <a class="dropdown-item" href="#">History</a>
-                                        <a class="dropdown-item" href="#">Policy Rules</a>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>90807</td>
-                                <td>12/07/2017</td>
-                                <td>365</td>
-                                <td>365</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>Approved</td>
-                                <td><span>Lorem Ipsum is simple</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="javascript:;" class="custCheckboxBtn">
-                                        <span class="oi" data-glyph="check"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="oi" data-glyph="wrench"></span>
-                                    </a>
-                                    <div class="dropdown-menu eclaimReqSetOption">
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="reload"></span> Undo</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="check"></span> Validate</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Reinsurance</a>
-                                        <a class="dropdown-item" href="#">History</a>
-                                        <a class="dropdown-item" href="#">Policy Rules</a>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>90807</td>
-                                <td>12/07/2017</td>
-                                <td>365</td>
-                                <td>365</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>Approved</td>
-                                <td><span>Lorem Ipsum is simple</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="javascript:;" class="custCheckboxBtn">
-                                        <span class="oi" data-glyph="check"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="oi" data-glyph="wrench"></span>
-                                    </a>
-                                    <div class="dropdown-menu eclaimReqSetOption">
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="reload"></span> Undo</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="check"></span> Validate</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Reinsurance</a>
-                                        <a class="dropdown-item" href="#">History</a>
-                                        <a class="dropdown-item" href="#">Policy Rules</a>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>90807</td>
-                                <td>12/07/2017</td>
-                                <td>365</td>
-                                <td>365</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>Approved</td>
-                                <td><span>Lorem Ipsum is simple</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="javascript:;" class="custCheckboxBtn">
-                                        <span class="oi" data-glyph="check"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="oi" data-glyph="wrench"></span>
-                                    </a>
-                                    <div class="dropdown-menu eclaimReqSetOption">
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="reload"></span> Undo</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="check"></span> Validate</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Reinsurance</a>
-                                        <a class="dropdown-item" href="#">History</a>
-                                        <a class="dropdown-item" href="#">Policy Rules</a>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>90807</td>
-                                <td>12/07/2017</td>
-                                <td>365</td>
-                                <td>365</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>Approved</td>
-                                <td><span>Lorem Ipsum is simple</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="javascript:;" class="custCheckboxBtn">
-                                        <span class="oi" data-glyph="check"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="oi" data-glyph="wrench"></span>
-                                    </a>
-                                    <div class="dropdown-menu eclaimReqSetOption">
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="reload"></span> Undo</a>
-                                        <a class="dropdown-item" href="#"><span class="oi mr-1" data-glyph="check"></span> Validate</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Reinsurance</a>
-                                        <a class="dropdown-item" href="#">History</a>
-                                        <a class="dropdown-item" href="#">Policy Rules</a>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>90807</td>
-                                <td>12/07/2017</td>
-                                <td>365</td>
-                                <td>365</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>10010201-1</td>
-                                <td>Approved</td>
-                                <td><span>Lorem Ipsum is simple</span></td>
-                            </tr>
-                        </tbody>
-                    </table> -->
                 </div>
             </div>
         

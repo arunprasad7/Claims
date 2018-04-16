@@ -9,19 +9,21 @@
 
     function EclaimController($scope, $rootScope, EclaimService) {
         $scope.claimReqList = EclaimService.getClaimsRequest();
+        
         $scope.getWidth = function() {
             if($scope.infoToggle) {
                 return (window.innerWidth - 380) + 'px';
             }
             return (window.innerWidth - 100) + 'px';
         }
+
         var textTemplate = '<div ng-if="!row.entity.editable || !col.colDef.enableCellEdit" style="padding:3px;">{{COL_FIELD}}</div><div ng-if="row.entity.editable && col.colDef.enableCellEdit">'+
-                            '<md-input-container class="md-block"> <input type="text" ng-model="MODEL_COL_FIELD" name="{{col.name}}" id="{{row.uid}}-{{col.name}}-edit-cell" ui-grid-editor/></md-input-container></div>';
+                            '<md-input-container class="md-block"> <input type="text" ng-model="MODEL_COL_FIELD" aria-label="{{row.entity.name}}" name="{{col.name}}" id="{{row.uid}}-{{col.name}}-edit-cell" ui-grid-editor/></md-input-container></div>';
         
         var numTemplate = '<div ng-if="!row.entity.editable || !col.colDef.enableCellEdit" style="padding:3px;">{{COL_FIELD}}</div><div ng-if="row.entity.editable && col.colDef.enableCellEdit">'+
-                           '<md-input-container class="md-block"> <input type="number" ng-model="MODEL_COL_FIELD" name="{{col.name}}" id="{{row.uid}}-{{col.name}}-edit-cell" ui-grid-editor/></md-input-container></div>';
+                           '<md-input-container class="md-block"> <input type="number" ng-model="MODEL_COL_FIELD" aria-label="{{row.entity.name}}" name="{{col.name}}" id="{{row.uid}}-{{col.name}}-edit-cell" ui-grid-editor/></md-input-container></div>';
         var dateTemplate = '<div ng-if="!row.entity.editable || !col.colDef.enableCellEdit" style="padding:3px;">{{COL_FIELD | date:\'mediumDate\'}}</div><div ng-if="row.entity.editable && col.colDef.enableCellEdit">'+
-                           '<md-datepicker class="md-block" md-open-on-focus ng-model="MODEL_COL_FIELD" name="{{col.name}}" id="{{row.uid}}-{{col.name}}-edit-cell" ui-grid-editor></md-datepicker></div>';        
+                           '<md-datepicker class="md-block" md-open-on-focus ng-model="MODEL_COL_FIELD" aria-label="{{row.entity.name}}" name="{{col.name}}" id="{{row.uid}}-{{col.name}}-edit-cell" ui-grid-editor></md-datepicker></div>';        
         
         var staticTemplate = '<a href="javascript:;" class="custCheckboxBtn" ng-class="{\'custCheckboxBtnSected\' : row.entity.isSelected}" ng-click="row.entity.isSelected = !row.entity.isSelected"><span class="oi" data-glyph="check"></span></a>&nbsp;'+
                      '<a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" ng-click="row.entity.showDropdown = !row.entity.showDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="oi" data-glyph="wrench"></span></a>'+
@@ -37,15 +39,15 @@
             data : EclaimService.getEclaimList(),
             columnDefs: [
                 {name:'action', displayName:'', cellTemplate:staticTemplate,width:80, pinnedLeft:true, enableCellEdit:false},
-                {name:'serviceType', displayName:'Service Type', cellTemplate:textTemplate,width:100},
+                {name:'serviceType', displayName:'Service Type', cellTemplate:textTemplate,width:110},
                 {name:'serviceCode', displayName:'Service code', cellTemplate:textTemplate,width:120},
                 {name:'serviceFrmDate', displayName:'Service From', cellTemplate:dateTemplate,width:130, enableCellEdit:false},
                 {name:'days', displayName:'Days', cellTemplate:numTemplate,width:60},
                 {name:'quantity', displayName:'QTY', cellTemplate:numTemplate,width:60},
                 {name:'treatmentCode', displayName:'Treatment Code', cellTemplate:textTemplate,width:140},
-                {name:'dhaPrice', displayName:'HAAD/DHA Price', cellTemplate:numTemplate,width:125},
+                {name:'dhaPrice', displayName:'HAAD/DHA Price', cellTemplate:numTemplate,width:135},
                 {name:'price', displayName:'Price', cellTemplate:numTemplate,width:125},
-                {name:'reqAmount', displayName:'Requested Amount', cellTemplate:numTemplate,width:140},
+                {name:'reqAmount', displayName:'Requested Amount', cellTemplate:numTemplate,width:145},
                 {name:'dedAmount', displayName:'Ded Amount', cellTemplate:numTemplate,width:125},
                 {name:'approvedAmt', displayName:'Approved Amount', cellTemplate:numTemplate,width:140},
                 {name:'rejectedAmt', displayName:'Rejected Amount   ', cellTemplate:numTemplate,width:140},
@@ -90,5 +92,14 @@
                 scrollLeft: "-=322px"
             }, "slow");
         });
+
+        function init() {
+           $scope.noOfSlides = 3;
+           if(window.innerWidth >= 1300) {
+                $scope.noOfSlides = 4;
+           }
+        }
+        
+        init();
     }
 })();
