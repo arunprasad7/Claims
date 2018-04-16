@@ -279,6 +279,7 @@
             'currencyCode': 'AED',
             'status': 'Assigned'
         }];
+
         $scope.userssearch = $scope.users;
         $scope.result = $scope.claim;
         $scope.recordTotal = $scope.claim.length;
@@ -338,8 +339,8 @@
                 });
                 console.log("--------------", $scope.claimList);
             }
-
         }
+
         $scope.datePicker = {};
         $scope.datePicker.date = { startDate: null, endDate: null };
         $scope.items = $scope.claim;

@@ -30,15 +30,15 @@
                             <input ng-model="approvedBy">
                         </md-input-container>
                     </div>
-                    <div c style="border-left: 1px solid #e6e6e6; min-width:230px;">
+                    <div style="border-left: 1px solid #e6e6e6; min-width:230px;">
                         <md-input-container flex-gt-sm>
-                            <label style="white-space: pre-line;">Requested Receive From</label>
+                            <label style="white-space: pre-line;">Request Received From</label>
                             <md-datepicker ng-model="requestedDate" md-open-on-focus md-hide-icons="all"></md-datepicker>
                         </md-input-container>
                     </div>
-                    <div c style="border-left: 1px solid #e6e6e6; min-width:230px;">
+                    <div style="border-left: 1px solid #e6e6e6; min-width:230px;">
                         <md-input-container flex-gt-sm>
-                            <label style="white-space: pre-line;">Requested Receive To</label>
+                            <label style="white-space: pre-line;">Request Received To</label>
                             <md-datepicker ng-model="datePicker.date" md-open-on-focus md-hide-icons="all"></md-datepicker>
                         </md-input-container>
                     </div>
@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <div class="contentPart pt-3 pb-3">
+        <div class="contentPart pb-3">
             <h2 class="title">Total {{claimList.length}} available</h2>
             <div class="container-fluid" style="padding-left:0px;">
                 <div class="row">
@@ -102,18 +102,28 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-1">
-                                            <div ng-click="selectAll()" class="align-middle"><a href="javascript:;" id="seltAll" style="font-size:70%;">SELECT ALL</a></div>
+                                            <div ng-click="selectAll()" class="align-middle"><a href="javascript:;" id="seltAll" style="font-size:54%;">SELECT ALL</a></div>
                                         </div>
                                     </div>
                                     <table class="table mt-3">
                                         <tbody>
                                             <tr ng-repeat="c in claimList | orderBy:orderByField:reverseSort">
                                                 <td>
+                                                    <!-- <div class="text-nowrap">
+                                                        <strong><span><font color="black"></font><class="d-inline-block pr-2">Claim No:<a class="currencyTypeCustom d-inline-block" href="javascript:void(0);" ng-click="navigateTo();">#{{c.climeNo}}</a></span></strong> <strong><span class="d-inline-block pr-2">Member No: {{c.memberNo}}</span></strong>
+                                                    </div> -->
                                                     <div class="text-nowrap">
-                                                        <span class="d-inline-block pr-2">Claim No: <a href="javascript:void(0);" ng-click="navigateTo();">#{{c.climeNo}}</a></span> <span class="d-inline-block pr-2">Member No: {{c.memberNo}}</span>
+                                                        <span class="d-inline-block pr-2"><strong>Claim No: </strong>
+                                                            <a class="currencyTypeCustom " href="javascript:void(0);"ng-click="navigateTo();">#{{c.climeNo}}</a>
+                                                        </span>
+                                                        <span class="d-inline-block pr-2"><strong>Member No: {{c.memberNo}}</strong></span>
                                                     </div>
+
+
+
                                                     <div class="text-nowrap">
-                                                        <strong class="d-inline-block pr-2">Voucher No: {{c.voucherNo}}</strong> <strong class="d-inline-block pr-2">Encounter Type: {{c.encounterType}}</strong>
+                                                        <class="d-inline-block pr-2">Voucher No: {{c.voucherNo}}
+                                                            <class="d-inline-block pr-2">Encounter Type: {{c.encounterType}}
                                                     </div>
                                                     <div class="text-nowrap">
                                                         <div class="receiveInfo d-inline-block pr-3"><span class="oi" data-glyph="timer"></span> Request recieved on: {{c.requestRecievedOn}}</div>
@@ -158,8 +168,9 @@
                     <div class="col-3 innerRight">
                         <h3 class="pt-3">Assign to user</h3>
                         <!-- <input type="text" class="form-control" placeholder="Search Assigned Name" ng-model="nameAndID"> -->
-                        <div class="row ">
-                            <md-autocomplete style="width: 100%;" md-selected-item="selectedItem" md-search-text="searchText" md-selected-item-change="submit()" md-items="item in querySearch(searchText)" md-item-text="item.name" placeholder="UserName">
+                        <div class="row" style="padding:0 15px;">
+                            <span style="width:5%;padding: 7px 0;"><i class="oi align-middle" data-glyph="magnifying-glass"></i></span>
+                            <md-autocomplete style="width:92%" md-selected-item="selectedItem" md-search-text="searchText" md-selected-item-change="submit()" md-items="item in querySearch(searchText)" md-item-text="item.name" placeholder="UserName">
                                 <md-item-template>
                                     <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
                                 </md-item-template>
