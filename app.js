@@ -13,7 +13,8 @@ angular
         'daterangepicker',
         'ui.bootstrap'
     ])
-    .config(stateConfig);
+    .config(stateConfig)
+    .run(appConfig)
 
     stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
@@ -59,5 +60,11 @@ angular
                 controller: 'ReimbursmentProcessingController'
             })
         $urlRouterProvider.otherwise("/");    
+    }
+
+    function appConfig ($transitions, $rootScope) {
+        $transitions.onSuccess({}, function() {
+            $rootScope.navbar = false;
+        });
     }
 })();

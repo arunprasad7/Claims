@@ -1509,4 +1509,11 @@ footer {
 
 .md-whiteframe-z1 {
     box-shadow: none;
+	background: #cfd2d8;
+	border-radius: 20px;
+	padding: 0.2rem .5rem;
+}
+	
+.md-whiteframe-z1 {
+	box-shadow: none;
 }
