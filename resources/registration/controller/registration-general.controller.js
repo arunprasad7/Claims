@@ -86,6 +86,7 @@
                     $scope.searchObj = searchObj;
                     $scope.cancelModal = function() {
                         $uibModalInstance.dismiss();
+                        $('.modal-backdrop').remove();
                     }
 
                     $scope.newClaim = function() {
@@ -111,6 +112,7 @@
 
             modalInstance.result.then(function(result) {
                 $scope.regDetail = result.claim;
+                $('.modal-backdrop').remove();
                 if(result.isNew) $scope.search = {};
             })    
         }
