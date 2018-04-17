@@ -125,13 +125,13 @@
                     <div class="col-sm-6">
                         <md-input-container>
                             <label>Request Received Date</label>
-                            <md-datepicker ng-model="regDetail.reqReceivedDate" md-open-on-focus></md-datepicker>
+                            <md-datepicker ng-model="regDetail.reqReceivedDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
                         </md-input-container>
                     </div>
                     <div class="col-sm-6 colborder">
                         <md-input-container>
                             <label>Service From Date</label>
-                            <md-datepicker ng-model="regDetail.serviceFmDate" md-open-on-focus></md-datepicker>
+                            <md-datepicker ng-model="regDetail.serviceFmDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
                         </md-input-container>
                     </div>    
                 </div>        
@@ -158,17 +158,11 @@
                 <div class="fldsWrap clearfix b0 row" ng-show="paymentWay == 'iban'">
                     <div class="col-sm-4">
                         <div layout-gt-sm="row">
-                            <!-- <div class="claimReqColm">
-                                <md-input-container flex-gt-sm>    
+                            <div class="pb-1 iban-box">
+                                <md-input-container flex-gt-sm class="iban-input">    
                                     <label>IBAN Number</label>
                                     <input type="text" ng-model="regDetail.ibanNum" />
                                 </md-input-container>
-                            </div>     -->
-                            <div class="col-sm-12 claimReqColm float-left">
-                                <div class="filedsWrap" ng-init="ibanNum=false" ng-class="{inputFilled : ibanNum || regDetail.ibanNum}">
-                                    <label>IBAN Number</label>
-                                    <input type="text" class="claimReqIput" ng-model="regDetail.ibanNum" ng-focus="ibanNum=true" ng-blur="ibanNum=false">
-                                </div>
                             </div>
                         </div>
                     </div>
