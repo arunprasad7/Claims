@@ -177,7 +177,7 @@
                 <div class="requestListWrap clearfix">
                     <div class="requstListSlidePart">
                         <div class="requstList">
-                            <ui-carousel slides="claimReqList" class="eclaim" style="width:{{getWidth()}};" slides-to-show="noOfSlides" slides-to-scroll="1" initial-slide="0" infinite="false" style="">
+                            <ui-carousel slides="claimReqList" class="eclaim" style="width:{{getWidth()}};" slides-to-show="noOfSlides" slides-to-scroll="1" initial-slide="0" infinite="false">
                                 <carousel-item  class="eclaim-item">
                                     <li>
                                         <span>Request Number: #{{item.reqNum}}</span><strong class="text-danger ml-2">Rejected</strong>
@@ -209,6 +209,9 @@
                             </button>
                             <button type="button" class="btn btn-secondary">
                                 <span class="oi" data-glyph="thumb-down"></span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" ng-click="addRow();">
+                                <span class="oi" data-glyph="plus"></span>
                             </button>
                         </div>
                         <h3 class="innerHeadText mt-2 mb-2 d-inline-block">Claim Treatment/Service Level</h3><div class="currencyType d-inline-block">Currency: AED</div>

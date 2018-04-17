@@ -34,5 +34,11 @@
                 {'serviceType':'10', 'serviceCode' : '149807', 'serviceFrmDate':new Date(), days:240, quantity: 100, 'treatmentCode' : '10010201-1', 'dhaPrice' : 200, 'price':110, 'reqAmount':10000, 'dedAmount':210, 'approvedAmt' : 5000, 'rejectedAmt' : 6000, 'rejectedCode' : '500-1', 'shortfallAmount' : 500, 'status' : 'Approved', 'remarks' : 'Approved Claim.'}
             ]
         }
+
+        this.newClaim = function() {
+            return {
+                'serviceType':'', 'serviceCode' : '', 'serviceFrmDate':new Date(), days:1, quantity: null, 'treatmentCode' : '', 'dhaPrice' : null, 'price':null, 'reqAmount':null, 'dedAmount':null, 'approvedAmt' : null, 'rejectedAmt' : null, 'rejectedCode' : '', 'shortfallAmount' : null, 'status' : '', 'remarks' : ''
+            }
+        }
     }
 })();

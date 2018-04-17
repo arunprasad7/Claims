@@ -78,6 +78,14 @@
             });
         }
 
+        $scope.addRow = function() {
+            var newClaim = EclaimService.newClaim();
+            newClaim.serviceType = ($scope.gridOptions.data.length +1 ).toString();
+            newClaim.editable = true;
+            newClaim.editedColName = 'serviceType';
+            $scope.gridOptions.data.push(newClaim);
+        }
+
         $('#right-button').click(function() {
             event.preventDefault();
             $('.ui-grid-content').animate({
