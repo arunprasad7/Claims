@@ -369,17 +369,28 @@
 
         $scope.selectedData = function(selectData) {
             $scope.userSelectedData = selectData;
-
         }
-
+        
+        $scope.assignedtouser = function(selectData) {
+            $scope.assignedValue = selectData;
+        }
+        
         $scope.assignedData = function() {
-            var index = $scope.userssearch.indexOf($scope.userSelectedData)
-            if (index >= 0) {
-                $scope.assigned.push($scope.userSelectedData);
-                $scope.changeTab();
-                $scope.userssearch.splice(index, 1);
+            if ($scope.userSelectedData != null && $scope.assignedValue != null) {
+                var indexNewRwquest = $scope.claim.indexOf($scope.assignedValue);
+                var indexUser = $scope.userssearch.indexOf($scope.userSelectedData);
+                if (indexNewRwquest >= 0) {
+                    $scope.assignedValue.status = 'Assigned';
+                    if ($scope.userSelectedData.assigned < 15) {
+                        $scope.assigned.push($scope.assignedValue);
+                        $scope.changeTab();
+                        $scope.claim.splice(indexNewRwquest, 1);
+                        $scope.userssearch[indexUser].assigned = $scope.userSelectedData.assigned + 1;
+                    } else {
+                        swal("Cannot Assigned More Then 15");
+                    }
+                }
             }
-            $scope.users = $scope.userssearch;
         }
 
         $scope.navigateTo = function() {
