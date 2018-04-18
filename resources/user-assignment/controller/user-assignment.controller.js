@@ -4,12 +4,13 @@
         .module('claims')
         .controller('UserAssignmentController', UserAssignmentController)
 
-    UserAssignmentController.$inject = ['$scope', '$rootScope', 'UserAssignmentService', '$filter', '$state', '$stateParams'];
+    UserAssignmentController.$inject = ['$scope', '$rootScope', 'UserAssignmentService', '$filter', '$state', '$stateParams', '$mdDialog','$Notify'];
 
-    function UserAssignmentController($scope, $rootScope, UserAssignmentService, $filter, $state, $stateParams) {
+
+
+    function UserAssignmentController($scope, $rootScope, UserAssignmentService, $filter, $state, $stateParams, $mdDialog, $Notify) {
         $scope.selectedClaim = $stateParams.param;
         $scope.states = [{ display: 'Alabama', state: 'Alabama' }, { display: 'Alaska' }, { display: 'Arizona' }, { display: 'Arkansas' }, { display: 'Arkansas' }];
-        $scope.name = '$scopevalue comes'
         $scope.memberNumber;
         $scope.voucherNumber;
         $scope.climeNo;
@@ -376,23 +377,7 @@
             $scope.assignedValue = selectData;
         }
         
-        // $scope.assignedData = function() {
-        //     if ($scope.userSelectedData != null && $scope.assignedValue != null) {
-        //         var indexNewRwquest = $scope.claim.indexOf($scope.assignedValue);
-        //         var indexUser = $scope.userssearch.indexOf($scope.userSelectedData);
-        //         $scope.assignedValue.status = 'Assigned';
-        //         if ($scope.userSelectedData.assigned < 15) {
-        //             $scope.assigned.push($scope.assignedValue);
-        //             $scope.changeTab();
-        //             $scope.claim.splice(indexNewRwquest, 1);
-        //             $scope.userssearch[indexUser].assigned = $scope.userSelectedData.assigned + 1;
-                
-        //         } else {
-        //             swal("Cannot Assigned More Then 15");
-        //         }
-        //     }
-        // }
-        $scope.assignedData = function(ev) {
+        $scope.assignedData = function() {
             if ($scope.userSelectedData != null && $scope.assignedValue != null) {
                 var indexNewRwquest = $scope.claim.indexOf($scope.assignedValue);
                 var indexUser = $scope.userssearch.indexOf($scope.userSelectedData);
@@ -403,13 +388,10 @@
                     $scope.claim.splice(indexNewRwquest, 1);
                     $scope.userssearch[indexUser].assigned = $scope.userSelectedData.assigned + 1;
                 
-                    dDialog.show(
-                        $mdDialog.alert(hi)
-                    )
                 }
             }
         }
-    
+       
         $scope.navigateTo = function() {
             $state.go($scope.selectedClaim == 'eclaims' ? 'eclaim' : 'reimbursement-processing');
         }
@@ -436,16 +418,5 @@
         }
 
         init();
-    }
-   
-   
-    
-    $scope.remove=function(){
-         angular.forEach($scope.chckedIndexs, function (value, index) {
-             var index = $scope.claim.indexOf(value);
-             $scope.claim.splice($scope.claim.indexOf(value), 1);
-         });
-           $scope.chckedIndexs = [];
-    
-   };
+    }    
 })();

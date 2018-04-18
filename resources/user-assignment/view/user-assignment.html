@@ -1,6 +1,7 @@
 <nav class="navbar pt-1 pb-1">
     <span class="navbar-brand p-0 m-0" ui-sref="claim-registration">User Assignment</span>
 </nav>
+<toaster-container></toaster-container>
 <section>
     <div class="leftContainer">
         <div class="searchBar">
@@ -42,28 +43,17 @@
                             <md-datepicker ng-model="datePicker.date" md-open-on-focus md-hide-icons="all"></md-datepicker>
                         </md-input-container>
                     </div>
-                    <!-- <div style="border-left: 1px solid #e6e6e6; min-width:230px;">
-                        <md-input-container flex-gt-sm>
-                            <label style="white-space: pre-line;"></label>
-                            <input date-range-picker class="searchIput" type="text" ng-model="datePicker.date" />
-                        </md-input-container>
-                    </div> -->
                     <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
                         <md-input-container flex-gt-sm>
                             <label style="white-space: pre-line;">Assigned User</label>
                             <input ng-model="assignedUser">
                         </md-input-container>
                     </div>
-                    <div class="searchColm align-middle text-center" ng-click="click();" style="width: auto !important;">
+                    <div class="searchColm align-middle text-center" ng-click="click();" style="width: auto !important; margin-top : 1rem!important;">
                         <a href="javascript:;" data-toggle="modal" data-target="#newRegClaims" class="searBtn mt-1 ml-3 mr-3 align-middle">
                             <span class="oi align-middle" data-glyph="magnifying-glass"></span>
                         </a>
                     </div>
-                    <!-- <div class="searchColm align-middle text-center" style="width: auto !important;">
-                        <a  href="javascript:;" class="searBtn searBtnWithText mt-3 align-middle">
-                            <span class="oi align-middle" data-glyph="magnifying-glass"></span> Search
-                        </a>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -211,8 +201,7 @@
                             </tbody>
                         </table>
                         <div class="align-middle text-center float-right" ng-click="assignedData()">
-                            <a ng-click="submit()" href="javascript:;" class="searBtn searBtnWithText"> Assign</a>
-                            
+                            <a ng-click="submit()"href="javascript:;" class="searBtn searBtnWithText"> Assign</a>
                         </div>
                         <span class="oi text-success" data-glyph="box" style="font-size:12px;"> &nbsp;Available&nbsp; </span>
                         <span class="oi text-danger" data-glyph="box" style="font-size:12px;padding-left:5px"> &nbsp;Not available&nbsp; </span>

@@ -1556,9 +1556,6 @@ footer {
     margin-top: 2px;
 }
 
-.mt-1, .my-1{
-    margin-top:1rem!important;
-}
 .innerFilterSortBy{
     width: auto;
     background-color: transparent;
