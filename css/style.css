@@ -67,7 +67,7 @@ section {
 .leftContainer {
     position: absolute;
     top: 15px;
-    left: 15px;
+    left: -5px;
     right: 15px;
     bottom: 20px;
 }
@@ -79,7 +79,7 @@ section {
 .rightContainer {
     position: absolute;
     top: 15px;
-    width: 520px;
+    /* width: 520px; */
     right: 15px;
     border: 1px solid #d8d9db;
     background: #fff;
@@ -607,6 +607,10 @@ input.fileupload {
     height: 65px;
     text-align: center;
     padding-top: 16px;
+    height: 200px;
+    vertical-align: middle;
+    display: table-cell;
+    width: 303px;
 }
 
 .box-container {
@@ -617,14 +621,24 @@ input.fileupload {
 .carousel-prev {
     position: absolute;
     top: 39%;
-    left: -16px;
+    left: -26px;
+    cursor: pointer;
 }
 
 .carousel-next {
     position: absolute;
     top: 39%;
-    right: -12px;
+    right: 5px;
+    cursor: pointer;
 }
+
+/* #thumbnailSlider .carousel-next {
+    right: -23px;
+}
+
+#thumbnailSlider .carousel-prev {
+    left: -34px;
+} */
 
 .requstList .carousel-next {
     right: -30px;
@@ -703,10 +717,14 @@ md-input-container label {
 md-input-container .md-placeholder,
 md-input-container.md-default-theme label,
 md-input-container label,
-md-input-container md-select label,
-.md-select-placeholder {
+md-input-container md-select label {
     font: 14x/20px "open_sanssemibold" !important;
     color: #333333 !important;
+}
+
+.md-select-placeholder {
+    color: #333333 !important;
+    font: 13px "open_sanssemibold"
 }
 
 .searchBarRow md-input-container {
@@ -978,6 +996,7 @@ footer li strong {
     list-style: none;
     padding: 0;
     margin: 0;
+    padding-left: 9px;
 }
 
 .requstList li {
@@ -1173,7 +1192,7 @@ footer li strong {
 
 .rightContentPart {
     width: calc(100% - 270px);
-    padding: 0 15px;
+    padding: 0 9px;
     position: relative;
     -webkit-transition: width 700ms ease-in;
     -moz-transition: width 700ms ease-in;
@@ -1525,4 +1544,14 @@ footer {
 .iban-input {
     margin-top: 18px;
     margin-left: 7px;
+}
+
+.iban-filename-elipsis {
+    float:left;
+    white-space: nowrap;
+    width: 185px;
+    font-size:small; 
+    overflow: hidden;
+    text-overflow:ellipsis;
+    margin-top: 2px;
 }

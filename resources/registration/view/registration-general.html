@@ -1,8 +1,8 @@
 <nav class="navbar pt-1 pb-1">
     <span class="navbar-brand p-0 m-0" ui-sref="claim-registration">Claims Registration</span>
 </nav>
-<section class="withRightContainer">
-    <div class="leftContainer">
+<section class="">
+    <div class="leftContainer col-sm-7">
         <div class="searchBar">
             <div class="searchBarRow">
                 <div layout-gt-sm="row" style="height:auto !important">
@@ -169,9 +169,11 @@
                     <div class="col-sm-4 fieldsCol fieldsFilledCol d-inline-block b0">
                         <label class="top_4 d-block grayText">Upload IBAN Document if any</label>
                         <div class="fileuploadWrap">
-                            <span class="oi align-middle mr-1" data-glyph="cloud-upload"></span> Browser Files
-                            <input type="file" class="fileupload"/>
+                            <div ngf-select="uploadIbanFiles($file)" ng-disabled="ibanFile.isUploading">
+                                <span class="oi align-middle mr-1" data-glyph="cloud-upload"></span> Browser Files
+                            </div>                            
                         </div>
+                        <a href="{{ibanFile.url}}" download="{{ibanFile.name}}" class="iban-filename-elipsis"> {{ibanFile.name}} </a>
                     </div>
                 </div>
             </div>
@@ -181,36 +183,38 @@
         </div>
 
     </div>
-    <div class="rightContainer uploadList">
-        <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="1" slides-to-scroll="1" initial-slide="$parent.previewIndex" style="width:100%;height:100%;margin-bottom:0px;margin-left:2px"
+    <div class="rightContainer uploadList col-sm-5">
+        <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="1" slides-to-scroll="1" initial-slide="$parent.previewIndex" style="width:98%;height:100%;margin-bottom:0px;margin-left:18px"
             infinite="false" name="previewSlider" ng-if = "fileInfos.length > 0 && isPreview">
             <carousel-item>
-                <div class="row">
-                    <div class="col-sm-6" style="float:left;">
-                        <button type="button" class="btn" style="background-color: #00aeef; color:white" ng-click="hidePreview();">Upload
-                            <i class="fa fa-cloud-upload" style="color:white"></i>
-                        </button>
+                <div style="width:94%; padding:1px;">
+                    <div class="row">
+                        <div class="col-sm-6" style="float:left;">
+                            <button type="button" class="btn" style="background-color: #00aeef; color:white" ng-click="hidePreview();">Upload
+                                <i class="fa fa-cloud-upload" style="color:white"></i>
+                            </button>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="{{item.previewUrl}}" download="{{item.name}}">
+                                <button type="button" class="btn" style="background-color: #00aeef; color:white; float: right;">Download
+                                    <i class="fa fa-cloud-download" style="color:white"></i>
+                                </button>                            
+                            </a>
+                        </div>    
                     </div>
-                    <div class="col-sm-6">
-                        <a href="{{item.previewUrl}}" download="{{item.name}}">
-                            <button type="button" class="btn" style="background-color: #00aeef; color:white; float: right;">Download
-                                <i class="fa fa-cloud-download" style="color:white"></i>
-                            </button>                            
-                        </a>
-                    </div>    
-                </div>
-                <div ng-show="item.ext != 'docx'">
-                    <iframe ng-src="{{trustUrl(item)}}" width="100%" height="590px"></iframe>
-                </div>
-                <div ng-show="item.ext == 'docx'" style="width:98%; height:500px;color:white;font-size:25px;text-align:center">
-                    <br><br><br>No Preview Available
+                    <div ng-show="item.ext != 'docx'">
+                        <iframe ng-src="{{trustUrl(item)}}" width="100%" height="590px"></iframe>
+                    </div>
+                    <div ng-show="item.ext == 'docx'" style="width:98%; height:500px;color:white;font-size:25px;text-align:center">
+                        <br><br><br>No Preview Available
+                    </div>
                 </div>
             </carousel-item>
             <carousel-prev>
-                <i class="fa fa-angle-left" style="font-size: 25px;" style="color:white"></i>
+                <i class="fa fa-chevron-left" style="font-size: 20px;"></i>
             </carousel-prev>
             <carousel-next>
-                <i class="fa fa-angle-right" style="font-size: 25px;" style="color:white"></i>
+                <i class="fa fa-chevron-right" style="font-size: 20px;"></i>
             </carousel-next>
         </ui-carousel>
         <div class="uploadPlaceHolder" ng-hide="isPreview">
@@ -227,17 +231,18 @@
                 </div>
             </div>
         </div>
-        <div class="row" ng-if = "fileInfos.length > 0 && !isPreview">
-            <div class="box-container">
-                <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="2" slides-to-scroll="2" initial-slide="0" style="width:450px;"
+        <div class="" ng-if = "fileInfos.length > 0 && !isPreview && uploaded" id="thumbnailSlider">
+            <div class="row">
+                <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="2" slides-to-scroll="2" initial-slide="0" style="width:85%;margin-bottom:0px;margin-left:35px"
                     infinite="false" name="thumbnailSlider">
                     <carousel-item>
+                        <div class="row" style="float:right; padding-right: 22px; color:red;cursor:pointer" ng-click="$parent.deleteFile($index)"><i class="fa fa-remove"></i></div>
                         <div ng-class="{'img-padding' : $odd }">
                             <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}"  max-height="80" class="pdf-view" ng-show="item.ext == 'image'" ></thumbnail>
                             <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}" class="pdf-view" max-height="80" ng-show="item.ext == 'pdf'"></thumbnail>
                             <div ng-show="item.ext == 'docx'">
                                 <i class="fa fa-file-word-o center" style="font-size:80px; color:#26559a; width:150px; height: 85px; text-align:center"></i>
-                            </div>
+                            </div>                            
                             <p style="white-space: nowrap; width: 100%; overflow: hidden; text-overflow: ellipsis; font-size:small; border-top:1px solid #d3d8de;padding-top:12px;">
                                 <a href="" ng-click="showPreview($index, item)">
                                     <span>{{item.name}}</span><br>
@@ -252,10 +257,10 @@
                         </div>                        
                     </carousel-item>
                     <carousel-prev>
-                        <i class="fa fa-angle-left" style="font-size: 20px;"></i>
+                        <i class="fa fa-chevron-left" style="font-size: 15px;"></i>
                     </carousel-prev>
                     <carousel-next>
-                        <i class="fa fa-angle-right" style="font-size: 20px;"></i>
+                        <i class="fa fa-chevron-right" style="font-size: 15px;"></i>
                     </carousel-next>
                 </ui-carousel>
             </div>

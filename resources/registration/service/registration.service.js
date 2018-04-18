@@ -45,7 +45,7 @@
                     "reqReceivedDate" : new Date(),
                     "prevRequest" : 123,
                     "source" : "post",
-                    "paymentWay" : 'cheque',
+                    "paymentWay" : 'iban',
                     "ibanNum" : "1235465ABSCSD"
                 },
                 {
@@ -61,7 +61,7 @@
                     "reqReceivedDate" : new Date(),
                     "prevRequest" : 123,
                     "source" : "post",
-                    "paymentWay" : 'iban',
+                    "paymentWay" : 'cheque',
                     "ibanNum" : "1235465ABSCSD"
                 }
                 ,
@@ -94,7 +94,7 @@
                     "reqReceivedDate" : new Date(),
                     "prevRequest" : 123,
                     "source" : "post",
-                    "paymentWay" : 'iban',
+                    "paymentWay" : 'cheque',
                     "ibanNum" : "1235465ABSCSD"
                 }
             ]

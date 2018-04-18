@@ -678,6 +678,10 @@ angular.module('ui.carousel.directives').directive('uiCarousel', ['$compile', '$
         $scope.$parent.hidePreview();
       }
 
+      $scope.deleteFile = function(index) {
+        $scope.$parent.deleteFile(index);
+      }
+
       $scope.trustUrl = function(item) {
         if(item.ext != 'docx') {
           return $sce.trustAsResourceUrl(item.previewUrl);

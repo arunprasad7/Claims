@@ -5,9 +5,9 @@
         .module('claims')
         .controller('RegistrationGeneralController', RegistrationGeneralController)
     
-    RegistrationGeneralController.$inject = ['$scope', '$rootScope', 'RegistrationService', '$sce', '$state', '$uibModal'];
+    RegistrationGeneralController.$inject = ['$scope', '$rootScope', 'RegistrationService', '$sce', '$state', '$uibModal', '$timeout'];
 
-    function RegistrationGeneralController($scope, $rootScope, RegistrationService, $sce, $state, $uibModal) {
+    function RegistrationGeneralController($scope, $rootScope, RegistrationService, $sce, $state, $uibModal, $timeout) {
         $scope.regDetail = RegistrationService.createRegDetailObj();
         $scope.previewIndex = 0;
         
@@ -30,12 +30,14 @@
         $scope.uploadFiles = function(files) {
             localStorage.removeItem("filesInfo");
             $scope.files = files;
-            var fileInfo = [];
-            $scope.fileInfos = [];
+            $scope.fileInfos = ($scope.fileInfos && $scope.fileInfos.length) ? $scope.fileInfos :[];
+            var fileInfo = $scope.fileInfos;
             angular.forEach($scope.files, function(file, key) {
                 var f = {};
                 var reader  = new FileReader();
-                file.progress = 10;
+                $timeout(function() {
+                    file.progress = 30;
+                },300);
                 reader.onload = function(event) {
                     var base64String = event.target.result;//base64 String..
                     f.name = file.name;
@@ -52,14 +54,16 @@
                     f.previewUrl = base64String;
                     fileInfo.push(f);
                     $scope.$apply(function() {
-                        file.progress = 100;
+                        $timeout(function() {
+                            file.progress = 100;
+                        },300)    
                         if(key == $scope.files.length-1) {
                             $scope.uploaded = true;
                             $scope.fileInfos = fileInfo;
                         }
                     });
                 };
-                reader.readAsDataURL(file);            
+                reader.readAsDataURL(file);
             });
         }
 
@@ -113,8 +117,32 @@
             modalInstance.result.then(function(result) {
                 $scope.regDetail = result.claim;
                 $('.modal-backdrop').remove();
-                if(result.isNew) $scope.search = {};
+                if(result.isNew) {
+                    $scope.search = {};
+                } else {
+                    $scope.setDcoumentType($scope.regDetail.source);
+                    $scope.setPaymentWay($scope.regDetail.paymentWay);
+                }
             })    
+        }
+
+        $scope.deleteFile = function(index) {
+            $scope.fileInfos.splice(index, 1);
+        }
+
+        $scope.uploadIbanFiles = function(file) {
+            if(file != null) {
+                var reader  = new FileReader();
+                $scope.ibanFile = {'isUploading' : true};
+                reader.onload = function(event) {
+                    $scope.$apply(function() {
+                        $scope.ibanFile.url = event.target.result;
+                        $scope.ibanFile.name = file.name;
+                        $scope.ibanFile.isUploading = false;
+                    });    
+                }
+                reader.readAsDataURL(file);
+            }            
         }
     }    
 })();
