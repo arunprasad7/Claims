@@ -14,6 +14,10 @@
             function init() {
                 $scope.claimsResult.push(createNewReimbursmentObject());
                 $scope.claimReqList = getClaimsRequest();
+                $scope.noOfSlides = 3;
+                if(window.innerWidth >= 1300) {
+                     $scope.noOfSlides = 4;
+                }
             }
 
             $scope.createNew = function() {

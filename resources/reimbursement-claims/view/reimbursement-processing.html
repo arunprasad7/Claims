@@ -113,7 +113,7 @@
                 </div>                
             </div>
             <div class="rightContentPart float-right pr-0 pb-3">
-                <a href="javascript:;" class="infoToggleBtn" ng-class="{'infoToggleBtnToggled' : infoToggle}" ng-click="infoToggle = !infoToggle"><span class="oi" data-glyph="arrow-left"></span> <br />info</a>
+                <a href="javascript:;" class="infoToggleBtn" ng-class="{'infoToggleBtnToggled' : infoToggle}" ng-click="infoToggle = !infoToggle" ng-style="{'margin-left' : !infoToggle ? '12px' : '0px'}"><span class="oi" data-glyph="arrow-left"></span> <br />info</a>
                 <div class="medicalCardInfoBox medicalCardInfoBoxShow" id="medicalCardInfoBox" ng-class="{'medicalCardInfoBoxShow' : !infoToggle}">
                     <h3>Medical card info</h3>
                     <ul>
@@ -168,12 +168,12 @@
                 <div class="requestListWrap clearfix">
                     <div class="requstListSlidePart">
                         <div class="requstList">
-                            <ui-carousel slides="claimReqList" class="eclaim" style="width:{{getWidth()}};" slides-to-show="5" slides-to-scroll="1" initial-slide="0" infinite="false">
+                            <ui-carousel slides="claimReqList" class="eclaim" style="width:{{getWidth()}};" slides-to-show="noOfSlides" slides-to-scroll="1" initial-slide="0" infinite="false">
                                 <carousel-item  class="eclaim-item">
-                                    <li>
-                                        <span>Request Number: #{{item.reqNum}}</span><strong class="text-danger ml-2">Rejected</strong>
-                                        <p>Claim Status Reason: {{item.statusReason}}</p>
-                                        <p>Rejected Reason: {{item.rejectedReason}}</p>
+                                    <li style="cursor:pointer">
+                                        <span><b>Request Number:</b> #{{item.reqNum}} &nbsp;</span><strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong>
+                                        <p><b>Claim Status Reason:</b> {{item.statusReason}}</p>
+                                        <p><b>Rejected Reason:</b> {{item.rejectedReason}}</p>
                                     </li>
                                 </carousel-item>                
                                 <carousel-prev>
