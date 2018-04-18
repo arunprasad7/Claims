@@ -632,13 +632,13 @@ input.fileupload {
     cursor: pointer;
 }
 
-/* #thumbnailSlider .carousel-next {
+#thumbnailSlider .carousel-next {
     right: -23px;
 }
 
 #thumbnailSlider .carousel-prev {
     left: -34px;
-} */
+}
 
 .requstList .carousel-next {
     right: -30px;
