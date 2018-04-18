@@ -4,11 +4,11 @@
         .module('claims')
         .controller('UserAssignmentController', UserAssignmentController)
 
-    UserAssignmentController.$inject = ['$scope', '$rootScope', 'UserAssignmentService', '$filter', '$state', '$stateParams', '$mdDialog','$Notify'];
+    UserAssignmentController.$inject = ['$scope', '$rootScope', 'UserAssignmentService', '$filter', '$state', '$stateParams'];
 
 
 
-    function UserAssignmentController($scope, $rootScope, UserAssignmentService, $filter, $state, $stateParams, $mdDialog, $Notify) {
+    function UserAssignmentController($scope, $rootScope, UserAssignmentService, $filter, $state, $stateParams) {
         $scope.selectedClaim = $stateParams.param;
         $scope.states = [{ display: 'Alabama', state: 'Alabama' }, { display: 'Alaska' }, { display: 'Arizona' }, { display: 'Arkansas' }, { display: 'Arkansas' }];
         $scope.memberNumber;
