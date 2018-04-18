@@ -1447,7 +1447,7 @@ footer li strong {
 
 footer {
     position: fixed;
-    left: 0;
+    left: 13px;
     bottom: 0;
     width: 100%;
     color: white;

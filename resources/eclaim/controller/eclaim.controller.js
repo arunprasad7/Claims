@@ -29,7 +29,7 @@
         '<a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle"" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="oi" data-glyph="wrench"></span></a>'+
         '<div class="dropdown-menu eclaimReqSetOption"><a class="dropdown-item" href="javascript:;"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>'+
         '<a class="dropdown-item" href="javascript:;"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a><a class="dropdown-item" href="javascript:;"><span class="oi mr-1" data-glyph="reload"></span> Undo</a>'+
-        '<a class="dropdown-item" href="javascript:;"><span class="oi mr-1" data-glyph="check"></span> Validate</a><div class="dropdown-divider"></div>'+
+        '<a class="dropdown-item" href="javascript:;"><span class="oi mr-1" data-glyph="check"></span> Validate</a><a class="dropdown-item" href="javascript:;" ng-click="grid.appScope.deleteRow(rowRenderIndex)"><span class="oi mr-1" data-glyph="delete"></span> Delete</a><div class="dropdown-divider"></div>'+
         '<a class="dropdown-item" href="javascript:;">Reinsurance</a><a class="dropdown-item" href="javascript:;">History</a><a class="dropdown-item" href="javascript:;">Policy Rules</a></div>';
         
                      
@@ -44,15 +44,16 @@
                 {name:'days', displayName:'Days', cellTemplate:numTemplate,width:60},
                 {name:'quantity', displayName:'QTY', cellTemplate:numTemplate,width:60},
                 {name:'treatmentCode', displayName:'Treatment Code', cellTemplate:textTemplate,width:140},
+                {name:'rejectedCode', displayName:'Rejected Code', cellTemplate:textTemplate,width:130},
                 {name:'dhaPrice', displayName:'HAAD/DHA Price', cellTemplate:numTemplate,width:135},
                 {name:'price', displayName:'Price', cellTemplate:numTemplate,width:125},
                 {name:'reqAmount', displayName:'Requested Amount', cellTemplate:numTemplate,width:145},
                 {name:'dedAmount', displayName:'Ded Amount', cellTemplate:numTemplate,width:125},
-                {name:'approvedAmt', displayName:'Approved Amount', cellTemplate:numTemplate,width:140},
-                {name:'rejectedAmt', displayName:'Rejected Amount   ', cellTemplate:numTemplate,width:140},
-                {name:'rejectedCode', displayName:'Rejected Code', cellTemplate:textTemplate,width:130},
                 {name:'shortfallAmount', displayName:'Shortfall Amount', cellTemplate:numTemplate,width:135},
-                {name:'status', displayName:'Status', cellTemplate:textTemplate,width:145},
+                {name:'approvedAmt', displayName:'Approved Amount', cellTemplate:numTemplate,width:140, enableCellEdit:false},
+                {name:'rejectedAmt', displayName:'Rejected Amount   ', cellTemplate:numTemplate,width:140, enableCellEdit:false},
+                {name:'status', displayName:'Status', cellTemplate:textTemplate,width:145, enableCellEdit:false},
+                {name:'rejDesc', displayName:'Rejection Description', cellTemplate:textTemplate,width:155},
                 {name:'remarks', displayName:'Internal Remarks', cellTemplate:textTemplate,width:162},
             ]
         }
@@ -84,6 +85,10 @@
             newClaim.editable = true;
             newClaim.editedColName = 'serviceType';
             $scope.gridOptions.data.push(newClaim);
+        }
+
+        $scope.deleteRow = function(index) {
+            $scope.gridOptions.data.splice(index, 1);
         }
 
         $('#right-button').click(function() {
