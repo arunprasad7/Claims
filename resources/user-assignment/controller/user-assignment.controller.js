@@ -4,11 +4,11 @@
         .module('claims')
         .controller('UserAssignmentController', UserAssignmentController)
 
-    UserAssignmentController.$inject = ['$scope', '$rootScope', 'UserAssignmentService', '$filter', '$state', '$stateParams'];
+    UserAssignmentController.$inject = ['$scope', '$rootScope', 'UserAssignmentService', '$filter', '$state', '$stateParams', 'ngNotify'];
 
 
 
-    function UserAssignmentController($scope, $rootScope, UserAssignmentService, $filter, $state, $stateParams) {
+    function UserAssignmentController($scope, $rootScope, UserAssignmentService, $filter, $state, $stateParams, ngNotify) {
         $scope.selectedClaim = $stateParams.param;
         $scope.states = [{ display: 'Alabama', state: 'Alabama' }, { display: 'Alaska' }, { display: 'Arizona' }, { display: 'Arkansas' }, { display: 'Arkansas' }];
         $scope.memberNumber;
@@ -393,7 +393,8 @@
                     //$scope.claimList.splice($scope.assignedIndex, 1);
                     $scope.assigned.push($scope.assignedValue);
                     $scope.changeTab(true);
-                    $scope.userSelectedData.assigned += 1;                
+                    $scope.userSelectedData.assigned += 1;
+                    ngNotify.set('Request Assigned Succesfully.', 'success');                
                 } else {
                     swal("", "User has Request Assigned more than 15", "warning");
                 }
