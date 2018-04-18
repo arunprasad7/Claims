@@ -4,9 +4,9 @@
         .module('claims')
         .controller('FinalizationController', FinalizationController)
 
-    FinalizationController.$inject = ['$scope', '$rootScope', 'FinalizationService', '$filter'];
+    FinalizationController.$inject = ['$scope', '$rootScope', 'FinalizationService', '$filter', 'ngNotify'];
 
-    function FinalizationController($scope, $rootScope, FinalizationService, $filter) {
+    function FinalizationController($scope, $rootScope, FinalizationService, $filter, ngNotify) {
         //$scope.firstName = $scope.batchName;
         $scope.batchName;
         $scope.fileName;

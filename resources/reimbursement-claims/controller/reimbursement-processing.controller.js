@@ -5,9 +5,9 @@
         .module('claims')
             .controller('ReimbursmentProcessingController', ReimbursmentProcessingController);
 
-        ReimbursmentProcessingController.$inject = ['$scope', '$rootScope', 'ReimbursementProcessingService', 'EclaimService'];
+        ReimbursmentProcessingController.$inject = ['$scope', '$rootScope', 'ReimbursementProcessingService', 'EclaimService', 'ngNotify'];
 
-        function ReimbursmentProcessingController($scope, ReimbursementProcessingService, EclaimService) {
+        function ReimbursmentProcessingController($scope, ReimbursementProcessingService, EclaimService, ngNotify) {
 
             $scope.claimsResult = [];
 

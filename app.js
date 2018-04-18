@@ -11,7 +11,8 @@ angular
         'ui.grid.pinning',
         'ngMaterial',
         'daterangepicker',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'ngNotify'
     ])
     .config(stateConfig)
     .run(appConfig)
@@ -62,7 +63,12 @@ angular
         $urlRouterProvider.otherwise("/");    
     }
 
-    function appConfig ($transitions, $rootScope) {
+    function appConfig ($transitions, $rootScope, ngNotify) {
+        ngNotify.config({
+            position: 'top',
+            duration: 2000,
+            button : true
+        });
         $transitions.onSuccess({}, function() {
             $rootScope.navbar = false;
         });

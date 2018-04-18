@@ -5,9 +5,9 @@
         .module('claims')
         .controller('RegistrationGeneralController', RegistrationGeneralController)
     
-    RegistrationGeneralController.$inject = ['$scope', '$rootScope', 'RegistrationService', '$sce', '$state', '$uibModal', '$timeout'];
+    RegistrationGeneralController.$inject = ['$scope', '$rootScope', 'RegistrationService', '$sce', '$state', '$uibModal', '$timeout', 'ngNotify'];
 
-    function RegistrationGeneralController($scope, $rootScope, RegistrationService, $sce, $state, $uibModal, $timeout) {
+    function RegistrationGeneralController($scope, $rootScope, RegistrationService, $sce, $state, $uibModal, $timeout, ngNotify) {
         $scope.regDetail = RegistrationService.createRegDetailObj();
         $scope.previewIndex = 0;
         
