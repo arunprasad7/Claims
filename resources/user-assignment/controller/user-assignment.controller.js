@@ -39,7 +39,7 @@
             'name': 'Osama Bin',
             'status': 'Rejected'
         }, {
-            'climeNo': '2365430',
+            'climeNo': '3365430',
             'memberNo': '9563569856',
             'voucherNo': '14098',
             'encounterType': 'Inpatient',
@@ -54,7 +54,7 @@
             'name': 'Rayan',
             'status': 'Approved'
         }, {
-            'climeNo': '2388960',
+            'climeNo': '4388960',
             'memberNo': '9563509632',
             'voucherNo': '39028',
             'encounterType': 'Inpatient',
@@ -69,7 +69,7 @@
             'name': 'Ansar',
             'status': 'Rejected'
         }, {
-            'climeNo': '23424531',
+            'climeNo': '63424531',
             'memberNo': '9563281452',
             'voucherNo': '67248',
             'encounterType': 'Inpatient',
@@ -84,7 +84,7 @@
             'name': 'Mohamed',
             'status': 'Rejected'
         }, {
-            'climeNo': '2975210',
+            'climeNo': '5975210',
             'memberNo': '9509634521',
             'voucherNo': '93521',
             'encounterType': 'Inpatient',
@@ -99,7 +99,7 @@
             'name': 'Abdur',
             'status': 'Rejected'
         }, {
-            'climeNo': '2221790',
+            'climeNo': '7221790',
             'memberNo': '9560756432',
             'voucherNo': '90983',
             'encounterType': 'Inpatient',
@@ -114,7 +114,7 @@
             'name': 'Parveen',
             'status': 'Approved'
         }, {
-            'climeNo': '2743210',
+            'climeNo': '9743210',
             'memberNo': '9563982314',
             'voucherNo': '76721',
             'encounterType': 'Inpatient',
@@ -129,7 +129,7 @@
             'name': 'Farook',
             'status': 'Rejected'
         }, {
-            'climeNo': '2345700',
+            'climeNo': '8345700',
             'memberNo': '95097865431',
             'voucherNo': '11231',
             'encounterType': 'Inpatient',
@@ -144,7 +144,7 @@
             'name': 'Hussain',
             'status': 'Waitingforapproval'
         }, {
-            'climeNo': '2349850',
+            'climeNo': '10850',
             'memberNo': '984169856',
             'voucherNo': '98754',
             'encounterType': 'Inpatient',
@@ -174,7 +174,7 @@
             'name': 'Ashraf',
             'status': 'Waitingforapproval'
         }, {
-            'climeNo': '2342230',
+            'climeNo': '22342230',
             'memberNo': '9209269856',
             'voucherNo': '45628',
             'encounterType': 'Inpatient',
@@ -348,19 +348,25 @@
         $scope.datePicker.date = { startDate: null, endDate: null };
         $scope.items = $scope.claim;
 
-        $scope.changeTab = function() {
+        $scope.changeTab = function(isdelete) {
             var tab = $scope.tab;
             if (tab == 'Approved') {
+                if(isdelete) $scope.approved.splice($scope.assignedIndex, 1);
                 $scope.claimList = angular.copy($scope.approved);
             } else if (tab == 'InProgress') {
+                if(isdelete) $scope.inProgress.splice($scope.assignedIndex, 1);
                 $scope.claimList = angular.copy($scope.inProgress);
             } else if (tab == 'Rejected') {
+                if(isdelete) $scope.rejected.splice($scope.assignedIndex, 1);
                 $scope.claimList = angular.copy($scope.rejected);
             } else if (tab == 'Waitingforapproval') {
+                if(isdelete) $scope.waitingforapproval.splice($scope.assignedIndex, 1);
                 $scope.claimList = angular.copy($scope.waitingforapproval);
             } else if (tab == 'Assigned') {
+                if(isdelete) $scope.assigned.splice($scope.assignedIndex, 1);
                 $scope.claimList = angular.copy($scope.assigned);
             } else {
+                if(isdelete) $scope.claim.splice($scope.assignedIndex, 1);
                 $scope.claimList = angular.copy($scope.claim);
             }
         }
@@ -369,25 +375,27 @@
             return query ? $scope.users.filter(createFilterFor(query)) : $scope.users;
         }
 
-        $scope.selectedData = function(selectData) {
+        $scope.selectedData = function(selectData,index) {
             $scope.userSelectedData = selectData;
         }
         
-        $scope.assignedtouser = function(selectData) {
+        $scope.assignedtouser = function(selectData, index) {
             $scope.assignedValue = selectData;
+            $scope.assignedIndex = index;
         }
         
         $scope.assignedData = function() {
             if ($scope.userSelectedData != null && $scope.assignedValue != null) {
-                var indexNewRwquest = $scope.claim.indexOf($scope.assignedValue);
-                var indexUser = $scope.userssearch.indexOf($scope.userSelectedData);
-                $scope.assignedValue.status = 'Assigned';
+                // var indexNewRwquest = $scope.claim.indexOf($scope.assignedValue);
+                // var indexUser = $scope.userssearch.indexOf($scope.userSelectedData);
+                // $scope.assignedValue.status = 'Assigned';
                 if ($scope.userSelectedData.assigned < 15) {
+                    //$scope.claimList.splice($scope.assignedIndex, 1);
                     $scope.assigned.push($scope.assignedValue);
-                    $scope.changeTab();
-                    $scope.claim.splice(indexNewRwquest, 1);
-                    $scope.userssearch[indexUser].assigned = $scope.userSelectedData.assigned + 1;
-                
+                    $scope.changeTab(true);
+                    $scope.userSelectedData.assigned += 1;                
+                } else {
+                    swal("", "User has Request Assigned more than 15", "warning");
                 }
             }
         }

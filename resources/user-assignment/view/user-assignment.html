@@ -150,7 +150,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <a href="javascript:;" class="custSelectBtn" ng-class="{custSelectBtnSected : c.selected}" aria-label="Select All" ng-click="c.selected = !c.selected; assignedtouser(c);"><span class="oi align-middle" data-glyph="check"></span></a>
+                                                    <a href="javascript:;" class="custSelectBtn" ng-class="{custSelectBtnSected : c.selected}" aria-label="Select All" ng-click="c.selected = !c.selected; assignedtouser(c, $index);"><span class="oi align-middle" data-glyph="check"></span></a>
 
                                                 </td>
                                             </tr>
@@ -201,7 +201,7 @@
                             </tbody>
                         </table>
                         <div class="align-middle text-center float-right" ng-click="assignedData()">
-                            <a ng-click="submit()"href="javascript:;" class="searBtn searBtnWithText"> Assign</a>
+                            <a href="javascript:;" class="searBtn searBtnWithText"> Assign</a>
                         </div>
                         <!-- <span class="oi text-success" data-glyph="box" style="font-size:12px;"> &nbsp;Available&nbsp; </span>
                         <span class="oi text-danger" data-glyph="box" style="font-size:12px;padding-left:5px"> &nbsp;Not available&nbsp; </span> -->
