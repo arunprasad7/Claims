@@ -1555,3 +1555,26 @@ footer {
     text-overflow:ellipsis;
     margin-top: 2px;
 }
+
+.mt-1, .my-1{
+    margin-top:1rem!important;
+}
+.innerFilterSortBy{
+    width: auto;
+    background-color: transparent;
+    border: none;
+    height: calc(4.25rem - 10px);
+    padding: .2rem 1.75rem .2rem .75rem;
+    border-radius: 2px;
+    margin-top: -0.2rem;
+}
+.innerFilterSort{
+    width: auto;
+    background-color: transparent;
+    border: none;
+    height: calc(4.25rem - 10px);
+    padding: .2rem 1.75rem .2rem .75rem;
+    border-radius: 2px;
+    margin-top: -0.2rem;
+
+}

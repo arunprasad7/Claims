@@ -21,168 +21,169 @@
         $scope.searchText;
         $scope.result = [];
         $scope.selectall = false;
+        $scope.chckedIndexs=[];
         $scope.claim = [{
             'climeNo': '456',
-            'memberNo': '9563569856',
-            'voucherNo': '45628',
+            'memberNo': '9562467936',
+            'voucherNo': '49228',
             'encounterType': 'Inpatient',
             'requestRecievedOn': '23 jan 2018',
             'prevRequest': 'NA',
             'payMode': 'Cheque',
             'payDate': '08 Jan 2018',
-            'payRefNo': '13212',
+            'payRefNo': '19212',
             'requestedAmount': '2,23,515',
-            'approvedAmount': '1,00,500',
+            'approvedAmount': '1,00,550',
             'currencyCode': 'AED',
             'name': 'Osama Bin',
             'status': 'Rejected'
         }, {
-            'climeNo': '2345790',
+            'climeNo': '2365430',
             'memberNo': '9563569856',
-            'voucherNo': '45628',
+            'voucherNo': '14098',
             'encounterType': 'Inpatient',
-            'requestRecievedOn': '2 jan 2017',
+            'requestRecievedOn': '02 jan 2017',
             'prevRequest': 'NA',
-            'payMode': 'Cheque',
-            'payDate': '08 Jan 2018',
+            'payMode': 'IBAN',
+            'payDate': '02 Jan 2018',
             'payRefNo': '13212',
             'requestedAmount': '2,23,515',
-            'approvedAmount': '1,00,500',
+            'approvedAmount': '1,70,530',
             'currencyCode': 'AED',
             'name': 'Rayan',
             'status': 'Approved'
         }, {
-            'climeNo': '2345790',
-            'memberNo': '9563569856',
-            'voucherNo': '45628',
+            'climeNo': '2388960',
+            'memberNo': '9563509632',
+            'voucherNo': '39028',
             'encounterType': 'Inpatient',
-            'requestRecievedOn': '1 jan 2018',
+            'requestRecievedOn': '01 jan 2018',
             'prevRequest': 'NA',
             'payMode': 'Cheque',
-            'payDate': '08 Jan 2018',
-            'payRefNo': '13212',
+            'payDate': '09 Jan 2018',
+            'payRefNo': '13072',
             'requestedAmount': '3,23,515',
-            'approvedAmount': '1,00,500',
+            'approvedAmount': '1,90,500',
             'currencyCode': 'AED',
             'name': 'Ansar',
             'status': 'Rejected'
         }, {
-            'climeNo': '2345790',
-            'memberNo': '9563569856',
-            'voucherNo': '45628',
+            'climeNo': '23424531',
+            'memberNo': '9563281452',
+            'voucherNo': '67248',
             'encounterType': 'Inpatient',
-            'requestRecievedOn': '23 jan 2018',
+            'requestRecievedOn': '18 jan 2018',
             'prevRequest': 'NA',
-            'payMode': 'Cheque',
-            'payDate': '08 Jan 2018',
-            'payRefNo': '13212',
+            'payMode': 'IBAN',
+            'payDate': '07 Jan 2018',
+            'payRefNo': '08912',
             'requestedAmount': '4,23,515',
-            'approvedAmount': '1,00,500',
+            'approvedAmount': '1,60,900',
             'currencyCode': 'AED',
             'name': 'Mohamed',
             'status': 'Rejected'
         }, {
-            'climeNo': '2345790',
-            'memberNo': '9563569856',
-            'voucherNo': '45628',
+            'climeNo': '2975210',
+            'memberNo': '9509634521',
+            'voucherNo': '93521',
             'encounterType': 'Inpatient',
-            'requestRecievedOn': '23 jan 2018',
+            'requestRecievedOn': '14 jan 2018',
             'prevRequest': 'NA',
             'payMode': 'Cheque',
-            'payDate': '08 Jan 2018',
-            'payRefNo': '13212',
+            'payDate': '11 Jan 2018',
+            'payRefNo': '10212',
             'requestedAmount': '23,515',
-            'approvedAmount': '1,00,500',
+            'approvedAmount': '1,80,590',
             'currencyCode': 'AED',
             'name': 'Abdur',
             'status': 'Rejected'
         }, {
-            'climeNo': '2345790',
-            'memberNo': '9563569856',
-            'voucherNo': '45628',
+            'climeNo': '2221790',
+            'memberNo': '9560756432',
+            'voucherNo': '90983',
             'encounterType': 'Inpatient',
-            'requestRecievedOn': '23 jan 2018',
+            'requestRecievedOn': '19 jan 2018',
             'prevRequest': 'NA',
-            'payMode': 'Cheque',
-            'payDate': '08 Jan 2018',
-            'payRefNo': '13212',
+            'payMode': 'IBAN',
+            'payDate': '21` Jan 2018',
+            'payRefNo': '188212',
             'requestedAmount': '9,23,515',
-            'approvedAmount': '1,00,500',
+            'approvedAmount': '1,40,580',
             'currencyCode': 'AED',
             'name': 'Parveen',
             'status': 'Approved'
         }, {
-            'climeNo': '2345790',
-            'memberNo': '9563569856',
-            'voucherNo': '45628',
+            'climeNo': '2743210',
+            'memberNo': '9563982314',
+            'voucherNo': '76721',
             'encounterType': 'Inpatient',
-            'requestRecievedOn': '23 jan 2018',
+            'requestRecievedOn': '03 jan 2018',
             'prevRequest': 'NA',
             'payMode': 'Cheque',
-            'payDate': '08 Jan 2018',
-            'payRefNo': '13212',
+            'payDate': '10 Jan 2018',
+            'payRefNo': '13288',
             'requestedAmount': '23,515',
-            'approvedAmount': '1,00,500',
+            'approvedAmount': '1,20,500',
             'currencyCode': 'AED',
             'name': 'Farook',
             'status': 'Rejected'
         }, {
-            'climeNo': '2345790',
-            'memberNo': '9563569856',
-            'voucherNo': '45628',
+            'climeNo': '2345700',
+            'memberNo': '95097865431',
+            'voucherNo': '11231',
             'encounterType': 'Inpatient',
-            'requestRecievedOn': '23 jan 2018',
+            'requestRecievedOn': '25 jan 2018',
             'prevRequest': 'NA',
-            'payMode': 'Cheque',
+            'payMode': 'IBAN',
             'payDate': '08 Jan 2018',
             'payRefNo': '13212',
             'requestedAmount': '1,23,515',
-            'approvedAmount': '1,00,500',
+            'approvedAmount': '1,30,700',
             'currencyCode': 'AED',
             'name': 'Hussain',
             'status': 'Waitingforapproval'
         }, {
-            'climeNo': '2345790',
-            'memberNo': '9563569856',
-            'voucherNo': '45628',
+            'climeNo': '2349850',
+            'memberNo': '984169856',
+            'voucherNo': '98754',
             'encounterType': 'Inpatient',
-            'requestRecievedOn': '23 jan 2018',
+            'requestRecievedOn': '09 jan 2018',
             'prevRequest': 'NA',
             'payMode': 'Cheque',
-            'payDate': '08 Jan 2018',
-            'payRefNo': '13212',
+            'payDate': '14 Jan 2018',
+            'payRefNo': '15642',
             'requestedAmount': '7,23,515',
-            'approvedAmount': '1,00,500',
+            'approvedAmount': '1,20,600',
             'currencyCode': 'AED',
             'name': 'Banu',
             'status': 'InProgress'
         }, {
-            'climeNo': '2345790',
-            'memberNo': '9563569856',
-            'voucherNo': '45628',
+            'climeNo': '2345862',
+            'memberNo': '9754269856',
+            'voucherNo': '87623',
             'encounterType': 'Inpatient',
             'requestRecievedOn': '23 jan 2018',
             'prevRequest': 'NA',
-            'payMode': 'Cheque',
+            'payMode': 'IBAN',
             'payDate': '08 Jan 2018',
-            'payRefNo': '13212',
+            'payRefNo': '13234',
             'requestedAmount': '8,23,515',
-            'approvedAmount': '1,00,500',
+            'approvedAmount': '1,50,520',
             'currencyCode': 'AED',
             'name': 'Ashraf',
             'status': 'Waitingforapproval'
         }, {
-            'climeNo': '2345790',
-            'memberNo': '98',
+            'climeNo': '2342230',
+            'memberNo': '9209269856',
             'voucherNo': '45628',
             'encounterType': 'Inpatient',
-            'requestRecievedOn': '23 jan 2018',
+            'requestRecievedOn': '30 jan 2018',
             'prevRequest': 'NA',
             'payMode': 'Cheque',
-            'payDate': '08 Jan 2018',
-            'payRefNo': '13212',
+            'payDate': '20 Jan 2018',
+            'payRefNo': '10022',
             'requestedAmount': ',23,515',
-            'approvedAmount': '1,00,500',
+            'approvedAmount': '1,50,500',
             'currencyCode': 'AED',
             'name': 'Raliya',
             'status': 'Assigned',
@@ -286,7 +287,6 @@
         $scope.datePicker = {};
         $scope.datePicker.date = { startDate: null, endDate: null };
 
-
         $scope.click = function() {
             if (($scope.climeNo == "" || $scope.climeNo == null) && ($scope.memberNumber == "" || $scope.memberNumber == null)) {
                 $scope.claimList = $scope.result;
@@ -299,8 +299,6 @@
 
         }
 
-
-
         $scope.result = $scope.users;
         $scope.submit = function() {
             $scope.searchText;
@@ -308,12 +306,16 @@
                 $scope.users = $scope.result;
             } else {
                 $scope.users = $filter('filter')($scope.userssearch, { name: $scope.searchText });
-
+            
             }
-            $scope.requestType;
         }
-
-
+        //         angular.forEach($scope.chckedIndexs, function (value, index) {
+        //             var index = $scope.claim.indexOf(value);
+        //             $scope.claim.splice($scope.claim.indexOf(value), 1);
+        //         });
+        //           $scope.chckedIndexs = [];
+        //    };
+        
 
         $scope.sorting = function(field) {
             $scope.orderByField = 'requestRecievedOn';
@@ -345,7 +347,6 @@
         $scope.datePicker.date = { startDate: null, endDate: null };
         $scope.items = $scope.claim;
 
-
         $scope.changeTab = function() {
             var tab = $scope.tab;
             if (tab == 'Approved') {
@@ -375,24 +376,40 @@
             $scope.assignedValue = selectData;
         }
         
-        $scope.assignedData = function() {
+        // $scope.assignedData = function() {
+        //     if ($scope.userSelectedData != null && $scope.assignedValue != null) {
+        //         var indexNewRwquest = $scope.claim.indexOf($scope.assignedValue);
+        //         var indexUser = $scope.userssearch.indexOf($scope.userSelectedData);
+        //         $scope.assignedValue.status = 'Assigned';
+        //         if ($scope.userSelectedData.assigned < 15) {
+        //             $scope.assigned.push($scope.assignedValue);
+        //             $scope.changeTab();
+        //             $scope.claim.splice(indexNewRwquest, 1);
+        //             $scope.userssearch[indexUser].assigned = $scope.userSelectedData.assigned + 1;
+                
+        //         } else {
+        //             swal("Cannot Assigned More Then 15");
+        //         }
+        //     }
+        // }
+        $scope.assignedData = function(ev) {
             if ($scope.userSelectedData != null && $scope.assignedValue != null) {
                 var indexNewRwquest = $scope.claim.indexOf($scope.assignedValue);
                 var indexUser = $scope.userssearch.indexOf($scope.userSelectedData);
-                if (indexNewRwquest >= 0) {
-                    $scope.assignedValue.status = 'Assigned';
-                    if ($scope.userSelectedData.assigned < 15) {
-                        $scope.assigned.push($scope.assignedValue);
-                        $scope.changeTab();
-                        $scope.claim.splice(indexNewRwquest, 1);
-                        $scope.userssearch[indexUser].assigned = $scope.userSelectedData.assigned + 1;
-                    } else {
-                        swal("Cannot Assigned More Then 15");
-                    }
+                $scope.assignedValue.status = 'Assigned';
+                if ($scope.userSelectedData.assigned < 15) {
+                    $scope.assigned.push($scope.assignedValue);
+                    $scope.changeTab();
+                    $scope.claim.splice(indexNewRwquest, 1);
+                    $scope.userssearch[indexUser].assigned = $scope.userSelectedData.assigned + 1;
+                
+                    dDialog.show(
+                        $mdDialog.alert(hi)
+                    )
                 }
             }
         }
-
+    
         $scope.navigateTo = function() {
             $state.go($scope.selectedClaim == 'eclaims' ? 'eclaim' : 'reimbursement-processing');
         }
@@ -420,4 +437,15 @@
 
         init();
     }
+   
+   
+    
+    $scope.remove=function(){
+         angular.forEach($scope.chckedIndexs, function (value, index) {
+             var index = $scope.claim.indexOf(value);
+             $scope.claim.splice($scope.claim.indexOf(value), 1);
+         });
+           $scope.chckedIndexs = [];
+    
+   };
 })();

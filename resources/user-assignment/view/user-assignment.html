@@ -55,7 +55,7 @@
                         </md-input-container>
                     </div>
                     <div class="searchColm align-middle text-center" ng-click="click();" style="width: auto !important;">
-                        <a href="javascript:;" data-toggle="modal" data-target="#newRegClaims" class="searBtn mt-1 ml-3 mr-3 align-middle" style="margin-top:1rem!important;">
+                        <a href="javascript:;" data-toggle="modal" data-target="#newRegClaims" class="searBtn mt-1 ml-3 mr-3 align-middle">
                             <span class="oi align-middle" data-glyph="magnifying-glass"></span>
                         </a>
                     </div>
@@ -100,14 +100,14 @@
                                         <div class="col-sm-11">
                                             <div class="text-right">
                                                 <font size="2">sort by:</font>
-                                                <select class="custom-select innerFilter" ng-change="sorting(option)" ng-model="option">
+                                                <select class="custom-select innerFilterSortBy" ng-change="sorting(option)" ng-model="option">
                                                     <option value="receivedDateDesc">By Date Asc</option>
                                                     <option value="receivedDate">By Date Desc</option>
                                         </select>
                                             </div>
                                         </div>
                                         <div class="col-sm-1">
-                                            <div ng-click="selectAll()" class="align-middle"><a href="javascript:;" id="seltAll" style="font-size:54%;">SELECT ALL</a></div>
+                                            <div ng-click="selectAll()" class="align-middle"><a href="javascript:;" id="seltAll" style="font-size:60%;">Select All</a></div>
                                         </div>
                                     </div>
                                     <table class="table mt-3">
@@ -212,6 +212,7 @@
                         </table>
                         <div class="align-middle text-center float-right" ng-click="assignedData()">
                             <a ng-click="submit()" href="javascript:;" class="searBtn searBtnWithText"> Assign</a>
+                            
                         </div>
                         <span class="oi text-success" data-glyph="box" style="font-size:12px;"> &nbsp;Available&nbsp; </span>
                         <span class="oi text-danger" data-glyph="box" style="font-size:12px;padding-left:5px"> &nbsp;Not available&nbsp; </span>

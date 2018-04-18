@@ -98,7 +98,7 @@
             batchFileName: "A003-CLAIM",
             receivedDate: '24 jan 2018',
             PaidToProviderCode: "4241",
-            PaidToProviderName: "Ashraf",
+            PaidToProviderName: "Al Noor Hospital",
             PaidTo: "Paid To",
             Processed: "500000",
             unProcessed: "568890",

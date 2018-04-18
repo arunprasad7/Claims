@@ -11,7 +11,7 @@
                             <div layout-gt-sm="row">
                                 <div class="col-sm-4" style="border-left: 1px solid #e6e6e6;">
                                     <md-input-container flex-gt-sm>
-                                        <label>Policy Number</label>
+                                        <label>IBAN Number</label>
                                         <input ng-model="memberNumber" />
                                     </md-input-container>
                                 </div>
@@ -51,26 +51,26 @@
 
                                     <tr>
                                         <th ng-click="sortBy('referenceNumber')">Reference Number
-                                            <span class="sortorder pointer" ng-show="propertyName == 'referenceNumber'" ng-class="{reverse: reverse}"></span>
+                                            <span class="glyphicon" ng-show="propertyName == 'referenceNumber'" ng-class="{'glyphicon-hand-down': reverse, 'glyphicon-hand-up' : !reverse}"></span>
                                         </th>
-                                        </th>
+                                        
                                         <th ng-click="sortBy('memberNumber')">Member Number
-                                            <span class="sortorder" ng-show="propertyName == 'memberNumber'" ng-class="{reverse: reverse}"></span>
+                                            <span class="glyphicon" ng-show="propertyName == 'memberNumber'"ng-class="{'glyphicon-hand-down': reverse, 'glyphicon-hand-up' : !reverse}"></span>
                                         </th>
                                         <th ng-click="sortBy('memberName')">Member Name
-                                            <span class="sortorder" ng-show="propertyName == 'memberName'" ng-class="{reverse: reverse}"></span>
+                                            <span class="glyphicon" ng-show="propertyName == 'memberName'"ng-class="{'glyphicon-hand-down': reverse, 'glyphicon-hand-up' : !reverse}"></span>
                                         </th>
                                         <th ng-click="sortBy('mobileNumber')">Mobile Number
-                                            <span class="sortorder" ng-show="propertyName == 'mobileNumber'" ng-class="{reverse: reverse}"></span>
+                                            <span class="glyphicon" ng-show="propertyName == 'mobileNumber'"ng-class="{'glyphicon-hand-down': reverse, 'glyphicon-hand-up' : !reverse}"></span>
                                         </th>
                                         <th ng-click="sortBy('alternateEmail')">Alternate Email
-                                            <span class="sortorder" ng-show="propertyName == 'alternateEmail'" ng-class="{reverse: reverse}"></span>
+                                            <span class="glyphicon"ng-show="propertyName == 'alternateEmail'"ng-class="{'glyphicon-hand-down': reverse, 'glyphicon-hand-up' : !reverse}"></span>
                                         </th>
                                         <th ng-click="sortBy('paymentType')">Payment Type
-                                            <span class="sortorder" ng-show="propertyName == 'paymentType'" ng-class="{reverse: reverse}"></span>
+                                            <span class="glyphicon" ng-show="propertyName == 'paymentType'"ng-class="{'glyphicon-hand-down': reverse, 'glyphicon-hand-up' : !reverse}"></span>
                                         </th>
                                         <th ng-click="sortBy('iBANNumber')">IBAN Number
-                                            <span class="sortorder" ng-show="propertyName == 'iBANNumber'" ng-class="{reverse: reverse}"></span>
+                                            <span class="glyphicon" ng-show="propertyName == 'iBANNumber'"ng-class="{'glyphicon-hand-down': reverse, 'glyphicon-hand-up' : !reverse}"></span>
                                         </th>
                                         <th>IBAN Document</th>
                                     </tr>
