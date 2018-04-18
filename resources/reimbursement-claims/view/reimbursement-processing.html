@@ -186,7 +186,7 @@
                         </div>                        
                     </div>                    
                 </div>
-                <div class="clearfix  mt-4">
+                <div class="clearfix  mt-4" style="margin-right: 2%;">
                     <h3 class="innerHeadText float-left">Claim Treatment/Service Level</h3><div class="currencyType float-left">Currency: AED</div>
                     <a href="javascript:;" class="custCheckboxBtn float-right ml-3" ng-init="checkAll=false;" ng-class="{custCheckboxBtnSected : checkAll}" ng-click="checkAll=!checkAll;selectAll(checkAll);">
                         <span class="oi" data-glyph="check" style="top:0px !important"></span>
@@ -203,6 +203,9 @@
                         </button>
                         <button type="button" class="btn btn-secondary">
                             <span class="oi" data-glyph="thumb-down"></span>
+                        </button>
+                        <button type="button" class="btn btn-secondary" ng-disabled="true">
+                            <span class="oi" data-glyph="delete"></span>
                         </button>
                     </div>
                 </div>
@@ -234,13 +237,13 @@
                                         <input type="text" ng-model="claim.days">
                                     </md-input-container>
                                 </div>
-                                <div class="col-sm-2 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                <div class="col-sm-1.5 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px;">
                                     <md-input-container flex-gt-sm style="margin-top: 18px;">    
                                         <label>Requested Amount</label>
                                         <input type="text" ng-model="claim.requestAmount">
                                     </md-input-container>
                                 </div>
-                                <div class="col-sm-1 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                <div class="col-sm-1.5 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px;">
                                     <md-input-container flex-gt-sm style="margin-top: 18px;">    
                                         <label>Manual Deduction</label>
                                         <input type="text" ng-model="claim.manualDeduction">
@@ -252,94 +255,87 @@
                                         <input type="text" ng-model="claim.rejectionCode">
                                     </md-input-container>
                                 </div>
-                                <!-- <div class="col-sm-2 float-left pb-1">
-                                    <a href="javascript:;" class="custCheckboxBtn float-right ml-3" ng-click="claim.onCheck=!claim.onCheck" ng-class="{custCheckboxBtnSected : claim.onCheck}">
-                                        <span class="oi" data-glyph="check"></span>
-                                    </a>
-                                </div> -->
+                            </div>
+                            <div class="withBorGrayTxtWrap clearfix">
+                                <div class="col-sm-4 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <md-input-container flex-gt-sm style="margin-top: 18px;">
+                                        <label>Internal Remarks</label>
+                                        <textarea class="claimReqIput" ng-model="claim.internalRemarks" rows="3"></textarea>
+                                    </md-input-container>
+                                </div>
+                                <div class="col-sm-4 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <md-input-container flex-gt-sm style="margin-top: 18px;">
+                                        <label>External Remarks</label>
+                                        <textarea class="claimReqIput" ng-model="claim.externalRemarks" rows="3"></textarea>
+                                    </md-input-container>
+                                </div>
+                                <div class="col-sm-1 float-right">
+                                    <div class="btn-group btn-group-sm claimStatusBtns mt-2 float-right" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-secondary">
+                                            <span class="oi" data-glyph="check"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-secondary">
+                                            <span class="oi" data-glyph="reload"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-secondary">
+                                            <span class="oi" data-glyph="thumb-up"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-secondary">
+                                            <span class="oi" data-glyph="thumb-down"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" ng-click="deleteRecord($index);">
+                                            <span class="oi" data-glyph="delete"></span>
+                                        </button>
+                                        <a href="javascript:;" class="custCheckboxBtn float-right ml-3" ng-click="claim.onCheck=!claim.onCheck" ng-class="{custCheckboxBtnSected : claim.onCheck}">
+                                            <span class="oi" data-glyph="check" style="top:0px !important"></span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="withoutBorWrap clearfix mb-2">
                                 <div layout-gt-sm="row">
-                                    <div class="float-left">
+                                    <div class="col-sm-1.5 float-left">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">   
                                             <label>Policy Ded Amount</label>
                                             <input type="text" ng-model="claim.policyDedAmount">
                                         </md-input-container>
                                     </div>
-                                    <div class="float-left">
+                                    <div class="col-sm-1 float-left">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">
                                             <label>Penalty Amount</label>
                                             <input type="text" ng-model="claim.penaltyAmount">
                                         </md-input-container>
                                     </div>
-                                    <div class="float-left">
+                                    <div class="col-sm-1 float-left">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">
                                             <label>Suggessted Amt</label>
                                             <input type="text" ng-model="claim.suggesstedAmount">
                                         </md-input-container>
                                     </div>
-                                    <div class="float-left">
+                                    <div class="col-sm-1.5 float-left">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">
                                             <label>Approved Amount</label>
                                             <input type="text" ng-model="claim.approvedAmount">
                                         </md-input-container>
                                     </div>
-                                    <div class="float-left">
+                                    <div class="col-sm-1.5 float-left">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">
                                             <label>Rejected Amount</label>
                                             <input type="text" ng-model="claim.rejectedAmount">
                                         </md-input-container>
                                     </div>
-                                    <div class="col-sm-3 float-left" style="width: auto !important;">
+                                    <div class="col-sm-1 float-left" style="width: auto !important;">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">
                                             <label>Status</label>
                                             <input type="text" ng-model="claim.status">
                                         </md-input-container>
                                     </div>
-                                    <div class="float-left">
-                                        <div class="btn-group btn-group-sm claimStatusBtns mt-2 float-right" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-secondary">
-                                                <span class="oi" data-glyph="check"></span>
-                                            </button>
-                                            <button type="button" class="btn btn-secondary">
-                                                <span class="oi" data-glyph="reload"></span>
-                                            </button>
-                                            <button type="button" class="btn btn-secondary">
-                                                <span class="oi" data-glyph="thumb-up"></span>
-                                            </button>
-                                            <button type="button" class="btn btn-secondary">
-                                                <span class="oi" data-glyph="thumb-down"></span>
-                                            </button>
-                                            <button type="button" class="btn btn-secondary" ng-click="deleteRecord($index);">
-                                                <span class="oi" data-glyph="delete"></span>
-                                            </button>
-                                            <!-- <div class="col-sm-2 float-left pb-1"> -->
-                                                <a href="javascript:;" class="custCheckboxBtn float-right ml-3" ng-click="claim.onCheck=!claim.onCheck" ng-class="{custCheckboxBtnSected : claim.onCheck}">
-                                                    <span class="oi" data-glyph="check" style="top:0px !important"></span>
-                                                </a>
-                                            <!-- </div> -->
-                                        </div>
+                                    <div class="col-sm-6 float-right">
+                                        <a href="javascript:;" class="float-right claimReqLink mr-3 ml-3 mt-3" style="font-size: 11px;"><span class="oi" data-glyph="info"></span> Reinsurance</a>
+                                        <a href="javascript:;" class="float-right claimReqLink mr-3 mt-3" style="font-size: 11px;"><span class="oi" data-glyph="info"></span> History</a>
+                                        <a href="javascript:;" class="float-right claimReqLink mr-3 mt-3" style="font-size: 11px;"><span class="oi" data-glyph="info"></span> Policy Rules</a>
                                     </div>
                                 </div>    
-                            </div>
-                            <div class="withBorGrayTxtWrap clearfix">
-                                <div class="col-sm-3 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px;">
-                                    <md-input-container flex-gt-sm style="margin-top: 18px;">
-                                        <label>Internal Remarks</label>
-                                        <input type="text" class="claimReqIput" ng-model="claim.internalRemarks">
-                                    </md-input-container>
-                                </div>
-                                <div class="col-sm-3 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px;">
-                                    <md-input-container flex-gt-sm style="margin-top: 18px;">
-                                        <label>External Remarks</label>
-                                        <input type="text" class="claimReqIput" ng-model="claim.externalRemarks">
-                                    </md-input-container>
-                                </div>
-                                <div class="col-sm-5 float-left pb-1">
-                                    <a href="javascript:;" class="float-left claimReqLink mr-3 ml-3 mt-3"><span class="oi" data-glyph="info"></span> Reinsurance</a>
-                                    <a href="javascript:;" class="float-left claimReqLink mr-3 mt-3"><span class="oi" data-glyph="info"></span> History</a>
-                                    <a href="javascript:;" class="float-left claimReqLink mr-3 mt-3"><span class="oi" data-glyph="info"></span> Policy Rules</a>
-                                </div>
                             </div>
                         </div>
                     </div>
