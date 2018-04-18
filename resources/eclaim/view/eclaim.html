@@ -180,9 +180,10 @@
                             <ui-carousel slides="claimReqList" class="eclaim" style="width:{{getWidth()}};" slides-to-show="noOfSlides" slides-to-scroll="1" initial-slide="0" infinite="false">
                                 <carousel-item  class="eclaim-item">
                                     <li>
-                                        <span>Request Number: #{{item.reqNum}}</span><strong class="text-danger ml-2">Rejected</strong>
-                                        <p>Claim Status Reason: {{item.statusReason}}</p>
-                                        <p>Rejected Reason: {{item.rejectedReason}}</p>
+                                        <p><b>Claim Number:</b> #{{item.claimNum}}</p>
+                                        <span><b>Request Number:</b> #{{item.reqNum}}</span><strong class="text-danger ml-2">Rejected</strong>
+                                        <p><b>Claim Status Reason:</b> {{item.statusReason}}</p>
+                                        <p><b>Rejected Reason:</b> {{item.rejectedReason}}</p>
                                     </li>
                                 </carousel-item>                
                                 <carousel-prev>
