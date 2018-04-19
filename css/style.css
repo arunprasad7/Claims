@@ -1583,3 +1583,19 @@ footer {
 .masterCodes md-autocomplete md-input-container input {
     border: none;
 }
+
+.reimbur-trans-hide {
+    overflow: hidden;
+    max-height: 10px;
+    transition: max-height 300ms ease-in-out;
+}
+
+.reimbur-trans-show {
+    display: block;
+    max-height: 40%;
+    transition: max-height 300ms ease-in-out;
+}
+
+.reimburs-mt {
+    margin-top: 2%;
+}
