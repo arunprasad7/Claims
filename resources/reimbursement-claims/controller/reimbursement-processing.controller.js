@@ -12,11 +12,11 @@
             $scope.claimsResult = [];
             $scope.treatmentCodes = [];
             $scope.rejectionCode = [];
-            $scope.createNew = false;
+            $scope.createNew = true;
             var staticTemplate = '<a href="javascript:;" class="custCheckboxBtn" ng-class="{\'custCheckboxBtnSected\' : row.entity.isChecked}" ng-click="row.entity.isChecked = !row.entity.isChecked"><span class="oi" data-glyph="check"></span></a>&nbsp;'+
             '<a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" style="padding:10px 10px 10px 10px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="oi" data-glyph="wrench"></span></a><a class="eclaimReqSetBtn" href="javascript:;" ng-click="grid.appScope.editClaim(row.entity)"><span class="oi mr-1" data-glyph="pencil"></span></a>'+
-            '<div class="dropdown-menu eclaimReqSetOption"><a class="dropdown-item" href="javascript:;" ng-click="grid.appScope.approveClaim()"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>'+
-            '<a class="dropdown-item" href="javascript:;" ng-click="grid.appScope.rejectClaim()"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>'+
+            '<div class="dropdown-menu eclaimReqSetOption"><a class="dropdown-item" href="javascript:;" ng-click="grid.appScope.approveClaim(row.entity)"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>'+
+            '<a class="dropdown-item" href="javascript:;" ng-click="grid.appScope.rejectClaim(row.entity)"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>'+
             '<a class="dropdown-item" href="javascript:;"><span class="oi mr-1" data-glyph="check"></span> Validate</a><a class="dropdown-item" href="javascript:;" ng-click="grid.appScope.deleteRow(rowRenderIndex)"><span class="oi mr-1" data-glyph="delete"></span> Delete</a><div class="dropdown-divider"></div>'+
             '<a class="dropdown-item" href="javascript:;">Reinsurance</a><a class="dropdown-item" href="javascript:;">History</a><a class="dropdown-item" href="javascript:;">Policy Rules</a></div>';
 
@@ -36,8 +36,9 @@
                 initGrid();
             }
 
-            $scope.createNew = function() {
-                $scope.claimsResult.push(createNewReimbursmentObject());
+            $scope.createNewClaim = function() {
+                $scope.createNew = true;
+                $scope.claim = createNewReimbursmentObject();
             }
 
             $scope.deleteRecord = function(recordIndex) {
@@ -93,7 +94,9 @@
                     "status" : "",
                     "internalRemarks" : "",
                     "externalRemarks" : "",
-                    "isChecked" : false
+                    "isChecked" : false,
+                    "id" : new Date().getTime(),
+                    "dml": "N"
                 };
             }
 
@@ -126,6 +129,10 @@
                     {
                         'code' : 4444,
                         'name' : codeType + ' 4579201-1' 
+                    },
+                    {
+                        'code' : 5555,
+                        'name' : codeType + ' 5463201-1' 
                     }
                 ];
             }
@@ -164,10 +171,11 @@
 
             $scope.deleteRow = function(index) {
                 $scope.gridOptions.data.splice(index, 1);
+                $scope.noRecordsAvailable = $scope.gridOptions['data'].length == 0;
                 ngNotify.set('Deleted Succesfully.', 'success');
             }
 
-            $scope.approveClaim = function() {
+            $scope.approveClaim = function(claim) {
                 ngNotify.set('Claim Approved Succesfully.', 'success');
             }
     
@@ -198,7 +206,7 @@
 
             $scope.saveRecord = function() {
                 if ($scope.claim && $scope.claim.treatmentCodeOrSubBenefit != "" && $scope.claim.treatmentCodeOrSubBenefit != null) {
-                    $scope.gridOptions.data.push($scope.claim);
+                    processClaim($scope.claim);
                     $scope.noRecordsAvailable = $scope.gridOptions['data'].length == 0;
                     $scope.claim = createNewReimbursmentObject();
                     $scope.createNew = false;
@@ -209,26 +217,25 @@
             }
 
             $scope.editClaim = function(entity) {
-                $scope.claim = entity;
+                $scope.claim = angular.copy(entity);
+                $scope.claim['dml'] = 'E';
                 $scope.createNew = true;
-                removeClaim(entity);
             }
 
             $scope.onCancel = function() {
-                if ($scope.claimToRestore != undefined && $scope.claimToRestore != null) {
-                    $scope.gridOptions['data'].push(angular.copy($scope.claimToRestore));
-                    $scope.claim = createNewReimbursmentObject();
-                }
-                $scope.claimToRestore = null;
                 $scope.createNew = false;
             }
 
-            function removeClaim(element) {
-                const index = $scope.gridOptions['data'].indexOf(element);
-                if (index !== -1) {
-                    $scope.gridOptions['data'].splice(index, 1);
+            function processClaim(claim) {
+                $scope.gridOptions['data'] = $scope.gridOptions['data'].map(record =>  {
+                    if (record['id'] == claim['id']) {
+                        return claim;
+                    }
+                    return record;
+                });
+                if (claim['dml'] == 'N') {
+                    $scope.gridOptions['data'].push(claim);
                 }
-                $scope.claimToRestore = angular.copy(element);
             }
 
             init();
