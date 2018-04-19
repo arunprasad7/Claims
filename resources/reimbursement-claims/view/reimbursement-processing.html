@@ -165,9 +165,9 @@
                         <strong>10010201-1</strong>
                     </li>
                 </ul>
-                <div style="margin-top:2%;" ng-class="{'reimbur-trans-hide' : !createNew, 'reimbur-trans-show' : createNew}">
+                <div ng-class="{'reimbur-trans-hide' : !createNew, 'reimbur-trans-show' : createNew}">
                     <div class="claimRequestDetails mt-3">
-                        <div class="claimRequestDetInner mb-3 clearfix">
+                        <div class="claimRequestDetInner mb-3 clearfix" style="margin-top:3%;padding-left:0px;">
                             <!-- <div class="row mb-2 clearfix"> -->
                                 <div layout-gt-sm="row" class="pb-1">
                                     <div class="masterCodes col-sm-2 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px 0 19px;">
@@ -217,7 +217,7 @@
                                             <input type="number" ng-model="claim.manualDeduction">
                                         </md-input-container>
                                     </div>
-                                    <div class="masterCodes col-sm-1 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <div class="masterCodes col-sm-1.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
                                         <md-autocomplete
                                             md-selected-item="claim.rejectionCode"
                                             md-search-text="rejectionText"

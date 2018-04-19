@@ -1592,7 +1592,7 @@ footer {
 
 .reimbur-trans-show {
     display: block;
-    max-height: 40%;
+    max-height: 42%;
     transition: max-height 300ms ease-in-out;
 }
 
