@@ -174,6 +174,13 @@
                 console.log('claim ::', claim);
             }
 
+            $scope.toggleSelect = function() {
+                $scope.isChecked = !$scope.isChecked;
+                angular.forEach($scope.gridOptions.data, function(value,key) {
+                    value.isChecked = $scope.isChecked;
+                })
+            }
+
             $('#right-button').click(function() {
                 event.preventDefault();
                 $('.ui-grid-content').animate({
