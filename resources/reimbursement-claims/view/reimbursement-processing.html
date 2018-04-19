@@ -193,7 +193,7 @@
                                             <md-datepicker ng-model="claim.serviceFrom" md-hide-icons="all" md-open-on-focus></md-datepicker>
                                         </md-input-container>
                                     </div>
-                                    <div class="col-sm-1 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <div class="col-sm-1.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">    
                                             <label>Service To</label>
                                             <md-datepicker ng-model="claim.serviceTo" md-hide-icons="all" md-open-on-focus></md-datepicker>
@@ -224,6 +224,7 @@
                                             md-items="item in querySearch(rejectionText, 'R')"
                                             md-item-text="item.name"
                                             md-floating-label="Rejection Code"
+                                            md-clear-button="true"
                                             style="height: 55px;">
                                             <md-item-template>
                                                 <span md-highlight-text="rejectionText" md-highlight-flags="^i">{{item.name}}</span>
@@ -298,9 +299,23 @@
                                             <textarea class="claimReqIput" maxlength="120" ng-model="claim.externalRemarks" rows="2"></textarea>
                                         </md-input-container>
                                     </div>
-                                    <div class="col-sm-4 float-left">
-                                        <button type="button" class="btn btn-primary btn-md float-right ml-3 mt-3" ng-click="saveRecord();">Save</button>
-                                        <button type="button" class="btn btn-outline-primary float-right btn-md float-left ml-3  mt-3" ng-click="onCancel();">Cancel</button>
+                                    <div class="col-sm-4 float-left" style="margin-top: 1.5rem;">
+                                        <!-- <a href="javascript:;" class="float-right claimReqLink mr-3 ml-3 mt-3" style="font-size: 11px;"><span class="oi" data-glyph="info"></span> Reinsurance</a>
+                                        <a href="javascript:;" class="float-right claimReqLink mr-3 mt-3" style="font-size: 11px;"><span class="oi" data-glyph="info"></span> History</a>
+                                        <a href="javascript:;" class="float-right claimReqLink mr-3 mt-3" style="font-size: 11px;"><span class="oi" data-glyph="info"></span> Policy Rules</a> -->
+                                        <button type="button" class="btn btn-primary btn-sm float-right ml-3 mt-3" ng-click="saveRecord();">Save</button>
+                                        <button type="button" class="btn btn-outline-primary float-right btn-sm float-left ml-3  mt-3" ng-click="onCancel();">Cancel</button>
+                                        <div class="btn-group btn-group-sm claimStatusBtns float-right" role="group" aria-label="Basic example" style="margin-top: 1rem !important;">
+                                            <button type="button" class="btn btn-secondary">
+                                                <span class="oi" data-glyph="check"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-secondary">
+                                                <span class="oi" data-glyph="thumb-up"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-secondary">
+                                                <span class="oi" data-glyph="thumb-down"></span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
