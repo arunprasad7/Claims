@@ -213,22 +213,33 @@
                     <div class="claimRequestDetails mt-3">
                         <div class="claimRequestDetInner mb-3 clearfix">
                             <div class="row mb-2 clearfix">
-                                <div class="col-sm-2 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px 0 19px;">
-                                    <md-input-container flex-gt-sm style="margin-top: 18px;">    
-                                        <label>Treatment Code/Sub Benefit</label>
-                                        <input type="text" ng-model="claim.treatmentCodeOrSubBenefit"/>
-                                    </md-input-container>
+                                <div class="masterCodes col-sm-2 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px 0 19px;">
+                                    <md-autocomplete
+                                        md-selected-item="claim.treatmentCodeOrSubBenefit"
+                                        md-search-text="searchText"
+                                        md-items="item in querySearch(searchText, 'T')"
+                                        md-item-text="item.name"
+                                        md-floating-label="Treatment Code/Sub Benefit"
+                                        md-clear-button="true"
+                                        style="height: 55px;">
+                                        <md-item-template>
+                                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
+                                        </md-item-template>
+                                        <md-not-found>
+                                            No Result Found
+                                        </md-not-found>
+                                    </md-autocomplete>
                                 </div>
                                 <div class="col-sm-1 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px;">
                                     <md-input-container flex-gt-sm style="margin-top: 18px;">    
                                         <label>Service From</label>
-                                        <input type="text" ng-model="claim.serviceFrom">
+                                        <md-datepicker ng-model="claim.serviceFrom" md-hide-icons="all" md-open-on-focus></md-datepicker>
                                     </md-input-container>
                                 </div>
                                 <div class="col-sm-1 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px;">
                                     <md-input-container flex-gt-sm style="margin-top: 18px;">    
                                         <label>Service To</label>
-                                        <input type="text" ng-model="claim.serviceTo">
+                                        <md-datepicker ng-model="claim.serviceTo" md-hide-icons="all" md-open-on-focus></md-datepicker>
                                     </md-input-container>
                                 </div>
                                 <div class="col-sm-1 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px;">
@@ -249,11 +260,25 @@
                                         <input type="text" ng-model="claim.manualDeduction">
                                     </md-input-container>
                                 </div>
-                                <div class="col-sm-1 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px;">
-                                    <md-input-container flex-gt-sm style="margin-top: 18px;">    
+                                <div class="masterCodes col-sm-1 float-left pb-1" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <!-- <md-input-container flex-gt-sm style="margin-top: 18px;">    
                                         <label>Rejection Code</label>
                                         <input type="text" ng-model="claim.rejectionCode">
-                                    </md-input-container>
+                                    </md-input-container> -->
+                                    <md-autocomplete
+                                        md-selected-item="claim.rejectionCode"
+                                        md-search-text="rejectionText"
+                                        md-items="item in querySearch(rejectionText, 'R')"
+                                        md-item-text="item.name"
+                                        md-floating-label="Rejection Code"
+                                        style="height: 55px;">
+                                        <md-item-template>
+                                            <span md-highlight-text="rejectionText" md-highlight-flags="^i">{{item.name}}</span>
+                                        </md-item-template>
+                                        <md-not-found>
+                                            No Result Found
+                                        </md-not-found>
+                                    </md-autocomplete>
                                 </div>
                             </div>
                             <div class="withBorGrayTxtWrap clearfix">

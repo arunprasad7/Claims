@@ -1579,3 +1579,7 @@ footer {
     margin: 6px 80px;
     padding: 8px 70px
 }
+
+.masterCodes md-autocomplete md-input-container input {
+    border: none;
+}
