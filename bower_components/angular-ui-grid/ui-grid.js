@@ -1341,9 +1341,9 @@ function ($timeout, gridUtil, uiGridConstants, uiGridColumnMenuService, $documen
               }
               else {
                 // short click
-                if ( $scope.sortable ){
+                //if ( $scope.sortable ){ // commented in order to sort always irrespective of enablesorting option in gridoptions/Coldef.
                   $scope.handleClick(event);
-                }
+                //}
               }
             };
 

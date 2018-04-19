@@ -39,24 +39,25 @@
             data : EclaimService.getEclaimList(true),
             columnDefs: [
                 {name:'action', displayName:'', cellTemplate:staticTemplate,width:80, pinnedLeft:true, enableCellEdit:false},
-                {name:'serviceType', displayName:'Service Type', cellTemplate:textTemplate,width:110},
+                {name:'serviceType', displayName:'Service Type', cellTemplate:textTemplate,width:120},
                 {name:'serviceCode', displayName:'Service code', cellTemplate:textTemplate,width:120},
                 {name:'serviceFrmDate', displayName:'Service From', cellTemplate:dateTemplate,width:130},
-                {name:'days', displayName:'Days', cellTemplate:numTemplate,width:60},
-                {name:'quantity', displayName:'QTY', cellTemplate:numTemplate,width:60},
+                {name:'days', displayName:'Days', cellTemplate:numTemplate,width:80},
+                {name:'quantity', displayName:'QTY', cellTemplate:numTemplate,width:80},
                 {name:'treatmentCode', displayName:'Treatment Code', cellTemplate:textTemplate,width:140},
                 {name:'rejectedCode', displayName:'Rejected Code', cellTemplate:textTemplate,width:130},
-                {name:'dhaPrice', displayName:'HAAD/DHA Price', cellTemplate:numTemplate,width:135},
+                {name:'dhaPrice', displayName:'HAAD/DHA Price', cellTemplate:numTemplate,width:145},
                 {name:'price', displayName:'Price', cellTemplate:numTemplate,width:125},
-                {name:'reqAmount', displayName:'Requested Amount', cellTemplate:numTemplate,width:145},
+                {name:'reqAmount', displayName:'Requested Amount', cellTemplate:numTemplate,width:165},
                 {name:'dedAmount', displayName:'Ded Amount', cellTemplate:numTemplate,width:125},
-                {name:'shortfallAmount', displayName:'Shortfall Amount', cellTemplate:numTemplate,width:135},
-                {name:'approvedAmt', displayName:'Approved Amount', cellTemplate:numTemplate,width:140, enableCellEdit:false},
-                {name:'rejectedAmt', displayName:'Rejected Amount   ', cellTemplate:numTemplate,width:140, enableCellEdit:false},
-                {name:'status', displayName:'Status', cellTemplate:textTemplate,width:145, enableCellEdit:false},
-                {name:'rejDesc', displayName:'Rejection Description', cellTemplate:textTemplate,width:155},
+                {name:'shortfallAmount', displayName:'Shortfall Amount', cellTemplate:numTemplate,width:155},
+                {name:'rejDesc', displayName:'Rejection Description', cellTemplate:textTemplate,width:175},
                 {name:'remarks', displayName:'Internal Remarks', cellTemplate:textTemplate,width:162},
-            ]
+                {name:'approvedAmt', displayName:'Approved Amount', cellTemplate:numTemplate,width:160, enableCellEdit:false, pinnedRight:true},
+                {name:'rejectedAmt', displayName:'Rejected Amount   ', cellTemplate:numTemplate,width:160, enableCellEdit:false, pinnedRight:true},
+                {name:'status', displayName:'Status', cellTemplate:textTemplate,width:145, enableCellEdit:false, pinnedRight:true}                
+            ],
+            enableSorting: false
         }
         
         $scope.gridOptions.onRegisterApi = function(gridApi) {
@@ -72,7 +73,7 @@
             })
 
             gridApi.core.on.rowsRendered( $scope, function(resp) {
-                $($('.ui-grid-render-container-body').children()[1]).addClass('ui-grid-content');
+                $($('.ui-grid-render-container-body').children()).addClass('ui-grid-content');
                 if($scope.action == 'new') {
                     $scope.prevEdittedRow = resp.grid.rows[$scope.gridOptions.data.length-1];
                     $scope.prevRowobj = angular.copy($scope.prevEdittedRow.entity);

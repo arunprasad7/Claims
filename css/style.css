@@ -1401,7 +1401,7 @@ footer li strong {
     font-size: small;
 }
 
-.ui-grid-header-viewport {
+.ui-grid-content .ui-grid-header-viewport {
     width: auto !important;
 }
 
