@@ -33,44 +33,44 @@
         this.getClaimRegistrationList = function(params) {
             return [
                 {
-                    "memberName" : 'mem1',
+                    "memberName" : 'Naseeha',
                     "mobileNum1" : 9894838851,
-                    "email1" : 'mem1@gmail.com',
+                    "email1" : 'naseeha1@gmail.com',
                     'mobileNum2' : 9894838851,
-                    "email2" : 'mem12@gmail.com',
+                    "email2" : 'naseeha12@gmail.com',
                     "serviceFmDate" : new Date(),
                     "requestAmt" : 55555,
                     "reqType" : 'resubmission',
                     "encType" : 'outPatient',
+                    "reqReceivedDate" : new Date(),
+                    "prevRequest" : 123,
+                    "source" : "post",
+                    "paymentWay" : 'iban',
+                    "ibanNum" : "1235465ABSCSD"
+                },
+                {
+                    "memberName" : 'sherif',
+                    "mobileNum1" : 98444438851,
+                    "email1" : 'sherif65@gmail.com',
+                    'mobileNum2' : 98444438851,
+                    "email2" : 'sherif32@gmail.com',
+                    "serviceFmDate" : new Date(),
+                    "requestAmt" : 55555,
+                    "reqType" : 'newRequest',
+                    "encType" : 'inPatient',
                     "reqReceivedDate" : new Date(),
                     "prevRequest" : 123,
                     "source" : "post",
                     "paymentWay" : 'cheque',
                     "ibanNum" : "1235465ABSCSD"
-                },
-                {
-                    "memberName" : 'mem2',
-                    "mobileNum1" : 98444438851,
-                    "email1" : 'mem65@gmail.com',
-                    'mobileNum2' : 98444438851,
-                    "email2" : 'mem32@gmail.com',
-                    "serviceFmDate" : new Date(),
-                    "requestAmt" : 55555,
-                    "reqType" : 'newRequest',
-                    "encType" : 'inPatient',
-                    "reqReceivedDate" : new Date(),
-                    "prevRequest" : 123,
-                    "source" : "post",
-                    "paymentWay" : 'iban',
-                    "ibanNum" : "1235465ABSCSD"
                 }
                 ,
                 {
-                    "memberName" : 'mem4',
+                    "memberName" : 'Shakhil',
                     "mobileNum1" : 98444438851,
-                    "email1" : 'mem65@gmail.com',
+                    "email1" : 'shakhil@gmail.com',
                     'mobileNum2' : 98444438851,
-                    "email2" : 'mem32@gmail.com',
+                    "email2" : 'shakil32@gmail.com',
                     "serviceFmDate" : new Date(),
                     "requestAmt" : 55555,
                     "reqType" : 'resubmission',
@@ -82,11 +82,11 @@
                     "ibanNum" : "1235465ABSCSD"
                 },
                 {
-                    "memberName" : 'mem3',
+                    "memberName" : 'Rayaan',
                     "mobileNum1" : 98444438851,
-                    "email1" : 'mem65@gmail.com',
+                    "email1" : 'rayaan65@gmail.com',
                     'mobileNum2' : 98444438851,
-                    "email2" : 'mem32@gmail.com',
+                    "email2" : 'rayaan32@gmail.com',
                     "serviceFmDate" : new Date(),
                     "requestAmt" : 55555,
                     "reqType" : 'newRequest',
@@ -94,7 +94,7 @@
                     "reqReceivedDate" : new Date(),
                     "prevRequest" : 123,
                     "source" : "post",
-                    "paymentWay" : 'iban',
+                    "paymentWay" : 'cheque',
                     "ibanNum" : "1235465ABSCSD"
                 }
             ]

@@ -1,199 +1,215 @@
-<div class="searchBar">
-    <div class="searchBarRow">
-        <div layout-gt-sm="row">
-            <div>
-                <md-input-container flex-gt-sm>
-                    <label style="white-space: pre-line;">Member Number</label>
-                    <input ng-model="memberNumber" />
-                </md-input-container>
-            </div>
-            <div style="border-left: 1px solid #e6e6e6;">
-                <md-input-container flex-gt-sm>
-                    <label style="white-space: pre-line;">Voucher Number</label>
-                    <input ng-model="voucherNumber">
-                </md-input-container>
-            </div>
-            <div style="border-left: 1px solid #e6e6e6;">
-                <md-input-container flex-gt-sm>
-                    <label style="white-space: pre-line;">Claim Number</label>
-                    <input ng-model="climeNo">
-                </md-input-container>
-            </div>
-            <div style="border-left: 1px solid #e6e6e6; min-width:230px;">
-                <md-input-container flex-gt-sm>
-                    <label style="white-space: pre-line;">Approved By</label>
-                    <input ng-model="approvedBy">
-                </md-input-container>
-            </div>
-            <div c style="border-left: 1px solid #e6e6e6; min-width:230px;">
-                <md-input-container flex-gt-sm>
-                    <label style="white-space: pre-line;">Requested Date</label>
-                    <md-datepicker ng-model="requestedDate" md-open-on-focus></md-datepicker>
-                </md-input-container>
-
-
-            </div>
-            <div style="border-left: 1px solid #e6e6e6; min-width:230px;">
-                <md-input-container flex-gt-sm>
-                    <label style="white-space: pre-line;">Change Period</label>
-                    <input date-range-picker class="searchIput" type="text" ng-model="datePicker.date" />
-                </md-input-container>
-            </div>
-            <div style="border-left: 1px solid #e6e6e6; min-width:230px;">
-                <md-input-container flex-gt-sm>
-                    <label style="white-space: pre-line;">Assigned User</label>
-                    <input ng-model="assignedUser">
-                </md-input-container>
-            </div>
-            <div class="searchColm align-middle text-center col-sm-1">
-                <a ng-click="click()" href="javascript:;" class="searBtn searBtnWithText mt-1 ml-3 mr-3 align-middle">
-                    <span class="oi align-middle" data-glyph="magnifying-glass"></span> Search
-                </a>
+<nav class="navbar pt-1 pb-1">
+    <span class="navbar-brand p-0 m-0" ui-sref="claim-registration">User Assignment</span>
+</nav>
+<toaster-container></toaster-container>
+<section>
+    <div class="leftContainer">
+        <div class="searchBar">
+            <div class="searchBarRow">
+                <div layout-gt-sm="row">
+                    <div style="width: 100% !important;">
+                        <md-input-container flex-gt-sm>
+                            <label style="white-space: pre-line;">Member Number</label>
+                            <input ng-model="memberNumber" />
+                        </md-input-container>
+                    </div>
+                    <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
+                        <md-input-container flex-gt-sm>
+                            <label style="white-space: pre-line;">Voucher Number</label>
+                            <input ng-model="voucherNumber">
+                        </md-input-container>
+                    </div>
+                    <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
+                        <md-input-container flex-gt-sm>
+                            <label style="white-space: pre-line;">Claim Number</label>
+                            <input ng-model="climeNo">
+                        </md-input-container>
+                    </div>
+                    <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
+                        <md-input-container flex-gt-sm>
+                            <label style="white-space: pre-line;">Approved By</label>
+                            <input ng-model="approvedBy">
+                        </md-input-container>
+                    </div>
+                    <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
+                        <md-input-container flex-gt-sm>
+                            <label style="white-space: pre-line;">Request Received From</label>
+                            <md-datepicker ng-model="requestedDate" md-open-on-focus md-hide-icons="all"></md-datepicker>
+                        </md-input-container>
+                    </div>
+                    <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
+                        <md-input-container flex-gt-sm>
+                            <label style="white-space: pre-line;">Request Received To</label>
+                            <md-datepicker ng-model="datePicker.date" md-open-on-focus md-hide-icons="all"></md-datepicker>
+                        </md-input-container>
+                    </div>
+                    <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
+                        <md-input-container flex-gt-sm>
+                            <label style="white-space: pre-line;">Assigned User</label>
+                            <input ng-model="assignedUser">
+                        </md-input-container>
+                    </div>
+                    <div class="searchColm align-middle text-center" ng-click="click();" style="width: auto !important; margin-top : 1rem!important;">
+                        <a href="javascript:;" data-toggle="modal" data-target="#newRegClaims" class="searBtn mt-1 ml-3 mr-3 align-middle">
+                            <span class="oi align-middle" data-glyph="magnifying-glass"></span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="contentPart pt-3 pb-3">
-    <h2 class="title">Total {{claimList.length}} available</h2>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-9">
-                <div class="tabOuter">
-                    <ul class="nav nav-tabs row" id="resultTab" role="tablist">
-                        <li class="nav-item col-2 pointer" ng-class="{'active show' : tab == 'newRequest'}" ng-click="tab='newRequest';changeTab()">
-                            <a class="nav-link " id="NewRequest" data-toggle="tab" role="tab" aria-controls="NewRequest" aria-selected="true">New Request <span class="resultCount">{{claim.length}}</span></a>
-                        </li>
-                        <li class="nav-item col-2 pointer" ng-class="{'active show' :tab == 'InProgress'}" ng-click="tab='InProgress';changeTab()">
-                            <a class="nav-link" id="InProgress" data-toggle="tab" role="tab" aria-controls="InProgress" aria-selected="false">In Progress <span class="resultCount">{{inProgress.length}}</span></a>
-                        </li>
-                        <li class="nav-item col-2 pointer" ng-class="{'active show' : tab == 'Approved'}" ng-click="tab='Approved';changeTab()">
-                            <a class="nav-link" id="Approved" data-toggle="tab" role="tab" aria-controls="Approved" aria-selected="false">Approved <span class="resultCount">{{approved.length}}</span></a>
-                        </li>
-                        <li class="nav-item col-2 pointer" ng-class="{'active show' : tab == 'Waitingforapproval'}" ng-click="tab='Waitingforapproval';changeTab()">
-                            <a class="nav-link" id="Waitingforapproval" data-toggle="tab" role="tab" aria-controls="Waitingforapproval" aria-selected="false">Waiting for approval <span class="resultCount">{{waitingforapproval.length}}</span></a>
-                        </li>
-                        <li class="nav-item col-2 pointer" ng-class="{'active show' : tab == 'Rejected'}" ng-click="tab='Rejected';changeTab()">
-                            <a class="nav-link" id="Rejected" data-toggle="tab" role="tab" aria-controls="Rejected" aria-selected="false">Rejected <span class="resultCount">{{rejected.length}}</span></a>
-                        </li>
-                        <li class="nav-item col-2 pointer" ng-class="{'active show' : tab == 'Assigned'}" ng-click="tab='Assigned';changeTab()">
-                            <a class="nav-link" id="Assigned" data-toggle="tab" role="tab" aria-controls="Assigned" aria-selected="false">Assigned <span class="resultCount">{{assigned.length}}</span></a>
-                        </li>
-                    </ul>
-                    <div class="tab-content p-3" id="resultTabContent">
-                        <div class="tab-pane fade active show" ng-class="{ 'active show' : tab == 'NewRequestCount','': tab != 'NewRequestCount'}" id="NewRequest" role="tabpanel" aria-labelledby="NewRequest">
-                            <div class="row">
-                                <div class="col-sm-11">
-                                    <div class="text-right">
-                                        <font size="2">sort by:</font>
-                                        <select class="custom-select innerFilter" ng-change="sorting(option)" ng-model="option">
-                                                <option value=""> Select  </option>
-                                            <option value="receivedDateDesc">By Date Asc</option>
-                                            <option value="receivedDate">By Date Desc</option>
+        <div class="contentPart pb-3">
+            <h2 class="title">Total {{claimList.length}} available</h2>
+            <div class="container-fluid" style="padding-left:0px;">
+                <div class="row">
+                    <div class="col-9">
+                        <div class="tabOuter">
+                            <ul class="nav nav-tabs row" id="resultTab" role="tablist">
+                                <li class="nav-item col-2 pointer" ng-class="{'active show' : tab == 'newRequest'}" ng-click="tab='newRequest';changeTab()">
+                                    <a class="nav-link " id="NewRequest" data-toggle="tab" role="tab" aria-controls="NewRequest" aria-selected="true">New Request <span class="resultCount">{{claim.length}}</span></a>
+                                </li>
+                                <li class="nav-item col-2 pointer" ng-class="{'active show' :tab == 'InProgress'}" ng-click="tab='InProgress';changeTab()">
+                                    <a class="nav-link" id="InProgress" data-toggle="tab" role="tab" aria-controls="InProgress" aria-selected="false">In Progress <span class="resultCount">{{inProgress.length}}</span></a>
+                                </li>
+                                <li class="nav-item col-2 pointer" ng-class="{'active show' : tab == 'Approved'}" ng-click="tab='Approved';changeTab()">
+                                    <a class="nav-link" id="Approved" data-toggle="tab" role="tab" aria-controls="Approved" aria-selected="false">Approved <span class="resultCount">{{approved.length}}</span></a>
+                                </li>
+                                <li class="nav-item col-2 pointer" ng-class="{'active show' : tab == 'Waitingforapproval'}" ng-click="tab='Waitingforapproval';changeTab()">
+                                    <a class="nav-link" id="Waitingforapproval" data-toggle="tab" role="tab" aria-controls="Waitingforapproval" aria-selected="false">Waiting for approval <span class="resultCount">{{waitingforapproval.length}}</span></a>
+                                </li>
+                                <li class="nav-item col-2 pointer" ng-class="{'active show' : tab == 'Rejected'}" ng-click="tab='Rejected';changeTab()">
+                                    <a class="nav-link" id="Rejected" data-toggle="tab" role="tab" aria-controls="Rejected" aria-selected="false">Rejected <span class="resultCount">{{rejected.length}}</span></a>
+                                </li>
+                                <li class="nav-item col-2 pointer" ng-class="{'active show' : tab == 'Assigned'}" ng-click="tab='Assigned';changeTab()">
+                                    <a class="nav-link" id="Assigned" data-toggle="tab" role="tab" aria-controls="Assigned" aria-selected="false">Assigned <span class="resultCount">{{assigned.length}}</span></a>
+                                </li>
+                            </ul>
+                            <div class="tab-content p-3" id="resultTabContent">
+                                <div class="tab-pane fade active show" ng-class="{ 'active show' : tab == 'NewRequestCount','': tab != 'NewRequestCount'}" id="NewRequest" role="tabpanel" aria-labelledby="NewRequest">
+                                    <div class="row">
+                                        <div class="col-sm-11">
+                                            <div class="text-right">
+                                                <font size="2">sort by:</font>
+                                                <select class="custom-select innerFilterSortBy" ng-change="sorting(option)" ng-model="option">
+                                                    <option value="receivedDateDesc">By Date Asc</option>
+                                                    <option value="receivedDate">By Date Desc</option>
                                         </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <div ng-click="selectAll()" class="align-middle"><a href="javascript:;" id="seltAll" style="font-size:60%;">Select All</a></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-1">
-                                    <div ng-click="selectAll()" class="align-middle"><a href="javascript:;" id="seltAll" style="font-size:70%;">SELECT ALL</a></div>
+                                    <table class="table mt-3">
+                                        <tbody>
+                                            <tr ng-repeat="c in claimList | orderBy:orderByField:reverseSort">
+                                                <td>
+                                                    <!-- <div class="text-nowrap">
+                                                        <strong><span><font color="black"></font><class="d-inline-block pr-2">Claim No:<a class="currencyTypeCustom d-inline-block" href="javascript:void(0);" ng-click="navigateTo();">#{{c.climeNo}}</a></span></strong> <strong><span class="d-inline-block pr-2">Member No: {{c.memberNo}}</span></strong>
+                                                    </div> -->
+                                                    <div class="text-nowrap">
+                                                        <span class="d-inline-block pr-2"><strong>Claim No: </strong>
+                                                            <a class="currencyTypeCustom " href="javascript:void(0);"ng-click="navigateTo();">#{{c.climeNo}}</a>
+                                                        </span>
+                                                        <span class="d-inline-block pr-2"><strong>Member No: {{c.memberNo}}</strong></span>
+                                                    </div>
+
+
+
+                                                    <div class="text-nowrap">
+                                                        <class="d-inline-block pr-2">Voucher No: {{c.voucherNo}}
+                                                            <class="d-inline-block pr-2">Encounter Type: {{c.encounterType}}
+                                                    </div>
+                                                    <div class="text-nowrap">
+                                                        <div class="receiveInfo d-inline-block pr-3"><span class="oi" data-glyph="timer"></span> Request recieved on: {{c.requestRecievedOn}}</div>
+                                                        <div class="statusInfo d-inline-block text-success" ng-class="{'text-success': c.status=='Approved','text-danger': c.status!='Approved'}">
+                                                            <span ng-if="c.status=='Approved'" class="oi" data-glyph="thumb-up"></span>
+                                                            <span ng-if="c.status!='Approved'" class="oi" data-glyph="thumb-down"></span> &nbsp;{{c.status}}
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-bottom">
+                                                    <div class="text-nowrap">Prev Request : {{c.prevRequest}}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-nowrap">
+                                                        <span class="tablLal">Pay Mode:</span><span class="tablCont">{{c.payMode}}</span>
+                                                    </div>
+                                                    <div class="text-nowrap">
+                                                        <span class="tablLal">Pay Date:</span><span class="tablCont">{{c.payDate}}</span>
+                                                    </div>
+                                                    <div class="text-nowrap">
+                                                        <span class="tablLal">Pay Ref No:</span><span class="tablCont">{{c.payRefNo}}</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="text-nowrap">
+                                                        Requested Amount
+                                                        <h4>{{c.currencyCode}} {{c.requestedAmount}}</h4>
+                                                        Approved Amount: {{c.currencyCode}} {{c.approvedAmount}}
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <a href="javascript:;" class="custSelectBtn" ng-class="{custSelectBtnSected : c.selected}" aria-label="Select All" ng-click="c.selected = !c.selected; assignedtouser(c, $index);"><span class="oi align-middle" data-glyph="check"></span></a>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            <table class="table mt-3">
-                                <tbody>
-                                    <tr ng-repeat="c in claimList | orderBy:orderByField:reverseSort">
-                                        <td>
-                                            <div class="text-nowrap">
-                                                <span class="d-inline-block pr-2">Claim No: <a href="javascript:void(0);" ng-click="navigateTo();">#{{c.climeNo}}</a></span> <span class="d-inline-block pr-2">Member No: {{c.memberNo}}</span>
-                                            </div>
-                                            <div class="text-nowrap">
-                                                <strong class="d-inline-block pr-2">Voucher No: {{c.voucherNo}}</strong> <strong class="d-inline-block pr-2">Encounter Type: {{c.encounterType}}</strong>
-                                            </div>
-                                            <div class="text-nowrap">
-                                                <div class="receiveInfo d-inline-block pr-3"><span class="oi" data-glyph="timer"></span> Request recieved on: {{c.requestRecievedOn}}</div>
-                                                <div class="statusInfo d-inline-block text-success" ng-class="{'text-success': c.status=='Approved','text-danger': c.status!='Approved'}">
-                                                    <span ng-if="c.status=='Approved'" class="oi" data-glyph="thumb-up"></span>
-                                                    <span ng-if="c.status!='Approved'" class="oi" data-glyph="thumb-down"></span> &nbsp;{{c.status}}
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="align-bottom">
-                                            <div class="text-nowrap">Prev Request : {{c.prevRequest}}</div>
-                                        </td>
-                                        <td>
-                                            <div class="text-nowrap">
-                                                <span class="tablLal">Pay Mode:</span><span class="tablCont">{{c.payMode}}</span>
-                                            </div>
-                                            <div class="text-nowrap">
-                                                <span class="tablLal">Pay Date:</span><span class="tablCont">{{c.payDate}}</span>
-                                            </div>
-                                            <div class="text-nowrap">
-                                                <span class="tablLal">Pay Ref No:</span><span class="tablCont">{{c.payRefNo}}</span>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">
-                                            <div class="text-nowrap">
-                                                Requested Amount
-                                                <h4>{{c.currencyCode}} {{c.requestedAmount}}</h4>
-                                                Approved Amount: {{c.currencyCode}} {{c.approvedAmount}}
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <a href="javascript:;" class="custSelectBtn" ng-class="{custSelectBtnSected : c.selected}" aria-label="Select All" ng-click="c.selected = !c.selected"><span class="oi align-middle" data-glyph="check"></span></a>
-
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        </div>
+                    </div>
+                    <div class="col-3 innerRight">
+                        <h3 class="pt-3">Assign to user</h3>
+                        <!-- <input type="text" class="form-control" placeholder="Search Assigned Name" ng-model="nameAndID"> -->
+                        <div class="row" style="padding:0 15px;">
+                            <span style="width:5%;padding: 7px 0;"><i class="oi align-middle" data-glyph="magnifying-glass"></i></span>
+                            <md-autocomplete style="width:92%" md-selected-item="selectedItem" md-search-text="searchText" md-selected-item-change="submit()" md-items="item in querySearch(searchText)" md-item-text="item.name" placeholder="UserName">
+                                <md-item-template>
+                                    <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
+                                </md-item-template>
+                                <md-not-found>
+                                    No Result Found
+                                    <!-- No states matching "{{searchText}}" were found. -->
+                                </md-not-found>
+                            </md-autocomplete>
+                        </div>
+                        <table class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">User ID</th>
+                                    <th scope="col">Name</th>
+                                    <th class="text-center" scope="col">Assigned</th>
+                                    <th class="text-center" scope="col">Pending</th>
+                                    <th scope="col">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="u in users">
+                                    <td>#{{u.userId}}</td>
+                                    <td>{{u.name}}</td>
+                                    <td class="text-center"><strong ng-class="{'text-success': u.assigned < 15,'text-danger': u.assigned > 14}" class="text-success">{{u.assigned}}</strong></td>
+                                    <td class="text-center">{{u.pending}}</td>
+                                    <td class="text-center">
+                                        <div class="custom-control custom-radio" ng-click="selectedData(u)">
+                                            <input type="radio" name="customRadio" class="custom-control-input">
+                                            <label class="custom-control-label"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="align-middle text-center float-right" ng-click="assignedData()">
+                            <a href="javascript:;" class="searBtn searBtnWithText"> Assign</a>
+                        </div>
+                        <!-- <span class="oi text-success" data-glyph="box" style="font-size:12px;"> &nbsp;Available&nbsp; </span>
+                        <span class="oi text-danger" data-glyph="box" style="font-size:12px;padding-left:5px"> &nbsp;Not available&nbsp; </span> -->
+                        <div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-3 innerRight">
-                <h3 class="pt-3">Assign to user</h3>
-                <!-- <input type="text" class="form-control" placeholder="Search Assigned Name" ng-model="nameAndID"> -->
-                <div class="row ">
-                    <md-autocomplete style="width: 100%;" md-selected-item="selectedItem" md-search-text="searchText" md-selected-item-change="submit()" md-items="item in querySearch(searchText)" md-item-text="item.name" placeholder="UserName">
-                        <md-item-template>
-                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
-                        </md-item-template>
-                        <md-not-found>
-                            No Result Found
-                            <!-- No states matching "{{searchText}}" were found. -->
-                        </md-not-found>
-                    </md-autocomplete>
-                </div>
-                <table class="table mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">User ID</th>
-                            <th scope="col">Name</th>
-                            <th class="text-center" scope="col">Assigned</th>
-                            <th class="text-center" scope="col">Pending</th>
-                            <th scope="col">&nbsp;</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="u in users">
-                            <td>#{{u.userId}}</td>
-                            <td>{{u.name}}</td>
-                            <td class="text-center"><strong ng-class="{'text-success': u.assigned < 15,'text-danger': u.assigned > 14}" class="text-success">{{u.assigned}}</strong></td>
-                            <td class="text-center">{{u.pending}}</td>
-                            <td class="text-center">
-                                <div class="custom-control custom-radio" ng-click="selectedData(u)">
-                                    <input type="radio" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label"></label>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="align-middle text-center float-right" ng-click="assignedData()">
-                    <a ng-click="submit()" href="javascript:;" class="searBtn searBtnWithText"> Assign</a>
-                </div>
-                <span class="oi text-success" data-glyph="box" style="font-size:12px;"> &nbsp;Available&nbsp; </span>
-                <span class="oi text-danger" data-glyph="box" style="font-size:12px;padding-left:5px"> &nbsp;Not available&nbsp; </span>
-                <div>
-                </div>
-            </div>
         </div>
     </div>
-</div>
+</section>

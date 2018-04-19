@@ -1,91 +1,101 @@
+<nav class="navbar pt-1 pb-1">
+    <span class="navbar-brand p-0 m-0" ui-sref="claim-registration">Claims Registration</span>
+</nav>
 <section>
-    <div class="row">
-        <div class="searchBar col-sm-8">
-            <div class="searchBarRow">
-                <div layout-gt-sm="row">
-                    <div class="col-sm-4" style="border-left: 1px solid #e6e6e6;">
-                        <md-input-container flex-gt-sm>
-                            <label>Policy Number</label>
-                            <input ng-model="memberNumber" />
-                        </md-input-container>
+    <div class="leftContainer">
+        <div class="contentPart">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-7 p-0">
+                        <div class="reimbListTabl">
+                            <div layout-gt-sm="row">
+                                <div class="col-sm-4" style="border-left: 1px solid #e6e6e6;">
+                                    <md-input-container flex-gt-sm>
+                                        <label>IBAN Number</label>
+                                        <input ng-model="memberNumber" />
+                                    </md-input-container>
+                                </div>
+                                <div class="col-sm-4" style="border-left: 1px solid #e6e6e6;">
+                                    <md-input-container flex-gt-sm>
+                                        <label>Member Card Number</label>
+                                        <input ng-model="memberCardNumber">
+                                    </md-input-container>
+                                </div>
+                                <div class="col-sm-3" style="border-left: 1px solid #e6e6e6;">
+                                    <md-input-container flex-gt-sm>
+                                        <label>Reference Number</label>
+                                        <input ng-model="referenceNumber">
+                                    </md-input-container>
+                                </div>
+                                <div ng-click="searchBtn()" class="col-sm-1" style="border-left: 1px solid #e6e6e6;padding-top: 10px;">
+                                    <a href="javascript:;" class="searBtn mt-1 ml-1 align-middle" style="float:middle;"><span class="oi align-middle" data-glyph="magnifying-glass"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-4" style="border-left: 1px solid #e6e6e6;">
-                        <md-input-container flex-gt-sm>
-                            <label>Member Card Number</label>
-                            <input ng-model="memberCardNumber">
-                        </md-input-container>
-                    </div>
-                    <div class="col-sm-3" style="border-left: 1px solid #e6e6e6;">
-                        <md-input-container flex-gt-sm>
-                            <label>Reference Number</label>
-                            <input ng-model="referenceNumber">
-                        </md-input-container>
-                    </div>
-                    <div ng-click="searchBtn()" class="col-sm-1" style="border-left: 1px solid #e6e6e6;padding-top: 10px;">
-                        <a href="javascript:;" class="searBtn mt-1 ml-3 mr-3 align-middle" style="float:middle;"><span class="oi align-middle" data-glyph="magnifying-glass"></span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4" style="padding-left: 14px;">
-            <a href="javascript:;" class="btn btn-primary createNewBtn mt-3 ml-4" ui-sref="claim-registration-general" style="float:right; pading-left:5px;">Create new</a>
-        </div>
-    </div>
-    <div class="clearfix"></div>
-    <div class="contentPart pt-3 pb-3">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 p-0">
-                    <div class="reimbListTabl">
-                        <h3 class="innerHeadText mt-2 mb-2 ml-2 d-inline-block">Claim Treatment/Service Level</h3>
-                        <table class="table">
-                            <thead>
-
-                                <tr>
-                                    <th ng-click="sortBy('referenceNumber')">Reference Number
-                                        <span class="sortorder pointer" ng-show="propertyName == 'referenceNumber'" ng-class="{reverse: reverse}"></span>
-                                    </th>
-                                    </th>
-                                    <th ng-click="sortBy('memberNumber')">Member Number
-                                        <span class="sortorder" ng-show="propertyName == 'memberNumber'" ng-class="{reverse: reverse}"></span>
-                                    </th>
-                                    <th ng-click="sortBy('memberName')">Member Name
-                                        <span class="sortorder" ng-show="propertyName == 'memberName'" ng-class="{reverse: reverse}"></span>
-                                    </th>
-                                    <th ng-click="sortBy('mobileNumber')">Mobile Number
-                                        <span class="sortorder" ng-show="propertyName == 'mobileNumber'" ng-class="{reverse: reverse}"></span>
-                                    </th>
-                                    <th ng-click="sortBy('alternateEmail')">Alternate Email
-                                        <span class="sortorder" ng-show="propertyName == 'alternateEmail'" ng-class="{reverse: reverse}"></span>
-                                    </th>
-                                    <th ng-click="sortBy('paymentType')">Payment Type
-                                        <span class="sortorder" ng-show="propertyName == 'paymentType'" ng-class="{reverse: reverse}"></span>
-                                    </th>
-                                    <th ng-click="sortBy('iBANNumber')">IBAN Number
-                                        <span class="sortorder" ng-show="propertyName == 'iBANNumber'" ng-class="{reverse: reverse}"></span>
-                                    </th>
-                                    <th>IBAN Document</th>
-                                </tr>
-
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="claim in claimTreatMent | orderBy:propertyName:reverse">
-                                    <td>{{claim.referenceNumber}}</td>
-                                    <td>{{claim.memberNumber}}</td>
-                                    <td>{{claim.memberName}}</td>
-                                    <td>{{claim.mobileNumber}}</td>
-                                    <td>{{claim.alternateEmail}}</td>
-                                    <td>{{claim.paymentType}}</td>
-                                    <td>{{claim.iBANNumber}}</td>
-                                    <td class="text-center">
-                                        <a class="oi" data-glyph="paperclip" href="resources/img/dis.png" download></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="col-5 p-0">
+                        <a href="javascript:;" class="btn btn-primary createNewBtn float-left mt-3 ml-4" ui-sref="claim-registration-general" style="float:right; pading-left:5px;">Register New Claim</a>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="clearfix"></div>
+        <div class="contentPart pt-3 pb-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <div class="reimbListTabl" id="reimbListTabl">
+                            <h3 class="innerHeadText mt-2 mb-2 ml-2 d-inline-block">Registered Request</h3>
+                            <table class="table">
+                                <thead>
+
+                                    <tr>
+                                        <th ng-click="sortBy('referenceNumber')">Reference Number
+                                            <span class="fa" ng-show="propertyName == 'referenceNumber'" ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span> 
+                                        </th>
+                                        
+                                        <th ng-click="sortBy('memberNumber')">Member Number
+                                            <span class="fa" ng-show="propertyName == 'memberNumber'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
+                                        </th>
+                                        <th ng-click="sortBy('memberName')">Member Name
+                                            <span class="fa" ng-show="propertyName == 'memberName'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
+                                        </th>
+                                        <th ng-click="sortBy('mobileNumber')">Mobile Number
+                                            <span class="fa" ng-show="propertyName == 'mobileNumber'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
+                                        </th>
+                                        <th ng-click="sortBy('alternateEmail')">Alternate Email
+                                            <span class="fa"ng-show="propertyName == 'alternateEmail'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
+                                        </th>
+                                        <th ng-click="sortBy('paymentType')">Payment Type
+                                            <span class="fa" ng-show="propertyName == 'paymentType'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
+                                        </th>
+                                        <th ng-click="sortBy('iBANNumber')">IBAN Number
+                                            <span class="fa" ng-show="propertyName == 'iBANNumber'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
+                                        </th>
+                                        <th>IBAN Document</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="claim in claimTreatMent | orderBy:propertyName:reverse">
+                                        <td>{{claim.referenceNumber}}</td>
+                                        <td>{{claim.memberNumber}}</td>
+                                        <td>{{claim.memberName}}</td>
+                                        <td>{{claim.mobileNumber}}</td>
+                                        <td>{{claim.alternateEmail}}</td>
+                                        <td>{{claim.paymentType}}</td>
+                                        <td>{{claim.iBANNumber}}</td>
+                                        <td class="text-center">
+                                            <a class="oi" data-glyph="paperclip" href="resources/img/dis.png" download></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 </section>

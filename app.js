@@ -11,9 +11,11 @@ angular
         'ui.grid.pinning',
         'ngMaterial',
         'daterangepicker',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'ngNotify'
     ])
-    .config(stateConfig);
+    .config(stateConfig)
+    .run(appConfig)
 
     stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
@@ -59,5 +61,16 @@ angular
                 controller: 'ReimbursmentProcessingController'
             })
         $urlRouterProvider.otherwise("/");    
+    }
+
+    function appConfig ($transitions, $rootScope, ngNotify) {
+        ngNotify.config({
+            position: 'top',
+            duration: 2000,
+            button : true
+        });
+        $transitions.onSuccess({}, function() {
+            $rootScope.navbar = false;
+        });
     }
 })();

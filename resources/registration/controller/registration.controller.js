@@ -5,9 +5,9 @@
         .module('claims')
         .controller('RegistrationController', RegistrationController)
 
-    RegistrationController.$inject = ['$scope', '$rootScope', 'RegistrationService'];
+    RegistrationController.$inject = ['$scope', '$rootScope', 'RegistrationService', 'ngNotify', '$filter'];
 
-    function RegistrationController($scope, $rootScope, RegistrationService) {
+    function RegistrationController($scope, $rootScope, RegistrationService, ngNotify, $filter) {
         $scope.referenceNumber;
         $scope.memberCardNumber;
         $scope.claimTreatMent = [{
