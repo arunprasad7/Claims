@@ -53,9 +53,9 @@
                 {name:'shortfallAmount', displayName:'Shortfall Amount', cellTemplate:numTemplate,width:155},
                 {name:'rejDesc', displayName:'Rejection Description', cellTemplate:textTemplate,width:175},
                 {name:'remarks', displayName:'Internal Remarks', cellTemplate:textTemplate,width:162},
-                {name:'approvedAmt', displayName:'Approved Amount', cellTemplate:numTemplate,width:160, enableCellEdit:false, pinnedRight:true},
-                {name:'rejectedAmt', displayName:'Rejected Amount   ', cellTemplate:numTemplate,width:160, enableCellEdit:false, pinnedRight:true},
-                {name:'status', displayName:'Status', cellTemplate:textTemplate,width:145, enableCellEdit:false, pinnedRight:true}                
+                {name:'approvedAmt', displayName:'Approved Amount', cellTemplate:numTemplate,width:160, enableCellEdit:false},
+                {name:'rejectedAmt', displayName:'Rejected Amount', cellTemplate:numTemplate,width:160, enableCellEdit:false},
+                {name:'status', displayName:'Status', cellTemplate:textTemplate,width:145, enableCellEdit:false}                
             ],
             enableSorting: false
         }
