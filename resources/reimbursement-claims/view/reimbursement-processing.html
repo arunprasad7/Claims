@@ -114,31 +114,6 @@
             </div>
             <div class="rightContentPart float-right pr-0 pb-3">
                 <a href="javascript:;" class="infoToggleBtn" ng-class="{'infoToggleBtnToggled' : infoToggle}" ng-click="infoToggle = !infoToggle" ng-style="{'margin-left' : !infoToggle ? '12px' : '0px'}"><span class="oi" data-glyph="arrow-left"></span> <br />info</a>
-                <div class="medicalCardInfoBox medicalCardInfoBoxShow" id="medicalCardInfoBox" ng-class="{'medicalCardInfoBoxShow' : !infoToggle}">
-                    <h3>Medical card info</h3>
-                    <ul>
-                        <li>
-                            <span>Inpatient: </span>
-                            <span>Nil</span>
-                        </li>   
-                        <li>
-                            <span>Pharmacy:</span>
-                            <span>10%</span>
-                        </li>
-                        <li>
-                            <span>Consultation:</span>
-                            <span>50 AED</span>
-                        </li>
-                        <li>
-                            <span>Dental:</span>
-                            <span>10%</span>    
-                        </li>
-                        <li>
-                            <span>Lab:</span>
-                            <span>10%</span>
-                        </li>
-                    </ul>
-                </div>
                 <div class="row col-sm-12">
                     <div class="infoList clearfix  col-sm-7">
                         <li>
@@ -163,21 +138,48 @@
                         </li>
                     </div>
                     <div class="col-sm-3 reimbursement-carousel" ng-hide="infoToggle">
-                            <ui-carousel slides="claimReqList" class="" slides-to-show="1" slides-to-scroll="1" initial-slide="0" style="width:350px;">
-                                <carousel-item  class="eclaim-item">
-                                    <li style="cursor:pointer">
-                                        <p style="margin:0px;"><b>Request Number:</b> <span style="color:#4e5e82">#{{item.reqNum}}</span> &nbsp;</p><strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong>
-                                        <span style="padding-bottom:2px;"><b>Claim Status Reason:</b> <span style="color:#4e5e82">{{item.statusReason}}</span></span>
-                                        <span style="padding-bottom:2px;"><b>Rejected Reason:</b> <span style="color:#4e5e82">{{item.rejectedReason}}</span></span>
-                                    </li>
-                                </carousel-item>                
-                                <carousel-prev>
-                                    <a href="javascript:;" class="requstListLeftArrow"><span class="oi" data-glyph="chevron-left"></span></a>
-                                </carousel-prev>
-                                <carousel-next>
-                                    <a href="javascript:;" class="requstListRightArrow"><span class="oi" data-glyph="chevron-right"></span></a>
-                                </carousel-next>
+                        <ui-carousel slides="claimReqList" class="" slides-to-show="1" slides-to-scroll="1" initial-slide="0" style="width:350px;float:right;">
+                            <carousel-item  class="eclaim-item">
+                                <li style="cursor:pointer">
+                                    <p style="margin:0px;"><b>Request Number:</b> <span style="color:#4e5e82">#{{item.reqNum}}</span> &nbsp;</p><strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong>
+                                    <span style="padding-bottom:2px;"><b>Claim Status Reason:</b> <span style="color:#4e5e82">{{item.statusReason}}</span></span>
+                                    <span style="padding-bottom:2px;"><b>Rejected Reason:</b> <span style="color:#4e5e82">{{item.rejectedReason}}</span></span>
+                                </li>
+                            </carousel-item>                
+                            <carousel-prev>
+                                <a href="javascript:;" class="requstListLeftArrow"><span class="oi" data-glyph="chevron-left"></span></a>
+                            </carousel-prev>
+                            <carousel-next>
+                                <a href="javascript:;" class="requstListRightArrow"><span class="oi" data-glyph="chevron-right"></span></a>
+                            </carousel-next>
                         </ui-carousel>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="medicalCardInfoBox medicalCardInfoBoxShow" id="medicalCardInfoBox" ng-class="{'medicalCardInfoBoxShow' : !infoToggle}">
+                            <h3>Medical card info</h3>
+                            <ul>
+                                <li>
+                                    <span>Inpatient: </span>
+                                    <span>Nil</span>
+                                </li>   
+                                <li>
+                                    <span>Pharmacy:</span>
+                                    <span>10%</span>
+                                </li>
+                                <li>
+                                    <span>Consultation:</span>
+                                    <span>50 AED</span>
+                                </li>
+                                <li>
+                                    <span>Dental:</span>
+                                    <span>10%</span>    
+                                </li>
+                                <li>
+                                    <span>Lab:</span>
+                                    <span>10%</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div ng-class="{'reimbur-trans-hide' : !createNew, 'reimbur-trans-show' : createNew}">
