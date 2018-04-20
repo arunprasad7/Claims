@@ -5,10 +5,10 @@
         .module('claims')
         .controller('RegistrationGeneralController', RegistrationGeneralController)
     
-    RegistrationGeneralController.$inject = ['$scope', '$rootScope', 'RegistrationService', '$sce', '$state', '$uibModal', '$timeout', 'ngNotify'];
+    RegistrationGeneralController.$inject = ['$scope', '$rootScope', 'RegistrationService', '$sce', '$state', '$uibModal', '$timeout', 'ngNotify', '$stateParams'];
 
-    function RegistrationGeneralController($scope, $rootScope, RegistrationService, $sce, $state, $uibModal, $timeout, ngNotify) {
-        $scope.regDetail = RegistrationService.createRegDetailObj();
+    function RegistrationGeneralController($scope, $rootScope, RegistrationService, $sce, $state, $uibModal, $timeout, ngNotify, $stateParams) {
+        $scope.regDetail = angular.equals({}, $stateParams.claim) ?  RegistrationService.createRegDetailObj() : $stateParams.claim;
         $scope.previewIndex = 0;
         
         $scope.setDcoumentType = function(documentType) {

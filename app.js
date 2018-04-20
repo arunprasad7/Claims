@@ -26,7 +26,7 @@ angular
                 template: "<h4 style=\"text-align: center; padding: 150px;\">Claim Home</h4>"                
             })
             .state('claim-registration-general', {
-                url: "/claim-registration-general",
+                url: "/claim-registration-general/{claim:json}",
                 templateUrl: "resources/registration/view/registration-general.html",
                 controller: 'RegistrationGeneralController'
             })
