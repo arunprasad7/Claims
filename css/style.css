@@ -401,8 +401,8 @@ input.fileupload {
 }
 
 .innerRight .custom-control {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     padding: 0;
     margin: 0;
     display: inline-block;
@@ -1177,7 +1177,7 @@ footer li strong {
 }
 
 .leftContentPart {
-    width: 270px;
+    width: 300px;
     padding: 0 15px;
     white-space: nowrap;
     overflow: hidden;
@@ -1194,7 +1194,7 @@ footer li strong {
 }
 
 .rightContentPart {
-    width: calc(100% - 270px);
+    width: calc(100% - 300px);
     padding: 0 9px;
     position: relative;
     -webkit-transition: width 700ms ease-in;
@@ -1313,7 +1313,7 @@ footer li strong {
     top: -17px;
     color: #fff;
     width: 0;
-    height: 88px;
+    height: 120px;
     white-space: nowrap;
     overflow: hidden;
     -webkit-transition: all 700ms ease-in;
@@ -1649,4 +1649,8 @@ footer {
 }
 .selectline{
     line-height: 3.15;
+}
+
+.md-input, .md-text {
+    font-size: 14px;
 }

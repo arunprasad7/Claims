@@ -30,6 +30,7 @@
                 $scope.treatmentCodes = getCodes('T');
                 $scope.rejectionCodes = getCodes('R');
                 initGrid();
+                $scope.selectedClaim = {'claimNo' : 80010201, 'requestNo' : 10010201-1, 'status' : 'Approved', 'policyNo' : 80010201, 'memberNo' : 10010201-1};
             }
 
             $scope.createNewClaim = function() {

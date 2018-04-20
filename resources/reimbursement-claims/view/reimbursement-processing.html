@@ -118,23 +118,23 @@
                     <div class="infoList clearfix  col-sm-7">
                         <li>
                             <span>Claim Number</span>
-                            <strong>80010201</strong>
+                            <strong>{{selectedClaim.claimNo}}</strong>
                         </li>
                         <li>
                             <span>Request Number</span>
-                            <strong>10010201-1</strong>
+                            <strong>{{selectedClaim.requestNo}}</strong>
                         </li>
                         <li>
                             <span>Status</span>
-                            <strong class="text-success">Approved</strong>
+                            <strong ng-class="{'text-success' : selectedClaim.status == 'Approved', 'text-danger' : selectedClaim.status == 'Rejected'}">{{selectedClaim.status}}</strong>
                         </li>
                         <li>
                             <span>Policy Number</span>
-                            <strong>80010201</strong>
+                            <strong>{{selectedClaim.policyNo}}</strong>
                         </li>
                         <li>
                             <span>Member Number</span>
-                            <strong>10010201-1</strong>
+                            <strong>{{selectedClaim.memberNo}}</strong>
                         </li>
                     </div>
                     <div class="col-sm-3 reimbursement-carousel" ng-hide="infoToggle">
