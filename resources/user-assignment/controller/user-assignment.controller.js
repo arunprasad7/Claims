@@ -289,12 +289,11 @@
         $scope.datePicker.date = { startDate: null, endDate: null };
 
         $scope.click = function() {
-            if (($scope.climeNo == "" || $scope.climeNo == null) && ($scope.memberNumber == "" || $scope.memberNumber == null)) {
+            if (($scope.climeNo == "" || $scope.climeNo == null) && ($scope.memberNumber == "" || $scope.memberNumber == null) && ($scope.voucherNumber == "" || $scope.voucherNumber == null)) {
                 $scope.claimList = $scope.result;
             } else {
-                //$scope.claimList = $scope.claim;
-                // $scope.claimList = $filter('filter')($scope.claimList ,{climeNo:$scope.climeNo,memberNo:$scope.memberNumber});
-                $scope.claimList = $filter('filter')($scope.claim, { climeNo: $scope.climeNo, memberNo: $scope.memberNumber });
+                
+                $scope.claimList = $filter('filter')($scope.claim, { climeNo: $scope.climeNo, memberNo: $scope.memberNumber,voucherNo: $scope.voucherNumber});
 
             }
 
@@ -310,13 +309,7 @@
             
             }
         }
-        //         angular.forEach($scope.chckedIndexs, function (value, index) {
-        //             var index = $scope.claim.indexOf(value);
-        //             $scope.claim.splice($scope.claim.indexOf(value), 1);
-        //         });
-        //           $scope.chckedIndexs = [];
-        //    };
-        
+       
 
         $scope.sorting = function(field) {
             $scope.orderByField = 'requestRecievedOn';
