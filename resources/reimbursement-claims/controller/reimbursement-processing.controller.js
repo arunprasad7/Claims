@@ -128,7 +128,7 @@
 
             function initGrid() {
                 $scope.gridOptions = {
-                    data : EclaimService.getEclaimList(true),
+                    data : [],
                     columnDefs: [
                         {name:'action', displayName:'', cellTemplate:staticTemplate,width:145, pinnedLeft:true},
                         {name:'treatmentCodeOrSubBenefit.name', displayName:'Treatment Code/SubBenefit',width:200},
