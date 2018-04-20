@@ -27,10 +27,6 @@
                 $scope.claim = createNewReimbursmentObject();
                 $scope.claimsResult.push(createNewReimbursmentObject());
                 $scope.claimReqList = getClaimsRequest();
-                $scope.noOfSlides = 3;
-                if(window.innerWidth >= 1300) {
-                     $scope.noOfSlides = 4;
-                }
                 $scope.treatmentCodes = getCodes('T');
                 $scope.rejectionCodes = getCodes('R');
                 initGrid();
@@ -51,13 +47,6 @@
                 angular.forEach($scope.claimsResult, function(claim, key) {
                     $scope.claimsResult[key]['onCheck'] = checkAll;
                 })
-            }
-
-            $scope.getWidth = function() {
-                if($scope.infoToggle) {
-                    return (window.innerWidth - 380) + 'px';
-                }
-                return (window.innerWidth - 100) + 'px';
             }
 
             $scope.querySearch = function(query, codeType) {

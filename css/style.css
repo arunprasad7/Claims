@@ -856,6 +856,7 @@ md-input-container md-select label,
     left: -1rem;
     top: 0;
     text-align: center;
+    z-index: 2;
 }
 
 .infoToggleBtn:hover,
@@ -1321,7 +1322,7 @@ footer li strong {
 }
 
 .medicalCardInfoBoxShow {
-    width: 300px;
+    width: 280px;
     padding: 0.45rem;
 }
 
@@ -1352,6 +1353,35 @@ footer li strong {
 
 .medicalCardInfoBox li span:first-child {
     width: 60%;
+}
+
+.reimbursement-carousel {
+    font: 12px/16px "open_sanssemibold";
+    top: -17px;
+    left: -66px;
+    line-height: 18px;
+    padding: 0 0.5rem;
+}
+
+.reimbursement-carousel li {
+    padding: 8px 15px;
+    list-style: none;
+    border-radius: 2px;
+    background: #fff;
+    height: 88px;
+    width : 85.4%
+}
+
+.reimbursement-carousel .track-wrapper {
+    width: 92%;
+}
+
+.reimbursement-carousel .carousel-prev {
+    left: -23px;
+}
+
+.reimbursement-carousel .carousel-next {
+    right: 29px;
 }
 
 #detailAcc .card-header {

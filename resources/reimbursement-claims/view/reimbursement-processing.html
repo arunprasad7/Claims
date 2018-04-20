@@ -139,35 +139,50 @@
                         </li>
                     </ul>
                 </div>
-                <ul class="infoList clearfix">
-                    <li>
-                        <span>Claim Number</span>
-                        <strong>80010201</strong>
-                    </li>
-                    <li>
-                        <span>Request Number</span>
-                        <strong>10010201-1</strong>
-                    </li>
-                    <li>
-                        <span>Status</span>
-                        <strong class="text-success">Approved</strong>
-                    </li>
-                    <li>
-                        <span>Policy Number</span>
-                        <strong>80010201</strong>
-                    </li>
-                    <li>
-                        <span>Voucher Number</span>
-                        <strong>80010201</strong>
-                    </li>
-                    <li>
-                        <span>Member Number</span>
-                        <strong>10010201-1</strong>
-                    </li>
-                </ul>
+                <div class="row col-sm-12">
+                    <div class="infoList clearfix  col-sm-7">
+                        <li>
+                            <span>Claim Number</span>
+                            <strong>80010201</strong>
+                        </li>
+                        <li>
+                            <span>Request Number</span>
+                            <strong>10010201-1</strong>
+                        </li>
+                        <li>
+                            <span>Status</span>
+                            <strong class="text-success">Approved</strong>
+                        </li>
+                        <li>
+                            <span>Policy Number</span>
+                            <strong>80010201</strong>
+                        </li>
+                        <li>
+                            <span>Member Number</span>
+                            <strong>10010201-1</strong>
+                        </li>
+                    </div>
+                    <div class="col-sm-3 reimbursement-carousel" ng-hide="infoToggle">
+                            <ui-carousel slides="claimReqList" class="" slides-to-show="1" slides-to-scroll="1" initial-slide="0" style="width:350px;">
+                                <carousel-item  class="eclaim-item">
+                                    <li style="cursor:pointer">
+                                        <p style="margin:0px;"><b>Request Number:</b> <span style="color:#4e5e82">#{{item.reqNum}}</span> &nbsp;</p><strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong>
+                                        <span style="padding-bottom:2px;"><b>Claim Status Reason:</b> <span style="color:#4e5e82">{{item.statusReason}}</span></span>
+                                        <span style="padding-bottom:2px;"><b>Rejected Reason:</b> <span style="color:#4e5e82">{{item.rejectedReason}}</span></span>
+                                    </li>
+                                </carousel-item>                
+                                <carousel-prev>
+                                    <a href="javascript:;" class="requstListLeftArrow"><span class="oi" data-glyph="chevron-left"></span></a>
+                                </carousel-prev>
+                                <carousel-next>
+                                    <a href="javascript:;" class="requstListRightArrow"><span class="oi" data-glyph="chevron-right"></span></a>
+                                </carousel-next>
+                        </ui-carousel>
+                    </div>
+                </div>
                 <div ng-class="{'reimbur-trans-hide' : !createNew, 'reimbur-trans-show' : createNew}">
                     <div class="claimRequestDetails mt-3">
-                        <div class="claimRequestDetInner mb-3 clearfix" style="margin-top:3%;padding-left:0px;">
+                        <div class="claimRequestDetInner mb-3 clearfix" style="padding-left:0px;">
                             <!-- <div class="row mb-2 clearfix"> -->
                                 <div layout-gt-sm="row" class="pb-1">
                                     <div class="masterCodes col-sm-2.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px 0 19px;">
@@ -350,7 +365,7 @@
                         </a>
                     </div>
                     <div class="table eclaimRequestTabl">
-                        <div ui-grid="gridOptions" ui-grid-pinning="" ui-grid-edit="" class="eclaimRequestTabl"></div>
+                        <div ui-grid="gridOptions" ui-grid-pinning="" class="eclaimRequestTabl"></div>
                     </div>
                     <div ng-show="noRecordsAvailable">
                         No Record Available...
