@@ -195,15 +195,15 @@
             });
 
             $scope.saveRecord = function(saveType) {
-                if ($scope.claim && $scope.claim.treatmentCodeOrSubBenefit != "" && $scope.claim.treatmentCodeOrSubBenefit != null) {
+                // if ($scope.claim && $scope.claim.treatmentCodeOrSubBenefit != "" && $scope.claim.treatmentCodeOrSubBenefit != null) {
                     processClaim($scope.claim);
                     $scope.noRecordsAvailable = $scope.gridOptions['data'].length == 0;
                     $scope.claim = createNewReimbursmentObject();
                     $scope.createNew = saveType == 'SaveAndNew';
                     ngNotify.set('Saved Succesfully.', 'success');
-                } else {
-                    ngNotify.set('Treatment Code/Sub Benefit can\'t be empty.', 'error');
-                }
+                // } else {
+                //     ngNotify.set('Treatment Code/Sub Benefit can\'t be empty.', 'error');
+                // }
             }
 
             $scope.editClaim = function(entity) {
