@@ -133,16 +133,16 @@
                         {name:'action', displayName:'', cellTemplate:staticTemplate,width:145, pinnedLeft:true},
                         {name:'treatmentCodeOrSubBenefit.name', displayName:'Treatment Code/SubBenefit',width:200},
                         {name:'serviceFrom', displayName:'Service From', cellTemplate:dateTemplate,width:120},
-                        {name:'serviceTo', displayName:'Service To', cellTemplate:dateTemplate,width:120},
+                        // {name:'serviceTo', displayName:'Service To', cellTemplate:dateTemplate,width:120},
                         {name:'days', displayName:'Days', width:90},
                         {name:'requestAmount', displayName:'Request Amount', width:140},
-                        {name:'manualDeduction', displayName:'Manual Deduction', width:140},
-                        {name:'rejectionCode.name', displayName:'Rejection Code',width:140},
                         {name:'policyDedAmount', displayName:'Policy Ded Amount',width:150},
+                        {name:'manualDeduction', displayName:'Manual Deduction', width:140},
                         {name:'penaltyAmount', displayName:'Penalty Amount', width:145},
                         {name:'suggesstedAmount', displayName:'Suggessted Amount', width:150},
                         {name:'approvedAmount', displayName:'Approved Amount', width:165},
                         {name:'rejectedAmount', displayName:'Rejected Amount', width:145},
+                        {name:'rejectionCode.name', displayName:'Rejection Code',width:140},
                         {name:'status', displayName:'Status', width:155},
                         {name:'internalRemarks', displayName:'Internal Remarks',width:210},
                         {name:'externalRemarks', displayName:'External Remarks',width:210}
@@ -193,12 +193,12 @@
                 }, "slow");
             });
 
-            $scope.saveRecord = function() {
+            $scope.saveRecord = function(saveType) {
                 if ($scope.claim && $scope.claim.treatmentCodeOrSubBenefit != "" && $scope.claim.treatmentCodeOrSubBenefit != null) {
                     processClaim($scope.claim);
                     $scope.noRecordsAvailable = $scope.gridOptions['data'].length == 0;
                     $scope.claim = createNewReimbursmentObject();
-                    $scope.createNew = false;
+                    $scope.createNew = saveType == 'SaveAndNew';
                     ngNotify.set('Saved Succesfully.', 'success');
                 } else {
                     ngNotify.set('Treatment Code/Sub Benefit can\'t be empty.', 'error');
