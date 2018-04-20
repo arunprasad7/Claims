@@ -180,8 +180,8 @@
                             <ui-carousel slides="claimReqList" class="eclaim" style="width:{{getWidth()}};" slides-to-show="noOfSlides" slides-to-scroll="1" initial-slide="0" infinite="false">
                                 <carousel-item  class="eclaim-item">
                                     <li ng-click="toggleJson(item);" style="cursor:pointer">
-                                        <p><b>Claim Number:</b> <a class="currencyTypeCustom" href="javascript:void(0);" ng-click="toggleJson(item);">#{{item.claimNum}}</a></p>
-                                        <span><b>Request Number:</b> #{{item.reqNum}} &nbsp;</span><strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong>
+                                        <p><b>Claim Number:</b> <span>#{{item.claimNum}}</span></p>
+                                        <span><b>Request Number:</b> <a class="currencyTypeCustom" href="javascript:void(0);" ng-click="toggleJson(item);">#{{item.reqNum}}</a> &nbsp;</span><strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong>
                                         <p><b>Claim Status Reason:</b> {{item.statusReason}}</p>
                                         <p><b>Rejected Reason:</b> {{item.rejectedReason}}</p>
                                     </li>

@@ -141,7 +141,11 @@
                         <ui-carousel slides="claimReqList" class="" slides-to-show="1" slides-to-scroll="1" initial-slide="0" style="width:350px;float:right;">
                             <carousel-item  class="eclaim-item">
                                 <li style="cursor:pointer">
-                                    <p style="margin:0px;"><b>Request Number:</b> <span style="color:#4e5e82">#{{item.reqNum}}</span> &nbsp;</p><strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong>
+                                    <p style="margin:0px;">
+                                        <b>Request Number:</b> 
+                                        <a class="currencyTypeCustom" href="javascript:void(0);"><span>#{{item.reqNum}}</span> </a>&nbsp;
+                                        <strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong>
+                                    </p>
                                     <span style="padding-bottom:2px;"><b>Claim Status Reason:</b> <span style="color:#4e5e82">{{item.statusReason}}</span></span>
                                     <span style="padding-bottom:2px;"><b>Rejected Reason:</b> <span style="color:#4e5e82">{{item.rejectedReason}}</span></span>
                                 </li>
