@@ -1360,6 +1360,7 @@ footer li strong {
 .reimbursement-carousel {
     font: 12px/16px "open_sanssemibold";
     top: -17px;
+    left:-66px;
     line-height: 25px;
     padding: 0 0.5rem;
 }
@@ -1652,4 +1653,13 @@ footer {
 }
 .md-input, .md-text {
     font-size: 14px;
+}
+.medicalwid {
+    width: 370px;
+    padding: 0.45rem;
+    height:90px
+}
+.medicalhgt {
+    width: 370px;
+    padding: 0.45rem;
 }
