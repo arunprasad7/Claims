@@ -20,7 +20,7 @@
                                     <div class="fldsWrap clearfix">
                                         <md-input-container flex-gt-sm>    
                                             <label>Primary Diagnosis</label>
-                                            <input type="text" ng-model="providerDetails.primaryDiagnosis" ng-value="'Stomach Pain'">
+                                            <input type="text" ng-model="providerDetails.primaryDiagnosis">
                                         </md-input-container>
                                     </div>
                                     <div class="fldsWrap clearfix">
@@ -294,18 +294,9 @@
                                     <div class="col-sm-2 float-left" style="width: auto !important;">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">
                                             <label>Status</label>
-                                            <!-- <md-select name="Statue" ng-model="claim.status">
-                                                <md-option value="Approved">Approved</md-option>
-                                                <md-option value="Rejected">Rejected</md-option>
-                                            </md-select> -->
                                             <input type="text" ng-model="claim.status" maxlength="18">
                                         </md-input-container>
                                     </div>
-                                    <!-- <div class="col-sm-6 float-right">
-                                        <a href="javascript:;" class="float-right claimReqLink mr-3 ml-3 mt-3" style="font-size: 11px;"><span class="oi" data-glyph="info"></span> Reinsurance</a>
-                                        <a href="javascript:;" class="float-right claimReqLink mr-3 mt-3" style="font-size: 11px;"><span class="oi" data-glyph="info"></span> History</a>
-                                        <a href="javascript:;" class="float-right claimReqLink mr-3 mt-3" style="font-size: 11px;"><span class="oi" data-glyph="info"></span> Policy Rules</a>
-                                    </div> -->
                                 </div>    
                             </div>
                             <div class="withBorGrayTxtWrap clearfix">
@@ -323,9 +314,6 @@
                                         </md-input-container>
                                     </div>
                                     <div class="col-sm-4 float-left" style="margin-top: 1.5rem;">
-                                        <!-- <a href="javascript:;" class="float-right claimReqLink mr-3 ml-3 mt-3" style="font-size: 11px;"><span class="oi" data-glyph="info"></span> Reinsurance</a>
-                                        <a href="javascript:;" class="float-right claimReqLink mr-3 mt-3" style="font-size: 11px;"><span class="oi" data-glyph="info"></span> History</a>
-                                        <a href="javascript:;" class="float-right claimReqLink mr-3 mt-3" style="font-size: 11px;"><span class="oi" data-glyph="info"></span> Policy Rules</a> -->
                                         <button type="button" class="btn btn-primary btn-sm float-right ml-3 mt-3" ng-click="saveRecord('OnlySave');">Save</button>
                                         <button type="button" class="btn btn-primary btn-sm float-right ml-3 mt-3" ng-click="saveRecord('SaveAndNew');">Save & New</button>
                                         <button type="button" class="btn btn-outline-primary float-right btn-sm float-left ml-3  mt-3" ng-click="onCancel();">Cancel</button>
