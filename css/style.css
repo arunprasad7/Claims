@@ -1654,12 +1654,6 @@ footer {
 .md-input, .md-text {
     font-size: 14px;
 }
-.medicalwid {
-    width: 370px;
-    padding: 0.45rem;
-    height:90px
-}
-.medicalhgt {
-    width: 370px;
-    padding: 0.45rem;
+.medicalInfoWidth {
+    width: 125% !important;
 }
