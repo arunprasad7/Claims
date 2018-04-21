@@ -7,6 +7,7 @@
     
     RegistrationService.$inject = [];
     function RegistrationService() {
+        this.claimObj = {};
         this.createRegDetailObj = function() {
             return {
                 "memberName" : null,
@@ -191,6 +192,14 @@
         
         this.searchClaims = function(params) {
             return this.getClaimRegistrationList(params);
+        }
+
+        this.setClaim = function(claim) {
+            this.claimObj = claim;
+        }
+
+        this.getClaim = function(claim) {
+            return this.claimObj;
         }
     }
 })();

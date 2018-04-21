@@ -5,9 +5,10 @@
         .module('claims')
         .controller('RegistrationGeneralController', RegistrationGeneralController)
     
-    RegistrationGeneralController.$inject = ['$scope', '$rootScope', 'RegistrationService', '$sce', '$state', '$uibModal', '$timeout', 'ngNotify', '$stateParams'];
+    RegistrationGeneralController.$inject = ['$scope', '$rootScope', 'RegistrationService', '$state', '$uibModal', '$timeout', 'ngNotify', '$stateParams', 'claim'];
 
-    function RegistrationGeneralController($scope, $rootScope, RegistrationService, $sce, $state, $uibModal, $timeout, ngNotify, $stateParams) {
+    function RegistrationGeneralController($scope, $rootScope, RegistrationService, $state, $uibModal, $timeout, ngNotify, $stateParams, claim) {
+        $scope.regDetail = claim;
         $scope.previewIndex = 0;
 
         $scope.setDcoumentType = function(documentType) {
@@ -145,11 +146,8 @@
         }
 
         function init() {
-            $scope.regDetail = angular.equals({}, $stateParams.claim) ?  RegistrationService.createRegDetailObj() : $stateParams.claim;
-            if(!angular.equals({}, $stateParams.claim)) {
-                $scope.setPaymentWay($scope.regDetail.paymentWay);
-                $scope.setDcoumentType($scope.regDetail.source);
-            }        
+            $scope.regDetail.paymentWay ? $scope.setPaymentWay($scope.regDetail.paymentWay) : '';
+            $scope.regDetail.source ? $scope.setDcoumentType($scope.regDetail.source) : '';
         }
 
         init();

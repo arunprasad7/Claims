@@ -5,9 +5,9 @@
         .module('claims')
         .controller('RegistrationController', RegistrationController)
 
-    RegistrationController.$inject = ['$scope', '$rootScope', 'RegistrationService', 'ngNotify', '$filter'];
+    RegistrationController.$inject = ['$scope', '$rootScope', 'RegistrationService', 'ngNotify', '$filter', '$state'];
 
-    function RegistrationController($scope, $rootScope, RegistrationService, ngNotify, $filter) {
+    function RegistrationController($scope, $rootScope, RegistrationService, ngNotify, $filter, $state) {
         $scope.referenceNumber;
         $scope.memberNumber;
         $scope.ibanNum;
@@ -29,5 +29,10 @@
             $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
             $scope.propertyName = propertyName;
         };
+
+        $scope.editClaim = function(claim)  {
+            RegistrationService.setClaim(claim);
+            $state.go('claim-registration-edit');
+        }
     }
 })()

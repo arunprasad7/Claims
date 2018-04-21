@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="col-5 p-0">
-                        <a href="javascript:;" class="btn btn-primary createNewBtn float-left mt-3 ml-4" ui-sref="claim-registration-general({'claim' :{}})" style="float:right; padding-left:5px;">Register New Claim</a>
+                        <a href="javascript:;" class="btn btn-primary createNewBtn float-left mt-3 ml-4" ui-sref="claim-registration-new" style="float:right; padding-left:5px;">Register New Claim</a>
                     </div>
                 </div>
             </div>
@@ -80,9 +80,7 @@
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="claim in claims | orderBy:propertyName:reverse">
-                                           
-                                        
-                                        <td><a href="javascript:void(0);" ui-sref="claim-registration-general({'claim' : claim})" ng-click="navigateTo();">{{claim.referenceNumber}}</a></td>
+                                        <td><a href="javascript:void(0);" ng-click="editClaim(claim);" ng-click="navigateTo();">{{claim.referenceNumber}}</a></td>
                                         <td>{{claim.memberNumber}}</td>
                                         <td>{{claim.memberName}}</td>
                                         <td>{{claim.policyNumber}}</td>

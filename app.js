@@ -25,11 +25,28 @@ angular
                 url: "/",
                 template: "<h4 style=\"text-align: center; padding: 150px;\">Claim Home</h4>"                
             })
-            .state('claim-registration-general', {
-                url: "/claim-registration-general/{claim:json}",
+            .state('claim-registration-new', {
+                url: "/claim-registration-general",
                 templateUrl: "resources/registration/view/registration-general.html",
-                controller: 'RegistrationGeneralController'
+                controller: 'RegistrationGeneralController',
+                resolve : {
+                    claim : function(RegistrationService) {
+                        return RegistrationService.createRegDetailObj();
+                    }
+                }
             })
+
+            .state('claim-registration-edit', {
+                url: "/claim-registration-general",
+                templateUrl: "resources/registration/view/registration-general.html",
+                controller: 'RegistrationGeneralController',
+                resolve : {
+                    claim : function(RegistrationService) {
+                        return RegistrationService.getClaim();
+                    }
+                }
+            })
+
             .state('claim-registrationList', {
                 url: "/claim-registrationList",
                 templateUrl: "resources/registration/view/registration.html",
