@@ -143,7 +143,7 @@
                                 <li style="cursor:pointer">
                                     <p style="margin:0px;">
                                         <b>Request Number:</b> 
-                                        <a class="currencyTypeCustom" href="javascript:void(0);"><span>#{{item.reqNum}}</span> </a>&nbsp;
+                                        <a class="currencyTypeCustom" href="javascript:void(0);" ng-click="toggleJson(item);"><span ng-click="toggleJson(item);">#{{item.reqNum}}</span> </a>&nbsp;
                                         <strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong>
                                     </p>
                                     <span style="padding-bottom:2px;"><b>Claim Status Reason:</b> <span style="color:#4e5e82">{{item.statusReason}}</span></span>
@@ -199,6 +199,7 @@
                                             md-item-text="item.name"
                                             md-floating-label="Treatment Code/Sub Benefit"
                                             md-clear-button="true"
+                                            md-min-length="0"
                                             style="height: 55px;">
                                             <md-item-template>
                                                 <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
@@ -226,19 +227,19 @@
                                             <input type="number" ng-model="claim.days">
                                         </md-input-container>
                                     </div>
-                                    <div class="col-sm-2 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <div class="col-sm-1.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">    
                                             <label>Requested Amount</label>
                                             <input type="number" ng-model="claim.requestAmount">
                                         </md-input-container>
                                     </div>
-                                    <div class="col-sm-2 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <div class="col-sm-1.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">    
                                             <label>Manual Deduction</label>
                                             <input type="number" ng-model="claim.manualDeduction">
                                         </md-input-container>
                                     </div>
-                                    <div class="masterCodes col-sm-2 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <div class="masterCodes col-sm-2.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
                                         <md-autocomplete
                                             md-selected-item="claim.rejectionCode"
                                             md-search-text="rejectionText"
@@ -246,6 +247,7 @@
                                             md-item-text="item.name"
                                             md-floating-label="Rejection Code"
                                             md-clear-button="true"
+                                            md-min-length="0"
                                             style="height: 55px;">
                                             <md-item-template>
                                                 <span md-highlight-text="rejectionText" md-highlight-flags="^i">{{item.name}}</span>

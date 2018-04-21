@@ -9,7 +9,6 @@
 
         function ReimbursmentProcessingController($scope, $rootScope, ReimbursementProcessingService, EclaimService, ngNotify) {
 
-            $scope.claimsResult = [];
             $scope.treatmentCodes = [];
             $scope.rejectionCode = [];
             $scope.createNew = true;
@@ -24,18 +23,17 @@
             '<md-datepicker class="md-block" md-hide-icons="all" md-open-on-focus aria-label="{{row.entity.name}}" name="{{col.name}}" id="{{row.uid}}-{{col.name}}-edit-cell" ng-model="MODEL_COL_FIELD"></md-datepicker></div>';
 
             function init() {
-                $scope.claim = createNewReimbursmentObject();
-                $scope.claimsResult.push(createNewReimbursmentObject());
-                $scope.claimReqList = getClaimsRequest();
-                $scope.treatmentCodes = getCodes('T');
-                $scope.rejectionCodes = getCodes('R');
+                $scope.claim = ReimbursementProcessingService.createNewReimbursmentObject();
+                $scope.claimReqList = ReimbursementProcessingService.getClaimsRequest();
+                $scope.treatmentCodes = ReimbursementProcessingService.getCodes('T');
+                $scope.rejectionCodes = ReimbursementProcessingService.getCodes('R');
                 initGrid();
                 $scope.selectedClaim = {'claimNo' : 80010201, 'requestNo' : 10010201-1, 'status' : 'Approved', 'policyNo' : 80010201, 'memberNo' : 10010201-1};
             }
 
             $scope.createNewClaim = function() {
                 $scope.createNew = true;
-                $scope.claim = createNewReimbursmentObject();
+                $scope.claim = ReimbursementProcessingService.createNewReimbursmentObject();
             }
 
             $scope.deleteRecord = function(recordIndex) {
@@ -65,66 +63,6 @@
                     return (((angular.lowercase(state.name).indexOf(lowercaseQuery) != 0) && angular.lowercase(state.name).indexOf(lowercaseQuery) != -1) || (angular.lowercase(state.name).indexOf(lowercaseQuery) === 0));
                 };
     
-            }
-
-            function createNewReimbursmentObject() {
-                return {
-                    "treatmentCodeOrSubBenefit" : "",
-                    "serviceFrom" : "",
-                    "serviceTo" : "",
-                    "days" : "",
-                    "requestAmount" : "",
-                    "manualDeduction" : "",
-                    "rejectionCode" : "",
-                    "policyDedAmount" : "",
-                    "penaltyAmount" : "",
-                    "suggesstedAmount" : "",
-                    "approvedAmount" : "",
-                    "rejectedAmount" : "",
-                    "status" : "",
-                    "internalRemarks" : "",
-                    "externalRemarks" : "",
-                    "isChecked" : false,
-                    "id" : new Date().getTime(),
-                    "dml": "N"
-                };
-            }
-
-            function getClaimsRequest() {
-                return [
-                    {'reqNum': 987896, 'claimStatus':'rejected', 'statusReason':'Waiting for Finalization', 'rejectedReason':'Waiting for Finalization', 'status' : 'Approved'},
-                    {'reqNum': 187896, 'claimStatus':'rejected', 'statusReason':'Waiting for Approval', 'rejectedReason':'Waiting for Finalization', 'status' : 'Rejected'},
-                    {'reqNum': 287896, 'claimStatus':'rejected', 'statusReason':'Waiting for Finalization', 'rejectedReason':'Waiting for Finalization', 'status' : 'Approved'},
-                    {'reqNum': 387896, 'claimStatus':'rejected', 'statusReason':'Waiting for Approval', 'rejectedReason':'Waiting for Finalization', 'status' : 'Rejected'},
-                    {'reqNum': 487896, 'claimStatus':'rejected', 'statusReason':'Waiting for Approval', 'rejectedReason':'Waiting for Finalization', 'status' : 'Approved'},
-                    {'reqNum': 587896, 'claimStatus':'rejected', 'statusReason':'Waiting for Approval', 'rejectedReason':'Waiting for Finalization', 'status' : 'Approved'},
-                    {'reqNum': 687896, 'claimStatus':'rejected', 'statusReason':'Waiting for Approval', 'rejectedReason':'Waiting for Finalization', 'status' : 'Rejected'}
-                ];
-            }
-
-            function getCodes(codeType) {
-                return [
-                    {
-                        'code' : 1111,
-                        'name' : codeType + ' 1859231-1' 
-                    },
-                    {
-                        'code' : 2222,
-                        'name' : codeType + ' 2054571-1' 
-                    },
-                    {
-                        'code' : 3333,
-                        'name' : codeType + ' 3451201-1' 
-                    },
-                    {
-                        'code' : 4444,
-                        'name' : codeType + ' 4579201-1' 
-                    },
-                    {
-                        'code' : 5555,
-                        'name' : codeType + ' 5463201-1' 
-                    }
-                ];
             }
 
             function initGrid() {
@@ -195,16 +133,12 @@
             });
 
             $scope.saveRecord = function(saveType) {
-                // if ($scope.claim && $scope.claim.treatmentCodeOrSubBenefit != "" && $scope.claim.treatmentCodeOrSubBenefit != null) {
-                    processClaim($scope.claim);
-                    $scope.noRecordsAvailable = $scope.gridOptions['data'].length == 0;
-                    $scope.claim = createNewReimbursmentObject();
-                    $scope.createNew = saveType == 'SaveAndNew';
-                    ngNotify.set('Saved Succesfully.', 'success');
-                // } else {
-                //     ngNotify.set('Treatment Code/Sub Benefit can\'t be empty.', 'error');
-                // }
-            }
+                processClaim($scope.claim);
+                $scope.noRecordsAvailable = $scope.gridOptions['data'].length == 0;
+                $scope.claim = ReimbursementProcessingService.createNewReimbursmentObject();
+                $scope.createNew = saveType == 'SaveAndNew';
+                ngNotify.set('Saved Succesfully.', 'success');
+        }
 
             $scope.editClaim = function(entity) {
                 $scope.claim = angular.copy(entity);
@@ -214,6 +148,12 @@
 
             $scope.onCancel = function() {
                 $scope.createNew = false;
+            }
+
+            $scope.toggleJson = function(selectedClaim) {
+                $scope.selectedClaim = ReimbursementProcessingService.getClaimHeaderDetails(selectedClaim.reqNum);
+                $scope.gridOptions.data = ReimbursementProcessingService.getRequestDataForCalim(selectedClaim.reqNum);
+                $scope.noRecordsAvailable = $scope.gridOptions['data'].length == 0;
             }
 
             function processClaim(claim) {
