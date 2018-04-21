@@ -325,7 +325,7 @@
                         <div class="claimRequestDetInner mb-3 clearfix" style="padding-left:0px;">
                             <!-- <div class="row mb-2 clearfix"> -->
                                 <div layout-gt-sm="row" class="pb-1">
-                                    <div class="masterCodes col-sm-2.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px 0 19px;">
+                                    <div class="masterCodes float-left" style="border: 1px solid #b3b3b3;margin: 0 3px 0 19px;width: 60% !important">
                                         <md-autocomplete
                                             md-selected-item="claim.treatmentCodeOrSubBenefit"
                                             md-search-text="searchText"
@@ -343,37 +343,37 @@
                                             </md-not-found>
                                         </md-autocomplete>
                                     </div>
-                                    <div class="col-sm-1.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <div class="float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;width: 40% !important";>
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">    
                                             <label>Service From</label>
                                             <md-datepicker ng-model="claim.serviceFrom" md-hide-icons="all" md-open-on-focus></md-datepicker>
                                         </md-input-container>
                                     </div>
-                                    <div class="col-sm-1.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <div class="float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;width: 40% !important">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">    
                                             <label>Service To</label>
                                             <md-datepicker ng-model="claim.serviceTo" md-hide-icons="all" md-open-on-focus></md-datepicker>
                                         </md-input-container>
                                     </div>
-                                    <div class="col-sm-1 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <div class="float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;width: 20% !important">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">    
                                             <label>Days</label>
                                             <input type="number" ng-model="claim.days">
                                         </md-input-container>
                                     </div>
-                                    <div class="col-sm-1.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <div class="float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;width: 50% !important">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">    
                                             <label>Requested Amount</label>
                                             <input type="number" ng-model="claim.requestAmount">
                                         </md-input-container>
                                     </div>
-                                    <div class="col-sm-1.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <div class="float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;width: 50% !important">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">    
                                             <label>Manual Deduction</label>
                                             <input type="number" ng-model="claim.manualDeduction">
                                         </md-input-container>
                                     </div>
-                                    <div class="masterCodes col-sm-2.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <div class="masterCodes float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;width: 50% !important">
                                         <md-autocomplete
                                             md-selected-item="claim.rejectionCode"
                                             md-search-text="rejectionText"
