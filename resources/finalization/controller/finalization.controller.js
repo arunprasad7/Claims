@@ -122,24 +122,6 @@
             $scope.requestType;
         }
 
-        /*$scope.sortDate = function() {
-        		$scope.data = $filter('orderBy')($scope.data ,{receivedDate});
-        		console,log("--------------",$scope.data);
-        }*/
-
-        /*$scope.propertyName = 'receivedDate';
-        $scope.reverse = true;
-        $scope.data = data;
-
-        $scope.sortBy = function(propertyName) {
-          $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
-          $scope.propertyName = propertyName;
-        };*/
-
-        /*$scope.orderByField = 'receivedDate';
-    $scope.reverseSort = false;
-*/
-
         $scope.sorting = function(field) {
             $scope.orderByField = 'receivedDate';
             $scope.reverseSort = (field == 'receivedDateDesc') ? false : true;
