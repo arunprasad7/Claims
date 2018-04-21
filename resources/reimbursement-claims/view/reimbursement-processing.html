@@ -392,7 +392,36 @@
                                         </md-autocomplete>
                                     </div>
                                 </div>
-                            <!-- </div> -->
+                                <div class="col-sm-1.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <md-input-container flex-gt-sm style="margin-top: 18px;">    
+                                        <label>Requested Amount</label>
+                                        <input type="number" ng-model="claim.requestAmount">
+                                    </md-input-container>
+                                </div>
+                                <div class="col-sm-1.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <md-input-container flex-gt-sm style="margin-top: 18px;">    
+                                        <label>Manual Deduction</label>
+                                        <input type="number" ng-model="claim.manualDeduction">
+                                    </md-input-container>
+                                </div>
+                                <div class="masterCodes col-sm-2.5 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                    <md-autocomplete
+                                        md-selected-item="claim.rejectionCode"
+                                        md-search-text="rejectionText"
+                                        md-items="item in querySearch(rejectionText, 'R')"
+                                        md-item-text="item.name"
+                                        md-floating-label="Rejection Code"
+                                        md-clear-button="true"
+                                        style="height: 55px;">
+                                        <md-item-template>
+                                            <span md-highlight-text="rejectionText" md-highlight-flags="^i">{{item.name}}</span>
+                                        </md-item-template>
+                                        <md-not-found>
+                                            No Result Found
+                                        </md-not-found>
+                                    </md-autocomplete>
+                                </div>
+                            </div>
                             <div class="withoutBorWrap clearfix mb-2">
                                 <div layout-gt-sm="row" style="margin-left: 1%;">
                                     <div class="col-sm-2 float-left">
