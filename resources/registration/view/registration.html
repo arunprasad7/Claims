@@ -13,7 +13,7 @@
                                 <div style="border-left: 1px solid #e6e6e6;width: 100% !important;">
                                     <md-input-container flex-gt-sm>
                                         <label>IBAN Number</label>
-                                        <input ng-model="ibanNumber">
+                                        <input ng-model="ibanNum">
                                     </md-input-container>
                                 </div>
                                 <div style="border-left: 1px solid #e6e6e6;width: 100% !important;">
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="clearfix"></div>
+         <div class="clearfix"></div>
         <div class="contentPart pt-3 pb-3">
             <div class="container-fluid regfont">
                 <div class="row">
@@ -55,7 +55,6 @@
                             <h3 class="innerHeadText mt-2 mb-2 ml-2 d-inline-block">Registered Request</h3>
                             <table class="table">
                                 <thead>
-
                                     <tr>
                                         <th ng-click="sortBy('referenceNumber')">Reference Number
                                             <span class="fa" ng-show="propertyName == 'referenceNumber'" ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span> 
@@ -70,30 +69,32 @@
                                         <th ng-click="sortBy('policyNumber')">Policy Number
                                             <span class="fa" ng-show="propertyName == 'policyNumber'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
                                         </th>
-                                        <th ng-click="sortBy('paymentType')">Payment Type
-                                            <span class="fa" ng-show="propertyName == 'paymentType'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
+                                        <th ng-click="sortBy('paymentWay')">Payment Type
+                                            <span class="fa" ng-show="propertyName == 'paymentWay'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
                                         </th>
-                                        <th ng-click="sortBy('ibanNumber')">IBAN Number
-                                            <span class="fa" ng-show="propertyName == 'ibanNumber'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
+                                        <th ng-click="sortBy('ibanNum')">IBAN Number
+                                            <span class="fa" ng-show="propertyName == 'ibanNum'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
                                         </th>
                                         <th>IBAN Document</th>
                                     </tr>
-
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="claim in claimTreatMent | orderBy:propertyName:reverse">
+                                    <tr ng-repeat="claim in claims | orderBy:propertyName:reverse">
+                                           
+                                        
                                         <td><a href="javascript:void(0);" ui-sref="claim-registration-general({'claim' : claim})" ng-click="navigateTo();">{{claim.referenceNumber}}</a></td>
                                         <td>{{claim.memberNumber}}</td>
                                         <td>{{claim.memberName}}</td>
                                         <td>{{claim.policyNumber}}</td>
-                                        <td>{{claim.paymentType}}</td>
-                                        <td>{{claim.ibanNumber}}</td>
+                                        <td>{{claim.paymentWay}}</td>
+                                        <td>{{claim.ibanNum}}</td>
                                         <td class="text-center">
                                             <a class="oi" data-glyph="paperclip" href="resources/img/dis.png" download></a>
                                         </td>
                                     </tr>
-                                </tbody>
+                                </tbody> 
                             </table>
+                            <div ng-if="claimTreatMent.length === 0" style="padding:10px"> <p><font size="3"><center>NO ITEMS FOUND</center></font></p></div>    
                         </div>
                     </div>
                 </div>

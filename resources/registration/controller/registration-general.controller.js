@@ -8,9 +8,8 @@
     RegistrationGeneralController.$inject = ['$scope', '$rootScope', 'RegistrationService', '$sce', '$state', '$uibModal', '$timeout', 'ngNotify', '$stateParams'];
 
     function RegistrationGeneralController($scope, $rootScope, RegistrationService, $sce, $state, $uibModal, $timeout, ngNotify, $stateParams) {
-        $scope.regDetail = angular.equals({}, $stateParams.claim) ?  RegistrationService.createRegDetailObj() : $stateParams.claim;
         $scope.previewIndex = 0;
-        
+
         $scope.setDcoumentType = function(documentType) {
             $scope.regDetail['source'] = documentType;
             $scope.documentType = documentType;
@@ -144,5 +143,15 @@
                 reader.readAsDataURL(file);
             }            
         }
-    }    
+
+        function init() {
+            $scope.regDetail = angular.equals({}, $stateParams.claim) ?  RegistrationService.createRegDetailObj() : $stateParams.claim;
+            if(!angular.equals({}, $stateParams.claim)) {
+                $scope.setPaymentWay($scope.regDetail.paymentWay);
+                $scope.setDcoumentType($scope.regDetail.source);
+            }        
+        }
+
+        init();
+    }
 })();

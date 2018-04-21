@@ -151,8 +151,8 @@
                 <div class="fieldsCol fieldsFilledCol pb-2">
                     <label class="top_4">Payment Way</label>
                     <div class="buttonGroups">
-                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : paymentWay == 'iban'}" ng-click="setPaymentWay('iban')">IBAN</button>
-                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : paymentWay == 'cheque'}" ng-click="setPaymentWay('cheque')">Cheque</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : paymentWay == 'IBAN'}" ng-click="setPaymentWay('IBAN')">IBAN</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : paymentWay == 'Cheque'}" ng-click="setPaymentWay('Cheque')">Cheque</button>
                     </div>
                 </div>
                 <div class="fldsWrap clearfix b0 row" ng-show="paymentWay == 'iban'">
@@ -188,7 +188,7 @@
             infinite="false" name="previewSlider" ng-if = "fileInfos.length > 0 && isPreview">
             <carousel-item>
                 <div style="width:94%; padding:4px;">
-                    <div class="row">
+                    <div class="row">   
                         <div class="col-sm-6" style="float:left;">
                             <button type="button" class="btn" style="background-color: #00aeef; color:white" ng-click="hidePreview();">Upload
                                 <i class="fa fa-cloud-upload" style="color:white"></i>
