@@ -178,12 +178,12 @@
                     </div>
                 </div>
             </div>
-            <div class="fieldsCol fldsWrap clearfix docFont">
+            <div class="fieldsCol fldsWrap clearfix docFont" style="width: 100%">
                 Documents                    
                 <button type="button" class="btn btn-outline-primary btn-sm float-right" ng-click="openUploadModal();">Upload</button>
                 <div ng-if="fileInfos.length > 0 && uploaded" id="thumbnailSlider" ng-style="{'padding-left' : fileInfos.length > 2 ? '15px' : '0px'}">
                     <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="noOfSlides" slides-to-scroll="noOfSlides" initial-slide="0" style="width:85%;margin-bottom:0px;margin-left: 15px;padding-top: 24px;"
-                        infinite="false" name="'thumbnailSlider'" ng-class="{'img-padding' : ($parent.showUpload && $odd), 'img-padding' : !$parent.showUpload}">
+                        infinite="false" name="'thumbnailSlider'" ng-class="{'img-padding' : (showUpload && $odd), 'img-padding' : !showUpload}">
                         <carousel-item>
                             <div class="row" style="float:right; padding-right: 30px; color:red;cursor:pointer;" ng-click="$parent.deleteFile($index)">
                                 <i class="fa fa-remove"></i>
