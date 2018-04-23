@@ -137,6 +137,23 @@
         $scope.rejectClaim = function() {   
             ngNotify.set('Claim Rejected.', 'error');
         }
+
+        $scope.$watch('gridOptions.data', function(newValue, oldValue, scope) {
+            var totalApprovedAmount = 0;
+            var totalRejectedAmount = 0;
+            var totalDeductionAmount = 0;
+            var totalPenaltyAmount = 0;
+            angular.forEach(newValue, function(claim, key) {
+                totalApprovedAmount += claim.approvedAmt;
+                totalRejectedAmount += claim.rejectedAmt;
+                totalDeductionAmount += claim.dedAmount;
+                totalPenaltyAmount += claim.shortfallAmount;
+            })
+            $scope.totalApprovedAmount = totalApprovedAmount;
+            $scope.totalRejectedAmount = totalRejectedAmount;
+            $scope.totalDeductionAmount = totalDeductionAmount;
+            $scope.totalPenaltyAmount = totalPenaltyAmount;
+        });
         
         init();
     }

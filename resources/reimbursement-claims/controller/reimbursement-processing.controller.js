@@ -171,6 +171,23 @@
                 }
             }
 
+            $scope.$watch('gridOptions.data', function(newValue, oldValue, scope) {
+                var totalApprovedAmount = 0;
+                var totalRejectedAmount = 0;
+                var totalPenaltyAmount = 0;
+                var totalDeductionAmount = 0;
+                angular.forEach(newValue, function(claim, key) {
+                    totalApprovedAmount += claim.approvedAmount;
+                    totalRejectedAmount += claim.rejectedAmount;
+                    totalPenaltyAmount += claim.penaltyAmount;
+                    totalDeductionAmount += claim.manualDeduction;
+                })
+                $scope.totalApprovedAmount = totalApprovedAmount;
+                $scope.totalRejectedAmount = totalRejectedAmount;
+                $scope.totalPenaltyAmount = totalPenaltyAmount;
+                $scope.totalDeductionAmount = totalDeductionAmount;
+            });
+
             init();
         }
 })()
