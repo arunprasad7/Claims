@@ -178,16 +178,18 @@
                     </div>
                 </div>
             </div>
-            <div class="fieldsCol fldsWrap clearfix docFont" style="width: 100%">
+            <div class="fldsWrap clearfix docFont p-3" style="width: 100%">
                 Documents                    
                 <button type="button" class="btn btn-outline-primary btn-sm float-right" ng-click="openUploadModal();">Upload</button>
                 <div ng-if="fileInfos.length > 0 && uploaded" id="thumbnailSlider" ng-style="{'padding-left' : fileInfos.length > 2 ? '15px' : '0px'}">
                     <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="noOfSlides" slides-to-scroll="noOfSlides" initial-slide="0" style="width:85%;margin-bottom:0px;margin-left: 15px;padding-top: 24px;"
                         infinite="false" name="'thumbnailSlider'" ng-class="{'img-padding' : (showUpload && $odd), 'img-padding' : !showUpload}">
                         <carousel-item>
-                            <div class="row" style="float:right; padding-right: 30px; color:red;cursor:pointer;" ng-click="$parent.deleteFile($index)">
-                                <i class="fa fa-remove"></i>
-                                <!-- &nbsp;&nbsp;<i class="fa fa-pencil"></i> -->
+                            <div class="row" style="float:right; padding-right: 30px; color:red;cursor:pointer;">
+                                <i class="fa fa-remove" ng-click="$parent.deleteFile($index)"></i>
+                                &nbsp;&nbsp;
+                                <i class="fa fa-pencil" ng-click="enableEdit = true" ng-hide="enableEdit" style="color:black;"></i>
+                                <i class="fa fa-check" ng-click="enableEdit=false" ng-show="enableEdit" style="color:blue;"></i>
                             </div>
                             <div class="img-padding">
                                 <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}"  max-height="80" class="pdf-view" ng-show="item.ext == 'image'" ></thumbnail>
@@ -198,10 +200,16 @@
                                 <p style="white-space: nowrap; width: 100%; overflow: hidden; text-overflow: ellipsis; font-size:small; border-top:1px solid #d3d8de;padding-top:12px;">
                                     <a href="" ng-click="showPreview($index, item)">
                                         <span>{{item.name}}</span><br>
-                                        <span>Uploaded on {{item.uploadedDate | date: 'mediumDate'}}</span><br>
-                                        <span>Type: {{item.uploadType}}</span><br>
-                                        <span>Desc :{{item.uploadDesc}}</span>
-                                    </a>
+                                    </a>    
+                                    <span>Uploaded on {{item.uploadedDate | date: 'mediumDate'}}</span><br>
+                                    <span ng-show="!enableEdit">
+                                        Type:<span>{{item.uploadType}}</span><br>
+                                        Desc :<span>{{item.uploadDesc}}</span><br>                                        
+                                    </span>
+                                    <span ng-show="enableEdit">                                            
+                                        <span>Type:<input type="text" ng-model="item.uploadType"/></span><br>
+                                        <span>Desc :<input type="text" ng-model="item.uploadDesc"/></span><br>
+                                    </span>
                                 </p>
                                 <p>
                                     <i class="fa fa-file-picture-o upload-file-icon" ng-show = "item.ext == 'image'" style="color:#00aeef;"></i>
