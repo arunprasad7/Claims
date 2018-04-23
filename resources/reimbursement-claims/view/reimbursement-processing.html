@@ -466,10 +466,15 @@
                     </div>                
                     <div class="eclaimRequest text-center mt-4">
                         <div class="clearfix" ng-class="{'reimburs-mt' : createNew}">
-                            <a href="javascript:;" class="custCheckboxBtn float-left" ng-class="{'custCheckboxBtnSected' : isChecked}" ng-click="toggleSelect();" style="margin: 15px 9px 0px 6px !important;">
+                            <!-- <a href="javascript:;" class="custCheckboxBtn float-left" ng-class="{'custCheckboxBtnSected' : isChecked}" ng-click="toggleSelect();" style="margin: 15px 9px 0px 6px !important;">
                                 <span class="oi" data-glyph="check"></span>
-                            </a>
-                            <div class="btn-group btn-group-sm claimStatusBtns mt-2 mb-2 float-left" role="group" aria-label="Basic example">
+                            </a> -->
+                            <div class="btn-group btn-group-sm claimStatusBtns mt-2 mb-2 pl-1 float-left" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary">
+                                    <a href="javascript:;" class="custCheckboxBtn float-left" ng-class="{'custCheckboxBtnSected' : isChecked}" ng-click="toggleSelect();">
+                                        <span class="oi" data-glyph="check"></span>
+                                    </a>
+                                </button>
                                 <button type="button" class="btn btn-secondary">
                                     <span class="oi" data-glyph="check"></span>
                                 </button>
