@@ -584,6 +584,7 @@ angular.module('ui.carousel.controllers').controller('CarouselController', ['$sc
     if (!slides) {
       return;
     }
+    
 
     // Init carousel
     if (_this.currentSlide > slides.length - 1) {
@@ -671,7 +672,6 @@ angular.module('ui.carousel.directives').directive('uiCarousel', ['$compile', '$
       el.addClass('ui-carousel').html('').append(compiledElement);
 
       $scope.showPreview = function(index, item) {
-        // $scope.ctrl.getSlideStyle(index);
         $scope.$parent.showPreview(index,item);        
       }
 

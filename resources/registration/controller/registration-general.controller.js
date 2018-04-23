@@ -44,8 +44,8 @@
                     f.contentType = file.type;
                     f.ext = 'docx';
                     f.uploadedDate = new Date();
-                    f.uploadType = $scope.upload.type;
-                    f.uploadDesc = $scope.upload.description;
+                    f.uploadType = $scope.upload ? $scope.upload.type : '';
+                    f.uploadDesc = $scope.upload ? $scope.upload.description : '';
                     if(file.type.indexOf('image/') > -1)
                         f.ext = 'image';
                     if(file.type.indexOf('/pdf') > -1)
@@ -60,7 +60,8 @@
                             file.progress = 100;
                         },300)    
                         if(key == $scope.files.length-1) {
-                            $scope.showUpload = false;
+                            $scope.noOfSlides = 3;
+                            $scope.showUpload = false;                            
                             $scope.uploaded = true;
                             $scope.fileInfos = fileInfo;
                         }
@@ -77,6 +78,7 @@
         $scope.showPreview = function(index, item) {
             $scope.isPreview = true;
             $scope.showUpload = true;
+            $scope.noOfSlides = 2;
             $scope.previewIndex = index;
         }
 
@@ -165,7 +167,14 @@
 
         $scope.continueUpload = function() {
             $scope.showUpload = true;
+            $scope.noOfSlides = 2;
             $scope.uploadModalInstance.close();            
+        }
+
+        $scope.toggleUpload = function() {
+            $scope.showUpload = !$scope.showUpload;
+            $scope.noOfSlides = $scope.showUpload ? 2 : 3;
+            $scope.isPreview = false;
         }
 
         function init() {
