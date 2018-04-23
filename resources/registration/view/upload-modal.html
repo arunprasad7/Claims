@@ -1,0 +1,28 @@
+<div id="uploadModal" style="width: 530px !important;">
+    {{hello}}
+    <div class="container modal-header">
+        <span style="float:right">
+            <button type="button" class="close" ng-click="cancelModal();">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </span>
+        <br>
+    </div>
+    <div class="modal-body" id="modal-body" style="max-height:400px; overflow:auto; padding: 0rem 1rem 0rem 1rem;">
+        <div class="fldsWrap clearfix">
+            <md-input-container flex-gt-sm>    
+                <label>Upload Type</label>
+                <input type="text" ng-model="upload.type" placeholder="FileType">
+            </md-input-container>
+        </div>
+        <div class="fldsWrap clearfix">
+            <md-input-container flex-gt-sm>    
+                <label>Upload Description</label>
+                <input type="text" ng-model="upload.description" placeholder="FileDescription">
+            </md-input-container>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-right pt-1">
+        <button type="button" class="btn btn-primary" ng-click="continueUpload()" ng-disabled="">Continue</button>
+    </div>
+</div>

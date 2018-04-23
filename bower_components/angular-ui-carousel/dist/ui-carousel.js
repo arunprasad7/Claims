@@ -671,7 +671,8 @@ angular.module('ui.carousel.directives').directive('uiCarousel', ['$compile', '$
       el.addClass('ui-carousel').html('').append(compiledElement);
 
       $scope.showPreview = function(index, item) {
-        $scope.$parent.showPreview(index,item);
+        // $scope.ctrl.getSlideStyle(index);
+        $scope.$parent.showPreview(index,item);        
       }
 
       $scope.hidePreview = function() {

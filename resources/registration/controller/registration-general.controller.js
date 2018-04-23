@@ -7,7 +7,7 @@
     
     RegistrationGeneralController.$inject = ['$scope', '$rootScope', 'RegistrationService', '$state', '$uibModal', '$timeout', 'ngNotify', '$stateParams', 'claim'];
 
-    function RegistrationGeneralController($scope, $rootScope, RegistrationService, $state, $uibModal, $timeout, ngNotify, $stateParams, claim) {
+    function RegistrationGeneralController($scope, $rootScope, RegistrationService, $state, $uibModal, $timeout, ngNotify, $stateParams, claim, $uibModalInstance) {
         $scope.regDetail = claim;
         $scope.previewIndex = 0;
 
@@ -44,6 +44,8 @@
                     f.contentType = file.type;
                     f.ext = 'docx';
                     f.uploadedDate = new Date();
+                    f.uploadType = $scope.upload.type;
+                    f.uploadDesc = $scope.upload.description;
                     if(file.type.indexOf('image/') > -1)
                         f.ext = 'image';
                     if(file.type.indexOf('/pdf') > -1)
@@ -58,6 +60,7 @@
                             file.progress = 100;
                         },300)    
                         if(key == $scope.files.length-1) {
+                            $scope.showUpload = false;
                             $scope.uploaded = true;
                             $scope.fileInfos = fileInfo;
                         }
@@ -73,6 +76,7 @@
 
         $scope.showPreview = function(index, item) {
             $scope.isPreview = true;
+            $scope.showUpload = true;
             $scope.previewIndex = index;
         }
 
@@ -143,6 +147,25 @@
                 }
                 reader.readAsDataURL(file);
             }            
+        }
+
+        $scope.openUploadModal = function() {
+            $scope.upload = {};            
+            $scope.uploadModalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'resources/registration/view/upload-modal.html',
+                size: 'lg',                
+                scope: $scope
+            });
+        }
+
+        $scope.cancelModal = function() {
+            $scope.uploadModalInstance.dismiss();
+        }
+
+        $scope.continueUpload = function() {
+            $scope.showUpload = true;
+            $scope.uploadModalInstance.close();            
         }
 
         function init() {
