@@ -12,8 +12,10 @@
             $scope.treatmentCodes = [];
             $scope.rejectionCode = [];
             $scope.createNew = true;
-            var staticTemplate = '<a href="javascript:;" class="custCheckboxBtn" ng-class="{\'custCheckboxBtnSected\' : row.entity.isChecked}" ng-click="row.entity.isChecked = !row.entity.isChecked"><span class="oi" data-glyph="check"></span></a>&nbsp;'+
-            '<a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" style="padding:10px 10px 10px 10px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="oi" data-glyph="wrench"></span></a><a class="eclaimReqSetBtn" href="javascript:;" ng-click="grid.appScope.editClaim(row.entity)"><span class="oi mr-1" data-glyph="pencil"></span></a>'+
+            var staticTemplate = '<a href="javascript:;" class="custCheckboxBtn" ng-class="{\'custCheckboxBtnSected\' : row.entity.isChecked}" ng-click="row.entity.isChecked = !row.entity.isChecked"><span class="oi" data-glyph="check"></span></a>&nbsp;';
+
+            var settingsTemplate = '<a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" style="padding:10px 10px 10px 10px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="oi" data-glyph="wrench"></span></a>&nbsp;'+
+            '<a class="eclaimReqSetBtn" href="javascript:;" ng-click="grid.appScope.editClaim(row.entity)"><span class="oi mr-1" data-glyph="pencil"></span></a>'+
             '<div class="dropdown-menu eclaimReqSetOption"><a class="dropdown-item" href="javascript:;" ng-click="grid.appScope.approveClaim(row.entity)"><span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>'+
             '<a class="dropdown-item" href="javascript:;" ng-click="grid.appScope.rejectClaim(row.entity)"><span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>'+
             '<a class="dropdown-item" href="javascript:;"><span class="oi mr-1" data-glyph="check"></span> Validate</a><a class="dropdown-item" href="javascript:;" ng-click="grid.appScope.deleteRow(rowRenderIndex)"><span class="oi mr-1" data-glyph="delete"></span> Delete</a><div class="dropdown-divider"></div>'+
@@ -69,7 +71,7 @@
                 $scope.gridOptions = {
                     data : [],
                     columnDefs: [
-                        {name:'action', displayName:'', cellTemplate:staticTemplate,width:145, pinnedLeft:true},
+                        {name:'action', displayName:'', cellTemplate:staticTemplate,width:40, pinnedLeft:true},
                         {name:'treatmentCodeOrSubBenefit.name', displayName:'Treatment Code/SubBenefit',width:200},
                         {name:'serviceFrom', displayName:'Service From', cellTemplate:dateTemplate,width:120},
                         // {name:'serviceTo', displayName:'Service To', cellTemplate:dateTemplate,width:120},
@@ -84,7 +86,8 @@
                         {name:'rejectionCode.name', displayName:'Rejection Code',width:140},
                         {name:'status', displayName:'Status', width:155},
                         {name:'internalRemarks', displayName:'Internal Remarks',width:210},
-                        {name:'externalRemarks', displayName:'External Remarks',width:210}
+                        {name:'externalRemarks', displayName:'External Remarks',width:210},
+                        {name:'Settings', displayName:'Settings', cellTemplate:settingsTemplate,width:75, pinnedRight:true}
                     ],
                     enableSorting: false
                 }

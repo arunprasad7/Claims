@@ -1440,6 +1440,10 @@ footer li strong {
     background: #c9cdd7;
 }
 
+.ui-grid-pinned-container.ui-grid-pinned-container-right .ui-grid-cell:last-child {
+    background: #c9cdd7;
+}
+
 .pointer {
     cursor: pointer;
 }
@@ -1543,8 +1547,8 @@ footer {
 
 .dropdown-menu {
     position: fixed !important;
-    left: 127px !important;
-    top: 35px !important;
+    left: 97% !important;
+    top: 30px !important;
 }
 
 @media (max-width:1400px) {
