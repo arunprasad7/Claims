@@ -1664,3 +1664,12 @@ footer {
     font: 13px "open_sanssemibold";
     color: #333333;
 }
+
+.l-8 {
+    left: 8px;
+}
+
+.btn-finalize {
+    margin-top: 0.5% !important;
+    margin-right: 2% !important;
+}

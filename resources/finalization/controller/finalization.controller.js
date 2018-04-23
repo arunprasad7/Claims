@@ -28,7 +28,8 @@
             totalClaims: "923,515",
             paymentDate: "25 Mar 2018",
             paymentReference: "Type of Reference",
-            status: "Approved"
+            status: "Approved",
+            selected : false
         }, {
             batch: " #222222",
             batchFileName: "6718281-652d-d3453-MF17152-A002-CLAIM",
@@ -44,7 +45,8 @@
             totalClaims: "238,515",
             paymentDate: "25 Mar 2018",
             paymentReference: "Type of Reference",
-            status: "Approved"
+            status: "Approved",
+            selected : false
         }, {
             batch: "#22333",
             batchFileName: "6718281-652d-d3453-MF17152-A002-CLAIM",
@@ -60,7 +62,8 @@
             totalClaims: "673,515",
             paymentDate: "25 Mar 2018",
             paymentReference: "Type of Reference",
-            status: "Rejected"
+            status: "Rejected",
+            selected : false
         }, {
             batch: " #444444",
             batchFileName: "6718281-652d-d3453-MF17152-A002-CLAIM",
@@ -76,7 +79,8 @@
             totalClaims: "423,515",
             paymentDate: "25 Mar 2018",
             paymentReference: "Type of Reference",
-            status: "Rejected"
+            status: "Rejected",
+            selected : false
         }, {
             batch: " #555555",
             batchFileName: "6718281-652d-d3453-MF17152-A002-CLAIM",
@@ -92,7 +96,8 @@
             totalClaims: "33,515",
             paymentDate: "25 Mar 2018",
             paymentReference: "Type of Reference",
-            status: "Rejected"
+            status: "Rejected",
+            selected : false
         }, {
             batch: "#666666",
             batchFileName: "A003-CLAIM",
@@ -108,7 +113,8 @@
             totalClaims: "223,515",
             paymentDate: "25 Mar 2018",
             paymentReference: "Type of Reference",
-            status: "Rejected"
+            status: "Rejected",
+            selected : false
         }];
         $scope.result = $scope.data;
         $scope.recordTotal = $scope.data.length;
@@ -132,6 +138,18 @@
         $scope.isActive = false;
         $scope.activeButton = function() {
             $scope.isActive = !$scope.isActive;
+        }
+
+        $scope.finalizeBatch = function() {
+            var result = [];
+            var records = angular.copy($scope.data);
+            angular.forEach(records, function(record, key) {
+                if (!record.selected) {
+                    result.push(record);
+                }
+            })
+            $scope.data = result;
+            ngNotify.set('Selected Batch\'s are finalized successfully...', 'success');
         }
 
         function init() {

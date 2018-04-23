@@ -48,13 +48,19 @@
                                 <span class="d-inline-block pr-5">{{recordTotal}} Result Found</span>
                                 <div class="d-inline-block pl-5">Sort:</div>
                                 <select class="custom-select innerFilterSort" ng-change="sorting(option)" ng-model="option">
-                            <option value=""> Select</option>
-                            <option value="receivedDateDesc">By Date Asc</option>
-                            <option value="receivedDate">By Date Desc</option>
-                        </select>
+                                    <option value=""> Select</option>
+                                    <option value="receivedDateDesc">By Date Asc</option>
+                                    <option value="receivedDate">By Date Desc</option>
+                                </select>
+                                <a href="javascript:;" class="btn btn-primary btn-sm finlizeBtn btn-finalize float-right" ng-click="finalizeBatch();">Finalize</a>
                             </div>
                             <table class="table mt-2">
                                 <tbody>
+                                    <tr ng-if="data.length == 0">
+                                        <td style="text-align:center;">
+                                            <h5>No Records Available...</h5>
+                                        </td>
+                                    </tr>
                                     <tr ng-repeat="d in data | orderBy:orderByField:reverseSort">
                                         <td>
                                             <span class="d-inline-block pr-2">Batch ID: {{d.batch}}</span>{{d.name}}
@@ -114,7 +120,10 @@
                                             </div>
                                         </td>
                                         <td class="align-middle">
-                                            <a href="javascript:;" class="btn btn-primary btn-sm finlizeBtn" ng-click="d.final = !d.final" ng-class="{Finalize :d.final}">Finalize</a>
+                                            <!-- <a href="javascript:;" class="btn btn-primary btn-sm finlizeBtn" ng-click="d.final = !d.final" ng-class="{Finalize :d.final}">Finalize</a> -->
+                                            <a href="javascript:;" class="custSelectBtn" ng-class="{custSelectBtnSected : d.selected}" aria-label="Select" ng-click="d.selected = !d.selected;">
+                                                <span class="oi align-middle l-8" data-glyph="check"></span>
+                                            </a>
                                         </td>
                                     </tr>
                                 </tbody>
