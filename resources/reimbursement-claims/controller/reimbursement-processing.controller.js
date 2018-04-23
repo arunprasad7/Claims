@@ -188,12 +188,6 @@
                 $scope.totalDeductionAmount = totalDeductionAmount;
             });
 
-            $scope.toggleUpload = function() {
-                $scope.showUpload = !$scope.showUpload;
-                $scope.noOfSlides = $scope.showUpload ? 2 : 3;
-                $scope.isPreview = false;
-            }
-
             init();
         }
 })()
