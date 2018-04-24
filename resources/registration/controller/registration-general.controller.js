@@ -36,7 +36,7 @@
                 var f = {};
                 var reader  = new FileReader();
                 $timeout(function() {
-                    file.progress = 30;
+                    file.progress = 20;
                 },300);
                 reader.onload = function(event) {
                     var base64String = event.target.result;//base64 String..
@@ -78,7 +78,7 @@
         $scope.showPreview = function(index, item) {
             $scope.isPreview = true;
             $scope.showUpload = true;
-            $scope.noOfSlides = 3;
+            $scope.noOfSlides = 2;
             $scope.previewIndex = index;
         }
 
@@ -167,13 +167,13 @@
 
         $scope.continueUpload = function() {
             $scope.showUpload = true;
-            $scope.noOfSlides = 3;
+            $scope.noOfSlides = 2;
             $scope.uploadModalInstance.close();            
         }
 
         $scope.toggleUpload = function() {
             $scope.showUpload = !$scope.showUpload;
-            $scope.noOfSlides = $scope.showUpload ? 3 : 4;
+            $scope.noOfSlides = $scope.showUpload ? 2 : 4;
             $scope.isPreview = false;
         }
 
