@@ -48,9 +48,9 @@
                     "source" : "post",
                     "voucherNumber" : 44587,
                     "ibanNum" : "1345465ABSCSD",
-                    "referenceNumber": "8918563923549888739",
                     "memberNumber": "9566340416",
-                    "policyNumber": "0792418901"
+                    "policyNumber": "0792418901",
+                    "paymentWay" : "iban"
                 },
                 {
                     "memberName" : 'sherif',
@@ -67,9 +67,9 @@
                     "source" : "post",
                     "voucherNumber" : 38221,
                     "ibanNum" : "1435675ABSCSD",
-                    "referenceNumber": "8909876789009888789",
                     "memberNumber": "3457678876",
-                    "policyNumber": "0884422909"
+                    "policyNumber": "0884422909",
+                    "paymentWay" : "cheque"
                 },
                 
                 {
@@ -87,9 +87,9 @@
                     "source" : "post",
                     "voucherNumber" : 24859,
                     "ibanNum" : "1098763ABSCSD",
-                    "referenceNumber": "8009876722822878913",
                      "memberNumber": "9324140416",
-                     "policyNumber": "0909886612"
+                     "policyNumber": "0909886612",
+                     "paymentWay" : "cheque"
                 },
                 {
                     "memberName" : 'Rayaan',
@@ -106,9 +106,9 @@
                     "source" : "post",
                     "voucherNumber" : 39758,
                     "ibanNum" : "1742465ABSCSD",
-                    "referenceNumber": "8809876789009888784",
                     "memberNumber": "4196754416",
-                    "policyNumber": "0304532091"
+                    "policyNumber": "0304532091",
+                    "paymentWay" : "iban"
                 },
                 {
                     "memberName" : 'Rizwan',
@@ -125,9 +125,9 @@
                     "source" : "post",
                     "voucherNumber" : 87924,
                     "ibanNum" : "10984565ABSCSD",
-                    "referenceNumber": "8097276789009809184",
                     "memberNumber": "9181140413",
-                    "policyNumber": "0903322091"
+                    "policyNumber": "0903322091",
+                    "paymentWay" : "cheque"
                 },
                 {
                     "memberName" : 'Mahateer',
@@ -144,9 +144,9 @@
                     "source" : "post",
                     "voucherNumber" : 15789,
                     "ibanNum" : "1243565ABSCSD",
-                    "referenceNumber": "8429876789007278784",
                     "memberNumber": "3366312416",
-                    "policyNumber": "0904532091"
+                    "policyNumber": "0904532091",
+                    "paymentWay" : "iban"
                 },
                 {
                     "memberName" : 'Mahira',
@@ -163,9 +163,9 @@
                     "source" : "post",
                     "voucherNumber" : 36978,
                     "ibanNum" : "1909465ABSCSD",
-                    "referenceNumber": "8341870989009643784",
                     "memberNumber": "7509340916",
-                    "policyNumber": "0904221091"
+                    "policyNumber": "0904221091",
+                    "paymentWay" : "cheque"
                 },
                 {
                     "memberName" : 'Sumaiya',
@@ -182,9 +182,9 @@
                     "source" : "post",
                     "voucherNumber" : '78915',
                     "ibanNum" : "185643 65ABSCSD",
-                    "referenceNumber": "8409876789003328784",
                     "memberNumber": "8566340416",
-                    "policyNumber": "0904588291"
+                    "policyNumber": "0904588291",
+                    "paymentWay" : "cheque"
                 }
 
             ]
