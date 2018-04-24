@@ -15,7 +15,6 @@
         $scope.voucherNumber;
         $scope.climeNo;
         $scope.approvedBy;
-        $scope.requestedDate;
         $scope.chequePeriodFrom;
         $scope.assignedUser;
         $scope.nameAndID;
@@ -285,8 +284,6 @@
         $scope.userssearch = $scope.users;
         $scope.result = $scope.claim;
         $scope.recordTotal = $scope.claim.length;
-        $scope.datePicker = {};
-        $scope.datePicker.date = { startDate: null, endDate: null };
 
         $scope.click = function() {
             if (($scope.climeNo == "" || $scope.climeNo == null) && ($scope.memberNumber == "" || $scope.memberNumber == null) && ($scope.voucherNumber == "" || $scope.voucherNumber == null)) {

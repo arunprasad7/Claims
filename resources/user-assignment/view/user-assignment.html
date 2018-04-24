@@ -26,28 +26,50 @@
                         </md-input-container>
                     </div>
                     <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
-                        <md-input-container flex-gt-sm>
-                            <label style="white-space: pre-line;">Approved By</label>
-                            <input ng-model="approvedBy">
-                        </md-input-container>
-                    </div>
-                    <div style="border-left: 1px solid #e6e6e6; width: 130% !important;">
-                        <md-input-container flex-gt-sm>
+                        <md-autocomplete 
+                            md-input-name = "Approved By"
+                            md-selected-item="approvedBy" 
+                            md-search-text="approvedSearchText"
+                            md-items="item in querySearch(approvedSearchText)" 
+                            md-item-text="item.name" 
+                            md-floating-label="Approved By"
+                            md-clear-button="true">
+                            <md-item-template>
+                                <span md-highlight-text="approvedSearchText">{{item.name}}</span>
+                            </md-item-template>
+                            <md-not-found>
+                                No Result Found                                
+                            </md-not-found>
+                        </md-autocomplete>
+                    </div>                    
+                    <div style="border-left: 1px solid #e6e6e6; width: 194% !important;">
+                        <md-input-container>
                             <label style="white-space: pre-line;">Request Received From</label>
-                            <md-datepicker ng-model="requestedDate" md-open-on-focus md-hide-icons="all"></md-datepicker>
+                            <md-datepicker ng-model="requestedFromDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
                         </md-input-container>
                     </div>
-                    <div style="border-left: 1px solid #e6e6e6; width: 130% !important;">
-                        <md-input-container flex-gt-sm>
+                    <div style="border-left: 1px solid #e6e6e6; width: 190% !important;">
+                        <md-input-container>
                             <label style="white-space: pre-line;">Request Received To</label>
-                            <md-datepicker ng-model="datePicker.date" md-open-on-focus md-hide-icons="all"></md-datepicker>
+                            <md-datepicker ng-model="requestedToDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
                         </md-input-container>
                     </div>
                     <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
-                        <md-input-container flex-gt-sm>
-                            <label style="white-space: pre-line;">Assigned User</label>
-                            <input ng-model="assignedUser">
-                        </md-input-container>
+                        <md-autocomplete 
+                            md-input-name = "Assigned User"
+                            md-selected-item="assignedUser" 
+                            md-search-text="assignedSearchText"
+                            md-items="item in querySearch(assignedSearchText)" 
+                            md-item-text="item.name" 
+                            md-floating-label="Assigned User"
+                            md-clear-button="true">
+                            <md-item-template>
+                                <span md-highlight-text="assignedSearchText">{{item.name}}</span>
+                            </md-item-template>
+                            <md-not-found>
+                                No Result Found                                    
+                            </md-not-found>
+                        </md-autocomplete>
                     </div>
                     <div class="searchColm align-middle text-center" ng-click="click();" style="width: 50% !important ;padding-top:10px;">
                         <a href="javascript:;" data-toggle="modal" data-target="#newRegClaims" class="searBtn mt-1 ml-3 mr-3 align-middle">
@@ -57,7 +79,7 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="contentPart pb-3">
             <h2 class="title">Total {{claimList.length}} available</h2>
             <div class="container-fluid" style="padding-left:0px;">
@@ -161,9 +183,9 @@
                          <h3 class="pt-3">Assign to user</h3>   
                         <div class="row" style="padding:0 15px;">
                             <span style="width:5%;padding: 7px 0;"><i class="oi align-middle" data-glyph="magnifying-glass"></i></span>
-                            <md-autocomplete style="width:92%" md-selected-item="selectedItem" md-search-text="searchText" md-selected-item-change="submit()" md-items="item in querySearch(searchText)" md-item-text="item.name" placeholder="UserName">
+                            <md-autocomplete style="width:92%" md-selected-item="selectedItem" md-search-text="userSearchText" md-selected-item-change="submit()" md-items="item in querySearch(userSearchText)" md-item-text="item.name" placeholder="UserName">
                                 <md-item-template>
-                                    <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
+                                    <span md-highlight-text="userSearchText">{{item.name}}</span>
                                 </md-item-template>
                                 <md-not-found>
                                     No Result Found
