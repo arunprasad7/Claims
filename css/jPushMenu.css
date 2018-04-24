@@ -62,7 +62,7 @@
     width: 340px;
     height: 100%;
     top: 42px;
-    z-index: 1000;
+    z-index: 3000;
     overflow-y: auto;
 	overflow-x: hidden;
 }

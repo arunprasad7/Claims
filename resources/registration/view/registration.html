@@ -56,20 +56,16 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th ng-click="sortBy('referenceNumber')">Reference Number
-                                            <span class="fa" ng-show="propertyName == 'referenceNumber'" ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span> 
-                                        </th>
-                                        
-                                        <th ng-click="sortBy('memberNumber')">Member Card Number
+                                        <th ng-click="sortBy('memberNumber')">Member Number
                                             <span class="fa" ng-show="propertyName == 'memberNumber'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
                                         </th>
-                                        <th ng-click="sortBy('memberName')">Member Name
+                                        <th ng-click="sortBy('memberName')">Member Card Name
                                             <span class="fa" ng-show="propertyName == 'memberName'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
                                         </th>
                                         <th ng-click="sortBy('policyNumber')">Policy Number
                                             <span class="fa" ng-show="propertyName == 'policyNumber'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
                                         </th>
-                                        <th ng-click="sortBy('paymentWay')">Payment Type
+                                        <th ng-click="sortBy('voucherNumber')">Voucher Number
                                             <span class="fa" ng-show="propertyName == 'paymentWay'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
                                         </th>
                                         <th ng-click="sortBy('ibanNum')">IBAN Number
@@ -80,11 +76,10 @@
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="claim in claims | orderBy:propertyName:reverse">
-                                        <td><a href="javascript:void(0);" ng-click="editClaim(claim);" ng-click="navigateTo();">{{claim.referenceNumber}}</a></td>
-                                        <td>{{claim.memberNumber}}</td>
+                                        <td><a href="javascript:void(0);" ng-click="editClaim(claim);">{{claim.memberNumber}}</a></td>
                                         <td>{{claim.memberName}}</td>
                                         <td>{{claim.policyNumber}}</td>
-                                        <td>{{claim.paymentWay}}</td>
+                                        <td>{{claim.voucherNumber}}</td>
                                         <td>{{claim.ibanNum}}</td>
                                         <td class="text-center">
                                             <a class="oi" data-glyph="paperclip" href="resources/img/dis.png" download></a>

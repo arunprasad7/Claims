@@ -251,7 +251,7 @@
                                 <strong>{{selectedClaim.memberNo}}</strong>
                             </li>
                         </div>
-                        <div class="col-sm-3 reimbursement-carousel" ng-hide="infoToggle">
+                        <div class="col-sm-3 reimbursement-carousel">
                             <ui-carousel slides="claimReqList" class="" slides-to-show="1" slides-to-scroll="1" initial-slide="0" style="width:350px;float:right;">
                                 <carousel-item  class="eclaim-item">
                                     <li style="cursor:pointer">
@@ -273,7 +273,7 @@
                             </ui-carousel>
                         </div>
                         <div class="col-sm-2 medicalwid">
-                            <div class="medicalCardInfoBox medicalCardInfoBoxShow medicalInfoWidth" id="medicalCardInfoBox" ng-class="{'medicalCardInfoBoxShow medicalInfoWidth' : !infoToggle}">
+                            <div class="medicalCardInfoBox medicalCardInfoBoxShow medicalInfoWidth" id="medicalCardInfoBox">
                                 <h3>Medical card info</h3>
                                 <ul>
                                   <li>
