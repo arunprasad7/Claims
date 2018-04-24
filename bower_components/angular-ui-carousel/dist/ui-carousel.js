@@ -134,7 +134,6 @@ angular.module('ui.carousel.controllers').controller('CarouselController', ['$sc
    * Init UI and carousel track
    */
   this.initUI = function () {
-    console.log("$element[0].clientWidth......... " , $element[0].clientWidth);
     _this.width = $element[0].clientWidth;
 
     // Update track width first
