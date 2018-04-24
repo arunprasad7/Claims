@@ -18,19 +18,19 @@
                             <input ng-model="SelectBatch">
                         </md-input-container>
                     </div>
-                    <div class="col-sm-2" style="border-left: 1px solid #e6e6e6;">
+                    <div class="col-sm-3" style="border-left: 1px solid #e6e6e6;">
                         <md-input-container flex-gt-sm>
-                            <label>Batch ID</label>
+                            <label>Claim Number</label>
                             <input ng-model="BatchId">
                         </md-input-container>
                     </div>
-                    <div class="col-sm-2" style="border-left: 1px solid #e6e6e6; min-width:230px;">
+                    <!-- <div class="col-sm-2" style="border-left: 1px solid #e6e6e6; min-width:230px;">
                         <md-input-container flex-gt-sm>
                             <label>Batch Filename</label>
                             <input ng-model="BatchFileName">
                         </md-input-container>
-                    </div>
-                    <div class="searchColm align-middle text-center col-sm-2">
+                    </div> -->
+                    <div class="searchColm align-middle text-center col-sm-3">
                         <a ng-click="click()" href="javascript:;" class="searBtn searBtnWithText mt-3 ml-3 mr-3 align-middle">
                             <span class="oi align-middle" data-glyph="magnifying-glass"></span> Search
                         </a>
@@ -48,59 +48,67 @@
                                 <span class="d-inline-block pr-5">{{recordTotal}} Result Found</span>
                                 <div class="d-inline-block pl-5">Sort:</div>
                                 <select class="custom-select innerFilterSort" ng-change="sorting(option)" ng-model="option">
-                            <option value=""> Select</option>
-                            <option value="receivedDateDesc">By Date Asc</option>
-                            <option value="receivedDate">By Date Desc</option>
-                        </select>
+                                    <option value=""> Select</option>
+                                    <option value="receivedDateDesc">By Date Asc</option>
+                                    <option value="receivedDate">By Date Desc</option>
+                                </select>
+                                <a href="javascript:;" class="btn btn-primary btn-sm finlizeBtn btn-finalize float-right" ng-click="finalizeBatch();">Finalize</a>
                             </div>
                             <table class="table mt-2">
                                 <tbody>
+                                    <tr ng-if="data.length == 0">
+                                        <td style="text-align:center;">
+                                            <h5>No Records Available...</h5>
+                                        </td>
+                                    </tr>
                                     <tr ng-repeat="d in data | orderBy:orderByField:reverseSort">
                                         <td>
-                                            <span class="d-inline-block pr-2">Batch ID: {{d.batch}}</span>{{d.name}}
-                                            <div class="text-nowrap">
-                                                <strong class="d-inline-block">Batch file Name: {{d.batchFileName}}</strong>
+                                            <div class="d-inline-block pr-2">Claim Number: 
+                                                <span class="currencyTypeCustom">{{d.batch}}</span>
                                             </div>
+                                            <!-- <div class="text-nowrap">
+                                                <strong class="d-inline-block">Batch file Name: {{d.batchFileName}}</strong>
+                                            </div> -->
                                             <div class="text-nowrap clearfix">
                                                 <span class="oi"></span>
                                                 <div class="receiveInfo d-inline-block pr-3 float-left">
                                                     <span class="oi" data-glyph="timer"></span>Received Date {{d.receivedDate}}
                                                 </div>
-                                                <div ng-if="d.status == 'Rejected'" class="statusInfo d-inline-block text-danger float-right">
-                                                    <span class="oi" data-glyph="thumb-down"></span> Rejected
+                                                <div class="statusInfo d-inline-block float-left" ng-class="{'text-danger' : d.status == 'Rejected', 'text-success' : d.status == 'Approved'}">
+                                                    <span class="oi" data-glyph="thumb-down"></span> {{d.status == 'Rejected' ? 'Rejected' : 'Approved'}}
                                                 </div>
-                                                <div ng-if="d.status == 'Approved'" class="statusInfo d-inline-block text-success float-right">
+                                                <!-- <div ng-if="d.status == 'Approved'" class="statusInfo d-inline-block text-success float-right">
                                                     <span class="oi" data-glyph="thumb-up"></span> Approved
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="text-nowrap">
+                                            <!-- <div class="text-nowrap">
                                                 <span class="tablLal">Paid To Provider Code:</span>
                                                 <span class="tablCont">{{d.PaidToProviderCode}}</span>
                                             </div>
                                             <div class="text-nowrap">
                                                 <span class="tablLal">Paid To Provider Name:</span>
                                                 <span class="tablCont">{{d.PaidToProviderName}}</span>
-                                            </div>
+                                            </div> -->
                                             <div class="text-nowrap">
-                                                <span class="tablLal">Paid To:</span>
+                                                <span class="tablLal" style="display: contents !important;">Paid To:</span>
                                                 <span class="tablCont">{{d.PaidTo}}</span>
                                             </div>
                                         </td>
                                         <td class="processedStatus">
-                                            <div class="btn btn-outline-success btn-sm d-block">Processed: {{d.Processed}}</div>
-                                            <div class="btn btn-outline-danger btn-sm d-block">Un Processed: {{d.unProcessed}}</div>
+                                            <!-- <div class="btn btn-outline-success btn-sm d-block">Processed: {{d.Processed}}</div>
+                                            <div class="btn btn-outline-danger btn-sm d-block">Un Processed: {{d.unProcessed}}</div> -->
                                         </td>
                                         <td>
                                             <div class="text-nowrap">
                                                 <strong class="tablLal tablLal1">Rejected Amount:</strong>
                                                 <strong>Rs.{{d.rejectedAmount}}</strong>
                                             </div>
-                                            <div class="text-nowrap">
+                                            <!-- <div class="text-nowrap">
                                                 <strong class="tablLal tablLal1">Batch Paid Amount:</strong>
                                                 <strong>Rs.{{d.batchPaidAmount}}</strong>
-                                            </div>
+                                            </div> -->
                                             <div class="text-nowrap">
                                                 <strong class="tablLal tablLal1">Payment Way:</strong>
                                                 <strong>{{d.paymentWay}}</strong>
@@ -114,7 +122,10 @@
                                             </div>
                                         </td>
                                         <td class="align-middle">
-                                            <a href="javascript:;" class="btn btn-primary btn-sm finlizeBtn" ng-click="d.final = !d.final" ng-class="{Finalize :d.final}">Finalize</a>
+                                            <!-- <a href="javascript:;" class="btn btn-primary btn-sm finlizeBtn" ng-click="d.final = !d.final" ng-class="{Finalize :d.final}">Finalize</a> -->
+                                            <a href="javascript:;" class="custSelectBtn" ng-class="{custSelectBtnSected : d.selected}" aria-label="Select" ng-click="d.selected = !d.selected;">
+                                                <span class="oi align-middle l-8" data-glyph="check"></span>
+                                            </a>
                                         </td>
                                     </tr>
                                 </tbody>

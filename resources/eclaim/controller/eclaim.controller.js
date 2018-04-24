@@ -92,6 +92,7 @@
 
         $scope.deleteRow = function(index) {
             $scope.gridOptions.data.splice(index, 1);
+            renderTotals($scope.gridOptions.data);
             ngNotify.set('Claim Deleted Succesfully.', 'success');
         }
 
@@ -139,11 +140,15 @@
         }
 
         $scope.$watch('gridOptions.data', function(newValue, oldValue, scope) {
+            renderTotals(newValue);
+        });
+
+        function renderTotals(result) {
             var totalApprovedAmount = 0;
             var totalRejectedAmount = 0;
             var totalDeductionAmount = 0;
             var totalPenaltyAmount = 0;
-            angular.forEach(newValue, function(claim, key) {
+            angular.forEach(result, function(claim, key) {
                 totalApprovedAmount += claim.approvedAmt;
                 totalRejectedAmount += claim.rejectedAmt;
                 totalDeductionAmount += claim.dedAmount;
@@ -153,7 +158,7 @@
             $scope.totalRejectedAmount = totalRejectedAmount;
             $scope.totalDeductionAmount = totalDeductionAmount;
             $scope.totalPenaltyAmount = totalPenaltyAmount;
-        });
+        }
         
         init();
     }

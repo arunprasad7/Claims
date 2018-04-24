@@ -858,6 +858,11 @@ md-input-container md-select label,
     top: 0;
     text-align: center;
     z-index: 2;
+    -webkit-transition: all 700ms ease-in;
+    -moz-transition: all 700ms ease-in;
+    -ms-transition: all 700ms ease-in;
+    -o-transition: all 700ms ease-in;
+    transition: all 700ms ease-in;
 }
 
 .infoToggleBtn:hover,
@@ -880,6 +885,10 @@ md-input-container md-select label,
     -o-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
+}
+
+.infoToggleBtnToggled {
+    left: 285px;
 }
 
 footer {
@@ -1185,15 +1194,27 @@ footer li strong {
     -ms-transition: all 700ms ease-in;
     -o-transition: all 700ms ease-in;
     transition: all 700ms ease-in;
+    /* ..... */
+    position: absolute;
+    z-index: 1000;
 }
 
 .detailAccWrapClose {
     width: 0;
     padding: 0;
+    
 }
-
+.lefttrans{
+    -webkit-transition: all 700ms ease-in;
+    -moz-transition: all 700ms ease-in;
+    -ms-transition: all 700ms ease-in;
+    -o-transition: all 700ms ease-in;
+    transition: all 700ms ease-in;
+}
 .rightContentPart {
-    width: calc(100% - 300px);
+    /* .....
+    width: calc(100% - 300px); */
+    width: 100%;
     padding: 0 9px;
     position: relative;
     -webkit-transition: width 700ms ease-in;
@@ -1663,4 +1684,13 @@ footer {
 .docFont {
     font: 13px "open_sanssemibold";
     color: #333333;
+}
+
+.l-8 {
+    left: 8px;
+}
+
+.btn-finalize {
+    margin-top: 0.5% !important;
+    margin-right: 3% !important;
 }

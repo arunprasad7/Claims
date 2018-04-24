@@ -229,7 +229,7 @@
             <div class="rightContentPart float-right pr-0 pb-3">
                 <a href="javascript:;" class="infoToggleBtn" ng-class="{'infoToggleBtnToggled' : infoToggle}" ng-style="{'margin-left' : !infoToggle ? '12px' : '0px'}" ng-click="infoToggle = !infoToggle"><span class="oi" data-glyph="arrow-right"></span> <br />info</a>
                 <div class="row col-sm-12">
-                    <div class="col-sm-2 medicalCardInfoBox medicalCardInfoBoxShow" id="medicalCardInfoBox" ng-class="{'medicalCardInfoBoxShow' : !infoToggle}" style="height: auto !important;">
+                    <div class="col-sm-2 medicalCardInfoBox medicalCardInfoBoxShow" id="medicalCardInfoBox" style="height: auto !important;">
                         <h3>Medical card info</h3>
                         <ul>
                             <li>
@@ -276,7 +276,7 @@
                             <strong>{{claim.memberNum}}</strong>
                         </li>
                     </div>
-                    <div class="col-sm-3 reimbursement-carousel" ng-hide="infoToggle">
+                    <div class="col-sm-3 reimbursement-carousel">
                         <ui-carousel slides="claimReqList" class="" slides-to-show="1" slides-to-scroll="1" initial-slide="0" style="width:350px;float:right;">
                             <carousel-item  class="eclaim-item">
                                 <li style="cursor:pointer">
@@ -341,7 +341,7 @@
                                 <span class="oi" data-glyph="thumb-down"></span>
                             </button>                            
                         </div>
-                        <h3 class="innerHeadText mt-2 mb-2 d-inline-block">Claim Treatment/Service Level</h3><div class="currencyType d-inline-block">Currency: AED</div>
+                        <h3 class="innerHeadText mt-2 mb-2 d-inline-block">Registered Request</h3><div class="currencyType d-inline-block">Currency: AED</div>
                         <a href="javascript:;" class="tablColmArrow float-right mt-2 mb-2 mr-3 ml-2" ng-click="addRow();">
                             <span class="oi" data-glyph="plus"></span>
                         </a>
