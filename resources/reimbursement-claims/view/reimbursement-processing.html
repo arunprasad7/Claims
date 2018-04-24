@@ -406,25 +406,25 @@
                                         <div class="col-sm-2 float-left">
                                             <md-input-container flex-gt-sm style="margin-top: 18px;">
                                                 <label>Suggessted Amt</label>
-                                                <input type="number" ng-model="claim.suggesstedAmount">
+                                                <input type="number" ng-model="claim.suggesstedAmount" ng-init="claim.suggesstedAmount=1000" ng-disabled="true">
                                             </md-input-container>
                                         </div>
                                         <div class="col-sm-2 float-left">
                                             <md-input-container flex-gt-sm style="margin-top: 18px;">
                                                 <label>Approved Amount</label>
-                                                <input type="number" ng-model="claim.approvedAmount">
+                                                <input type="number" ng-model="claim.approvedAmount" ng-init="claim.approvedAmount=2000" ng-disabled="true">
                                             </md-input-container>
                                         </div>
                                         <div class="col-sm-2 float-left">
                                             <md-input-container flex-gt-sm style="margin-top: 18px;">
                                                 <label>Rejected Amount</label>
-                                                <input type="number" ng-model="claim.rejectedAmount">
+                                                <input type="number" ng-model="claim.rejectedAmount" ng-init="claim.rejectedAmount=3000" ng-disabled="true">
                                             </md-input-container>
                                         </div>
                                         <div class="col-sm-2 float-left" style="width: auto !important;">
                                             <md-input-container flex-gt-sm style="margin-top: 18px;">
                                                 <label>Status</label>
-                                                <input type="text" ng-model="claim.status" maxlength="18">
+                                                <input type="text" ng-model="claim.status" maxlength="18" ng-init="claim.status='Pending'" ng-disabled="true">
                                             </md-input-container>
                                         </div>
                                     </div>    
