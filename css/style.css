@@ -1703,3 +1703,6 @@ footer {
 .searchBarRow md-autocomplete md-input-container .md-input {
     border: none !important;
 }
+.nav-item:focus {
+    outline: none;
+}
