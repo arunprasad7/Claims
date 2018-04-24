@@ -108,11 +108,19 @@
             }
 
             $scope.approveClaim = function(claim) {
-                ngNotify.set('Claim Approved Succesfully.', 'success');
+                if($scope.gridOptions.data.length) {
+                    ngNotify.set('Claim Approved Succesfully.', 'success');
+                } else {
+                    swal("", "No Records to Approve", "warning");
+                }
             }
     
-            $scope.rejectClaim = function() {   
-                ngNotify.set('Claim Rejected.', 'error');
+            $scope.rejectClaim = function() {
+                if($scope.gridOptions.data.length) {
+                    ngNotify.set('Claim Rejected.', 'error');
+                } else {
+                    swal("", "No Records to Reject", "warning");
+                }
             }
 
             $scope.toggleSelect = function() {

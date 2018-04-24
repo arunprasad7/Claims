@@ -10,13 +10,7 @@
     function EclaimController($scope, $rootScope, EclaimService, ngNotify) {
         $scope.claimReqList = EclaimService.getClaimsRequest();
         $scope.claim = $scope.claimReqList[0];
-        
-        $scope.getWidth = function() {  
-            if($scope.infoToggle) {
-                return (window.innerWidth - 380) + 'px';
-            }
-            return (window.innerWidth - 100) + 'px';
-        }
+        $scope.isToggled = true;
 
         var textTemplate = '<div ng-if="!row.entity.editable || !col.colDef.enableCellEdit" style="padding:3px;">{{COL_FIELD}}</div><div ng-if="row.entity.editable && col.colDef.enableCellEdit" class="p1px">'+
                             '<md-input-container class="md-block"> <input type="text" ng-model="MODEL_COL_FIELD" aria-label="{{row.entity.name}}" name="{{col.name}}" id="{{row.uid}}-{{col.name}}-edit-cell" ui-grid-editor/></md-input-container></div>';
@@ -110,14 +104,6 @@
             }, "slow");
         });
 
-        function init() {
-           $scope.noOfSlides = 3;
-           $scope.isToggled = true;
-           if(window.innerWidth >= 1300) {
-                $scope.noOfSlides = 4;
-           }
-        }
-
         $scope.toggleJson = function(item) {
             $scope.claim = item;
             $scope.isToggled = !$scope.isToggled;
@@ -132,11 +118,19 @@
         }
 
         $scope.approveClaim = function() {
-            ngNotify.set('Claim Approved Succesfully.', 'success');
+            if($scope.gridOptions.data.length) {
+                ngNotify.set('Claim Approved Succesfully.', 'success');    
+            } else {
+                swal("", "No Records to Approve", "warning");
+            }            
         }
 
         $scope.rejectClaim = function() {   
-            ngNotify.set('Claim Rejected.', 'error');
+            if($scope.gridOptions.data.length) {
+                ngNotify.set('Claim Rejected.', 'error');
+            } else {
+                swal("", "No Records to Reject", "warning");
+            }
         }
 
         $scope.$watch('gridOptions.data', function(newValue, oldValue, scope) {
@@ -158,8 +152,6 @@
             $scope.totalRejectedAmount = totalRejectedAmount;
             $scope.totalDeductionAmount = totalDeductionAmount;
             $scope.totalPenaltyAmount = totalPenaltyAmount;
-        }
-        
-        init();
+        }        
     }
 })();
