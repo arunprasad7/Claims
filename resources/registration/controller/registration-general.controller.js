@@ -60,7 +60,7 @@
                             file.progress = 100;
                         },300)    
                         if(key == $scope.files.length-1) {
-                            $scope.noOfSlides = 3;
+                            $scope.noOfSlides = 4;
                             $scope.showUpload = false;                            
                             $scope.uploaded = true;
                             $scope.fileInfos = fileInfo;
@@ -78,7 +78,7 @@
         $scope.showPreview = function(index, item) {
             $scope.isPreview = true;
             $scope.showUpload = true;
-            $scope.noOfSlides = 2;
+            $scope.noOfSlides = 3;
             $scope.previewIndex = index;
         }
 
@@ -167,13 +167,13 @@
 
         $scope.continueUpload = function() {
             $scope.showUpload = true;
-            $scope.noOfSlides = 2;
+            $scope.noOfSlides = 3;
             $scope.uploadModalInstance.close();            
         }
 
         $scope.toggleUpload = function() {
             $scope.showUpload = !$scope.showUpload;
-            $scope.noOfSlides = $scope.showUpload ? 2 : 3;
+            $scope.noOfSlides = $scope.showUpload ? 3 : 4;
             $scope.isPreview = false;
         }
 

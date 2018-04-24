@@ -134,6 +134,7 @@ angular.module('ui.carousel.controllers').controller('CarouselController', ['$sc
    * Init UI and carousel track
    */
   this.initUI = function () {
+    console.log("$element[0].clientWidth......... " , $element[0].clientWidth);
     _this.width = $element[0].clientWidth;
 
     // Update track width first
@@ -594,6 +595,13 @@ angular.module('ui.carousel.controllers').controller('CarouselController', ['$sc
     _this.setupInfinite();
     _this.refreshCarousel();
   });
+
+  $scope.$parent.$watch('showUpload', function() {
+    $timeout(function() {
+      _this.initOptions();
+      _this.refreshCarousel();
+    }, 300)    
+  })
 
   /**
    * update when resize

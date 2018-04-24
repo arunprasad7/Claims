@@ -178,12 +178,12 @@
                     </div>
                 </div>
             </div>
-            <div class="fldsWrap clearfix docFont p-3" style="width: 100%">
-                Documents                    
+            <div class="fldsWrap clearfix docFont p-3">
+                Documents
                 <button type="button" class="btn btn-outline-primary btn-sm float-right" ng-click="openUploadModal();">Upload</button>
-                <div ng-if="fileInfos.length > 0 && uploaded" id="thumbnailSlider" ng-style="{'padding-left' : fileInfos.length > 2 ? '15px' : '0px'}">
-                    <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="noOfSlides" slides-to-scroll="noOfSlides" initial-slide="0" style="width:85%;margin-bottom:0px;margin-left: 15px;padding-top: 24px;"
-                        infinite="false" name="'thumbnailSlider'" ng-class="{'img-padding' : (showUpload && $odd), 'img-padding' : !showUpload}">
+                <div ng-if="fileInfos.length > 0 && uploaded" id="thumbnailSlider" ng-style="{'padding-left' : fileInfos.length > 2 ? '15px' : '0px'}" class="col-sm-11">
+                    <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="noOfSlides" slides-to-scroll="noOfSlides" initial-slide="0" style="width:95%;margin-bottom:0px;margin-left: 15px;padding-top: 24px;"
+                        infinite="false" name="'thumbnailSlider'" ng-class="{'img-padding' : (showUpload && $odd), 'img-padding' : !showUpload}" ng-style="{'width' : showUpload ? '90%' : '98%'}">
                         <carousel-item>
                             <div class="row" style="float:right; padding-right: 30px; color:red;cursor:pointer;">
                                 <i class="fa fa-remove" ng-click="$parent.deleteFile($index)"></i>
@@ -204,11 +204,11 @@
                                     <span>Uploaded on {{item.uploadedDate | date: 'mediumDate'}}</span><br>
                                     <span ng-show="!enableEdit">
                                         Type:<span>{{item.uploadType}}</span><br>
-                                        Desc :<span>{{item.uploadDesc}}</span><br>                                        
+                                        Desc:<span>{{item.uploadDesc}}</span><br>                                        
                                     </span>
                                     <span ng-show="enableEdit">                                            
                                         <span>Type:<input type="text" ng-model="item.uploadType"/></span><br>
-                                        <span>Desc :<input type="text" ng-model="item.uploadDesc"/></span><br>
+                                        <span>Desc:<input type="text" ng-model="item.uploadDesc"/></span><br>
                                     </span>
                                 </p>
                                 <p>
@@ -276,7 +276,7 @@
                 <span class="oi align-middle mr-1" data-glyph="cloud-upload" style="color:#00aeef"></span>
                 Drop Files or click to upload
             </div>
-            <div ng-repeat="f in files" ng-style="{'padding-top' : $first ? '25px' : '20px'}">
+            <div ng-repeat="f in files" ng-style="{'padding-top' : $first ? '25px' : '20px'}" ng-hide="uploaded">
                 {{f.name}}
                 <div style="background : #ccc!important; height:3px !important">
                     <div class="fprogress" style="width:{{f.progress}}%" ng-show="f.progress >= 0"></div>
