@@ -14,12 +14,12 @@
         $scope.claims= $scope.registeredClaims;
 
         $scope.searchBtn = function() {
-            if (($scope.voucherNumber == "" || $scope.voucherNumber == null) && ($scope.searchMemNum == "" || $scope.searchMemNum == null) && ($scope.ibanNum == "" || $scope.ibanNum == null)&&($scope.searchPolicy == "" || $scope.searchPolicy == null)) {
+            if (($scope.voucherNumber == "" || $scope.voucherNumber == null) && ($scope.searchMemNum == "" || $scope.searchMemNum == null) && ($scope.ibanNum == "" || $scope.ibanNum == null)&&($scope.searchPolicy == "" || $scope.searchPolicy == null)&&($scope.memberName == "" || $scope.memberName == null)) {
                 $scope.claims = $scope.registeredClaims;
             } else {
                 var memNo = $scope.searchMemNum ? $scope.searchMemNum.memberNumber : undefined;
                 var policyNo = $scope.searchPolicy ? $scope.searchPolicy.policyNumber : undefined;
-                $scope.claims = $filter('filter')($scope.registeredClaims, { voucherNumber: $scope.voucherNumber, ibanNum: $scope.ibanNum, memberNumber : memNo, policyNumber : policyNo});
+                $scope.claims = $filter('filter')($scope.registeredClaims, { voucherNumber: $scope.voucherNumber, ibanNum: $scope.ibanNum, memberNumber : memNo, policyNumber : policyNo,memberName: $scope.memberName});
             }
         }
 
