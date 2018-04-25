@@ -26,7 +26,7 @@
                         </md-input-container>
                     </div>
                     <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
-                        <md-autocomplete 
+                        <md-autocomplete flex-gt-sm
                             md-input-name = "Approved By"
                             md-selected-item="approvedBy" 
                             md-search-text="approvedSearchText"
@@ -55,7 +55,7 @@
                         </md-input-container>
                     </div>
                     <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
-                        <md-autocomplete 
+                        <md-autocomplete flex-gt-sm
                             md-input-name = "Assigned User"
                             md-selected-item="assignedUser" 
                             md-search-text="assignedSearchText"
@@ -137,7 +137,8 @@
 
                                                     <div class="text-nowrap">
                                                         <class="d-inline-block pr-2">Voucher No: {{c.voucherNo}}
-                                                            <class="d-inline-block pr-2">Encounter Type: {{c.encounterType}}
+                                                        <class="d-inline-block pr-2">Encounter Type: {{c.encounterType}}
+                                                        <class="d-inline-block pr-2">Document Link: <a href="">{{c.encounterType}}</a>
                                                     </div>
                                                     <div class="text-nowrap">
                                                         <div class="receiveInfo d-inline-block pr-3"><span class="oi" data-glyph="timer"></span> Request recieved on: {{c.requestRecievedOn}}</div>
