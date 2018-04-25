@@ -34,6 +34,41 @@
                 $scope.rejectionCodes = ReimbursementProcessingService.getCodes('R');
                 initGrid();
                 $scope.selectedClaim = {'claimNo' : 80010201, 'requestNo' : 10010201-1, 'status' : 'Approved', 'policyNo' : 80010201, 'memberNo' : 10010201-1};
+
+                $scope.providerDetails = {
+                    'primaryDiagnosis' : '501.02',
+                    'primaryDiagDisc' : 'Surgery',
+                    'secDiagnosis' : '301.2,508.2',
+                    'secDiagnosisDesc' : 'secDiagnosisDesc',
+                    'providerName' : 'Alnoor Hospital',
+                    'providerCode' : '4341',
+                    'providerLicense' : 'MF28291',
+                    'voucherNumber' : 'MDC345674',
+                    'encounterType' : '',
+                    'claimType' : 'Elective',
+                    'providerNetwork' : 'P,S,G'
+                }
+                $scope.claimDetails = {
+                    'country' : 'Dubai'
+                }
+                $scope.policyDetails = {
+                    'claimCondition' : 'pecial Case/Ex-Gratia',
+                    'policyNumber' : '515621',
+                    'policyName' : 'Medic Policy',
+                    'policyStart' : null,
+                    'claimPaidTo' : 'Principle Member/Customer'
+                }
+                $scope.memberDetails = {
+                    'memberName' : 'Khalifa',
+                    'memberNo' : '500001-1-A',
+                    'category' : 'B',
+                    'gender' : 'Male',
+                    'age' : 52,
+                    'memberNetwork' : 'P',
+                    'memberTerminatedDate' : null,
+                    'memberStartDate' : null,
+                    'dependencyOrRelation' : 'Principle Member'
+                }
             }
 
             $scope.createNewClaim = function() {
@@ -187,6 +222,87 @@
             $scope.$watch('gridOptions.data', function(newValue, oldValue, scope) {
                 renderTotals(newValue);
             });
+
+            $scope.submitForApproval = function(claim) {
+                if($scope.gridOptions.data.length) {
+                    if (validateInformationSection()) {
+                        ngNotify.set('Claim Approved Succesfully.', 'success');
+                    }
+                } else {
+                    swal("", "No Records to Approve", "warning");
+                }
+            }
+
+            function validateInformationSection() {
+
+                var policyErrorArray = [];
+                var memberErrorArray = [];
+                var claimErrorArray = [];
+                var providerErrorArray = [];
+
+                var policyDetailsRequiredFields = ['claimCondition'];
+                var memberDetailsRequiredFields = ['memberName','memberNo','category','gender'];
+                var claimDetailsRequiredFields = ['country'];
+                var providerDetailsRequiredFields = ['primaryDiagnosis', 'primaryDiagDisc', 'secDiagnosis', 'secDiagnosisDesc', 'providerName', 'providerCode', 
+                                                    'providerLicense', 'voucherNumber', 'encounterType', 'claimType'];
+
+                
+                angular.forEach(providerDetailsRequiredFields, function(fieldName, key) {
+                    if ($scope.providerDetails[fieldName] == '' || $scope.providerDetails[fieldName] == null) {
+                        providerErrorArray.push(fieldName);
+                    }
+                });
+
+                angular.forEach(claimDetailsRequiredFields, function(fieldName, key) {
+                    if ($scope.claimDetails[fieldName] == '' || $scope.claimDetails[fieldName] == null) {
+                        claimErrorArray.push(fieldName);
+                    }
+                });
+
+                angular.forEach(policyDetailsRequiredFields, function(fieldName, key) {
+                    if ($scope.policyDetails[fieldName] == '' || $scope.policyDetails[fieldName] == null) {
+                        policyErrorArray.push(fieldName);
+                    }
+                });
+
+                angular.forEach(memberDetailsRequiredFields, function(fieldName, key) {
+                    if ($scope.memberDetails[fieldName] == '' || $scope.memberDetails[fieldName] == null) {
+                        memberErrorArray.push(fieldName);
+                    }
+                });
+
+                var errorMsg = '';
+                angular.forEach(providerErrorArray, function(fieldName, key) {
+                    if (key == 0) {
+                        errorMsg += 'Provider Details - ';
+                    }
+                    errorMsg += fieldName + '; ';
+                })
+                angular.forEach(claimErrorArray, function(fieldName, key) {
+                    if (key == 0) {
+                        errorMsg += 'Claim Details - ';
+                    }
+                    errorMsg += fieldName + '; ';
+                })
+                angular.forEach(policyErrorArray, function(fieldName, key) {
+                    if (key == 0) {
+                        errorMsg += 'Policy Details - ';
+                    }
+                    errorMsg += fieldName + '; ';
+                })
+                angular.forEach(memberErrorArray, function(fieldName, key) {
+                    if (key == 0) {
+                        errorMsg += 'Member Details - ';
+                    }
+                    errorMsg += fieldName + '; ';
+                })
+                if (providerErrorArray.length > 0 || claimErrorArray.length > 0 || policyErrorArray.length > 0 || memberErrorArray.length > 0) {
+                    swal("Please Enter all the required fields", "The Fields are in " + errorMsg, "warning");
+                    $scope.infoToggle = true;
+                    return false;
+                }
+                return true;
+            }
 
             function renderTotals(result) {
                 var totalApprovedAmount = 0;
