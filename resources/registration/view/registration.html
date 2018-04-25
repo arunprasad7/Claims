@@ -10,12 +10,23 @@
                     <div class="col-7 p-0">
                         <div class="searchBarRow reimbListTabl" style="display: block">
                             <div layout-gt-sm="row">
-                                    <div style="border-left: 1px solid #e6e6e6;width: 100% !important;">
-                                            <md-input-container flex-gt-sm>
-                                                <label>Member Name</label>
-                                                <input ng-model="memberName">
-                                            </md-input-container>
-                                        </div>
+                                <div style="border-left: 1px solid #e6e6e6;width: 100% !important;">
+                                    <md-autocomplete flex-gt-sm
+                                        md-input-name = "Member Name"
+                                        md-selected-item="searchMemName"
+                                        md-search-text="memNamesearchText"
+                                        md-items="item in querySearch(memNamesearchText, 'memberName')"
+                                        md-item-text="item.memberName"                                    
+                                        md-floating-label="Member Name"
+                                        md-clear-button="true">
+                                        <md-item-template>
+                                            <span md-highlight-text="memNamesearchText">{{item.memberName}}</span>
+                                        </md-item-template>
+                                        <md-not-found>
+                                                No Result Found                                
+                                        </md-not-found>
+                                    </md-autocomplete>   
+                                </div>
                                 <div style="border-left: 1px solid #e6e6e6;width: 100% !important;">
                                     <md-input-container flex-gt-sm>
                                         <label>IBAN Number</label>
@@ -27,7 +38,7 @@
                                         md-input-name = "Member Number"
                                         md-selected-item="searchMemNum"
                                         md-search-text="memNosearchText"
-                                        md-items="item in querySearch(memNosearchText)"
+                                        md-items="item in querySearch(memNosearchText, 'memberNumber')"
                                         md-item-text="item.memberNumber"                                    
                                         md-floating-label="Member Card Number"
                                         md-clear-button="true">
@@ -50,7 +61,7 @@
                                     <md-autocomplete flex-gt-sm
                                         md-selected-item="searchPolicy"
                                         md-search-text="searchText"
-                                        md-items="item in querySearch(searchText)"
+                                        md-items="item in querySearch(searchText, 'policyNumber')"
                                         md-item-text="item.policyNumber"       
                                         md-floating-label="Policy Number"
                                         md-clear-button="true">
