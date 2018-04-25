@@ -252,23 +252,23 @@
             infinite="false" name="previewSlider" ng-if = "fileInfos.length > 0 && isPreview">
             <carousel-item>
                 <div style="width:94%; padding:4px;">
-                    <!-- <div class="row">   
+                    <div class="row">   
                         <div class="col-sm-6" style="float:left;">
-                            <button type="button" class="btn" style="background-color: #00aeef; color:white" ng-click="hidePreview();">Upload
+                            <!-- <button type="button" class="btn" style="background-color: #00aeef; color:white" ng-click="hidePreview();">Upload
                                 <i class="fa fa-cloud-upload" style="color:white"></i>
-                            </button>
+                            </button> -->&nbsp;
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6" style="float:right;">
                             <a href="{{item.previewUrl}}" download="{{item.name}}">
                                 <button type="button" class="btn" style="background-color: #00aeef; color:white; float: right;">Download
                                     <i class="fa fa-cloud-download" style="color:white"></i>
                                 </button>                            
                             </a>
                         </div>    
-                    </div> -->
+                    </div>
                     <div ng-show="item.ext != 'docx'" style="padding-left:5px;">
-                        <iframe ng-src="{{trustUrl(item)}}" width="98%" height="595px;" ng-show="item.ext == 'pdf'"></iframe>
-                        <img  ng-src="{{trustUrl(item)}}" ng-show="item.ext != 'pdf'" style="width:98%;height:595px"/>
+                        <iframe ng-src="{{trustUrl(item)}}" width="98%" height="590px;" ng-show="item.ext == 'pdf'"></iframe>
+                        <img  ng-src="{{trustUrl(item)}}" ng-show="item.ext != 'pdf'" style="width:98%;height:590px"/>
                     </div>
                     <div ng-show="item.ext == 'docx'" style="width:98%; height:500px;color:white;font-size:25px;text-align:center">
                         <br><br><br>No Preview Available

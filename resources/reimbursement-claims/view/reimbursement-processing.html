@@ -258,10 +258,11 @@
                                         <p style="margin:0px;">
                                             <b>Request Number:</b> 
                                             <a class="currencyTypeCustom" href="javascript:void(0);" ng-click="toggleJson(item);"><span ng-click="toggleJson(item);">#{{item.reqNum}}</span> </a>&nbsp;
-                                            <strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong>
+                                            <!-- <strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong> -->
                                         </p>
+                                        <span style="padding-bottom:2px;"><b>Claim Status :</b> <strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong></span></br>
                                         <span style="padding-bottom:2px;"><b>Claim Status Reason:</b> <span style="color:#4e5e82">{{item.statusReason}}</span></span>
-                                        <span style="padding-bottom:2px;"><b>Rejected Reason:</b> <span style="color:#4e5e82">{{item.rejectedReason}}</span></span>
+                                        <!-- <span style="padding-bottom:2px;"><b>Rejected Reason:</b> <span style="color:#4e5e82">{{item.rejectedReason}}</span></span> -->
                                     </li>
                                 </carousel-item>                
                                 <carousel-prev>
