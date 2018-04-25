@@ -607,8 +607,9 @@ input.fileupload {
     height: 65px;
     text-align: center;
     padding-top: 16px;
-    height: 90%;
+    height: 65%;
     vertical-align: middle;
+    margin-top: 10px;
 }
 .dragover {
     border: 5px dashed blue;
@@ -1705,4 +1706,7 @@ footer {
 }
 .nav-item:focus {
     outline: none;
+}
+.searchBarRow md-autocomplete .md-virtual-repeat-container.md-autocomplete-suggestions-container {
+    top :150px !important;
 }

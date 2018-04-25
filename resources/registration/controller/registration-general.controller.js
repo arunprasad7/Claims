@@ -28,7 +28,6 @@
         }
 
         $scope.uploadFiles = function(files) {
-            localStorage.removeItem("filesInfo");
             $scope.files = files;
             $scope.fileInfos = ($scope.fileInfos && $scope.fileInfos.length) ? $scope.fileInfos :[];
             var fileInfo = $scope.fileInfos;
@@ -151,28 +150,29 @@
             }            
         }
 
-        $scope.openUploadModal = function() {
-            $scope.upload = {};            
-            $scope.uploadModalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: 'resources/registration/view/upload-modal.html',
-                size: 'lg',                
-                scope: $scope
-            });
-        }
+        // $scope.openUploadModal = function() {
+        //     $scope.upload = {};            
+        //     $scope.uploadModalInstance = $uibModal.open({
+        //         animation: true,
+        //         templateUrl: 'resources/registration/view/upload-modal.html',
+        //         size: 'lg',                
+        //         scope: $scope
+        //     });
+        // }
 
-        $scope.cancelModal = function() {
-            $scope.uploadModalInstance.dismiss();
-        }
+        // $scope.cancelModal = function() {
+        //     $scope.uploadModalInstance.dismiss();
+        // }
 
-        $scope.continueUpload = function() {
-            $scope.showUpload = true;
-            $scope.noOfSlides = 2;
-            $scope.uploadModalInstance.close();            
-        }
+        // $scope.continueUpload = function() {
+        //     $scope.showUpload = true;
+        //     $scope.noOfSlides = 2;
+        //     $scope.uploadModalInstance.close();            
+        // }
 
-        $scope.toggleUpload = function() {
-            $scope.showUpload = !$scope.showUpload;
+        $scope.documentsUpload = function() {
+            $scope.upload = {};
+            $scope.showUpload = true;//!$scope.showUpload;
             $scope.noOfSlides = $scope.showUpload ? 2 : 4;
             $scope.isPreview = false;
         }

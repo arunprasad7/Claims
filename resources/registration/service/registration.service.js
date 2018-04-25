@@ -22,8 +22,9 @@
                 "reqReceivedDate" : null,
                 "prevRequest" : null,
                 "source" : "post",
-                "voucherNumber" : 'IBAN',
-                "ibanNum" : null              
+                "voucherNumber" : null,
+                "ibanNum" : null,
+                "paymentWay" : 'iban'
             };
         }
 
