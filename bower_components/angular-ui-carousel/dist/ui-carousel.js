@@ -695,6 +695,15 @@ angular.module('ui.carousel.directives').directive('uiCarousel', ['$compile', '$
         $scope.$parent.toggleJson(item);
       }
 
+      $scope.setEditedItem = function(item) {
+        $scope.editedItem = angular.copy(item);
+      }
+
+      $scope.resetItem = function(item) {
+        item.uploadType =  $scope.editedItem.uploadType;
+        item.uploadDesc =  $scope.editedItem.uploadDesc;
+      }
+
       $scope.trustUrl = function(item) {
         if(item.ext != 'docx') {
           return $sce.trustAsResourceUrl(item.previewUrl);
