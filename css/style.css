@@ -1717,3 +1717,7 @@ footer {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.claimRequestDetInner .md-datepicker-input-container {
+    width: 60% !important;
+}
