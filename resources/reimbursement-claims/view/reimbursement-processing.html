@@ -1,5 +1,5 @@
 <nav class="navbar pt-1 pb-1">
-        <span class="navbar-brand p-0 m-0">Reimbursement Claims : Processing</span>
+        <span ui-sref="user-assignment({ param: 'reimburs' })" class="navbar-brand p-0 m-0"><i class="fa fa-arrow-left" style="cursor:pointer"></i>&nbsp;&nbsp;Reimbursement Claims : Processing</span>
     </nav>
     <section id="reimbursment">
         <div class="leftContainer">
@@ -373,7 +373,7 @@
                                         </md-autocomplete>
                                     </div>
                                     <div class="float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;width: 35% !important;">
-                                        <md-input-container flex-gt-sm style="margin-top: 18px;">    
+                                        <md-input-container flex-gt-sm style="margin-top: 18px;" readonly= true>    
                                             <label>Service From</label>
                                             <md-datepicker ng-model="claim.serviceFrom" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
                                         </md-input-container>
@@ -522,7 +522,14 @@
                                     <span class="oi" data-glyph="thumb-down"></span>
                                 </button>                            
                             </div>
-                            <h3 class="innerHeadText mt-2 mb-2 d-inline-block">Claim Treatment / Service Level</h3><div class="currencyType d-inline-block">Currency: AED</div>
+                            <h3 class="innerHeadText mt-2 mb-2 d-inline-block">Claim Treatment / Service Level</h3>
+                            <div class="currencyType d-inline-block">Currency: 
+                                <select ng-model="currencyType" ng-change="convertCurrency();">
+                                    <option value="1">AED</option>
+                                    <option value="2">USD</option>
+                                    <option value="3">EUR</option>
+                                </select>
+                            </div>
                             <a href="javascript:;" class="tablColmArrow float-right mt-2 mb-2 mr-3 ml-2" ng-click="createNewClaim();">
                                 <span class="oi" data-glyph="plus"></span>
                             </a>

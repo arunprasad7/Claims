@@ -27,6 +27,7 @@
             var descriptionTemplate = '<div ng-if="!row.entity.editable || !col.colDef.enableCellEdit" class="text-truncate" style="padding:3px;" ng-click="grid.appScope.editClaim(row.entity)">{{COL_FIELD}}</div>';
 
             function init() {
+                $scope.currencyType = '1';
                 $scope.claim = ReimbursementProcessingService.createNewReimbursmentObject();
                 $scope.claimReqList = ReimbursementProcessingService.getClaimsRequest();
                 $scope.treatmentCodes = ReimbursementProcessingService.getCodes('T');
@@ -203,7 +204,17 @@
                 $scope.totalPenaltyAmount = totalPenaltyAmount;
                 $scope.totalDeductionAmount = totalDeductionAmount;
             }
-
+            $scope.convertCurrency = function() {
+                angular.forEach($scope.gridOptions.data, function(value, key) {
+                    value.requestAmount = value.requestAmount ? (value.requestAmount * parseInt($scope.currencyType)) : null;
+                    value.policyDedAmount = value.policyDedAmount ? (value.policyDedAmount * parseInt($scope.currencyType)) : null;
+                    value.manualDeduction = value.manualDeduction ? (value.manualDeduction * parseInt($scope.currencyType)) : null;
+                    value.penaltyAmount = value.penaltyAmount ? (value.penaltyAmount * parseInt($scope.currencyType)) : null;
+                    value.suggesstedAmount = value.suggesstedAmount ? (value.suggesstedAmount * parseInt($scope.currencyType)) : null;
+                    value.approvedAmount = value.approvedAmount ? (value.approvedAmount * parseInt($scope.currencyType)) : null;
+                    value.rejectedAmount = value.rejectedAmount ? (value.rejectedAmount * parseInt($scope.currencyType)) : null;
+                });
+            }
             init();
         }
 })()
