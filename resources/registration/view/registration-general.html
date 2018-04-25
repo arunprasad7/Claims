@@ -152,11 +152,11 @@
                 <div class="fieldsCol fieldsFilledCol pb-2">
                     <label class="top_4">Payment Way</label>
                     <div class="buttonGroups">
-                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : paymentWay == 'IBAN'}" ng-click="setPaymentWay('IBAN')">IBAN</button>
-                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : paymentWay == 'Cheque'}" ng-click="setPaymentWay('Cheque')">Cheque</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : paymentWay == 'iban'}" ng-click="setPaymentWay('iban')">IBAN</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'btnSelect' : paymentWay == 'cheque'}" ng-click="setPaymentWay('cheque')">Cheque</button>
                     </div>
                 </div>
-                <div class="fldsWrap clearfix b0 row" ng-show="paymentWay == 'IBAN'">
+                <div class="fldsWrap clearfix b0 row" ng-show="paymentWay == 'iban'">
                     <div class="col-sm-4">
                         <div layout-gt-sm="row">
                             <div class="pb-1 iban-box">
