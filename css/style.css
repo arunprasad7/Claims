@@ -1696,10 +1696,10 @@ footer {
     margin-right: 3% !important;
 }
 .searchBarRow md-autocomplete md-input-container{
-    top: 12px;   
+    margin: 0px;
 }
 .searchBarRow md-autocomplete .md-show-clear-button button {
-    top: 28px;
+    top: 0px;
 }
 .searchBarRow md-autocomplete md-input-container .md-input {
     border: none !important;

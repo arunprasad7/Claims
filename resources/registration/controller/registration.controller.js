@@ -14,12 +14,12 @@
         $scope.claims= $scope.registeredClaims;
 
         $scope.searchBtn = function() {
-            if (($scope.voucherNumber == "" || $scope.voucherNumber == null) && ($scope.searchMemNum == "" || $scope.searchMemNum == null) && ($scope.ibanNum == "" || $scope.ibanNum == null)&&($scope.searchPolicy == "" || $scope.searchPolicy == null)) {
+            if (($scope.voucherNumber == "" || $scope.voucherNumber == null) && ($scope.searchMemNum == "" || $scope.searchMemNum == null) && ($scope.ibanNum == "" || $scope.ibanNum == null)&&($scope.searchPolicy == "" || $scope.searchPolicy == null)&&($scope.memberName == "" || $scope.memberName == null)) {
                 $scope.claims = $scope.registeredClaims;
             } else {
                 var memNo = $scope.searchMemNum ? $scope.searchMemNum.memberNumber : undefined;
                 var policyNo = $scope.searchPolicy ? $scope.searchPolicy.policyNumber : undefined;
-                $scope.claims = $filter('filter')($scope.registeredClaims, { voucherNumber: $scope.voucherNumber, ibanNum: $scope.ibanNum, memberNumber : memNo, policyNumber : policyNo});
+                $scope.claims = $filter('filter')($scope.registeredClaims, { voucherNumber: $scope.voucherNumber, ibanNum: $scope.ibanNum, memberNumber : memNo, policyNumber : policyNo,memberName: $scope.memberName});
             }
         }
 
@@ -34,25 +34,14 @@
             $state.go('claim-registration-edit');
         }
 
-        $scope.querySearch = function(query) {
-            return query ? $scope.claims.filter(createFilterFor(query)) : $scope.claims;
+        $scope.querySearch = function(query, name) {
+            return query ? $scope.claims.filter(createFilterFor(query, name)) : $scope.claims;
         }
       
-        function createFilterFor(query) {
+        function createFilterFor(query, name) {
             var lowercaseQuery = angular.lowercase(query);
             return function filterFn(state) {
-                return (((angular.lowercase(state.memberNumber).indexOf(lowercaseQuery) != 0) && angular.lowercase(state.memberNumber).indexOf(lowercaseQuery) != -1) || (angular.lowercase(state.memberNumber).indexOf(lowercaseQuery) === 0));
-            };
-        }
-
-        $scope.querySearch = function(query) {
-            return query ? $scope.claims.filter(createFilterFor(query)) : $scope.claims;
-        }
-      
-        function createFilterFor(query) {
-            var lowercaseQuery = angular.lowercase(query);
-            return function filterFn(state) {
-                return (((angular.lowercase(state.policyNumber).indexOf(lowercaseQuery) != 0) && angular.lowercase(state.policyNumber).indexOf(lowercaseQuery) != -1) || (angular.lowercase(state.policyNumber).indexOf(lowercaseQuery) === 0));
+                return (((angular.lowercase(state[name]).indexOf(lowercaseQuery) != 0) && angular.lowercase(state[name]).indexOf(lowercaseQuery) != -1) || (angular.lowercase(state[name]).indexOf(lowercaseQuery) === 0));
             };
         }
     }
