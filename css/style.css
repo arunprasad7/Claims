@@ -1710,3 +1710,10 @@ footer {
 .searchBarRow md-autocomplete .md-virtual-repeat-container.md-autocomplete-suggestions-container {
     top :150px !important;
 }
+
+.text-truncate{
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -273,8 +273,14 @@
                             </ui-carousel>
                         </div>
                         <div class="col-sm-2 medicalwid">
-                            <div class="medicalCardInfoBox medicalCardInfoBoxShow medicalInfoWidth" id="medicalCardInfoBox">
+                            <div class="medicalCardInfoBox medicalCardInfoBoxShow medicalInfoWidth" id="medicalCardInfoBox" style="height: 145px !important;">
                                 <h3>Medical card info</h3>
+                                <!-- <ul> -->
+                                    <li style="list-style: none;">
+                                        <span style="width: auto !important;padding-left: 6px;"> Policy Name:</span>
+                                        <span>High Treatment Service - Medic Policy</span>
+                                    </li> 
+                                <!-- </ul> -->
                                 <ul>
                                   <li>
                                     <span>Age:</span>
@@ -292,10 +298,10 @@
                                    <span>Member N/W:</span>
                                    <span>AEM</span>
                                  </li> 
-                                 <li>
+                                 <!-- <li>
                                    <span>Policy Name:</span>
-                                   <span>HTS</span>
-                                 </li> 
+                                   <span>HTS-Medic Policy HTS-Medic Policy HTS-Medic Policy</span>
+                                 </li>  -->
                                    <li>
                                         <span>Inpatient: </span>
                                         <span>Nil</span>
@@ -431,16 +437,22 @@
                                 </div>
                                 <div class="withBorGrayTxtWrap clearfix">
                                     <div layout-gt-sm="row" class="pb-1" style="margin-left: 1%;">
+                                        <!-- <div class="col-sm-3 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                            <md-input-container flex-gt-sm style="margin-top: 18px;">
+                                                <label>Rejection Description</label>
+                                                <textarea class="claimReqIput" maxlength="120" ng-model="claim.rejectionDesc" rows="2"></textarea>
+                                            </md-input-container>
+                                        </div> -->
                                         <div class="col-sm-4 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
                                             <md-input-container flex-gt-sm style="margin-top: 18px;">
                                                 <label>Internal Remarks</label>
-                                                <textarea class="claimReqIput" maxlength="120" ng-model="claim.internalRemarks" rows="2"></textarea>
+                                                <textarea class="claimReqIput" maxlength="150" ng-model="claim.internalRemarks"></textarea>
                                             </md-input-container>
                                         </div>
                                         <div class="col-sm-4 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
                                             <md-input-container flex-gt-sm style="margin-top: 18px;">
                                                 <label>External Remarks</label>
-                                                <textarea class="claimReqIput" maxlength="120" ng-model="claim.externalRemarks" rows="2"></textarea>
+                                                <textarea class="claimReqIput" maxlength="150" ng-model="claim.externalRemarks"></textarea>
                                             </md-input-container>
                                         </div>
                                         <div class="col-sm-4 float-left" style="margin-top: 1.5rem;">

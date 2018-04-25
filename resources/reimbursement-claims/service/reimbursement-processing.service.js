@@ -113,23 +113,23 @@
             return [
                 {
                     'code' : 1111,
-                    'name' : codeType + ' 1859231-1' 
+                    'name' : codeType + ' 1859231 - Surgery' 
                 },
                 {
                     'code' : 2222,
-                    'name' : codeType + ' 2054571-1' 
+                    'name' : codeType + ' 2054571 - Radiation Therapy' 
                 },
                 {
                     'code' : 3333,
-                    'name' : codeType + ' 3451201-1' 
+                    'name' : codeType + ' 3451201 - Chemotherapy' 
                 },
                 {
                     'code' : 4444,
-                    'name' : codeType + ' 4579201-1' 
+                    'name' : codeType + ' 4579201 - Immunotherapy' 
                 },
                 {
                     'code' : 5555,
-                    'name' : codeType + ' 5463201-1' 
+                    'name' : codeType + ' 5463201 - Stem Cell Transplant' 
                 }
             ];
         }

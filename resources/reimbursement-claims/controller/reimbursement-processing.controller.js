@@ -24,6 +24,8 @@
             var dateTemplate = '<div ng-if="!row.entity.editable || !col.colDef.enableCellEdit" style="padding:3px;">{{COL_FIELD | date:\'mediumDate\'}}</div><div ng-if="row.entity.editable && col.colDef.enableCellEdit" class="p1px">'+
             '<md-datepicker class="md-block" md-hide-icons="all" md-open-on-focus aria-label="{{row.entity.name}}" name="{{col.name}}" id="{{row.uid}}-{{col.name}}-edit-cell" ng-model="MODEL_COL_FIELD"></md-datepicker></div>';
 
+            var descriptionTemplate = '<div ng-if="!row.entity.editable || !col.colDef.enableCellEdit" class="text-truncate" style="padding:3px;" ng-click="grid.appScope.editClaim(row.entity)">{{COL_FIELD}}</div>';
+
             function init() {
                 $scope.claim = ReimbursementProcessingService.createNewReimbursmentObject();
                 $scope.claimReqList = ReimbursementProcessingService.getClaimsRequest();
@@ -74,7 +76,7 @@
                         {name:'action', displayName:'', cellTemplate:staticTemplate,width:40, pinnedLeft:true},
                         {name:'treatmentCodeOrSubBenefit.name', displayName:'Treatment Code/SubBenefit',width:200},
                         {name:'serviceFrom', displayName:'Service From', cellTemplate:dateTemplate,width:120},
-                        // {name:'serviceTo', displayName:'Service To', cellTemplate:dateTemplate,width:120},
+                        {name:'serviceTo', displayName:'Service To', cellTemplate:dateTemplate,width:110},
                         {name:'days', displayName:'Days', width:90},
                         {name:'requestAmount', displayName:'Request Amount', width:140},
                         {name:'policyDedAmount', displayName:'Policy Ded Amount',width:150},
@@ -84,9 +86,10 @@
                         {name:'approvedAmount', displayName:'Approved Amount', width:165},
                         {name:'rejectedAmount', displayName:'Rejected Amount', width:145},
                         {name:'rejectionCode.name', displayName:'Rejection Code',width:140},
+                        {name:'rejectionDesc', displayName:'Rejection Description',width:210},
                         {name:'status', displayName:'Status', width:155},
-                        {name:'internalRemarks', displayName:'Internal Remarks',width:210},
-                        {name:'externalRemarks', displayName:'External Remarks',width:210},
+                        {name:'internalRemarks', displayName:'Internal Remarks', cellTemplate:descriptionTemplate, width:210},
+                        {name:'externalRemarks', displayName:'External Remarks', cellTemplate:descriptionTemplate, width:210},
                         {name:'Settings', displayName:'Settings', cellTemplate:settingsTemplate,width:75, pinnedRight:true}
                     ],
                     enableSorting: false
