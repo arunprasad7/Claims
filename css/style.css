@@ -1257,9 +1257,9 @@ footer li strong {
 }
 
 .ui-grid-header-cell {
-    background: #fc4b6c;
+    background: #c9cdd7;
     border-bottom: 0 !important;
-    color: #fff;
+    color: black;
     padding: 0.25rem 0.25rem;
     font-weight: normal;
 }
@@ -1275,7 +1275,6 @@ footer li strong {
     height: 30px !important;
     font: 12px/16px "open_sansregular";
     table-layout: fixed;
-    /* border-right: none !important; */
 }
 
 .eclaimRequestTabl td:last-child span {
@@ -1320,9 +1319,9 @@ footer li strong {
 }
 
 .reimbListTabl th {
-    background: #fc4b6c;
+    background: #c9cdd7;
     border-bottom: 0 !important;
-    color: #fff;
+    color: black;
     font-weight: normal;
 }
 
