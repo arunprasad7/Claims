@@ -354,8 +354,8 @@
                     <div ng-class="{'reimbur-trans-hide' : !createNew, 'reimbur-trans-show' : createNew}">
                         <div class="claimRequestDetails mt-3">
                             <div class="claimRequestDetInner mb-3 clearfix" style="padding-left:0px;">
-                                <div layout-gt-sm="row" class="pb-1">
-                                    <div class="masterCodes float-left" style="border: 1px solid #b3b3b3;margin: 0 3px 0 19px;width: 50% !important;">
+                                <div layout-gt-sm="row" class="col-sm-12 pb-1">
+                                    <div class="masterCodes float-left" style="border: 1px solid #b3b3b3;margin: 0 3px 0 0;width: 50% !important;">
                                         <md-autocomplete
                                             md-selected-item="claim.treatmentCodeOrSubBenefit"
                                             md-search-text="searchText"
@@ -420,8 +420,8 @@
                                         </md-autocomplete>
                                     </div>
                                 </div>
-                                <div class="withoutBorWrap clearfix mb-2">
-                                    <div layout-gt-sm="row" style="margin-left: 1%;">
+                                <div class="withoutBorWrap clearfix mb-2 pb-1">
+                                    <div layout-gt-sm="row">
                                         <div class="col-sm-2 float-left">
                                             <md-input-container flex-gt-sm style="margin-top: 18px;">   
                                                 <label>Policy Ded Amount</label>
@@ -460,15 +460,15 @@
                                         </div>
                                     </div>    
                                 </div>
-                                <div class="withBorGrayTxtWrap clearfix">
-                                    <div layout-gt-sm="row" class="pb-1" style="margin-left: 1%;">
+                                <div class="col-sm-12 withBorGrayTxtWrap clearfix pb-1">
+                                    <div layout-gt-sm="row" class="pb-1">
                                         <!-- <div class="col-sm-3 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
                                             <md-input-container flex-gt-sm style="margin-top: 18px;">
                                                 <label>Rejection Description</label>
                                                 <textarea class="claimReqIput" maxlength="120" ng-model="claim.rejectionDesc" rows="2"></textarea>
                                             </md-input-container>
                                         </div> -->
-                                        <div class="col-sm-4 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
+                                        <div class="col-sm-4 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px 0 0;">
                                             <md-input-container flex-gt-sm style="margin-top: 18px;">
                                                 <label>Internal Remarks</label>
                                                 <textarea class="claimReqIput" maxlength="150" ng-model="claim.internalRemarks"></textarea>
@@ -498,7 +498,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="col-sm-12 pb-1" style="font-size:x-small">
+                                    Policy Rule: 
+                                    <div style="color:red;">Limit Rule:Out Patient</div>
+                                </div>
+                            </div>    
                         </div>
                     </div>                
                     <div class="eclaimRequest text-center mt-4">
