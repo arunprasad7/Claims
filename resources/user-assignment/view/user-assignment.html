@@ -138,8 +138,10 @@
                                                     <div class="text-nowrap">
                                                         <class="d-inline-block pr-2">Voucher No: {{c.voucherNo}}
                                                         <class="d-inline-block pr-2">Encounter Type: {{c.encounterType}}
-                                                        <class="d-inline-block pr-2">Document Link: <a href="">{{c.encounterType}}</a>
                                                     </div>
+                                                    <div class="text-nowrap">
+                                                        <class="d-inline-block pr-2">Document Link: <a href="">{{c.documentLink}}</a>
+                                                    </div>  
                                                     <div class="text-nowrap">
                                                         <div class="receiveInfo d-inline-block pr-3"><span class="oi" data-glyph="timer"></span> Request recieved on: {{c.requestRecievedOn}}</div>
                                                         <div class="statusInfo d-inline-block text-success" ng-class="{'text-success': c.status=='Approved','text-danger': c.status!='Approved'}">
