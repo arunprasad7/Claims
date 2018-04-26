@@ -126,13 +126,13 @@
                     <div class="col-sm-6">
                         <md-input-container>
                             <label>Request Received Date</label>
-                            <md-datepicker ng-model="regDetail.reqReceivedDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
+                            <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="regDetail.reqReceivedDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
                         </md-input-container>
                     </div>
                     <div class="col-sm-6 colborder">
                         <md-input-container>
                             <label>Service From Date</label>
-                            <md-datepicker ng-model="regDetail.serviceFmDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
+                            <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="regDetail.serviceFmDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
                         </md-input-container>
                     </div>    
                 </div>        

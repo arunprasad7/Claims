@@ -86,8 +86,16 @@ angular
             duration: 2000,
             button : true
         });
+
         $transitions.onSuccess({}, function() {
             $rootScope.navbar = false;
         });
+
+        $rootScope.clearDatepickerKeyupValue = function(event) {
+            if(event.keyCode != 9 && event.keyCode != 13 && event.keyCode != 37 && event.keyCode != 27
+                && event.keyCode != 38 && event.keyCode != 39 && event.keyCode != 40) {
+                event.target.value = "";
+            }
+        }    
     }
 })();

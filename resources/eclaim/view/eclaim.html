@@ -134,7 +134,7 @@
                                         <div class="fldsWrap clearfix">
                                             <md-input-container flex-gt-sm>    
                                                 <label>Policy Start</label>
-                                                <md-datepicker ng-model="policyDetails.policyStart" md-hide-icons="all" md-open-on-focus></md-datepicker>
+                                                <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="policyDetails.policyStart" md-hide-icons="all" md-open-on-focus></md-datepicker>
                                             </md-input-container>
                                         </div>
                                         <div class="fldsWrap clearfix">
@@ -202,19 +202,19 @@
                                         <div class="fldsWrap clearfix">
                                             <md-input-container flex-gt-sm>    
                                                 <label>Card Received Date</label>
-                                                <md-datepicker ng-model="memberDetails.cardReceivedDate" md-hide-icons="all" md-open-on-focus></md-datepicker>
+                                                <md-datepicker  ng-keyup="clearDatepickerKeyupValue($event);" ng-model="memberDetails.cardReceivedDate" md-hide-icons="all" md-open-on-focus></md-datepicker>
                                             </md-input-container>
                                         </div>
                                         <div class="fldsWrap clearfix">
                                             <md-input-container flex-gt-sm>    
                                                 <label>Member Start Date</label>
-                                                <md-datepicker ng-model="memberDetails.memberStartDate" md-hide-icons="all" md-open-on-focus></md-datepicker>
+                                                <md-datepicker  ng-keyup="clearDatepickerKeyupValue($event);" ng-model="memberDetails.memberStartDate" md-hide-icons="all" md-open-on-focus></md-datepicker>
                                             </md-input-container>
                                         </div>
                                         <div class="fldsWrap clearfix">
                                             <md-input-container flex-gt-sm>    
                                                 <label>Member End Date</label>
-                                                <md-datepicker ng-model="memberDetails.memberEndDate" md-hide-icons="all" md-open-on-focus></md-datepicker>
+                                                <md-datepicker  ng-keyup="clearDatepickerKeyupValue($event);" ng-model="memberDetails.memberEndDate" md-hide-icons="all" md-open-on-focus></md-datepicker>
                                             </md-input-container>
                                         </div>
                                     </div>

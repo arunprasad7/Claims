@@ -45,13 +45,13 @@
                     <div style="border-left: 1px solid #e6e6e6; width: 194% !important;">
                         <md-input-container>
                             <label style="white-space: pre-line;">Request Received From</label>
-                            <md-datepicker ng-model="requestedFromDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
+                            <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="requestedFromDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
                         </md-input-container>
                     </div>
                     <div style="border-left: 1px solid #e6e6e6; width: 190% !important;">
                         <md-input-container>
                             <label style="white-space: pre-line;">Request Received To</label>
-                            <md-datepicker ng-model="requestedToDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
+                            <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="requestedToDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
                         </md-input-container>
                     </div>
                     <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
