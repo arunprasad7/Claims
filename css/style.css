@@ -573,9 +573,9 @@ input.fileupload {
 }
 
 #finilizationCont td:first-child,
-.processedStatus {
+/* .processedStatus {
     width: 1%;
-}
+} */
 
 .processedStatus .btn {
     border-radius: 15px;
@@ -1692,7 +1692,7 @@ footer {
 
 .btn-finalize {
     margin-top: 0.5% !important;
-    margin-right: 3% !important;
+    margin-right: 0% !important;
 }
 .searchBarRow md-autocomplete md-input-container{
     margin: 0px;

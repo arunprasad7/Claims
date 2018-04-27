@@ -97,19 +97,19 @@
                                 <thead>
                                     <tr>
                                         <th ng-click="sortBy('memberNumber')">Member Card Number
-                                            <span class="fa" ng-show="propertyName == 'memberNumber'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
+                                            <span class="fa fa-sort" ng-show="propertyName == 'memberNumber'"ng-class="{'fa fa-sort-desc': reverse,'fa fa-sort-asc' : !reverse}"></span>
                                         </th>
                                         <th ng-click="sortBy('memberName')">Member Name
-                                            <span class="fa" ng-show="propertyName == 'memberName'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
+                                            <span class="fa fa-sort" ng-show="propertyName == 'memberName'"ng-class="{'fa fa-sort-desc': reverse, 'fa fa-sort-asc': !reverse}"></span>
                                         </th>
                                         <th ng-click="sortBy('policyNumber')">Policy Number
-                                            <span class="fa" ng-show="propertyName == 'policyNumber'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
+                                            <span class="fa fa-sort" ng-show="propertyName == 'policyNumber'"ng-class="{'fa fa-sort-desc': reverse, 'fa fa-sort-asc': !reverse}"></span>
                                         </th>
                                         <th ng-click="sortBy('voucherNumber')">Voucher Number
-                                            <span class="fa" ng-show="propertyName == 'voucherNumber'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
+                                            <span class="fa fa-sort" ng-show="propertyName == 'voucherNumber'"ng-class="{'fa fa-sort-desc': reverse, 'fa fa-sort-asc' : !reverse}"></span>
                                         </th>
                                         <th ng-click="sortBy('ibanNum')">IBAN Number
-                                            <span class="fa" ng-show="propertyName == 'ibanNum'"ng-class="{'fa-hand-o-down': reverse, 'fa-hand-o-up' : !reverse}"></span>
+                                            <span class="fa fa-sort" ng-show="propertyName == 'ibanNum'"ng-class="{'fa fa-sort-desc': reverse, 'fa fa-sort-asc' : !reverse}"></span>
                                         </th>
                                         <th>IBAN Document</th>
                                     </tr>
