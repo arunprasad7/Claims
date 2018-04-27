@@ -13,6 +13,7 @@
         $scope.Provider;
         $scope.BatchId;
         $scope.BatchFileName;
+        $scope.selectall = false;
         $scope.result = [];
         $scope.data = [{
             batch: " #111111",
@@ -23,14 +24,14 @@
             PaidTo: "Al Noor Hospital",
             Processed: "500000",
             unProcessed: "568890",
-            rejectedAmount: "1,00,500",
+            rejectedAmount: "1,80,500",
             batchPaidAmount: "1,00,500",
-            paymentWay: "Type of way",
+            paymentWay: "cheque",
             totalClaims: "923,515",
             paymentDate: "25 Mar 2018",
-            paymentReference: "Type of Reference",
+            paymentReference: "698536",
             status: "Approved",
-            selected : false
+           
         }, {
             batch: " #222222",
             batchFileName: "6718281-652d-d3453-MF17152-A002-CLAIM",
@@ -40,14 +41,13 @@
             PaidTo: "Al Noor Hospital",
             Processed: "500000",
             unProcessed: "568890",
-            rejectedAmount: "1,00,500",
+            rejectedAmount: "1,30,400",
             batchPaidAmount: "1,00,500",
-            paymentWay: "Type of way",
+            paymentWay: "Iban",
             totalClaims: "238,515",
             paymentDate: "25 Mar 2018",
-            paymentReference: "Type of Reference",
+            paymentReference: "129856",
             status: "Approved",
-            selected : false
         }, {
             batch: "#22333",
             batchFileName: "6718281-652d-d3453-MF17152-A002-CLAIM",
@@ -57,14 +57,13 @@
             PaidTo: "Al Noor Hospital",
             Processed: "900000",
             unProcessed: "568890",
-            rejectedAmount: "1,00,500",
+            rejectedAmount: "1,20,530",
             batchPaidAmount: "1,00,500",
-            paymentWay: "Type of way",
+            paymentWay: "Cheque",
             totalClaims: "673,515",
             paymentDate: "25 Mar 2018",
-            paymentReference: "Type of Reference",
+            paymentReference: "485698",
             status: "Rejected",
-            selected : false
         }, {
             batch: " #444444",
             batchFileName: "6718281-652d-d3453-MF17152-A002-CLAIM",
@@ -74,14 +73,13 @@
             PaidTo: "Al Noor Hospital",
             Processed: "500000",
             unProcessed: "568890",
-            rejectedAmount: "1,00,500",
+            rejectedAmount: "1,80,400",
             batchPaidAmount: "1,00,500",
-            paymentWay: "Type of way",
+            paymentWay: "Iban",
             totalClaims: "423,515",
             paymentDate: "25 Mar 2018",
-            paymentReference: "Type of Reference",
+            paymentReference: "885369",
             status: "Rejected",
-            selected : false
         }, {
             batch: " #555555",
             batchFileName: "6718281-652d-d3453-MF17152-A002-CLAIM",
@@ -91,14 +89,14 @@
             PaidTo: "Al Noor Hospital",
             Processed: "500000",
             unProcessed: "568890",
-            rejectedAmount: "1,00,500",
+            rejectedAmount: "1,10,520",
             batchPaidAmount: "1,00,500",
-            paymentWay: "Type of way",
+            paymentWay: "Cheque",
             totalClaims: "33,515",
             paymentDate: "25 Mar 2018",
-            paymentReference: "Type of Reference",
+            paymentReference: "268754",
             status: "Rejected",
-            selected : false
+           
         }, {
             batch: "#666666",
             batchFileName: "A003-CLAIM",
@@ -108,27 +106,33 @@
             PaidTo: "Al Noor Hospital",
             Processed: "500000",
             unProcessed: "568890",
-            rejectedAmount: "1,00,500",
+            rejectedAmount: "1,90,500",
             batchPaidAmount: "1,00,500",
-            paymentWay: "Type of way",
+            paymentWay: "Iban",
             totalClaims: "223,515",
             paymentDate: "25 Mar 2018",
-            paymentReference: "Type of Reference",
+            paymentReference: "789652",
             status: "Rejected",
-            selected : false
+           
         }];
         $scope.result = $scope.data;
         $scope.recordTotal = $scope.data.length;
 
         $scope.click = function() {
-            if (($scope.Provider == "" || $scope.Provider == null) && ($scope.BatchId == "" || $scope.BatchId == null) && ($scope.BatchFileName == "" || $scope.BatchFileName == null)) {
+            if (($scope.paymentReference == "" || $scope.paymentReference == null) && ($scope.BatchId == "" || $scope.BatchId == null) && ($scope.paymentWay == "" || $scope.paymentWay == null)) {
                 $scope.data = $scope.result;
             } else {
-                $scope.data = $filter('filter')($scope.data, { PaidToProviderName: $scope.Provider, batch: $scope.BatchId, batchFileName: $scope.BatchFileName });
+                $scope.data = $filter('filter')($scope.result,{ paymentReference: $scope.paymentReference, batch: $scope.BatchId, paymentWay: $scope.paymentWay });
             }
             $scope.requestType;
         }
-
+        $scope.clear=function() {
+            $scope.paymentReference='';
+            $scope.BatchId='';
+            $scope.paymentWay='';
+            $scope.data = $scope.result;
+        }       
+        
         $scope.sorting = function(field) {
             $scope.orderByField = 'receivedDate';
             $scope.reverseSort = (field == 'receivedDateDesc') ? false : true;
@@ -141,6 +145,19 @@
             $scope.isActive = !$scope.isActive;
         }
 
+        $scope.selectAll = function() {
+            if (!$scope.selectall) {
+                $scope.selectall = true;
+                $scope.data.forEach(function(value) {
+                    value.selected = true;
+                });
+            } else {
+               $scope.selectall = false;
+               $scope.data.forEach(function(value) {
+                    value.selected = false;
+                });
+            }
+        }     
         $scope.finalizeBatch = function() {
             var result = [];
             var records = angular.copy($scope.data);
