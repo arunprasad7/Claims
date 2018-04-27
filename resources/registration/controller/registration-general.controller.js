@@ -5,11 +5,12 @@
         .module('claims')
         .controller('RegistrationGeneralController', RegistrationGeneralController)
     
-    RegistrationGeneralController.$inject = ['$scope', '$rootScope', 'RegistrationService', '$state', '$uibModal', '$timeout', 'ngNotify', '$stateParams', 'claim'];
+    RegistrationGeneralController.$inject = ['$scope', '$rootScope', 'RegistrationService', '$state', '$uibModal', '$timeout', 'ngNotify', '$stateParams', 'claim', 'isNew'];
 
-    function RegistrationGeneralController($scope, $rootScope, RegistrationService, $state, $uibModal, $timeout, ngNotify, $stateParams, claim, $uibModalInstance) {
+    function RegistrationGeneralController($scope, $rootScope, RegistrationService, $state, $uibModal, $timeout, ngNotify, $stateParams, claim, isNew) {
         $scope.regDetail = claim;
         $scope.previewIndex = 0;
+        $scope.isNew = isNew;
 
         $scope.setDcoumentType = function(documentType) {
             $scope.regDetail['source'] = documentType;
@@ -43,8 +44,8 @@
                     f.contentType = file.type;
                     f.ext = 'docx';
                     f.uploadedDate = new Date();
-                    f.uploadType = $scope.upload ? $scope.upload.type : '';
-                    f.uploadDesc = $scope.upload ? $scope.upload.description : '';
+                    f.documentTyp = $scope.upload ? $scope.upload.type : '';
+                    f.documentDesc = $scope.upload ? $scope.upload.description : '';
                     if(file.type.indexOf('image/') > -1)
                         f.ext = 'image';
                     if(file.type.indexOf('/pdf') > -1)
@@ -60,7 +61,7 @@
                         },300)    
                         if(key == $scope.files.length-1) {
                             $scope.noOfSlides = 4;
-                            $scope.showUpload = false;                            
+                            $scope.showUpload = false;
                             $scope.uploaded = true;
                             $scope.fileInfos = fileInfo;
                         }
@@ -150,25 +151,27 @@
             }            
         }
 
-        // $scope.openUploadModal = function() {
-        //     $scope.upload = {};            
-        //     $scope.uploadModalInstance = $uibModal.open({
-        //         animation: true,
-        //         templateUrl: 'resources/registration/view/upload-modal.html',
-        //         size: 'lg',                
-        //         scope: $scope
-        //     });
-        // }
+        $scope.openDocumentModal = function(index) {
+            $scope.docObj = angular.copy($scope.fileInfos[index]);
+            $scope.uploadModalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'resources/registration/view/upload-modal.html',
+                size: 'lg',                
+                scope: $scope
+            });
 
-        // $scope.cancelModal = function() {
-        //     $scope.uploadModalInstance.dismiss();
-        // }
+            $scope.uploadModalInstance.result.then(function() {
+                $scope.fileInfos[index] = $scope.docObj;
+            });    
+        }
 
-        // $scope.continueUpload = function() {
-        //     $scope.showUpload = true;
-        //     $scope.noOfSlides = 2;
-        //     $scope.uploadModalInstance.close();            
-        // }
+        $scope.cancelModal = function() {
+            $scope.uploadModalInstance.dismiss();
+        }
+
+        $scope.saveDocument = function() {
+            $scope.uploadModalInstance.close();            
+        }
 
         $scope.documentsUpload = function() {
             $scope.upload = {};

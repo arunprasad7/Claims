@@ -642,40 +642,48 @@ input.fileupload {
     left: -20px;
 }
 
-.requstList .carousel-next {
-    right: -30px;
-}
+/* #thumbnailSlider .track {
+    background:#e9ecf4;
+} */
 
+#thumbnailSlider .ngCarousel-item {
+    padding: 5px;
+}
 .img-padding {
-    margin-left: 20px;
+    margin-left: 5px;
 }
-
-.previewed-Img {
-    border-left: 4px solid #35aeef;
-    padding-left: 1px;
-}
-
-.preview-file-name {
-    white-space: nowrap;
-    width: 90%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: small;
-    border-top: 1px solid #d3d8de;
-    color: white
-}
-
 .upload-file-icon {
     font-size: 20px;
     float: right;
-    margin-right: 18px;
-    margin-top: -122px;
+    margin-right: 10px;
+    margin-top: -104px;
     border: 2px solid #d3d8de;
     padding: 6px;
     border-radius: 50%;
     background: #ffffff;
+    z-index: 2;
 }
-
+.upload-details {
+    line-height: 1.48;
+    padding:5px;
+    margin-top: 10px;
+    border-top:1px solid #d3d8de;
+}
+.thumbnail-card {
+    background:white;
+    border-radius:5px;
+    border:1px solid #d3d8de;
+    height: 198px;
+    margin-top: 17px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.slide-text-truncate {
+    white-space: nowrap; 
+    width: 77%; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    font-size: 11.4px;
+}
 .title-preview {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -700,6 +708,13 @@ md-select .md-select-value,
 .md-datepicker-input-container .md-input {
     border: none !important;
     width: 100% !important;
+}
+
+.currencyType .md-select-value {
+    min-height: auto;
+    max-height: 23px;
+    padding: 0 5px;
+    margin-bottom: 2px;
 }
 
 md-input-container .md-errors-spacer {
@@ -1186,17 +1201,18 @@ footer li strong {
 }
 
 .leftContentPart {
-    width: 300px;
-    padding: 0 15px;
+    width: 330px;
+    height: 78%;
+    background: #e9ecf4;
     white-space: nowrap;
-    overflow: hidden;
+    overflow-y: auto;
     -webkit-transition: all 700ms ease-in;
     -moz-transition: all 700ms ease-in;
     -ms-transition: all 700ms ease-in;
     -o-transition: all 700ms ease-in;
     transition: all 700ms ease-in;
     /* ..... */
-    position: absolute;
+    position: fixed;
     z-index: 1000;
 }
 
@@ -1390,7 +1406,7 @@ footer li strong {
     list-style: none;
     border-radius: 2px;
     background: #fff;
-    height: 88px;
+    height: 120px;
     width : 85.4%
 }
 
@@ -1719,4 +1735,16 @@ footer {
 
 .claimRequestDetInner .md-datepicker-input-container {
     width: 60% !important;
+}
+
+md-input-container.md-default-theme:not(.md-input-focused):not(.md-input-invalid) label.md-required:after, 
+md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-required:after {
+    color: red;
+}
+.md-input-invalid {
+    border-bottom: 1px solid red !important;
+}
+.md-input-invalid .md-required,
+.md-input-invalid.md-input-focused .md-required {
+    color: red !important;
 }

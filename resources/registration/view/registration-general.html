@@ -4,7 +4,7 @@
 </nav>
 <section class="">
     <div class="leftContainer" ng-class="{'col-sm-12' : !showUpload, 'col-sm-7' : showUpload}">
-        <div class="searchBar">
+        <div class="searchBar" ng-if="isNew">
             <div class="searchBarRow">
                 <div layout-gt-sm="row" style="height:auto !important">
                     <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div class="resultBox mt-3 mb-4">
+        <div class="resultBox mb-4" ng-class="{'mt-3' : isNew}">
             <div class="fldsWrap clearfix">
                 <div layout-gt-sm="row">
                     <div class="col-sm-12">
@@ -182,54 +182,42 @@
                 Documents
                 <button type="button" class="btn btn-outline-primary btn-sm float-right" ng-click="documentsUpload()">Upload</button>
                 <div ng-if="fileInfos.length > 0 && uploaded" id="thumbnailSlider" ng-style="{'padding-left' : fileInfos.length > 2 ? '15px' : '0px'}" class="col-sm-11">
-                    <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="noOfSlides" slides-to-scroll="noOfSlides" initial-slide="0" style="width:95%;margin-bottom:0px;margin-left: 15px;padding-top: 24px;"
-                        infinite="false" name="'thumbnailSlider'" ng-class="{'img-padding' : (showUpload && $odd), 'img-padding' : !showUpload}" ng-style="{'width' : showUpload ? '90%' : '98%'}">
+                    <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="noOfSlides" slides-to-scroll="noOfSlides" initial-slide="0" style="margin-bottom:0px;margin-left: 15px;padding-top: 24px;"
+                        infinite="false" name="'thumbnailSlider'" ng-class="{'img-padding' : (showUpload && $odd), 'img-padding' : !showUpload}" ng-style="{'width' : showUpload ? '70%' : '75%'}">
                         <carousel-item>
-                            <div class="row" style="float:right; padding-right: 30px; cursor:pointer;">
-                                <span ng-hide="enableEdit">
-                                    <i class="fa fa-remove" ng-click="deleteFile($index)" style="color:red;"></i>&nbsp;&nbsp;
-                                    <i class="fa fa-pencil" ng-click="enableEdit = true; setEditedItem(item);" style="color:black;"></i>
+                            <div style="padding:0px 5px 2px 7px;">
+                                <span href="{{item.previewUrl}}" download="{{item.name}}" style="float:left; color:#00aeef;font-size:16px;cursor:pointer;">
+                                    <i class="fa fa-cloud-download"></i>
                                 </span>
-                                <span ng-show="enableEdit">
-                                    <i class="fa fa-undo" ng-click="resetItem(item)" ></i>&nbsp;&nbsp;
-                                    <i class="fa fa-check" ng-click="enableEdit = false;" style="color:black;"></i>
+                                <span style="float:right; cursor:pointer;">
+                                    <i class="fa fa-remove" ng-click="deleteFile($index)" style="color:red;"></i>&nbsp;&nbsp;
+                                    <i class="fa fa-pencil" ng-click="openDocumentModal($index);" style="color:black;"></i>
                                 </span>
                             </div>
-                            <div class="img-padding">
-                                <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}"  max-height="80" class="pdf-view" ng-show="item.ext == 'image'" ></thumbnail>
-                                <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}" class="pdf-view" max-height="80" ng-show="item.ext == 'pdf'"></thumbnail>
-                                <div ng-show="item.ext == 'docx'">
-                                    <i class="fa fa-file-word-o center" style="font-size:80px; color:#26559a; width:150px; height: 85px; text-align:center"></i>
-                                </div>                            
-                                <p style="white-space: nowrap; width: 100%; overflow: hidden; text-overflow: ellipsis; font-size:small; border-top:1px solid #d3d8de;padding-top:12px;">
-                                    <a href="" ng-click="showPreview($index, item)">
-                                        <span>{{item.name}}</span><br>
-                                    </a>    
-                                    <span>Uploaded on {{item.uploadedDate | date: 'mediumDate'}}</span><br>
-                                    <span ng-show="!enableEdit">
-                                        Type:<span>{{item.uploadType}}</span><br>
-                                        Desc:<span>{{item.uploadDesc}}</span><br>                                        
-                                    </span>
-                                    <span ng-show="enableEdit">
-                                        <span>Type:
-                                            <select ng-model="item.uploadType">
-                                                <option value="Iban" ng-if="paymentWay == 'iban'">Iban</option>
-                                                <option value="Reimbursement Form">Reimbursement form</option>
-                                                <option value="Medical Bills">Medical bills</option>
-                                                <option value="Medical Bills Summary">Medical bills Summary</option>
-                                                <option value="Prescription">Prescription</option>
-                                                <option value="Other Documents">Other Documents</option>
-                                            </select>
-                                        </span><br>
-                                        <span>Desc: <input type="text" ng-model="item.uploadDesc"/></span><br>
-                                    </span>
-                                </p>
-                                <p>
-                                    <i class="fa fa-file-picture-o upload-file-icon" ng-show = "item.ext == 'image'" style="color:#00aeef;"></i>
-                                    <i class="fa fa-file-pdf-o upload-file-icon" ng-show = "item.ext == 'pdf'" style="color:red;"></i>
-                                    <i class="fa fa-file-word-o upload-file-icon" ng-show = "item.ext == 'docx'" style="color:#26559a;"></i>
-                                </p>                            
-                            </div>                        
+                            <div class="thumbnail-card" ng-class="{'img-padding' : $odd}">
+                                <div style="height:112px;padding:10px;">
+                                    <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}"  max-height="100" max-width="200" class="pdf-view" ng-show="item.ext == 'image'" style="padding:5px;"></thumbnail>
+                                    <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}" class="pdf-view" max-height="100" max-width="200" ng-show="item.ext == 'pdf'" style="padding:5px;"></thumbnail>
+                                    <div ng-show="item.ext == 'docx'">
+                                        <i class="fa fa-file-word-o center" style="font-size:90px; color:#26559a; width:160px; height: 95px; text-align:center"></i>
+                                    </div>
+                                </div>
+                                <div class="upload-details">                            
+                                    <p class="slide-text-truncate">
+                                        <a href="" ng-click="showPreview($index, item)">
+                                            <span>{{item.name}}</span><br>
+                                        </a>    
+                                        <span>Uploaded on {{item.uploadedDate | date: 'mediumDate'}}</span><br>
+                                        Type:<span>{{item.documentTyp}}</span><br>
+                                        Desc:<span>{{item.documentDesc}}</span><br>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-file-picture-o upload-file-icon" ng-show = "item.ext == 'image'" style="color:#00aeef;"></i>
+                                        <i class="fa fa-file-pdf-o upload-file-icon" ng-show = "item.ext == 'pdf'" style="color:red;"></i>
+                                        <i class="fa fa-file-word-o upload-file-icon" ng-show = "item.ext == 'docx'" style="color:#26559a;"></i>
+                                    </p>                                    
+                                </div>
+                            </div>
                         </carousel-item>
                         <carousel-prev>
                             <i class="fa fa-chevron-left" style="font-size: 16px;"></i>
@@ -252,20 +240,6 @@
             infinite="false" name="previewSlider" ng-if = "fileInfos.length > 0 && isPreview">
             <carousel-item>
                 <div style="width:94%; padding:4px;">
-                    <div class="row">   
-                        <div class="col-sm-6" style="float:left;">
-                            <!-- <button type="button" class="btn" style="background-color: #00aeef; color:white" ng-click="hidePreview();">Upload
-                                <i class="fa fa-cloud-upload" style="color:white"></i>
-                            </button> -->&nbsp;
-                        </div>
-                        <div class="col-sm-6" style="float:right;">
-                            <a href="{{item.previewUrl}}" download="{{item.name}}">
-                                <button type="button" class="btn" style="background-color: #00aeef; color:white; float: right;">Download
-                                    <i class="fa fa-cloud-download" style="color:white"></i>
-                                </button>                            
-                            </a>
-                        </div>    
-                    </div>
                     <div ng-show="item.ext != 'docx'" style="padding-left:5px;">
                         <iframe ng-src="{{trustUrl(item)}}" width="98%" height="590px;" ng-show="item.ext == 'pdf'"></iframe>
                         <img  ng-src="{{trustUrl(item)}}" ng-show="item.ext != 'pdf'" style="width:98%;height:590px"/>
@@ -288,7 +262,7 @@
                 <div class="fldsWrap clearfix">
                     <md-input-container flex-gt-sm>    
                         <label>Upload Type</label>
-                        <md-select name="EncounterType" ng-model="upload.type">
+                        <md-select ng-model="upload.type">
                             <md-option value="Iban" ng-if="paymentWay == 'iban'">Iban</md-option>
                             <md-option value="Reimbursement Form">Reimbursement form</md-option>
                             <md-option value="Medical Bills">Medical bills</md-option>

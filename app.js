@@ -32,6 +32,9 @@ angular
                 resolve : {
                     claim : function(RegistrationService) {
                         return RegistrationService.createRegDetailObj();
+                    },
+                    isNew : function() {
+                        return true;
                     }
                 }
             })
@@ -43,6 +46,9 @@ angular
                 resolve : {
                     claim : function(RegistrationService) {
                         return RegistrationService.getClaim();
+                    },
+                    isNew : function() {
+                        return false;
                     }
                 }
             })

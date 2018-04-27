@@ -5,13 +5,19 @@
         .module('claims')
             .controller('ReimbursmentProcessingController', ReimbursmentProcessingController);
 
-        ReimbursmentProcessingController.$inject = ['$scope', '$rootScope', 'ReimbursementProcessingService', 'EclaimService', 'ngNotify'];
+        ReimbursmentProcessingController.$inject = ['$scope', '$rootScope', 'ReimbursementProcessingService', 'EclaimService', 'ngNotify', '$timeout'];
 
-        function ReimbursmentProcessingController($scope, $rootScope, ReimbursementProcessingService, EclaimService, ngNotify) {
+        function ReimbursmentProcessingController($scope, $rootScope, ReimbursementProcessingService, EclaimService, ngNotify, $timeout) {
 
             $scope.treatmentCodes = [];
             $scope.rejectionCode = [];
             $scope.createNew = true;
+            $scope.accordionToggle = {
+                isProviderDetailOpen : true,
+                isClaimDetailOpen : false,
+                isPolicyDetailOpen : false,
+                isMemberDetailOpen : false
+            }
             var staticTemplate = '<a href="javascript:;" class="custCheckboxBtn" ng-class="{\'custCheckboxBtnSected\' : row.entity.isChecked}" ng-click="row.entity.isChecked = !row.entity.isChecked"><span class="oi" data-glyph="check"></span></a>&nbsp;';
 
             var settingsTemplate = '<a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" style="padding:10px 10px 10px 10px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="oi" data-glyph="wrench"></span></a>&nbsp;'+
@@ -45,11 +51,11 @@
                     'providerLicense' : 'MF28291',
                     'voucherNumber' : 'MDC345674',
                     'encounterType' : '',
-                    'claimType' : 'Elective',
+                    'claimType' : '',
                     'providerNetwork' : 'P,S,G'
                 }
                 $scope.claimDetails = {
-                    'country' : 'Dubai'
+                    'country' : ''
                 }
                 $scope.policyDetails = {
                     'claimCondition' : 'pecial Case/Ex-Gratia',
@@ -109,7 +115,7 @@
                 $scope.gridOptions = {
                     data : [],
                     columnDefs: [
-                        {name:'action', displayName:'', cellTemplate:staticTemplate,width:40, pinnedLeft:true},
+                        {name:'action', displayName:'', cellTemplate:staticTemplate,width:40, pinnedLeft:true, enableColumnMenu: false},
                         {name:'treatmentCodeOrSubBenefit.name', displayName:'Treatment Code/SubBenefit',width:200},
                         {name:'serviceFrom', displayName:'Service From', cellTemplate:dateTemplate,width:120},
                         {name:'serviceTo', displayName:'Service To', cellTemplate:dateTemplate,width:110},
@@ -126,7 +132,7 @@
                         {name:'status', displayName:'Status', width:155},
                         {name:'internalRemarks', displayName:'Internal Remarks', cellTemplate:descriptionTemplate, width:210},
                         {name:'externalRemarks', displayName:'External Remarks', cellTemplate:descriptionTemplate, width:210},
-                        {name:'Settings', displayName:'Settings', cellTemplate:settingsTemplate,width:75, pinnedRight:true}
+                        {name:'Settings', displayName:'Settings', cellTemplate:settingsTemplate,width:75, pinnedRight:true, enableColumnMenu: false}
                     ],
                     enableSorting: false
                 }
@@ -226,6 +232,7 @@
             $scope.submitForApproval = function(claim) {
                 if($scope.gridOptions.data.length) {
                     if (validateInformationSection()) {
+                        $scope.infoToggle = false;
                         ngNotify.set('Claim Approved Succesfully.', 'success');
                     }
                 } else {
@@ -234,7 +241,7 @@
             }
 
             function validateInformationSection() {
-
+                $scope.submitted = true;
                 var policyErrorArray = [];
                 var memberErrorArray = [];
                 var claimErrorArray = [];
@@ -245,7 +252,6 @@
                 var claimDetailsRequiredFields = ['country'];
                 var providerDetailsRequiredFields = ['primaryDiagnosis', 'primaryDiagDisc', 'secDiagnosis', 'secDiagnosisDesc', 'providerName', 'providerCode', 
                                                     'providerLicense', 'voucherNumber', 'encounterType', 'claimType'];
-
                 
                 angular.forEach(providerDetailsRequiredFields, function(fieldName, key) {
                     if ($scope.providerDetails[fieldName] == '' || $scope.providerDetails[fieldName] == null) {
@@ -271,37 +277,21 @@
                     }
                 });
 
-                var errorMsg = '';
-                angular.forEach(providerErrorArray, function(fieldName, key) {
-                    if (key == 0) {
-                        errorMsg += 'Provider Details - ';
-                    }
-                    errorMsg += fieldName + '; ';
-                })
-                angular.forEach(claimErrorArray, function(fieldName, key) {
-                    if (key == 0) {
-                        errorMsg += 'Claim Details - ';
-                    }
-                    errorMsg += fieldName + '; ';
-                })
-                angular.forEach(policyErrorArray, function(fieldName, key) {
-                    if (key == 0) {
-                        errorMsg += 'Policy Details - ';
-                    }
-                    errorMsg += fieldName + '; ';
-                })
-                angular.forEach(memberErrorArray, function(fieldName, key) {
-                    if (key == 0) {
-                        errorMsg += 'Member Details - ';
-                    }
-                    errorMsg += fieldName + '; ';
-                })
-                if (providerErrorArray.length > 0 || claimErrorArray.length > 0 || policyErrorArray.length > 0 || memberErrorArray.length > 0) {
-                    swal("Please Enter all the required fields", "The Fields are in " + errorMsg, "warning");
+                $scope.accordionToggle.isProviderDetailOpen = (providerErrorArray.length > 0);
+                $scope.accordionToggle.isClaimDetailOpen = (claimErrorArray.length > 0);
+                $scope.accordionToggle.isPolicyDetailOpen = (policyErrorArray.length > 0);
+                $scope.accordionToggle.isMemberDetailOpen = (memberErrorArray.length > 0);                
+                $scope.isCloseOthers = $scope.reimbursementForm.$valid;
+                if ($scope.reimbursementForm.$invalid) {
+                    swal("Please Enter all the required fields", "", "error").then(
+                        function() {
+                            ($scope.reimbursementForm.$error.required[0].$$element[0]).focus();
+                        }
+                    );
                     $scope.infoToggle = true;
                     return false;
                 }
-                return true;
+                return $scope.reimbursementForm.$valid;
             }
 
             function renderTotals(result) {
@@ -320,6 +310,7 @@
                 $scope.totalPenaltyAmount = totalPenaltyAmount;
                 $scope.totalDeductionAmount = totalDeductionAmount;
             }
+
             $scope.convertCurrency = function() {
                 angular.forEach($scope.gridOptions.data, function(value, key) {
                     value.requestAmount = value.requestAmount ? (value.requestAmount * parseInt($scope.currencyType)) : null;
@@ -330,6 +321,12 @@
                     value.approvedAmount = value.approvedAmount ? (value.approvedAmount * parseInt($scope.currencyType)) : null;
                     value.rejectedAmount = value.rejectedAmount ? (value.rejectedAmount * parseInt($scope.currencyType)) : null;
                 });
+                renderTotals($scope.gridOptions.data);
+            }
+
+            $scope.toggleInfo = function() {
+                $scope.infoToggle = !$scope.infoToggle;
+                $scope.isCloseOthers = true;
             }
             init();
         }
