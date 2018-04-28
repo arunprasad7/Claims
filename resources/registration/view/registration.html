@@ -7,34 +7,14 @@
         <div class="contentPart">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-7 p-0">
+                    <div class="col-10 p-0">
                         <div class="searchBarRow reimbListTabl" style="display: block">
                             <div layout-gt-sm="row">
-                                <div style="border-left: 1px solid #e6e6e6;width: 100% !important;">
-                                    <md-autocomplete flex-gt-sm
-                                        md-input-name = "Member Name"
-                                        md-selected-item="searchMemName"
-                                        md-search-text="memNamesearchText"
-                                        md-items="item in querySearch(memNamesearchText, 'memberName')"
-                                        md-item-text="item.memberName"                                    
-                                        md-floating-label="Member Name"
-                                        md-clear-button="true">
-                                        <md-item-template>
-                                            <span md-highlight-text="memNamesearchText">{{item.memberName}}</span>
-                                        </md-item-template>
-                                        <md-not-found>
-                                                No Result Found                                
-                                        </md-not-found>
-                                    </md-autocomplete>   
-                                </div>
-                                <div style="border-left: 1px solid #e6e6e6;width: 100% !important;">
-                                    <md-input-container flex-gt-sm>
-                                        <label>IBAN Number</label>
-                                        <input ng-model="ibanNum">
-                                    </md-input-container>
-                                </div>
-                                <div style="border-left: 1px solid #e6e6e6;width: 100% !important;"> 
-                                    <md-autocomplete flex-gt-sm   
+                                <div style="border-left: 1px solid #e6e6e6;width: 90% !important;position: relative;"> 
+                                    <md-icon style="margin-top: 36px; padding-left:5px;">
+                                        <i class="oi align-middle" data-glyph="magnifying-glass"></i>
+                                    </md-icon>
+                                    <md-autocomplete flex-gt-sm style="width:80%; top: 0; left: 7px; bottom: 0; right: 0; position: absolute; margin-left: 15px; float: left;"
                                         md-input-name = "Member Number"
                                         md-selected-item="searchMemNum"
                                         md-search-text="memNosearchText"
@@ -50,15 +30,43 @@
                                         </md-not-found>
                                     </md-autocomplete>
                                 </div>
-                                <div style="border-left: 1px solid #e6e6e6;width: 130% !important;">
+                                <div style="border-left: 1px solid #e6e6e6;width: 90% !important;position: relative;">
+                                     <md-icon style="margin-top: 36px; padding-left:5px;">
+                                        <i class="oi align-middle" data-glyph="magnifying-glass"></i>
+                                     </md-icon>
+                                    <md-autocomplete flex-gt-sm style="width:80%; top: 0; left: 7px; bottom: 0; right: 0; position: absolute; margin-left: 15px; float: left;"
+                                        md-input-name = "Member Name"
+                                        md-selected-item="searchMemName"
+                                        md-search-text="memNamesearchText"
+                                        md-items="item in querySearch(memNamesearchText, 'memberName')"
+                                        md-item-text="item.memberName"                                    
+                                        md-floating-label="Member Name"
+                                        md-clear-button="true">
+                                        <md-item-template>
+                                            <span md-highlight-text="memNamesearchText">{{item.memberName}}</span>
+                                        </md-item-template>
+                                        <md-not-found>
+                                                No Result Found                                
+                                        </md-not-found>
+                                    </md-autocomplete>   
+                                </div>
+                                <div style="border-left: 1px solid #e6e6e6;width: 90% !important;">
+                                    <md-input-container flex-gt-sm>
+                                        <label>IBAN Number</label>
+                                        <input ng-model="ibanNum">
+                                    </md-input-container>
+                                </div>
+                                <div style="border-left: 1px solid #e6e6e6;width: 90% !important;">
                                     <md-input-container flex-gt-sm>
                                         <label>Voucher Number</label>
                                         <input ng-model="voucherNumber">
                                     </md-input-container>
                                 </div>
-                                <div style="border-left: 1px solid #e6e6e6;width: 100% !important;">
-                                   
-                                    <md-autocomplete flex-gt-sm
+                                <div style="border-left: 1px solid #e6e6e6;width: 90% !important;position: relative;">
+                                    <md-icon style="margin-top: 36px; padding-left:5px;">
+                                       <i class="oi align-middle" data-glyph="magnifying-glass"></i>
+                                     </md-icon>
+                                    <md-autocomplete flex-gt-sm style="width:80%; top: 0; left: 7px; bottom: 0; right: 0; position: absolute; margin-left: 15px; float: left;"
                                         md-selected-item="searchPolicy"
                                         md-search-text="searchText"
                                         md-items="item in querySearch(searchText, 'policyNumber')"
@@ -74,14 +82,20 @@
                                     </md-autocomplete>
                                     
                                 </div>
-                                <div class="searchColm align-middle text-center" ng-click="searchBtn()" style="width: 50% !important ;padding-top:10px;">
-                                    <a href="javascript:;" class="searBtn mt-1 ml-1 align-middle"><span class="oi align-middle" data-glyph="magnifying-glass"></span></a>
+                                <div class="searchat searchColm align-middle text-center">
+                                    <a ng-click="searchBtn()" href="javascript:;" class="searBtn mt-1 ml-3 mr-3 align-middle">
+                                        <span class="oi align-middle" data-glyph="magnifying-glass"></span>
+                                    </a>
+                                    <a ng-click="clear()" href="javascript:;" class="searBtn mt-1 ml-3 mr-3 align-middle">
+                                        <span class="oi align-middle" data-glyph="x"></span>
+                                    </a>
+                                    <!-- <a ng-click="clear()" href="javascript:;" class="searBtn searBtnWithText mt-3 align-middle" data-glyph="x"></a> -->
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-5 p-0">
-                        <a href="javascript:;" class="btn btn-primary createNewBtn float-left mt-3 ml-4" ui-sref="claim-registration-new" style="float:right; padding-left:5px;">Register New Claim</a>
+                    <div class="col-2 p-0">
+                        <a href="javascript:;" class="btn btn-primary createNewBtn float-right mt-3 ml-4" ui-sref="claim-registration-new">Register New Claim</a>
                     </div>
                 </div>
             </div>

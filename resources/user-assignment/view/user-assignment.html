@@ -25,8 +25,11 @@
                             <input ng-model="climeNo">
                         </md-input-container>
                     </div>
-                    <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
-                        <md-autocomplete flex-gt-sm
+                    <div style="border-left: 1px solid #e6e6e6; width: 100% !important; position: relative;">
+                        <md-icon style="margin-top: 36px; padding-left:5px;">
+                                <i class="oi align-middle" data-glyph="magnifying-glass"></i>
+                        </md-icon>
+                        <md-autocomplete flex-gt-sm style="width:80%; top: 0; left: 7px; bottom: 0; right: 0; position: absolute; margin-left: 15px; float: left;"
                             md-input-name = "Approved By"
                             md-selected-item="approvedBy" 
                             md-search-text="approvedSearchText"
@@ -40,6 +43,7 @@
                             <md-not-found>
                                 No Result Found                                
                             </md-not-found>
+                            
                         </md-autocomplete>
                     </div>                    
                     <div style="border-left: 1px solid #e6e6e6; width: 194% !important;">
@@ -54,8 +58,11 @@
                             <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="requestedToDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
                         </md-input-container>
                     </div>
-                    <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
-                        <md-autocomplete flex-gt-sm
+                    <div style="border-left: 1px solid #e6e6e6; width: 100% !important; position: relative;">
+                      <md-icon style="margin-top: 36px; padding-left:5px;">
+                          <i class="oi align-middle" data-glyph="magnifying-glass"></i>
+                     </md-icon>
+                        <md-autocomplete flex-gt-sm style="width:80%; top: 0; left: 7px; bottom: 0; right: 0; position: absolute; margin-left: 15px; float: left;"
                             md-input-name = "Assigned User"
                             md-selected-item="assignedUser" 
                             md-search-text="assignedSearchText"
@@ -74,6 +81,9 @@
                     <div class="searchColm align-middle text-center" ng-click="click();" style="width: 50% !important ;padding-top:10px;">
                         <a href="javascript:;" data-toggle="modal" data-target="#newRegClaims" class="searBtn mt-1 ml-3 mr-3 align-middle">
                             <span class="oi align-middle" data-glyph="magnifying-glass"></span>
+                        </a>
+                        <a ng-click="clear()" href="javascript:;" class="searBtn mt-1 ml-3 mr-3 align-middle">
+                                <span class="oi align-middle" data-glyph="x"></span>
                         </a>
                     </div>
                 </div>
@@ -111,7 +121,7 @@
                                     <div class="row">
                                         <div class="col-sm-11">
                                             <div class="text-right">
-                                                <font size="2">sort by:</font>
+                                                <font size="2">Sort :</font>
                                                     <select class="custom-select innerFilterSortBy" ng-change="sorting(option)" ng-model="option">
                                                         <option value="receivedDateDesc">By Date Asc</option>
                                                          <option value="receivedDate">By Date Desc</option>
@@ -119,7 +129,7 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-1">
-                                            <div ng-click="selectAll()" class="align-middle selectline"><a href="javascript:;" id="seltAll" style="font-size:75%;">Select All</a></div>
+                                            <div ng-click="selectAll()" class="align-middle selectline"><a href="javascript:;" id="seltAll" style="font-size:75%;">{{selectall ? 'De-SelectAll' : 'Select All'}}</a></div>
                                         </div>
                                     </div>
                                     <table class="table">
@@ -139,9 +149,9 @@
                                                         <class="d-inline-block pr-2">Voucher No: {{c.voucherNo}}
                                                         <class="d-inline-block pr-2">Encounter Type: {{c.encounterType}}
                                                     </div>
-                                                    <div class="text-nowrap">
+                                                    <!-- <div class="text-nowrap">
                                                         <class="d-inline-block pr-2">Document Link: <a href="">{{c.documentLink}}</a>
-                                                    </div>  
+                                                    </div>   -->
                                                     <div class="text-nowrap">
                                                         <div class="receiveInfo d-inline-block pr-3"><span class="oi" data-glyph="timer"></span> Request recieved on: {{c.requestRecievedOn}}</div>
                                                         <div class="statusInfo d-inline-block text-success" ng-class="{'text-success': c.status=='Approved','text-danger': c.status!='Approved'}">
@@ -151,6 +161,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="align-bottom">
+                                                    <div class="text-nowrap">Document Link :<a href="">{{c.documentLink}}</a></div>
                                                     <div class="text-nowrap">Prev Request : {{c.prevRequest}}</div>
                                                 </td>
                                                 <td>

@@ -19,8 +19,18 @@
             } else {
                 var memNo = $scope.searchMemNum ? $scope.searchMemNum.memberNumber : undefined;
                 var policyNo = $scope.searchPolicy ? $scope.searchPolicy.policyNumber : undefined;
+                var memName = $scope.searchMemNum ? $scope.searchMemNum.memberNumber : undefined;
                 $scope.claims = $filter('filter')($scope.registeredClaims, { voucherNumber: $scope.voucherNumber, ibanNum: $scope.ibanNum, memberNumber : memNo, policyNumber : policyNo,memberName: $scope.memberName});
             }
+        }
+        $scope.clear=function(){
+            $scope.voucherNumber='';
+            $scope.searchMemNum = undefined;
+            $scope.ibanNum ='';
+            $scope.searchPolicy = undefined;
+            $scope.searchMemName = undefined;
+            $scope.claims = $scope.registeredClaims;
+
         }
 
         $scope.reverse = true;

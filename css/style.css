@@ -150,7 +150,9 @@ section {
 }
 
 .searchColm:last-child {
-    width: 130px !important;
+     width: 130px !important; 
+    /* width: 50% !important;
+    padding-top: 10px; */
 }
 
 .inputFilled label {
@@ -1748,4 +1750,8 @@ md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-requir
 .md-input-invalid .md-required,
 .md-input-invalid.md-input-focused .md-required {
     color: red !important;
+}
+.searchat{
+    width: 50% !important;
+    padding-top: 10px;
 }

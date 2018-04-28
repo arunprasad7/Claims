@@ -10,18 +10,7 @@
 
     function UserAssignmentController($scope, $rootScope, UserAssignmentService, $filter, $state, $stateParams, ngNotify) {
         $scope.selectedClaim = $stateParams.param;
-        $scope.states = [{ display: 'Alabama', state: 'Alabama' }, { display: 'Alaska' }, { display: 'Arizona' }, { display: 'Arkansas' }, { display: 'Arkansas' }];
-        $scope.memberNumber;
-        $scope.voucherNumber;
-        $scope.climeNo;
-        $scope.approvedBy;
-        $scope.chequePeriodFrom;
-        $scope.assignedUser;
-        $scope.nameAndID;
-        $scope.searchText;
-        $scope.result = [];
         $scope.selectall = false;
-        $scope.chckedIndexs=[];
         $scope.claim = [{
             'climeNo': '456',
             'memberNo': '9562467936',
@@ -293,18 +282,27 @@
         }];
 
         $scope.userssearch = $scope.users;
-        $scope.result = $scope.claim;
         $scope.recordTotal = $scope.claim.length;
 
         $scope.click = function() {
             if (($scope.climeNo == "" || $scope.climeNo == null) && ($scope.memberNumber == "" || $scope.memberNumber == null) && ($scope.voucherNumber == "" || $scope.voucherNumber == null)) {
-                $scope.claimList = $scope.result;
+                $scope.claimList = $scope.claim;
             } else {
                 
                 $scope.claimList = $filter('filter')($scope.claim, { climeNo: $scope.climeNo, memberNo: $scope.memberNumber,voucherNo: $scope.voucherNumber});
 
             }
 
+        }
+        $scope.clear=function() {
+            $scope.climeNo='';
+            $scope.memberNumber='';
+            $scope.voucherNumber='';
+            $scope.approvedBy=undefined;
+            $scope.assignedUser=undefined;
+            $scope.requestedFromDate=undefined;
+            $scope.requestedToDate=undefined;
+            $scope.claimList = $scope.claim;
         }
 
         $scope.result = $scope.users;
@@ -324,30 +322,19 @@
             $scope.reverseSort = (field == 'receivedDateDesc') ? false : true;
         };
 
-        $scope.approvedClick = function() {
-            $scope.Approved;
-            console.log('Approved');
-        }
-
         $scope.selectAll = function() {
             if (!$scope.selectall) {
                 $scope.selectall = true;
                 $scope.claimList.forEach(function(value) {
                     value.selected = true;
                 });
-                console.log("--------------", $scope.claimList);
             } else {
                 $scope.selectall = false;
                 $scope.claimList.forEach(function(value) {
                     value.selected = false;
                 });
-                console.log("--------------", $scope.claimList);
             }
         }
-
-        $scope.datePicker = {};
-        $scope.datePicker.date = { startDate: null, endDate: null };
-        $scope.items = $scope.claim;
 
         $scope.changeTab = function(isdelete) {
             var tab = $scope.tab;
@@ -387,11 +374,7 @@
         
         $scope.assignedData = function() {
             if ($scope.userSelectedData != null && $scope.assignedValue != null) {
-                // var indexNewRwquest = $scope.claim.indexOf($scope.assignedValue);
-                // var indexUser = $scope.userssearch.indexOf($scope.userSelectedData);
-                // $scope.assignedValue.status = 'Assigned';
                 if ($scope.userSelectedData.assigned < 15) {
-                    //$scope.claimList.splice($scope.assignedIndex, 1);
                     $scope.assigned.push($scope.assignedValue);
                     $scope.changeTab(true);
                     $scope.userSelectedData.assigned += 1;
