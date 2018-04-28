@@ -42,16 +42,16 @@
                     var base64String = event.target.result;//base64 String..
                     f.name = file.name;
                     f.contentType = file.type;
-                    f.ext = 'docx';
+                    f.ext = 'excel';
                     f.uploadedDate = new Date();
                     f.documentTyp = $scope.upload ? $scope.upload.type : '';
                     f.documentDesc = $scope.upload ? $scope.upload.description : '';
                     if(file.type.indexOf('image/') > -1)
                         f.ext = 'image';
                     if(file.type.indexOf('/pdf') > -1)
-                    f.ext = 'pdf';
+                        f.ext = 'pdf';
                     if(file.type.indexOf('.document') > -1)
-                    f.ext = 'docx';
+                        f.ext = 'docx';
                     
                     f.previewUrl = base64String;
                     fileInfo.push(f);
@@ -178,6 +178,12 @@
             $scope.showUpload = true;//!$scope.showUpload;
             $scope.noOfSlides = $scope.showUpload ? 2 : 4;
             $scope.isPreview = false;
+        }
+
+        $scope.toggleInfo = function() {
+            $scope.isPreview = false;
+            $scope.showUpload = false;
+            $scope.noOfSlides = 4;
         }
 
         function init() {

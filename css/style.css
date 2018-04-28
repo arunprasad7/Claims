@@ -323,7 +323,7 @@ input.fileupload {
     -webkit-box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.2);
     padding: 7px 12px;
-    margin: 33px auto 0;
+    margin: 42px auto 0;
 }
 
 .uploadPlaceHolder h2 {
@@ -869,9 +869,10 @@ md-input-container md-select label,
     text-transform: uppercase;
     padding: 0.35rem 1rem 0.4rem 0.75rem;
     border-radius: 0 4px 4px 0;
-    position: absolute;
+    /* position: absolute; */
+    position: fixed;
     left: -1rem;
-    top: 0;
+    /* top: 0; */
     text-align: center;
     z-index: 2;
     -webkit-transition: all 700ms ease-in;
@@ -1202,7 +1203,7 @@ footer li strong {
 
 .leftContentPart {
     width: 330px;
-    height: 78%;
+    height: 79.5%;
     background: #e9ecf4;
     white-space: nowrap;
     overflow-y: auto;
@@ -1512,7 +1513,7 @@ footer li strong {
 }
 
 #reimbursment {
-    height: calc( 100% - 145px) !important;
+    /* height: calc( 100% - 145px) !important; */
     position: relative;
     overflow: auto;
 }

@@ -201,6 +201,9 @@
                                     <div ng-show="item.ext == 'docx'">
                                         <i class="fa fa-file-word-o center" style="font-size:90px; color:#26559a; width:160px; height: 95px; text-align:center"></i>
                                     </div>
+                                    <div ng-show="item.ext == 'excel'">
+                                        <i class="fa fa-file-excel-o center" style="font-size:90px; color:green; width:160px; height: 95px; text-align:center"></i>
+                                    </div>
                                 </div>
                                 <div class="upload-details">                            
                                     <p class="slide-text-truncate">
@@ -215,6 +218,7 @@
                                         <i class="fa fa-file-picture-o upload-file-icon" ng-show = "item.ext == 'image'" style="color:#00aeef;"></i>
                                         <i class="fa fa-file-pdf-o upload-file-icon" ng-show = "item.ext == 'pdf'" style="color:red;"></i>
                                         <i class="fa fa-file-word-o upload-file-icon" ng-show = "item.ext == 'docx'" style="color:#26559a;"></i>
+                                        <i class="fa fa-file-excel-o upload-file-icon" ng-show = "item.ext == 'excel'" style="color:green"></i>
                                     </p>                                    
                                 </div>
                             </div>
@@ -236,15 +240,16 @@
 
     </div>
     <div class="rightContainer uploadList col-sm-5" ng-if="showUpload">
-        <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="1" slides-to-scroll="1" initial-slide="$parent.previewIndex" style="width:98%;height:100%;margin-bottom:0px;margin-left:18px"
+        <a href="javascript:;" class="infoToggleBtn" ng-click="toggleInfo();" style="margin-left:17px;position: absolute;top:0"><span class="oi" data-glyph="arrow-right"></span> <br />hide</a>
+        <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="1" slides-to-scroll="1" initial-slide="$parent.previewIndex" style="width:98%;height:100%; margin:39px 0px 0px 18px;"
             infinite="false" name="previewSlider" ng-if = "fileInfos.length > 0 && isPreview">
             <carousel-item>
-                <div style="width:94%; padding:4px;">
-                    <div ng-show="item.ext != 'docx'" style="padding-left:5px;">
+               <div style="width:94%; padding:5px;">
+                    <div ng-show="item.ext != 'docx' && item.ext != 'excel'" style="padding-left:5px;">
                         <iframe ng-src="{{trustUrl(item)}}" width="98%" height="590px;" ng-show="item.ext == 'pdf'"></iframe>
                         <img  ng-src="{{trustUrl(item)}}" ng-show="item.ext != 'pdf'" style="width:98%;height:590px"/>
                     </div>
-                    <div ng-show="item.ext == 'docx'" style="width:98%; height:500px;color:white;font-size:25px;text-align:center">
+                    <div ng-show="item.ext == 'docx' || item.ext == 'excel'" style="width:98%; height:500px;color:white;font-size:25px;text-align:center">
                         <br><br><br>No Preview Available
                     </div>
                 </div>

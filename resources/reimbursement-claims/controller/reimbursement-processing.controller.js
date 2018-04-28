@@ -326,6 +326,7 @@
 
             $scope.toggleInfo = function() {
                 $scope.infoToggle = !$scope.infoToggle;
+                $scope.accordionToggle.isProviderDetailOpen = $scope.accordionToggle.isProviderDetailOpen ? $scope.accordionToggle.isProviderDetailOpen : $scope.reimbursementForm.$valid;
                 $scope.isCloseOthers = true;
             }
             init();

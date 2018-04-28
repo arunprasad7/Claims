@@ -700,7 +700,7 @@ angular.module('ui.carousel.directives').directive('uiCarousel', ['$compile', '$
       }
 
       $scope.trustUrl = function(item) {
-        if(item.ext != 'docx') {
+        if(item.ext != 'docx' && item.ext != 'excel') {
           return $sce.trustAsResourceUrl(item.previewUrl);
         } else {
           return $sce.trustAsResourceUrl("about:blank");
