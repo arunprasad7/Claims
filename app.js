@@ -70,8 +70,8 @@ angular
             })
             .state('eclaim', {
                 url: "/eclaim",
-                templateUrl: "resources/eclaim/view/eclaim.html",
-                controller: 'EclaimController'
+                templateUrl: "resources/eclaim/view/eclaim-processing.html",
+                controller: 'EclaimProcessingController'
             })
             .state('claim-registration', {
                 url: "/claim-registration",
@@ -82,6 +82,11 @@ angular
                 url: "/reimbursement-processing",
                 templateUrl: "resources/reimbursement-claims/view/reimbursement-processing.html",
                 controller: 'ReimbursmentProcessingController'
+            })
+            .state('eclaim-batch', {
+                url: "/eclaim-batch",
+                templateUrl: "resources/eclaim/view/eclaim-batch.html",
+                controller: 'EclaimBatchController'
             })
         $urlRouterProvider.otherwise("/");    
     }
