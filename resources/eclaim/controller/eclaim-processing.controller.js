@@ -3,11 +3,11 @@
 
     angular
         .module('claims')
-        .controller('EclaimController', EclaimController)
+        .controller('EclaimProcessingController', EclaimProcessingController)
 
-    EclaimController.$inject = ['$scope', '$rootScope', 'EclaimService', 'ngNotify'];
+    EclaimProcessingController.$inject = ['$scope', '$rootScope', 'EclaimService', 'ngNotify'];
 
-    function EclaimController($scope, $rootScope, EclaimService, ngNotify) {
+    function EclaimProcessingController($scope, $rootScope, EclaimService, ngNotify) {
         $scope.claimReqList = EclaimService.getClaimsRequest();
         $scope.claim = $scope.claimReqList[0];
         $scope.isToggled = true;

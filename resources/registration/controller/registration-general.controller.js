@@ -11,6 +11,7 @@
         $scope.regDetail = claim;
         $scope.previewIndex = 0;
         $scope.isNew = isNew;
+        $scope.search = {};
 
         $scope.setDcoumentType = function(documentType) {
             $scope.regDetail['source'] = documentType;
