@@ -103,48 +103,7 @@
          <div class="clearfix"></div>
         <div class="contentPart pt-3 pb-3">
             <div class="container-fluid regfont">
-                <div class="row">
-                    <div class="col-12 p-0">
-                        <div class="reimbListTabl" id="reimbListTabl">
-                            <h3 class="innerHeadText mt-2 mb-2 ml-2 d-inline-block">Registered Request</h3>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th ng-click="sortBy('memberNumber')">Member Card Number
-                                            <span class="fa fa-sort" ng-show="propertyName == 'memberNumber'"ng-class="{'fa fa-sort-desc': reverse,'fa fa-sort-asc' : !reverse}"></span>
-                                        </th>
-                                        <th ng-click="sortBy('memberName')">Member Name
-                                            <span class="fa fa-sort" ng-show="propertyName == 'memberName'"ng-class="{'fa fa-sort-desc': reverse, 'fa fa-sort-asc': !reverse}"></span>
-                                        </th>
-                                        <th ng-click="sortBy('policyNumber')">Policy Number
-                                            <span class="fa fa-sort" ng-show="propertyName == 'policyNumber'"ng-class="{'fa fa-sort-desc': reverse, 'fa fa-sort-asc': !reverse}"></span>
-                                        </th>
-                                        <th ng-click="sortBy('voucherNumber')">Voucher Number
-                                            <span class="fa fa-sort" ng-show="propertyName == 'voucherNumber'"ng-class="{'fa fa-sort-desc': reverse, 'fa fa-sort-asc' : !reverse}"></span>
-                                        </th>
-                                        <th ng-click="sortBy('ibanNum')">IBAN Number
-                                            <span class="fa fa-sort" ng-show="propertyName == 'ibanNum'"ng-class="{'fa fa-sort-desc': reverse, 'fa fa-sort-asc' : !reverse}"></span>
-                                        </th>
-                                        <th>IBAN Document</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="claim in claims | orderBy:propertyName:reverse">
-                                        <td><a href="javascript:void(0);" ng-click="editClaim(claim);">{{claim.memberNumber}}</a></td>
-                                        <td>{{claim.memberName}}</td>
-                                        <td>{{claim.policyNumber}}</td>
-                                        <td>{{claim.voucherNumber}}</td>
-                                        <td>{{claim.ibanNum}}</td>
-                                        <td class="text-center" >
-                                            <a style="float:left"class="oi" data-glyph="paperclip" href="resources/img/dis.png" download></a>
-                                        </td>
-                                    </tr>
-                                </tbody> 
-                            </table>
-                            <div ng-if="claimTreatMent.length === 0" style="padding:10px"> <p><font size="3"><center>NO ITEMS FOUND</center></font></p></div>    
-                        </div>
-                    </div>
-                </div>
+                <list-view-component headers="registrationHeaders" requests="registeredClaims" redirectto="claim-registration-edit"></list-view-component>
             </div>
         </div>
     </div>

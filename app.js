@@ -44,8 +44,8 @@ angular
                 templateUrl: "resources/registration/view/registration-general.html",
                 controller: 'RegistrationGeneralController',
                 resolve : {
-                    claim : function(RegistrationService) {
-                        return RegistrationService.getClaim();
+                    claim : function(ListViewService) {
+                        return ListViewService.getRequestData();
                     },
                     isNew : function() {
                         return false;

@@ -5,9 +5,9 @@
         .module('claims')
         .controller('RegistrationController', RegistrationController)
 
-    RegistrationController.$inject = ['$scope', '$rootScope', 'RegistrationService', 'ngNotify', '$filter', '$state'];
+    RegistrationController.$inject = ['$scope', '$rootScope', 'RegistrationService', 'ngNotify', '$filter', '$state', 'ListViewService'];
 
-    function RegistrationController($scope, $rootScope, RegistrationService, ngNotify, $filter, $state) {
+    function RegistrationController($scope, $rootScope, RegistrationService, ngNotify, $filter, $state, ListViewService) {
         $scope.registeredClaims = RegistrationService.getClaimRegistrationList();
 
 
@@ -54,5 +54,11 @@
                 return (((angular.lowercase(state[name]).indexOf(lowercaseQuery) != 0) && angular.lowercase(state[name]).indexOf(lowercaseQuery) != -1) || (angular.lowercase(state[name]).indexOf(lowercaseQuery) === 0));
             };
         }
+
+        function init() {
+            $scope.registrationHeaders = ListViewService.getRegistrationListViewHeader();
+        }
+
+        init();
     }
 })()

@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-12 p-0">
+        <div class="reimbListTabl" id="reimbListTabl">
+            <h3 class="innerHeadText mt-2 mb-2 ml-2 d-inline-block">Registered Request</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th ng-click="$ctrl.sortBy(header.fieldName)" ng-repeat="header in $ctrl.headers">
+                            {{header.label}}
+                            <span class="fa fa-sort" ng-show="$ctrl.fieldName == header.fieldName" ng-class="{'fa fa-sort-desc': $ctrl.reverse, 'fa fa-sort-asc' : !$ctrl.reverse}"></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="request in $ctrl.requests | orderBy : $ctrl.fieldName : $ctrl.reverse">
+                        <td ng-repeat="header in $ctrl.headers">
+                            <span ng-if="!header.redirectable">{{request[header.fieldName]}}</span>
+                            <span ng-if="header.redirectable">
+                                <a href="javascript:void(0);" ng-click="$ctrl.navigateTo(request);">{{request[header.fieldName]}}</a>
+                            </span>
+                            <span ng-if="header.isDocument">
+                                <a style="float:left"class="oi" data-glyph="paperclip" href="resources/img/dis.png" download></a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
