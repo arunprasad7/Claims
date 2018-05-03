@@ -239,62 +239,68 @@
             <div class="rightContentPart float-right pr-0 pb-3">
                 <a href="javascript:;" class="infoToggleBtn" ng-class="{'infoToggleBtnToggled' : infoToggle}" ng-click="toggleInfo();" ng-style="{'margin-left' : !infoToggle ? '12px' : '37px'}"><span class="oi" data-glyph="arrow-right"></span> <br />info</a>
                 <div class="row col-sm-12">
-                    <div class="infoList clearfix  col-sm-7">
-                        <li>
-                            <span>Claim Number</span>
-                            <strong>{{selectedClaim.claimNo}}</strong>
-                        </li>
-                        <li>
-                            <span>Request Number</span>
-                            <strong>{{selectedClaim.requestNo}}</strong>
-                        </li>
-                        <li>
-                            <span>Status</span>
-                            <strong ng-class="{'text-success' : selectedClaim.status == 'Approved', 'text-danger' : selectedClaim.status == 'Rejected'}">{{selectedClaim.status}}</strong>
-                        </li>
-                        <li>
-                            <span>Policy Number</span>
-                            <strong>{{selectedClaim.policyNo}}</strong>
-                        </li>
-                        <li>
-                            <span>Member Number</span>
-                            <strong>{{selectedClaim.memberNo}}</strong>
-                        </li>
-                    </div>
-                    <div class="col-sm-3 reimbursement-carousel">
-                        <ui-carousel slides="claimReqList" class="" slides-to-show="1" slides-to-scroll="1" initial-slide="0" style="width:350px;float:right;">
-                            <carousel-item  class="eclaim-item">
-                                <li style="cursor:pointer">
-                                    <p style="margin:0px;">
-                                        <b>Request Number:</b> 
-                                        <a class="currencyTypeCustom" href="javascript:void(0);" ng-click="toggleJson(item);"><span ng-click="toggleJson(item);">#{{item.reqNum}}</span> </a>&nbsp;
-                                        <!-- <strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong> -->
-                                    </p>
-                                    <span style="padding-bottom:2px;"><b>Claim Status :</b> <strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong></span></br>
-                                    <span style="padding-bottom:2px;"><b>Claim Status Reason:</b> <span style="color:#4e5e82">{{item.statusReason}}</span></span>
-                                    <span style="padding-bottom:2px;" ng-show="item.status == 'Approved'"><b>Approved Amount:</b> <span style="color:#4e5e82">{{item.approvedAmount}}</span></span>
-                                    <span style="padding-bottom:2px;" ng-show="item.status == 'Rejected'"><b>Rejected Amount:</b> <span style="color:#4e5e82">{{item.rejectedAmount}}</span></span>
-                                    <!-- <span style="padding-bottom:2px;"><b>Rejected Reason:</b> <span style="color:#4e5e82">{{item.rejectedReason}}</span></span> -->
-                                </li>
-                            </carousel-item>                
-                            <carousel-prev>
-                                <a href="javascript:;" class="requstListLeftArrow"><span class="oi" data-glyph="chevron-left"></span></a>
-                            </carousel-prev>
-                            <carousel-next>
-                                <a href="javascript:;" class="requstListRightArrow"><span class="oi" data-glyph="chevron-right"></span></a>
-                            </carousel-next>
-                        </ui-carousel>
-                    </div>
-                    <div class="col-sm-2 medicalwid">
-                        <div class="medicalCardInfoBox medicalCardInfoBoxShow medicalInfoWidth" id="medicalCardInfoBox" style="height: 145px !important;">
-                            <h3>Medical card info</h3>
-                            <!-- <ul> -->
-                                <li style="list-style: none;">
-                                    <span style="width: auto !important;padding-left: 6px;"> Policy Name:</span>
-                                    <span>High Treatment Service - Medic Policy</span>
-                                </li> 
-                            <!-- </ul> -->
-                            <ul>
+                    <div class="infoList clearfix  col-sm-8">
+                        <div class="row">
+                            <li>
+                                <span>Claim Number</span>
+                                <strong>{{selectedClaim.claimNo}}</strong>
+                            </li>
+                            <li>
+                                <span>Request Number</span>
+                                <strong>{{selectedClaim.requestNo}}</strong>
+                            </li>
+                            <li>
+                                <span>Status</span>
+                                <strong ng-class="{'text-success' : selectedClaim.status == 'Approved', 'text-danger' : selectedClaim.status == 'Rejected'}">{{selectedClaim.status}}</strong>
+                            </li>
+                            <li>
+                                <span>Policy Number</span>
+                                <strong>{{selectedClaim.policyNo}}</strong>
+                            </li>
+                            <li>
+                                <span>Member Number</span>
+                                <strong>{{selectedClaim.memberNo}}</strong>
+                            </li>
+                        </div>
+                        <div class="row reimbursement-carousel">
+                            <ui-carousel slides="claimReqList" class="" slides-to-show="1" slides-to-scroll="1" initial-slide="0" style="width:100%;margin:0px">
+                                <carousel-item  class="eclaim-item">
+                                    <ul>
+                                        <li style="cursor:pointer" class="col-sm-4">
+                                            <span>
+                                                Request Number:<span class="currencyTypeCustom" ng-click="toggleJson(item);">#{{item.reqNum}}</span> 
+                                            </span>
+                                        </li>
+                                        <li class="col-sm-4">
+                                            <span><b>Claim Status :</b> <strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong></span>
+                                        </li>    
+                                        <!-- <li>
+                                            <span><b>Claim Status Reason:</b> <span style="color:#4e5e82">{{item.statusReason}}</span></span>
+                                        </li> -->
+                                        <li class="col-sm-4">
+                                            <span ng-show="item.status == 'Approved'"><b>Approved Amount:</b> <span style="color:#4e5e82">{{item.approvedAmount}}</span></span>
+                                            <span ng-show="item.status == 'Rejected'"><b>Rejected Amount:</b> <span style="color:#4e5e82">{{item.rejectedAmount}}</span></span>
+                                        </li>
+                                    </ul>
+                                </carousel-item>                
+                                <carousel-prev>
+                                    <a href="javascript:;" class="requstListLeftArrow"><span class="oi" data-glyph="chevron-left"></span></a>
+                                </carousel-prev>
+                                <carousel-next>
+                                    <a href="javascript:;" class="requstListRightArrow"><span class="oi" data-glyph="chevron-right"></span></a>
+                                </carousel-next>
+                            </ui-carousel>
+                        </div>
+                    </div>                    
+                    <div class="medicalCardInfoBox medicalCardInfoBoxShow" id="medicalCardInfoBox">
+                        <h3>Medical card info</h3>
+                        <!-- <ul> -->
+                            <li style="list-style: none;">
+                                <span style="width: auto !important;padding-left: 6px;"> Insured Name:</span>
+                                <span>High Treatment Service - Medic Policy</span>
+                            </li> 
+                        <!-- </ul> -->
+                        <ul>
                             <li>
                                 <span>Age:</span>
                                 <span>20</span>
@@ -306,41 +312,40 @@
                             <li>
                                 <span>Marital Status:</span>
                                 <span>Single</span>
-                            </li>  
+                            </li>
                             <li>
-                            <span>Member N/W:</span>
-                            <span>AEM</span>
+                                <span>Member N/W:</span>
+                                <span>AEM</span>
                             </li> 
-                            <!-- <li>
-                            <span>Policy Name:</span>
-                            <span>HTS-Medic Policy HTS-Medic Policy HTS-Medic Policy</span>
-                            </li>  -->
+                        <!-- <li>
+                        <span>Policy Name:</span>
+                        <span>HTS-Medic Policy HTS-Medic Policy HTS-Medic Policy</span>
+                        </li>  -->
                             <li>
-                                    <span>Inpatient: </span>
-                                    <span>Nil</span>
-                                </li>   
-                                <li>
-                                    <span>Pharmacy:</span>
-                                    <span>10%</span>
-                                </li>
-                                <li>
-                                    <span>Consultation:</span>
-                                    <span>50 AED</span>
-                                </li>
-                                <li>
-                                    <span>Dental:</span>
-                                    <span>10%</span>    
-                                </li>
-                                <li>
-                                    <span>Lab:</span>
-                                    <span>10%</span>
-                                </li>
-                            </ul>
-                        </div>
+                                <span>Inpatient: </span>
+                                <span>Nil</span>
+                            </li>   
+                            <li>
+                                <span>Pharmacy:</span>
+                                <span>10%</span>
+                            </li>
+                            <li>
+                                <span>Consultation:</span>
+                                <span>50 AED</span>
+                            </li>
+                            <li>
+                                <span>Dental:</span>
+                                <span>10%</span>    
+                            </li>
+                            <li>
+                                <span>Lab:</span>
+                                <span>10%</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div ng-class="{'reimbur-trans-hide' : !createNew, 'reimbur-trans-show' : createNew}">
-                    <div class="claimRequestDetails mt-3">
+                    <div class="claimRequestDetails">
                         <div class="claimRequestDetInner mb-3 clearfix" style="padding-left:0px;">
                             <div layout-gt-sm="row" class="col-sm-12 pb-1">
                                 <div class="masterCodes float-left" style="border: 1px solid #b3b3b3;margin: 0 3px 0 0;width: 50% !important;">

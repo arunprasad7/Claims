@@ -962,18 +962,18 @@ footer li strong {
 
 .infoList {
     list-style: none;
-    padding: 0 0 0 3rem;
+    padding: 0 0 0 4rem;
     margin: 0;
 }
 
 .infoList li {
-    padding: 0 2rem 0 0;
+    padding: 0 20.7px 0 0;
     float: left;
 }
 
 .infoList li span,
 .infoList li strong {
-    display: block;
+    display: inline-block;
     color: #151b1e;
 }
 
@@ -1061,7 +1061,7 @@ footer li strong {
 }
 
 .currencyType {
-    background: #cfd2d8;
+    background: #4e5e82;
     border-radius: 2px;
     padding: 0.2rem .5rem;
     margin-left: 0.75rem;
@@ -1347,8 +1347,8 @@ footer li strong {
 .medicalCardInfoBox {
     background: #1d344c;
     padding: 0;
-    position: absolute;
-    right: -44px;
+    position: relative;
+    right: -59px;
     top: -17px;
     color: #fff;
     width: 0;
@@ -1363,7 +1363,7 @@ footer li strong {
 }
 
 .medicalCardInfoBoxShow {
-    width: 280px;
+    width: 32.35%;
     padding: 0.45rem;
 }
 
@@ -1377,12 +1377,13 @@ footer li strong {
     list-style: none;
     padding: 0;
     margin: 0;
+    columns: 3;
 }
 
 .medicalCardInfoBox ul li {
     padding: 0 0.5rem;
-    width: 50%;
-    float: left;
+    /* width: 50%;
+    float: left; */
     line-height: 18px;
     white-space: nowrap;
 }
@@ -1393,7 +1394,12 @@ footer li strong {
 }
 
 .medicalCardInfoBox li span:first-child {
-    width: 60%;
+    width: 70%;
+    font-size: 12px;
+}
+
+.medicalCardInfoBox li span:last-child {
+    font-size: 10px;
 }
 
 .reimbursement-carousel {
@@ -1401,30 +1407,30 @@ footer li strong {
     top: -17px;
     left:-66px;
     line-height: 25px;
-    padding: 0 0.5rem;
+    padding: 3px 1.5rem;
 }
 
-.reimbursement-carousel li {
-    padding: 8px 15px;
+.reimbursement-carousel ul {
+    padding: 20px 15px !important;
     list-style: none;
     border-radius: 2px;
     background: #fff;
-    height: 120px;
-    width : 85.4%
+    height: 73px;
 }
+
+/* .reimbursement-carousel li {
+    display: list-item;
+}     */
 
 .reimbursement-carousel .track-wrapper {
-    width: 92%;
+    width: 97%;
 }
 
-.reimbursement-carousel .carousel-prev {
-    left: -23px;
-}
-
+.reimbursement-carousel .carousel-prev,
 .reimbursement-carousel .carousel-next {
-    right: 29px;
+    top: 25px;
 }
-
+    
 #detailAcc .card-header {
     padding: 0.35rem 0.15rem;
 }
@@ -1509,7 +1515,7 @@ footer li strong {
 /* For Fixed Footer : CSS included */
 
 #eClaims {
-    height: calc( 100% - 125px) !important;
+    /* height: calc( 100% - 125px) !important; */
     position: relative;
     overflow: auto;
 }
@@ -1579,6 +1585,7 @@ footer {
     background: #cfd2d8;
     border-radius: 20px;
     padding: 0.2rem .5rem;
+    outline: none;
 }
 
 .md-whiteframe-z1 {
@@ -1696,9 +1703,6 @@ footer {
 }
 .md-input, .md-text {
     font-size: 14px;
-}
-.medicalInfoWidth {
-    width: 125% !important;
 }
 .docFont {
     font: 13px "open_sanssemibold";
