@@ -103,7 +103,14 @@
          <div class="clearfix"></div>
         <div class="contentPart pt-3 pb-3">
             <div class="container-fluid regfont">
-                <list-view-component headers="registrationHeaders" requests="registeredClaims" redirectto="claim-registration-edit"></list-view-component>
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <div class="reimbListTabl" id="reimbListTabl">
+                            <h3 class="innerHeadText mt-2 mb-2 ml-2 d-inline-block">Registered Request</h3>
+                            <list-view-component headers="registrationHeaders" requests="registeredClaims" redirectto="claim-registration-edit"></list-view-component>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

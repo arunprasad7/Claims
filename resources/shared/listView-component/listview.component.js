@@ -12,6 +12,10 @@
             ListViewService.setRequestData(requestData);
             $state.go(this.redirectto);
         }
+
+        this.getSelectedData = function(selectedRecord) {
+            this.selectedUser = selectedRecord;
+        }
     }
 
     angular
@@ -20,7 +24,8 @@
                 bindings : {
                     headers: '<',
                     requests: '<',
-                    redirectto: '@'   
+                    redirectto: '@',
+                    selectedUser: '='
                 },
                 templateUrl: "resources/shared/listView-component/listview.component.html",
                 controller: listViewController
