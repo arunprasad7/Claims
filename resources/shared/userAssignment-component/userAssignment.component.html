@@ -1,0 +1,16 @@
+<h3 class="pt-3">Assign to user</h3>
+<div class="row" style="padding:0 15px;">
+    <span style="width:5%;padding: 7px 0;"><i class="oi align-middle" data-glyph="magnifying-glass"></i></span>
+    <md-autocomplete style="width:92%" md-selected-item="selectedItem" md-search-text="userSearchText" md-selected-item-change="$ctrl.filterByUser(userSearchText)" md-items="item in $ctrl.querySearch(userSearchText)" md-item-text="item.name" placeholder="UserName">
+        <md-item-template>
+            <span md-highlight-text="userSearchText">{{item.name}}</span>
+        </md-item-template>
+        <md-not-found>
+            No Result Found
+        </md-not-found>
+    </md-autocomplete>
+</div>
+<list-view-component headers="$ctrl.headers" requests="$ctrl.users" selected-user="$ctrl.selectedUser"></list-view-component>
+<div class="align-middle text-center float-right" ng-click="$ctrl.assignedToSelectedUser()">
+    <a href="javascript:;" class="searBtn searBtnWithText">Assign</a>
+</div>
