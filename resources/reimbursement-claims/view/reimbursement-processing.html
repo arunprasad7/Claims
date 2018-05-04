@@ -520,10 +520,21 @@
                             </button>                            
                         </div>
                         <h3 class="innerHeadText mt-2 mb-2 d-inline-block">Claim Treatment / Service Level</h3>
-                        <div class="currencyType d-inline-block"><span>Currency: </span>
+                        <div class="currencyType d-inline-block"><span style="color:white">Currency: </span>
                             <span class="fldsWrap clearfix">
                                 <md-input-container flex-gt-sm style="width:auto !important; background:white; margin:0px;">    
                                     <md-select ng-model="currencyType" ng-change="convertCurrency();">
+                                        <md-option value="1">AED</md-option>
+                                        <md-option value="2">USD</md-option>
+                                        <md-option value="3">EUR</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </span> 
+                        </div>
+                        <div class="currencyType d-inline-block"><span style="color:white">Base Currency: </span>
+                            <span class="fldsWrap clearfix">
+                                <md-input-container flex-gt-sm style="width:auto !important; background:white; margin:0px;">    
+                                    <md-select ng-model="baseCurrencyType">
                                         <md-option value="1">AED</md-option>
                                         <md-option value="2">USD</md-option>
                                         <md-option value="3">EUR</md-option>

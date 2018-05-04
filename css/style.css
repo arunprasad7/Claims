@@ -1395,11 +1395,10 @@ footer li strong {
 
 .medicalCardInfoBox li span:first-child {
     width: 70%;
-    font-size: 12px;
 }
 
 .medicalCardInfoBox li span:last-child {
-    font-size: 10px;
+    color: #E8E8E8
 }
 
 .reimbursement-carousel {
@@ -1417,10 +1416,6 @@ footer li strong {
     background: #fff;
     height: 73px;
 }
-
-/* .reimbursement-carousel li {
-    display: list-item;
-}     */
 
 .reimbursement-carousel .track-wrapper {
     width: 97%;
