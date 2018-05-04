@@ -30,7 +30,7 @@
                     <td>
                         <div class="text-nowrap">
                             <span class="d-inline-block pr-2"><strong>Claim No: </strong>
-                                <a class="currencyTypeCustom" href="javascript:void(0);"ng-click="navigateTo();">#{{claim.claimNo}}</a>
+                                <a class="currencyTypeCustom" href="javascript:void(0);"ng-click="$ctrl.redirectTo($ctrl.navigateTo);">#{{claim.claimNo}}</a>
                             </span>
                             <span class="d-inline-block pr-2">
                                 <strong>Member No: {{claim.memberNo}}</strong>

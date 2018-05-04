@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    function ClaimsListViewController($scope, $element, $attrs, $filter) {
+    function ClaimsListViewController($scope, $rootScope, $element, $attrs, $filter) {
 
         this.countByStatus = {};
         this.selectAll = false;
@@ -90,6 +90,10 @@
                 this.countByStatus[statusRecord.state] = angular.copy($filter('filter')(this.allClaimRecords, {status: statusRecord.state}).length);
             });
         }
+
+        this.redirectTo = function(stateName) {
+            $rootScope.navigateTo(stateName);
+        }
     }
 
     angular
@@ -99,7 +103,8 @@
                     statuslist: '<',
                     claimsRecords: '<',
                     selectedClaims: '=',
-                    allClaimRecords: '='
+                    allClaimRecords: '=',
+                    navigateTo: '@'
                 },
                 templateUrl: "resources/shared/claimsListView-component/claimslistview.component.html",
                 controller: ClaimsListViewController

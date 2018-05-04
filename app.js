@@ -91,7 +91,7 @@ angular
         $urlRouterProvider.otherwise("/");    
     }
 
-    function appConfig ($transitions, $rootScope, ngNotify) {
+    function appConfig ($transitions, $rootScope, ngNotify, $state) {
         ngNotify.config({
             position: 'top',
             duration: 2000,
@@ -107,6 +107,10 @@ angular
                 && event.keyCode != 38 && event.keyCode != 39 && event.keyCode != 40) {
                 event.target.value = "";
             }
-        }    
+        }
+        
+        $rootScope.navigateTo = function(stateName) {
+            $state.go(stateName);
+        }
     }
 })();
