@@ -34,6 +34,7 @@
 
             function init() {
                 $scope.currencyType = '1';
+                $scope.baseCurrencyType = '1';
                 $scope.claim = ReimbursementProcessingService.createNewReimbursmentObject();
                 $scope.claimReqList = ReimbursementProcessingService.getClaimsRequest();
                 $scope.treatmentCodes = ReimbursementProcessingService.getCodes('T');

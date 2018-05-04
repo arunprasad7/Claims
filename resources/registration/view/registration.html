@@ -7,7 +7,7 @@
         <div class="contentPart">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-10 p-0">
+                    <div class="col-11 p-0">
                         <div class="searchBarRow reimbListTabl" style="display: block">
                             <div layout-gt-sm="row">
                                 <div style="border-left: 1px solid #e6e6e6;width: 90% !important;position: relative;"> 
@@ -20,7 +20,7 @@
                                         md-search-text="memNosearchText"
                                         md-items="item in querySearch(memNosearchText, 'memberNumber')"
                                         md-item-text="item.memberNumber"                                    
-                                        md-floating-label="Member Card Number"
+                                        md-floating-label=" Card Number"
                                         md-clear-button="true">
                                         <md-item-template>
                                             <span md-highlight-text="memNosearchText">{{item.memberNumber}}</span>
@@ -52,8 +52,8 @@
                                 </div>
                                 <div style="border-left: 1px solid #e6e6e6;width: 90% !important;">
                                     <md-input-container flex-gt-sm>
-                                        <label>IBAN Number</label>
-                                        <input ng-model="ibanNum">
+                                        <label>Emirates Id</label>
+                                        <input ng-model="emiratesId">
                                     </md-input-container>
                                 </div>
                                 <div style="border-left: 1px solid #e6e6e6;width: 90% !important;">
@@ -82,20 +82,19 @@
                                     </md-autocomplete>
                                     
                                 </div>
-                                <div class="searchat searchColm align-middle text-center">
-                                    <a ng-click="searchBtn()" href="javascript:;" class="searBtn mt-1 ml-3 mr-3 align-middle">
-                                        <span class="oi align-middle" data-glyph="magnifying-glass"></span>
-                                    </a>
-                                    <a ng-click="clear()" href="javascript:;" class="searBtn mt-1 ml-3 mr-3 align-middle">
-                                        <span class="oi align-middle" data-glyph="x"></span>
-                                    </a>
-                                    <!-- <a ng-click="clear()" href="javascript:;" class="searBtn searBtnWithText mt-3 align-middle" data-glyph="x"></a> -->
-                                </div>
+                                <div class="searchColm align-middle text-center" style="width: 90% !important">
+                                        <a ng-click="searchBtn()" href="javascript:;" class="searBtn searBtnWithText mt-3 ml-3 mr-3 align-middle">
+                                            <span class="oi align-middle" data-glyph="magnifying-glass"></span> Search
+                                        </a>
+                                        <a ng-click="clear()" href="javascript:;" class="searBtn searBtnWithText mt-3 ml-3 mr-3 align-middle">
+                                                Clear
+                                        </a>
+                                  </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-2 p-0">
-                        <a href="javascript:;" class="btn btn-primary createNewBtn float-right mt-3 ml-4" ui-sref="claim-registration-new">Register New Claim</a>
+                    <div class="col-1 p-0">
+                        <a href="javascript:;" class="btn btn-primary createNewBtn float-right mt-3 ml-4" ui-sref="claim-registration-new">Register</a>
                     </div>
                 </div>
             </div>

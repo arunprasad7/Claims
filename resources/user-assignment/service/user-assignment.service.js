@@ -24,7 +24,8 @@
                 'approvedAmount': '1,00,550',
                 'currencyCode': 'AED',
                 'name': 'Osama Bin',
-                'status': 'Rejected'
+                'status': 'Rejected',
+                'emiratesId': 56787
             }, {
                 'claimNo': '3365430',
                 'memberNo': '9563569856',
@@ -40,7 +41,8 @@
                 'approvedAmount': '1,70,530',
                 'currencyCode': 'AED',
                 'name': 'Rayan',
-                'status': 'Approved'
+                'status': 'Approved',
+                'emiratesId': 56787
             }, {
                 'claimNo': '4388960',
                 'memberNo': '9563509632',
@@ -56,7 +58,8 @@
                 'approvedAmount': '1,90,500',
                 'currencyCode': 'AED',
                 'name': 'Ansar',
-                'status': 'Rejected'
+                'status': 'Rejected',
+                'emiratesId': 56787
             }, {
                 'claimNo': '63424531',
                 'memberNo': '9563281452',
@@ -72,7 +75,8 @@
                 'approvedAmount': '1,60,900',
                 'currencyCode': 'AED',
                 'name': 'Mohamed',
-                'status': 'Rejected'
+                'status': 'Rejected',
+                'emiratesId': 56787
             }, {
                 'claimNo': '5975210',
                 'memberNo': '9509634521',
@@ -88,7 +92,8 @@
                 'approvedAmount': '1,80,590',
                 'currencyCode': 'AED',
                 'name': 'Abdur',
-                'status': 'Rejected'
+                'status': 'Rejected',
+                'emiratesId': 56787
             }, {
                 'claimNo': '7221790',
                 'memberNo': '9560756432',
@@ -104,7 +109,8 @@
                 'approvedAmount': '1,40,580',
                 'currencyCode': 'AED',
                 'name': 'Parveen',
-                'status': 'Approved'
+                'status': 'Approved',
+                'emiratesId': 56787
             }, {
                 'claimNo': '9743210',
                 'memberNo': '9563982314',
@@ -120,7 +126,8 @@
                 'approvedAmount': '1,20,500',
                 'currencyCode': 'AED',
                 'name': 'Farook',
-                'status': 'Rejected'
+                'status': 'Rejected',
+                'emiratesId': 56787
             }, {
                 'claimNo': '8345700',
                 'memberNo': '95097865431',
@@ -136,7 +143,8 @@
                 'approvedAmount': '1,30,700',
                 'currencyCode': 'AED',
                 'name': 'Hussain',
-                'status': 'Waitingforapproval'
+                'status': 'Waitingforapproval',
+                'emiratesId': 56787
             }, {
                 'claimNo': '10850',
                 'memberNo': '984169856',
@@ -152,7 +160,8 @@
                 'approvedAmount': '1,20,600',
                 'currencyCode': 'AED',
                 'name': 'Banu',
-                'status': 'InProgress'
+                'status': 'InProgress',
+                'emiratesId': 56787
             }, {
                 'claimNo': '2345862',
                 'memberNo': '9754269856',
@@ -169,6 +178,7 @@
                 'currencyCode': 'AED',
                 'name': 'Ashraf',
                 'status': 'Waitingforapproval',
+                'emiratesId': 56787
             }, {
                 'claimNo': '22342230',
                 'memberNo': '9209269856',
@@ -185,6 +195,7 @@
                 'currencyCode': 'AED',
                 'name': 'Raliya',
                 'status': 'Assigned',
+                'emiratesId': 56787
             },
             {
                 'claimNo': '456',
@@ -201,7 +212,8 @@
                 'approvedAmount': '1,00,550',
                 'currencyCode': 'AED',
                 'name': 'Osama Bin',
-                'status': 'New Request'
+                'status': 'New Request',
+                'emiratesId': 56787
             }, {
                 'claimNo': '3365430',
                 'memberNo': '9563569856',
@@ -217,7 +229,8 @@
                 'approvedAmount': '1,70,530',
                 'currencyCode': 'AED',
                 'name': 'Rayan',
-                'status': 'New Request'
+                'status': 'New Request',
+                'emiratesId': 56787
             }, {
                 'claimNo': '4388960',
                 'memberNo': '9563509632',
@@ -233,7 +246,8 @@
                 'approvedAmount': '1,90,500',
                 'currencyCode': 'AED',
                 'name': 'Ansar',
-                'status': 'New Request'
+                'status': 'New Request',
+                'emiratesId': 56787
             }, {
                 'claimNo': '63424531',
                 'memberNo': '9563281452',
@@ -249,7 +263,8 @@
                 'approvedAmount': '1,60,900',
                 'currencyCode': 'AED',
                 'name': 'Mohamed',
-                'status': 'New Request'
+                'status': 'New Request',
+                'emiratesId': 56787
             }, {
                 'claimNo': '5975210',
                 'memberNo': '9509634521',
@@ -265,7 +280,8 @@
                 'approvedAmount': '1,80,590',
                 'currencyCode': 'AED',
                 'name': 'Abdur',
-                'status': 'New Request'
+                'status': 'New Request',
+                'emiratesId': 56787
             }, {
                 'claimNo': '7221790',
                 'memberNo': '9560756432',
@@ -281,7 +297,8 @@
                 'approvedAmount': '1,40,580',
                 'currencyCode': 'AED',
                 'name': 'Parveen',
-                'status': 'New Request'
+                'status': 'New Request',
+                'emiratesId': 56787
             }, {
                 'claimNo': '9743210',
                 'memberNo': '9563982314',
@@ -297,7 +314,8 @@
                 'approvedAmount': '1,20,500',
                 'currencyCode': 'AED',
                 'name': 'Farook',
-                'status': 'New Request'
+                'status': 'New Request',
+                'emiratesId': 56787
             }, {
                 'claimNo': '8345700',
                 'memberNo': '95097865431',
@@ -313,7 +331,8 @@
                 'approvedAmount': '1,30,700',
                 'currencyCode': 'AED',
                 'name': 'Hussain',
-                'status': 'New Request'
+                'status': 'New Request',
+                'emiratesId': 56787
             }, {
                 'claimNo': '10850',
                 'memberNo': '984169856',
@@ -329,7 +348,8 @@
                 'approvedAmount': '1,20,600',
                 'currencyCode': 'AED',
                 'name': 'Banu',
-                'status': 'New Request'
+                'status': 'New Request',
+                'emiratesId': 56787
             }, {
                 'claimNo': '2345862',
                 'memberNo': '9754269856',
@@ -346,6 +366,7 @@
                 'currencyCode': 'AED',
                 'name': 'Ashraf',
                 'status': 'New Request',
+                'emiratesId': 56787
             }, {
                 'claimNo': '22342230',
                 'memberNo': '9209269856',
@@ -362,6 +383,7 @@
                 'currencyCode': 'AED',
                 'name': 'Raliya',
                 'status': 'New Request',
+                'emiratesId': 56787
             }];
         }
 
