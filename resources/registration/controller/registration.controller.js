@@ -14,19 +14,19 @@
         $scope.claims= $scope.registeredClaims;
 
         $scope.searchBtn = function() {
-            if (($scope.voucherNumber == "" || $scope.voucherNumber == null) && ($scope.searchMemNum == "" || $scope.searchMemNum == null) && ($scope.ibanNum == "" || $scope.ibanNum == null)&&($scope.searchPolicy == "" || $scope.searchPolicy == null)&&($scope.memberName == "" || $scope.memberName == null)) {
+            if (($scope.voucherNumber == "" || $scope.voucherNumber == null) && ($scope.searchMemNum == "" || $scope.searchMemNum == null) && ($scope.emiratesId == "" || $scope.emiratesId == null)&&($scope.searchPolicy == "" || $scope.searchPolicy == null)&&($scope.memberName == "" || $scope.memberName == null)) {
                 $scope.claims = $scope.registeredClaims;
             } else {
                 var memNo = $scope.searchMemNum ? $scope.searchMemNum.memberNumber : undefined;
                 var policyNo = $scope.searchPolicy ? $scope.searchPolicy.policyNumber : undefined;
-                var memName = $scope.searchMemNum ? $scope.searchMemNum.memberNumber : undefined;
-                $scope.claims = $filter('filter')($scope.registeredClaims, { voucherNumber: $scope.voucherNumber, ibanNum: $scope.ibanNum, memberNumber : memNo, policyNumber : policyNo,memberName: $scope.memberName});
+                var memName = $scope.searchMemName ? $scope.searchMemName.memberNumber : undefined;
+                $scope.claims = $filter('filter')($scope.registeredClaims,{ voucherNumber: $scope.voucherNumber, emiratesId: $scope.emiratesId,memberNumber : memNo, policyNumber : policyNo,memberName: $scope.memberName});
             }
         }
         $scope.clear=function(){
             $scope.voucherNumber='';
             $scope.searchMemNum = undefined;
-            $scope.ibanNum ='';
+            $scope.emiratesId ='';
             $scope.searchPolicy = undefined;
             $scope.searchMemName = undefined;
             $scope.claims = $scope.registeredClaims;

@@ -26,6 +26,7 @@
             'approvedAmount': '1,00,550',
             'currencyCode': 'AED',
             'name': 'Osama Bin',
+            'emiratesId':56787,
             'status': 'Rejected'
         }, {
             'climeNo': '3365430',
@@ -42,6 +43,7 @@
             'approvedAmount': '1,70,530',
             'currencyCode': 'AED',
             'name': 'Rayan',
+            'emiratesId':12967,
             'status': 'Approved'
         }, {
             'climeNo': '4388960',
@@ -58,6 +60,7 @@
             'approvedAmount': '1,90,500',
             'currencyCode': 'AED',
             'name': 'Ansar',
+            'emiratesId':34335,
             'status': 'Rejected'
         }, {
             'climeNo': '63424531',
@@ -74,6 +77,7 @@
             'approvedAmount': '1,60,900',
             'currencyCode': 'AED',
             'name': 'Mohamed',
+            'emiratesId':39567,
             'status': 'Rejected'
         }, {
             'climeNo': '5975210',
@@ -90,6 +94,7 @@
             'approvedAmount': '1,80,590',
             'currencyCode': 'AED',
             'name': 'Abdur',
+            'emiratesId':94567,
             'status': 'Rejected'
         }, {
             'climeNo': '7221790',
@@ -106,6 +111,7 @@
             'approvedAmount': '1,40,580',
             'currencyCode': 'AED',
             'name': 'Parveen',
+            'emiratesId':84567,
             'status': 'Approved'
         }, {
             'climeNo': '9743210',
@@ -122,6 +128,7 @@
             'approvedAmount': '1,20,500',
             'currencyCode': 'AED',
             'name': 'Farook',
+            'emiratesId':39097,
             'status': 'Rejected'
         }, {
             'climeNo': '8345700',
@@ -138,6 +145,7 @@
             'approvedAmount': '1,30,700',
             'currencyCode': 'AED',
             'name': 'Hussain',
+            'emiratesId':35467,
             'status': 'Waitingforapproval'
         }, {
             'climeNo': '10850',
@@ -154,6 +162,7 @@
             'approvedAmount': '1,20,600',
             'currencyCode': 'AED',
             'name': 'Banu',
+            'emiratesId':39097,
             'status': 'InProgress'
         }, {
             'climeNo': '2345862',
@@ -170,6 +179,7 @@
             'approvedAmount': '1,50,520',
             'currencyCode': 'AED',
             'name': 'Ashraf',
+            'emiratesId':11567,
             'status': 'Waitingforapproval',
         }, {
             'climeNo': '22342230',
@@ -186,6 +196,7 @@
             'approvedAmount': '1,50,500',
             'currencyCode': 'AED',
             'name': 'Raliya',
+            'emiratesId':33327,
             'status': 'Assigned',
         }];
 
@@ -206,6 +217,7 @@
             'requestedAmount': ',23,515',
             'approvedAmount': '1,00,500',
             'currencyCode': 'AED',
+            'emiratesId':39687,
             'status': 'Assigned'
         }, {
             'userId': '1235',
@@ -224,6 +236,7 @@
             'requestedAmount': ',23,515',
             'approvedAmount': '1,00,500',
             'currencyCode': 'AED',
+            'emiratesId':36797,
             'status': 'Assigned'
         }, {
             'userId': '1236',
@@ -242,6 +255,7 @@
             'requestedAmount': ',23,515',
             'approvedAmount': '1,00,500',
             'currencyCode': 'AED',
+            'emiratesId':39447,
             'status': 'Assigned'
         }, {
             'userId': '1237',
@@ -260,6 +274,7 @@
             'requestedAmount': ',23,515',
             'approvedAmount': '1,00,500',
             'currencyCode': 'AED',
+            'emiratesId':39097,
             'status': 'Assigned'
         }, {
             'userId': '1238',
@@ -278,6 +293,7 @@
             'requestedAmount': ',23,515',
             'approvedAmount': '1,00,500',
             'currencyCode': 'AED',
+            'emiratesId':39227,
             'status': 'Assigned'
         }];
 
