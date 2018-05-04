@@ -83,11 +83,6 @@ angular
                 templateUrl: "resources/reimbursement-claims/view/reimbursement-processing.html",
                 controller: 'ReimbursmentProcessingController'
             })
-            .state('eclaim-batch', {
-                url: "/eclaim-batch",
-                templateUrl: "resources/eclaim/view/eclaim-batch.html",
-                controller: 'EclaimBatchController'
-            })
         $urlRouterProvider.otherwise("/");    
     }
 

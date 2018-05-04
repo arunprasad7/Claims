@@ -33,8 +33,8 @@
             var descriptionTemplate = '<div ng-if="!row.entity.editable || !col.colDef.enableCellEdit" class="text-truncate" style="padding:3px;" ng-click="grid.appScope.editClaim(row.entity)">{{COL_FIELD}}</div>';
 
             function init() {
-                $scope.currencyType = '1';
-                $scope.baseCurrencyType = '1';
+                $scope.isInlineEdit = false;
+                $scope.moduleName = 'reimbursement';
                 $scope.claim = ReimbursementProcessingService.createNewReimbursmentObject();
                 $scope.claimReqList = ReimbursementProcessingService.getClaimsRequest();
                 $scope.treatmentCodes = ReimbursementProcessingService.getCodes('T');
@@ -116,34 +116,28 @@
                 $scope.gridOptions = {
                     data : [],
                     columnDefs: [
-                        {name:'action', displayName:'', cellTemplate:staticTemplate,width:40, pinnedLeft:true, enableColumnMenu: false},
+                        {name:'action', displayName:'', cellTemplate:'staticTemplate',width:40, pinnedLeft:true, enableColumnMenu: false},
                         {name:'treatmentCodeOrSubBenefit.name', displayName:'Treatment Code/SubBenefit',width:200},
-                        {name:'serviceFrom', displayName:'Service From', cellTemplate:dateTemplate,width:120},
-                        {name:'serviceTo', displayName:'Service To', cellTemplate:dateTemplate,width:110},
+                        {name:'serviceFrom', displayName:'Service From', cellTemplate:'dateTemplate',width:120},
+                        {name:'serviceTo', displayName:'Service To', cellTemplate:'dateTemplate',width:110},
                         {name:'days', displayName:'Days', width:90},
-                        {name:'requestAmount', displayName:'Request Amount', width:140},
-                        {name:'policyDedAmount', displayName:'Policy Ded Amount',width:150},
-                        {name:'manualDeduction', displayName:'Manual Deduction', width:140},
-                        {name:'penaltyAmount', displayName:'Penalty Amount', width:145},
-                        {name:'suggesstedAmount', displayName:'Suggessted Amount', width:150},
-                        {name:'approvedAmount', displayName:'Approved Amount', width:165},
-                        {name:'rejectedAmount', displayName:'Rejected Amount', width:145},
+                        {name:'requestAmount', displayName:'Request Amount', width:140, convertCurrency:true},
+                        {name:'policyDedAmount', displayName:'Policy Ded Amount',width:150, convertCurrency:true},
+                        {name:'manualDeduction', displayName:'Manual Deduction', width:140, convertCurrency:true},
+                        {name:'penaltyAmount', displayName:'Penalty Amount', width:145, convertCurrency:true},
+                        {name:'suggesstedAmount', displayName:'Suggessted Amount', width:150, convertCurrency:true},
+                        {name:'approvedAmount', displayName:'Approved Amount', width:165, convertCurrency:true},
+                        {name:'rejectedAmount', displayName:'Rejected Amount', width:145, convertCurrency:true},
                         {name:'rejectionCode.name', displayName:'Rejection Code',width:140},
                         {name:'rejectionDesc', displayName:'Rejection Description',width:210},
                         {name:'status', displayName:'Status', width:155},
-                        {name:'internalRemarks', displayName:'Internal Remarks', cellTemplate:descriptionTemplate, width:210},
-                        {name:'externalRemarks', displayName:'External Remarks', cellTemplate:descriptionTemplate, width:210},
-                        {name:'Settings', displayName:'Settings', cellTemplate:settingsTemplate,width:75, pinnedRight:true, enableColumnMenu: false}
+                        {name:'internalRemarks', displayName:'Internal Remarks', cellTemplate:'descriptionTemplate', width:210},
+                        {name:'externalRemarks', displayName:'External Remarks', cellTemplate:'descriptionTemplate', width:210},
+                        {name:'Settings', displayName:'Settings', cellTemplate:'settingsTemplate',width:75, pinnedRight:true, enableColumnMenu: false}
                     ],
                     enableSorting: false
                 }
                 $scope.noRecordsAvailable = $scope.gridOptions['data'].length == 0;
-
-                $scope.gridOptions.onRegisterApi = function(gridApi) {
-                    gridApi.core.on.rowsRendered( $scope, function(resp) {
-                        $($('.ui-grid-render-container-body').children()).addClass('ui-grid-content');
-                    });
-                }
             }
 
             $scope.deleteRow = function(index) {
@@ -168,27 +162,6 @@
                     swal("", "No Records to Reject", "warning");
                 }
             }
-
-            $scope.toggleSelect = function() {
-                $scope.isChecked = !$scope.isChecked;
-                angular.forEach($scope.gridOptions.data, function(value,key) {
-                    value.isChecked = $scope.isChecked;
-                })
-            }
-
-            $('#right-button').click(function() {
-                event.preventDefault();
-                $('.ui-grid-content').animate({
-                scrollLeft: "+=322px"
-                }, "slow");
-            });
-            
-            $('#left-button').click(function() {
-                event.preventDefault();
-                $('.ui-grid-content').animate({
-                    scrollLeft: "-=322px"
-                }, "slow");
-            });
 
             $scope.saveRecord = function(saveType) {
                 processClaim($scope.claim);
@@ -312,24 +285,32 @@
                 $scope.totalDeductionAmount = totalDeductionAmount;
             }
 
-            $scope.convertCurrency = function() {
-                angular.forEach($scope.gridOptions.data, function(value, key) {
-                    value.requestAmount = value.requestAmount ? (value.requestAmount * parseInt($scope.currencyType)) : null;
-                    value.policyDedAmount = value.policyDedAmount ? (value.policyDedAmount * parseInt($scope.currencyType)) : null;
-                    value.manualDeduction = value.manualDeduction ? (value.manualDeduction * parseInt($scope.currencyType)) : null;
-                    value.penaltyAmount = value.penaltyAmount ? (value.penaltyAmount * parseInt($scope.currencyType)) : null;
-                    value.suggesstedAmount = value.suggesstedAmount ? (value.suggesstedAmount * parseInt($scope.currencyType)) : null;
-                    value.approvedAmount = value.approvedAmount ? (value.approvedAmount * parseInt($scope.currencyType)) : null;
-                    value.rejectedAmount = value.rejectedAmount ? (value.rejectedAmount * parseInt($scope.currencyType)) : null;
-                });
-                renderTotals($scope.gridOptions.data);
-            }
-
             $scope.toggleInfo = function() {
                 $scope.infoToggle = !$scope.infoToggle;
                 $scope.accordionToggle.isProviderDetailOpen = $scope.accordionToggle.isProviderDetailOpen ? $scope.accordionToggle.isProviderDetailOpen : $scope.reimbursementForm.$valid;
                 $scope.isCloseOthers = true;
             }
+
+            $scope.gridAction = function(info) {
+                switch(info.action) {
+                    case "new":
+                        $scope.createNewClaim()
+                        break;
+                    case "edit":
+                        $scope.editClaim(info.data);
+                        break;
+                    case "delete":
+                        $scope.deleteRow(info.index);    
+                        break;
+                    case "approve":
+                        $scope.approveClaim(info.data);
+                        break;
+                    case "reject":
+                        $scope.rejectClaim(info.data);
+                        break;
+                }
+            }
+
             init();
         }
 })()

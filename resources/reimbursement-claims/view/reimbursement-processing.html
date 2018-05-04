@@ -498,69 +498,9 @@
                         </div>    
                     </div>
                 </div>                
-                <div class="eclaimRequest text-center mt-4">
-                    <div class="clearfix" ng-class="{'reimburs-mt' : createNew}">
-                        <!-- <a href="javascript:;" class="custCheckboxBtn float-left" ng-class="{'custCheckboxBtnSected' : isChecked}" ng-click="toggleSelect();" style="margin: 15px 9px 0px 6px !important;">
-                            <span class="oi" data-glyph="check"></span>
-                        </a> -->
-                        <div class="btn-group btn-group-sm claimStatusBtns mt-2 mb-2 pl-1 float-left" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-secondary">
-                                <a href="javascript:;" class="custCheckboxBtn float-left" ng-class="{'custCheckboxBtnSected' : isChecked}" ng-click="toggleSelect();">
-                                    <span class="oi" data-glyph="check"></span>
-                                </a>
-                            </button>
-                            <button type="button" class="btn btn-secondary">
-                                <span class="oi" data-glyph="check"></span>
-                            </button>
-                            <button type="button" class="btn btn-secondary">
-                                <span class="oi" data-glyph="thumb-up"></span>
-                            </button>
-                            <button type="button" class="btn btn-secondary">
-                                <span class="oi" data-glyph="thumb-down"></span>
-                            </button>                            
-                        </div>
-                        <h3 class="innerHeadText mt-2 mb-2 d-inline-block">Claim Treatment / Service Level</h3>
-                        <div class="currencyType d-inline-block"><span style="color:white">Currency: </span>
-                            <span class="fldsWrap clearfix">
-                                <md-input-container flex-gt-sm style="width:auto !important; background:white; margin:0px;">    
-                                    <md-select ng-model="currencyType" ng-change="convertCurrency();">
-                                        <md-option value="1">AED</md-option>
-                                        <md-option value="2">USD</md-option>
-                                        <md-option value="3">EUR</md-option>
-                                    </md-select>
-                                </md-input-container>
-                            </span> 
-                        </div>
-                        <div class="currencyType d-inline-block"><span style="color:white">Base Currency: </span>
-                            <span class="fldsWrap clearfix">
-                                <md-input-container flex-gt-sm style="width:auto !important; background:white; margin:0px;">    
-                                    <md-select ng-model="baseCurrencyType">
-                                        <md-option value="1">AED</md-option>
-                                        <md-option value="2">USD</md-option>
-                                        <md-option value="3">EUR</md-option>
-                                    </md-select>
-                                </md-input-container>
-                            </span> 
-                        </div>
-                        <a href="javascript:;" class="tablColmArrow float-right mt-2 mb-2 mr-3 ml-2" ng-click="createNewClaim();">
-                            <span class="oi" data-glyph="plus"></span>
-                        </a>
-                        <a href="javascript:;" class="tablColmArrow float-right mt-2 mb-2 mr-3 ml-2" id="right-button">
-                            <span class="oi" data-glyph="chevron-right"></span>
-                        </a>
-                        <a href="javascript:;" class="tablColmArrow float-right mt-2 mb-2 ml-2" id="left-button">
-                            <span class="oi" data-glyph="chevron-left"></span>
-                        </a>
-                    </div>
-                    <div class="table eclaimRequestTabl">
-                        <div ui-grid="gridOptions" ui-grid-pinning="" class="eclaimRequestTabl"></div>
-                    </div>
-                    <div ng-show="noRecordsAvailable">
-                        No Record Available...
-                    </div>
-                </div>   
+                <grid-wrapper ui-Grid-Options="gridOptions" inline-Edit="isInlineEdit" module="moduleName" on-Grid-Action="gridAction(info)"></grid-wrapper>
+            </div>
         </div>
-        
         <footer class="clearfix">
             <button type="button" class="btn btn-outline-primary btn-sm float-right ml-3 mt-3" ng-click="submitForApproval();">Submit for Approval</button>
             <button type="button" class="btn btn-outline-primary btn-sm float-right ml-3  mt-3" ng-click="rejectClaim();">Reject</button>
@@ -593,4 +533,4 @@
             </a>
         </footer>
     </div>
-    </section>
+</section>
