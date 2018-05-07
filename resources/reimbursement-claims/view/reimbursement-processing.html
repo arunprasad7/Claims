@@ -266,20 +266,20 @@
                             <ui-carousel slides="claimReqList" class="" slides-to-show="1" slides-to-scroll="1" initial-slide="0" style="width:100%;margin:0px">
                                 <carousel-item  class="eclaim-item">
                                     <ul>
-                                        <li style="cursor:pointer" class="col-sm-4">
+                                        <li style="cursor:pointer">
                                             <span>
-                                                Request Number:<span class="currencyTypeCustom" ng-click="toggleJson(item);">#{{item.reqNum}}</span> 
+                                                <b>Request Number:</b><span class="currencyTypeCustom" ng-click="toggleJson(item);">#{{item.reqNum}}</span> 
                                             </span>
                                         </li>
-                                        <li class="col-sm-4">
-                                            <span><b>Claim Status :</b> <strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong></span>
+                                        <li>
+                                            <span><b>Claim Status :</b> <span ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</span></span>
                                         </li>    
-                                        <!-- <li>
+                                        <li>
                                             <span><b>Claim Status Reason:</b> <span style="color:#4e5e82">{{item.statusReason}}</span></span>
-                                        </li> -->
-                                        <li class="col-sm-4">
-                                            <span ng-show="item.status == 'Approved'"><b>Approved Amount:</b> <span style="color:#4e5e82">{{item.approvedAmount}}</span></span>
-                                            <span ng-show="item.status == 'Rejected'"><b>Rejected Amount:</b> <span style="color:#4e5e82">{{item.rejectedAmount}}</span></span>
+                                        </li>
+                                        <li>
+                                            <span ng-show="item.status == 'Approved'"><b>Approved Amount:</b> <span style="color:#4e5e82;">{{item.approvedAmount}}</span></span>
+                                            <span ng-show="item.status == 'Rejected'"><b>Rejected Amount:</b> <span style="color:#4e5e82;">{{item.rejectedAmount}}</span></span>
                                         </li>
                                     </ul>
                                 </carousel-item>                

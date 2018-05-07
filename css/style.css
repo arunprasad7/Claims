@@ -1006,7 +1006,7 @@ footer li strong {
 
 .requstListLeftArrow,
 .requstListRightArrow {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: normal;
     display: block;
     float: left;
@@ -1398,7 +1398,8 @@ footer li strong {
 }
 
 .medicalCardInfoBox li span:last-child {
-    color: #E8E8E8
+    color: #E8E8E8;
+    font-size: 12px;
 }
 
 .reimbursement-carousel {
@@ -1406,15 +1407,16 @@ footer li strong {
     top: -17px;
     left:-66px;
     line-height: 25px;
-    padding: 3px 1.5rem;
+    padding: 20px 1.5rem;
 }
 
 .reimbursement-carousel ul {
-    padding: 20px 15px !important;
+    padding: 15px 15px !important;
     list-style: none;
     border-radius: 2px;
     background: #fff;
-    height: 73px;
+    height: 55px;
+    margin-bottom: 0px;
 }
 
 .reimbursement-carousel .track-wrapper {
@@ -1423,7 +1425,7 @@ footer li strong {
 
 .reimbursement-carousel .carousel-prev,
 .reimbursement-carousel .carousel-next {
-    top: 25px;
+    top: 20px;
 }
     
 #detailAcc .card-header {
@@ -1753,4 +1755,16 @@ md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-requir
 .searchat{
     width: 50% !important;
     padding-top: 10px;
+}
+.reimbursement-carousel li span {
+    font-size: 12px;
+}
+
+.reimbursement-carousel li b {
+    font-size: 11px;
+}
+
+.reimbursement-carousel li {
+    padding: 0 31.7px 0 0;
+    text-align: center;
 }
