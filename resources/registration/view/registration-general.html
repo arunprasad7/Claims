@@ -177,7 +177,7 @@
                         <label class="top_4 d-block grayText">Upload IBAN Document if any</label>
                         <div class="fileuploadWrap" style="float:left;">
                             <div ngf-select="uploadIbanFiles($file)" ng-disabled="ibanFile.isUploading">
-                                <span class="oi align-middle mr-1" data-glyph="cloud-upload"></span> Browser Files
+                                <span class="oi align-middle mr-1" data-glyph="cloud-upload"></span> Browse Files
                             </div>                            
                         </div>
                         <a href="{{ibanFile.url}}" download="{{ibanFile.name}}" class="iban-filename-elipsis"> {{ibanFile.name}} </a>
@@ -189,7 +189,7 @@
                 <button type="button" class="btn btn-outline-primary btn-sm float-right" ng-click="documentsUpload()">Upload</button>
                 <div ng-if="fileInfos.length > 0 && uploaded" id="thumbnailSlider" ng-style="{'padding-left' : fileInfos.length > 2 ? '15px' : '0px'}" class="col-sm-11">
                     <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="noOfSlides" slides-to-scroll="noOfSlides" initial-slide="0" style="margin-bottom:0px;margin-left: 15px;padding-top: 24px;"
-                        infinite="false" name="'thumbnailSlider'" ng-class="{'img-padding' : (showUpload && $odd), 'img-padding' : !showUpload}" ng-style="{'width' : showUpload ? '70%' : '75%'}">
+                        infinite="false" name="'thumbnailSlider'" ng-class="{'img-padding' : (showUpload && $odd), 'img-padding' : !showUpload}">
                         <carousel-item>
                             <div style="padding:0px 5px 2px 7px;">
                                 <span href="{{item.previewUrl}}" download="{{item.name}}" style="float:left; color:#00aeef;font-size:16px;cursor:pointer;">
@@ -201,9 +201,9 @@
                                 </span>
                             </div>
                             <div class="thumbnail-card" ng-class="{'img-padding' : $odd}">
-                                <div style="height:112px;padding:10px;">
-                                    <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}"  max-height="100" max-width="200" class="pdf-view" ng-show="item.ext == 'image'" style="padding:5px;"></thumbnail>
-                                    <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}" class="pdf-view" max-height="100" max-width="200" ng-show="item.ext == 'pdf'" style="padding:5px;"></thumbnail>
+                                <div style="height:127px;padding:10px;">
+                                    <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}"  max-height="118" max-width="200" class="pdf-view" ng-show="item.ext == 'image'" style="padding:5px;"></thumbnail>
+                                    <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}" class="pdf-view" max-height="118" max-width="200" ng-show="item.ext == 'pdf'" style="padding:5px;"></thumbnail>
                                     <div ng-show="item.ext == 'docx'">
                                         <i class="fa fa-file-word-o center" style="font-size:90px; color:#26559a; width:160px; height: 95px; text-align:center"></i>
                                     </div>
@@ -217,8 +217,8 @@
                                             <span>{{item.name}}</span><br>
                                         </a>    
                                         <span>Uploaded on {{item.uploadedDate | date: 'mediumDate'}}</span><br>
-                                        Type:<span>{{item.documentTyp}}</span><br>
-                                        Desc:<span>{{item.documentDesc}}</span><br>
+                                        <!-- Type:<span>{{item.documentTyp}}</span><br>
+                                        Desc:<span>{{item.documentDesc}}</span><br> -->
                                     </p>
                                     <p>
                                         <i class="fa fa-file-picture-o upload-file-icon" ng-show = "item.ext == 'image'" style="color:#00aeef;"></i>
@@ -247,13 +247,13 @@
     </div>
     <div class="rightContainer uploadList col-sm-5" ng-if="showUpload">
         <a href="javascript:;" class="infoToggleBtn" ng-click="toggleInfo();" style="margin-left:17px;position: absolute;top:0"><span class="oi" data-glyph="arrow-right"></span> <br />hide</a>
-        <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="1" slides-to-scroll="1" initial-slide="$parent.previewIndex" style="width:98%;height:100%; margin:39px 0px 0px 18px;"
-            infinite="false" name="previewSlider" ng-if = "fileInfos.length > 0 && isPreview">
+        <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="1" slides-to-scroll="1" initial-slide="previewIndex" style="width:98%;height:100%; margin:39px 0px 0px 18px;"
+            infinite="false" name="'previewSlider'" ng-if = "fileInfos.length > 0 && isPreview">
             <carousel-item>
-               <div style="width:94%; padding:5px;">
+               <div style="width:96%; padding:5px;">
                     <div ng-show="item.ext != 'docx' && item.ext != 'excel'" style="padding-left:5px;">
                         <iframe ng-src="{{trustUrl(item)}}" width="98%" height="590px;" ng-show="item.ext == 'pdf'"></iframe>
-                        <img  ng-src="{{trustUrl(item)}}" ng-show="item.ext != 'pdf'" style="width:98%;height:590px"/>
+                        <img ng-src="{{trustUrl(item)}}" ng-show="item.ext != 'pdf'" style="width:98%;height:590px"/>
                     </div>
                     <div ng-show="item.ext == 'docx' || item.ext == 'excel'" style="width:98%; height:500px;color:white;font-size:25px;text-align:center">
                         <br><br><br>No Preview Available
@@ -267,7 +267,7 @@
                 <i class="fa fa-chevron-right" style="font-size: 20px;"></i>
             </carousel-next>
         </ui-carousel>
-        <div class="uploadPlaceHolder" ng-hide="isPreview" style="height:80%">
+        <div class="uploadPlaceHolder" ng-hide="isPreview" ng-if="!hasMandatory" style="height:80%">
             <h2>Upload your Claim scaned copy</h2>
             <div style="padding: 0px 4px 4px 4px;">
                 <div class="fldsWrap clearfix">
@@ -291,16 +291,41 @@
                 </div>
             </div>    
             <div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                ngf-change="uploadFiles($files)" ng-show="upload.type">
+                ngf-change="uploadFiles($files, null)" ng-show="upload.type">
                 <span class="oi align-middle mr-1" data-glyph="cloud-upload" style="color:#00aeef"></span>
                 Drop Files or click to upload
-            </div>            
+            </div>
         </div>
-        <div ng-repeat="f in files" ng-style="{'padding-top' : $first ? '25px' : '20px'}" ng-hide="uploaded || isPreview">
+        <div ng-repeat="f in files" ng-style="{'padding-top' : $first ? '25px' : '20px'}" ng-hide="uploaded || isPreview" ng-if="!hasMandatory">
             {{f.name}}
             <div style="background : #ccc!important; height:3px !important">
                 <div class="fprogress" style="width:{{f.progress}}%" ng-show="f.progress >= 0"></div>
             </div>
-        </div>        
+        </div>
+        <div id="mandatoryUpload" class="uploadPlaceHolder" ng-hide="isPreview" ng-if="hasMandatory">
+            <h2>Upload your Claim scaned copy</h2>
+            <uib-accordion close-others="false">
+                <div uib-accordion-group class="panel-default" is-open="isOpen" ng-init="isOpen = (doc.isRequired && !doc.files)" 
+                ng-repeat="doc in documentTypes | orderBy:'isRequired' : true"  ngf-drop="uploadFiles($files, doc)" ngf-drag-over-class="'dragover'" 
+                ngf-multiple="true" ngf-allow-dir="true">
+                    <uib-accordion-heading>
+                        <div class="acc-header">
+                            {{doc.label}} 
+                            <!-- ({{!doc.files ? 0 : doc.files.length}}) -->
+                            <span style="color:red;" ng-show="doc.isRequired">*</span>
+                            <span class="oi expanded" data-glyph="chevron-bottom"></span>
+                            <span class="oi collapsed" data-glyph="chevron-top"></span>
+                        </div>
+                        
+                    </uib-accordion-heading>
+                    <div ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                    ngf-change="uploadFiles($files, doc)">
+                        <span class="oi align-middle mr-1" data-glyph="cloud-upload" style="color:#00aeef"></span>
+                        Drop Files or click to upload
+                    </div>                        
+                    <!-- <li class="fileName slide-text-truncate" ng-repeat="fileName in doc.files">{{fileName}}</li> -->
+                </div>    
+            </uib-accordion> 
+        </div>
     </div>
 </section>

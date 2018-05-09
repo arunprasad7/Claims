@@ -211,5 +211,16 @@
         this.getClaim = function(claim) {
             return this.claimObj;
         }
+
+        this.getDocumentTypes = function() {
+            return [
+                {id:'iban', label:'Iban', isRequired:true},
+                {id:'reimbursementForm', label:'Reimbursement Form', isRequired:false},
+                {id:'medicalBills', label:'Medical Bills', isRequired:true},
+                {id:'medicalBillsSummary', label:'Medical Bills Summary', isRequired:false},
+                {id:'prescription', label:'Prescription', isRequired:true},
+                {id:'otherDocuments', label:'Other Documents', isRequired:false}
+            ]
+        }
     }
 })();

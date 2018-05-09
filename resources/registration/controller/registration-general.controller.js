@@ -12,7 +12,8 @@
         $scope.previewIndex = 0;
         $scope.isNew = isNew;
         $scope.search = {};
-
+        $scope.hasMandatory = true;
+        $scope.documentTypes = RegistrationService.getDocumentTypes();
         $scope.setDcoumentType = function(documentType) {
             $scope.regDetail['source'] = documentType;
             $scope.documentType = documentType;
@@ -29,10 +30,11 @@
             $state.go('claim-registrationList');
         }
 
-        $scope.uploadFiles = function(files) {
+        $scope.uploadFiles = function(files, doc) {
             $scope.files = files;
             $scope.fileInfos = ($scope.fileInfos && $scope.fileInfos.length) ? $scope.fileInfos :[];
             var fileInfo = $scope.fileInfos;
+            if($scope.hasMandatory) $scope.uploadedId = Math.random();
             angular.forEach($scope.files, function(file, key) {
                 var f = {};
                 var reader  = new FileReader();
@@ -45,7 +47,7 @@
                     f.contentType = file.type;
                     f.ext = 'excel';
                     f.uploadedDate = new Date();
-                    f.documentTyp = $scope.upload ? $scope.upload.type : '';
+                    f.documentTyp = $scope.hasMandatory ? doc.label :  $scope.upload.type//$scope.upload ? $scope.upload.type : '';
                     f.documentDesc = $scope.upload ? $scope.upload.description : '';
                     if(file.type.indexOf('image/') > -1)
                         f.ext = 'image';
@@ -55,21 +57,39 @@
                         f.ext = 'docx';
                     
                     f.previewUrl = base64String;
+                    if($scope.hasMandatory) f.uploadedId = $scope.uploadedId;
                     fileInfo.push(f);
-                    $scope.$apply(function() {
-                        $timeout(function() {
-                            file.progress = 100;
-                        },300)    
-                        if(key == $scope.files.length-1) {
-                            $scope.noOfSlides = 4;
-                            $scope.showUpload = false;
-                            $scope.uploaded = true;
-                            $scope.fileInfos = fileInfo;
-                        }
-                    });
+                    constructDocByTypes(doc, file.name);
+                    if(!$scope.$$phase) {
+                        $scope.$apply(function() {
+                            $timeout(function() {
+                                file.progress = 100;
+                            },300)    
+                            if(key == $scope.files.length-1) {
+                                if(!$scope.hasMandatory) {
+                                    $scope.noOfSlides = 5;
+                                    $scope.showUpload = false;
+                                    $scope.uploaded = true;
+                                    $scope.fileInfos = fileInfo;
+                                } else {
+                                    $scope.uploaded = true;
+                                    var uploadKey = $scope.fileInfos.length-1;
+                                    $scope.openDocumentModal(uploadKey, $scope.fileInfos[uploadKey].uploadedId);
+                                }
+                            }
+                        });
+                    }    
                 };
                 reader.readAsDataURL(file);
             });
+        }
+
+        function constructDocByTypes(docObj, fileName) {
+            if(docObj.files && docObj.files.length) {
+                docObj.files.push(fileName);
+            } else {
+                docObj.files = [fileName];
+            }
         }
 
         $scope.onCarouselInit = function() {
@@ -77,14 +97,10 @@
         }
 
         $scope.showPreview = function(index, item) {
+            $scope.noOfSlides = 3;
+            $scope.previewIndex = index;
             $scope.isPreview = true;
             $scope.showUpload = true;
-            $scope.noOfSlides = 2;
-            $scope.previewIndex = index;
-        }
-
-        $scope.hidePreview = function() {
-            $scope.isPreview = false;
         }
 
         $scope.searchClaims = function() {
@@ -92,6 +108,7 @@
                 animation: true,
                 templateUrl: 'resources/registration/view/claim-search-modal.html',
                 size: 'lg',
+                backdrop: 'static',
                 controller: function ($scope, $uibModalInstance, claims, searchObj) {
                     $scope.searchedList = claims;
                     $scope.searchObj = searchObj;
@@ -152,18 +169,29 @@
             }            
         }
 
-        $scope.openDocumentModal = function(index) {
+        $scope.openDocumentModal = function(index, uploadedId) {
             $scope.docObj = angular.copy($scope.fileInfos[index]);
+            $scope.isUpload = uploadedId != null ? true : false;
             $scope.uploadModalInstance = $uibModal.open({
                 animation: true,
+                backdrop: 'static',
                 templateUrl: 'resources/registration/view/upload-modal.html',
                 size: 'lg',                
                 scope: $scope
             });
 
             $scope.uploadModalInstance.result.then(function() {
-                $scope.fileInfos[index] = $scope.docObj;
-            });    
+                if(uploadedId != null) {
+                    angular.forEach($scope.fileInfos, function(value, key) {
+                        if(value.uploadedId == uploadedId) {
+                            value.documentTyp = $scope.docObj.documentTyp;
+                            value.documentDesc = $scope.docObj.documentDesc;
+                        }
+                    })
+                } else {
+                    $scope.fileInfos[index] = $scope.docObj;
+                }
+            });
         }
 
         $scope.cancelModal = function() {
@@ -177,14 +205,14 @@
         $scope.documentsUpload = function() {
             $scope.upload = {};
             $scope.showUpload = true;//!$scope.showUpload;
-            $scope.noOfSlides = $scope.showUpload ? 2 : 4;
+            $scope.noOfSlides = $scope.showUpload ? 3 : 5;
             $scope.isPreview = false;
         }
 
         $scope.toggleInfo = function() {
             $scope.isPreview = false;
             $scope.showUpload = false;
-            $scope.noOfSlides = 4;
+            $scope.noOfSlides = 5;
         }
 
         function init() {

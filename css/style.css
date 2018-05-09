@@ -325,9 +325,14 @@ input.fileupload {
     -webkit-box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.2);
     padding: 7px 12px;
-    margin: 42px auto 0;
+    margin: 42px auto 0;    
 }
 
+#mandatoryUpload.uploadPlaceHolder {
+    max-height: 90%;
+    min-height: 80%;
+    overflow-y : auto;
+}
 .uploadPlaceHolder h2 {
     font: 16px/30px "open_sanssemibold";
     font-weight: normal;
@@ -606,15 +611,14 @@ input.fileupload {
 .drop-box {
     background: #F8F8F8;
     border: 5px dashed #DDD;
-    height: 65px;
     text-align: center;
     padding-top: 16px;
     height: 65%;
     vertical-align: middle;
-    margin-top: 10px;
+    margin-top: 3px;
 }
 .dragover {
-    border: 5px dashed blue;
+    border: 5px dashed #00aeef;
 }
 
 .box-container {
@@ -658,7 +662,7 @@ input.fileupload {
     font-size: 20px;
     float: right;
     margin-right: 10px;
-    margin-top: -104px;
+    margin-top: -71px;
     border: 2px solid #d3d8de;
     padding: 6px;
     border-radius: 50%;
@@ -675,7 +679,7 @@ input.fileupload {
     background:white;
     border-radius:5px;
     border:1px solid #d3d8de;
-    height: 198px;
+    height: 180px;
     margin-top: 17px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
@@ -1205,7 +1209,7 @@ footer li strong {
 
 .leftContentPart {
     width: 330px;
-    height: 79.5%;
+    height: 97%;
     background: #e9ecf4;
     white-space: nowrap;
     overflow-y: auto;
@@ -1570,7 +1574,17 @@ footer {
 }
 
 .card .expanded {
-    display: block;
+    display: none !important;
+}
+
+.card.card-open .expanded {
+    display: block !important;    
+}
+
+#mandatoryUpload .oi.expanded,
+#mandatoryUpload .oi.collapsed {
+    float: right;
+    font-size: smaller;
 }
 
 .eclaim .slide {
@@ -1767,4 +1781,31 @@ md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-requir
 .reimbursement-carousel li {
     padding: 0 31.7px 0 0;
     text-align: center;
+}
+
+.uploadborder {
+    border: 1px solid #ddd;
+}
+
+.fileName {
+    font-size: small;
+}
+
+#mandatoryUpload .drop-box {
+    font-size: smaller;
+    border: 2px dashed #DDD;
+    margin : 0px 0px 7px 0px;
+}
+
+.acc-header {
+    font-size:15px;
+    display: block;
+    outline: none;
+}
+
+#mandatoryUpload a:hover {
+    text-decoration: none;
+}
+#mandatoryUpload .dragover {
+    border: 2px dashed #00aeef;
 }
