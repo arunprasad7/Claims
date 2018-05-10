@@ -137,13 +137,11 @@
                     ],
                     enableSorting: false
                 }
-                $scope.noRecordsAvailable = $scope.gridOptions['data'].length == 0;
             }
 
             $scope.deleteRow = function(index) {
                 $scope.gridOptions.data.splice(index, 1);
                 renderTotals($scope.gridOptions.data);
-                $scope.noRecordsAvailable = $scope.gridOptions['data'].length == 0;
                 ngNotify.set('Deleted Succesfully.', 'success');
             }
 
@@ -165,7 +163,6 @@
 
             $scope.saveRecord = function(saveType) {
                 processClaim($scope.claim);
-                $scope.noRecordsAvailable = $scope.gridOptions['data'].length == 0;
                 $scope.claim = ReimbursementProcessingService.createNewReimbursmentObject();
                 $scope.createNew = saveType == 'SaveAndNew';
                 ngNotify.set('Saved Succesfully.', 'success');
@@ -184,7 +181,6 @@
             $scope.toggleJson = function(selectedClaim) {
                 $scope.selectedClaim = ReimbursementProcessingService.getClaimHeaderDetails(selectedClaim.reqNum);
                 $scope.gridOptions.data = ReimbursementProcessingService.getRequestDataForCalim(selectedClaim.reqNum);
-                $scope.noRecordsAvailable = $scope.gridOptions['data'].length == 0;
             }
 
             function processClaim(claim) {
@@ -308,6 +304,9 @@
                     case "reject":
                         $scope.rejectClaim(info.data);
                         break;
+                    case "convertCurrency":
+                        renderTotals($scope.gridOptions.data);
+                        break;    
                 }
             }
 

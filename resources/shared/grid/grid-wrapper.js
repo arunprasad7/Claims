@@ -6,6 +6,7 @@
         .directive('gridWrapper', function(ReimbursementProcessingService, EclaimService) {
             return {
                 restict: 'AEC',
+                templateUrl: 'resources/shared/grid/grid-wrapper.html',
                 scope: {
                     uiGridOptions :'=',
                     inlineEdit : '=',
@@ -50,6 +51,8 @@
                         if(value.hasOwnProperty("cellTemplate")) value.cellTemplate = templates[value.cellTemplate];
                     });
 
+                    scope.noRecordsAvailable = scope.gridOptions['data'].length == 0;
+
                     scope.gridOptions.onRegisterApi = function(gridApi) {
                         if(scope.inlineEdit) {
                             gridApi.edit.on.beginCellEdit(null, function(row, colDef, event) {
@@ -64,13 +67,17 @@
                         }                        
 
                         gridApi.core.on.rowsRendered(scope, function(resp) {
+                            if(scope.action == 'new') {
+                                scope.prevEdittedRow = resp.grid.rows[scope.gridOptions.data.length-1];
+                                scope.prevRowobj = angular.copy(scope.prevEdittedRow.entity);
+                            }
                             $($('.ui-grid-render-container-body').children()).addClass('ui-grid-content');
                         });
                     }
 
                     scope.toggleSelect = function() {
                         scope.isChecked = !scope.isChecked;
-                        angular.forEach(scope.gridOptions.data, function(value,key) {
+                        angular.forEach(scope.gridOptions.data, function(value, key) {
                             value.isChecked = scope.isChecked;
                         })
                     }
@@ -81,9 +88,12 @@
                                 value[item] = value[item] ? (value[item] * parseInt(scope.currencyType)) : null;
                             });
                         });
+                        var info = {action : 'convertCurrency'}
+                        scope.onGridAction({info})
                     }
 
                     scope.gridAction = function(actionType, record, rowIndex) {
+                        scope.action = actionType;
                         var info = {action : actionType, data : record, index : rowIndex};
                         scope.onGridAction({info});
                     }                    
@@ -101,8 +111,11 @@
                             scrollLeft: "-=322px"
                         }, "slow");
                     });
-                },
-                templateUrl: 'resources/shared/grid/grid-wrapper.html'   
+
+                    scope.$watch('gridOptions.data.length', function(newValue, oldValue) {
+                        if(newValue != null) scope.noRecordsAvailable = (newValue == 0);
+                    })
+                }
             }    
         });
 })();
