@@ -108,6 +108,7 @@
                 },
                 templateUrl: "resources/shared/claimsListView-component/claimslistview.component.html",
                 controller: ClaimsListViewController
-            });
+            }
+        );
     
 })();

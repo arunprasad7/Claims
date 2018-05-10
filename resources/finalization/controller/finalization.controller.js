@@ -4,9 +4,9 @@
         .module('claims')
         .controller('FinalizationController', FinalizationController)
 
-    FinalizationController.$inject = ['$scope', '$rootScope', 'FinalizationService', '$filter', 'ngNotify'];
+    FinalizationController.$inject = ['$scope', '$rootScope', '$filter', 'ngNotify', 'FinalizationComponentService'];
 
-    function FinalizationController($scope, $rootScope, FinalizationService, $filter, ngNotify) {
+    function FinalizationController($scope, $rootScope, $filter, ngNotify, FinalizationComponentService) {
         //$scope.firstName = $scope.batchName;
         $scope.batchName;
         $scope.fileName;
@@ -173,7 +173,9 @@
         function init() {
             $scope.option = "receivedDateDesc";
             $scope.sorting($scope.option);
+            $scope.finalizationHeaders = FinalizationComponentService.getFinalizationHeader();
         }
         init();
+      
     }
 })();

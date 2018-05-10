@@ -53,6 +53,7 @@
                                     <option value="receivedDate">By Date Desc</option>
                                 </select>
                                 <a href="javascript:;" class="btn btn-primary btn-sm finlizeBtn btn-finalize float-right" ng-click="finalizeBatch();">Finalize</a>
+                                <finalization-component headers="finalizationHeaders" requests="data" ></finalization-component>
                             </div>
                             <table class="table mt-2">
                                 <tbody>
@@ -91,8 +92,6 @@
                                             <div class="text-nowrap">
                                                 <strong class="tablLal tablLal1">{{d.status=="Approved" ? 'ApprovedAmount' : 'RejectedAmount'}}</strong>
                                                 <strong>Rs.{{d.rejectedAmount}}</strong>
-                                                 
-                                                <!-- {{'RejectedAmount':d.status=='Rejected','ApprovedAmount':d.status=='Approved'}} -->
                                             </div>
                                             <div class="text-nowrap">
                                                 <strong class="tablLal tablLal1">Payment Way:</strong>
