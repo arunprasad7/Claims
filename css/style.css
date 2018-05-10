@@ -1300,7 +1300,8 @@ footer li strong {
     table-layout: fixed;
 }
 
-.eclaimRequestTabl td:last-child span {
+.eclaimRequestTabl td:last-child span, 
+.text-elipsis {
     display: block;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -1312,7 +1313,11 @@ footer li strong {
     height: 20px;
     display: inline-block;
     float: inherit;
-    margin: 6px 5px;
+    margin: 3px 5px;
+}
+
+.ui-grid-cell .custCheckboxBtn {
+    margin: 3px 9px;
 }
 
 .eclaimRequest .custCheckboxBtn .oi {
@@ -1415,7 +1420,7 @@ footer li strong {
 }
 
 .reimbursement-carousel ul {
-    padding: 15px 15px !important;
+    padding: 15px 10px !important;
     list-style: none;
     border-radius: 2px;
     background: #fff;
@@ -1677,18 +1682,6 @@ footer {
     border: none;
 }
 
-.reimbur-trans-hide {
-    overflow: hidden;
-    max-height: 10px;
-    transition: max-height 300ms ease-in-out;
-}
-
-.reimbur-trans-show {
-    display: block;
-    max-height: 42%;
-    transition: max-height 300ms ease-in-out;
-}
-
 .reimburs-mt {
     margin-top: 2%;
 }
@@ -1779,8 +1772,8 @@ md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-requir
 }
 
 .reimbursement-carousel li {
-    padding: 0 31.7px 0 0;
-    text-align: center;
+    padding: 0px;
+    float: left
 }
 
 .uploadborder {
