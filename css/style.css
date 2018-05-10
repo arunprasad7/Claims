@@ -1754,3 +1754,23 @@ md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-requir
     width: 50% !important;
     padding-top: 10px;
 }
+
+.text-waiting {
+    color: rgb(196, 182, 56) !important;
+}
+
+.text-new {
+    color: orange !important;
+}
+
+.text-assigned {
+    color: rgb(0, 217, 255) !important;
+}
+
+.text-inprogress {
+    color: rgb(151, 197, 23) !important;
+}
+
+a {
+    cursor: pointer;
+}

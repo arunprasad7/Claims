@@ -42,7 +42,7 @@
                         </div>
                         <div class="text-nowrap">
                             <div class="receiveInfo d-inline-block pr-3"><span class="oi" data-glyph="timer"></span> Request recieved on: {{claim.requestRecievedOn}}</div>
-                            <div class="statusInfo d-inline-block text-success" ng-class="{'text-success': claim.status=='Approved','text-danger': claim.status!='Approved'}">
+                            <div class="statusInfo d-inline-block text-success" ng-class="{'text-inprogress': claim.status=='InProgress','text-assigned': claim.status=='Assigned','text-waiting': claim.status=='Waitingforapproval','text-new': claim.status=='New Request','text-success': claim.status=='Approved','text-danger': claim.status!='Approved'}">
                                 <span ng-if="claim.status=='Approved'" class="oi" data-glyph="thumb-up"></span>
                                 <span ng-if="claim.status!='Approved'" class="oi" data-glyph="thumb-down"></span> &nbsp;{{claim.status}}
                             </div>
@@ -86,3 +86,8 @@
         </table>
     </div>
 </div>
+<!-- <div class="row pl-4">
+    <div style="margin-left: 60%;">
+        <pagination records-to-display="5" records="$ctrl.claimsRecords" total-record-count="{{$ctrl.claimsRecords.length}}"></pagination>
+    </div>
+</div> -->
