@@ -12,7 +12,7 @@
         $scope.selectedUserToAssign;
         $scope.claimsToAssign = [];
         $scope.claimList = [];
-        $scope.refreshComponent = false;
+        $scope.rerenderView = false;
         $scope.filteredClaims = [];
 
         $scope.search = function() {
@@ -51,7 +51,7 @@
                             }
                         }
                     })
-                    $scope.refreshComponent = !$scope.refreshComponent;
+                    $scope.rerenderView = !$scope.rerenderView;
                     $scope.selectedUserToAssign.assigned += ($scope.claimsToAssign.length);
                     $scope.claimsToAssign = [];
                     ngNotify.set('Request Assigned Succesfully.', 'success');                
@@ -86,7 +86,7 @@
             $scope.userssearch = $scope.users;
             $scope.recordTotal = $scope.claim.length;
             $scope.result = $scope.users;
-            $scope.statusList = ClaimsListViewService.getStatusToDisplay();
+            $scope.tabsToDisplay = ClaimsListViewService.getTabsToDisplay();
         }
 
         init();
