@@ -1,0 +1,94 @@
+<ul class="nav nav-tabs row" id="resultTab" role="tablist">
+    <li class="nav-item col-2 pointer" ng-repeat="tabRecord in tabsToDisplay" ng-class="{'active show' : currentTab == tabRecord.tab}" ng-click="changeTab(tabRecord.tab, $index);">
+        <a class="nav-link" id="{{tabRecord.tab}}" data-toggle="currentTab" role="currentTab" aria-controls="{{tabRecord.label}}" aria-selected="true">{{tabRecord.label}}<span class="resultCount">{{countByStatus[tabRecord.state] || 0}}</span></a>
+    </li>
+</ul>
+<div class="tab-content" id="resultTabContent">
+    <div class="tab-pane fade active show" role="tabpanel">
+        <div class="row">
+            <div class="col-sm-11">
+                <div class="text-right">
+                    <font size="2">Sort :</font>
+                    <select class="custom-select innerFilterSortBy" ng-change="sortByValue()" ng-model="sortBy">
+                        <option value="receivedDateDesc">By Date Asc</option>
+                        <option value="receivedDate">By Date Desc</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div ng-click="selectAllClaims()" class="align-middle selectline"><a href="javascript:void(0);" id="selectAll" style="font-size:75%;">{{selectAll ? 'De-SelectAll' : 'Select All'}}</a></div>
+            </div>
+        </div>
+        <table class="table">
+            <tbody>
+                <tr ng-if="filteredClaims.length == 0">
+                    <td style="text-align:center;">
+                        <h5>No Records Available...</h5>
+                    </td>
+                </tr>
+                <tr ng-repeat="claim in filteredClaims | filter : filterByStatus | orderBy: orderByField: reverseSort">
+                    <td>
+                        <div class="text-nowrap">
+                            <span class="d-inline-block pr-2"><strong>Claim No: </strong>
+                                <a class="currencyTypeCustom" href="javascript:void(0);"ng-click="redirectTo(navigateTo);">#{{claim.claimNo}}</a>
+                            </span>
+                            <span class="d-inline-block pr-2">
+                                <strong>Member No: {{claim.memberNo}}</strong>
+                            </span>
+                        </div>
+                        <div class="text-nowrap">
+                            <class="d-inline-block pr-2">Voucher No: {{claim.voucherNo}}
+                            <class="d-inline-block pr-2">Encounter Type: {{claim.encounterType}}
+                        </div>
+                        <div class="text-nowrap">
+                            <div class="receiveInfo d-inline-block pr-3"><span class="oi" data-glyph="timer"></span> Request recieved on: {{claim.requestRecievedOn}}</div>
+                            <div class="statusInfo d-inline-block text-success" ng-class="{'text-inprogress': claim.status=='InProgress','text-assigned': claim.status=='Assigned','text-waiting': claim.status=='Waitingforapproval','text-new': claim.status=='New Request','text-success': claim.status=='Approved','text-danger': claim.status!='Approved'}">
+                                <span ng-if="claim.status=='Approved'" class="oi" data-glyph="thumb-up"></span>
+                                <span ng-if="claim.status!='Approved'" class="oi" data-glyph="thumb-down"></span> &nbsp;{{claim.status}}
+                            </div>
+                        </div>
+                    </td>
+                    <td class="align-bottom">
+                        <div class="text-nowrap">Emirates ID :{{claim.emiratesId}}</a></div>
+                        <div class="text-nowrap">Document Link :
+                            <a href="">{{claim.documentLink}}</a>
+                        </div>
+                        <div class="text-nowrap">Prev Request : {{claim.prevRequest}}</div>
+                    </td>
+                    <td>
+                        <div class="text-nowrap">
+                            <span class="tablLal">Pay Mode:</span>
+                            <span class="tablCont">{{claim.payMode}}</span>
+                        </div>
+                        <div class="text-nowrap">
+                            <span class="tablLal">Pay Date:</span>
+                            <span class="tablCont">{{claim.payDate}}</span>
+                        </div>
+                        <div class="text-nowrap">
+                            <span class="tablLal">Pay Ref No:</span>
+                            <span class="tablCont">{{claim.payRefNo}}</span>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="text-nowrap">
+                            Requested Amount
+                            <h4>{{claim.currencyCode}} {{claim.requestedAmount}}</h4>
+                            Approved Amount: {{claim.currencyCode}} {{claim.approvedAmount}}
+                        </div>
+                    </td>
+                    <td class="align-middle text-center">
+                        <a href="javascript:void(0);" class="custSelectBtn" ng-class="{custSelectBtnSected : claim.selected}" aria-label="Select Claim" ng-click="claim.selected=!claim.selected;claimsToSelect(claim);">
+                            <span class="oi align-middle" data-glyph="check"></span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <pagination records-to-display="2" records="claimsRecords" total-record-count="claimsRecords.length" filtered-claims="filteredClaims" refresh-component="refreshComponent"></pagination>
+    </div>
+</div>
+
