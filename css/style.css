@@ -1616,7 +1616,7 @@ footer {
 
 @media (max-width:1400px) {
     .table td, .table th {
-        padding: 7px 5px;
+        padding: 7px 2px;
     }
 }
 
@@ -1801,4 +1801,8 @@ md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-requir
 }
 #mandatoryUpload .dragover {
     border: 2px dashed #00aeef;
+}
+.truncate .md-input {
+    width: 65% !important;
+    text-overflow: ellipsis;
 }

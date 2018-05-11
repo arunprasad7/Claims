@@ -1,3 +1,8 @@
+<style>
+    md-autocomplete .md-show-clear-button button md-icon {
+        left: -160%;
+    }
+</style>
 <nav class="navbar pt-1 pb-1">
     <span class="navbar-brand p-0 m-0">User Assignment</span>
 </nav>
@@ -29,7 +34,7 @@
                         <md-icon style="margin-top: 36px; padding-left:5px;">
                                 <i class="oi align-middle" data-glyph="magnifying-glass"></i>
                         </md-icon>
-                        <md-autocomplete flex-gt-sm style="width:80%; top: 0; left: 7px; bottom: 0; right: 0; position: absolute; margin-left: 15px; float: left;"
+                        <md-autocomplete class="truncate" flex-gt-sm style="width:80%; top: 0; left: 7px; bottom: 0; right: 0; position: absolute; margin-left: 15px; float: left;"
                             md-input-name = "Approved By"
                             md-selected-item="approvedBy" 
                             md-search-text="approvedSearchText"
@@ -62,7 +67,7 @@
                       <md-icon style="margin-top: 36px; padding-left:5px;">
                           <i class="oi align-middle" data-glyph="magnifying-glass"></i>
                      </md-icon>
-                        <md-autocomplete flex-gt-sm style="width:80%; top: 0; left: 7px; bottom: 0; right: 0; position: absolute; margin-left: 15px; float: left;"
+                        <md-autocomplete class="truncate" flex-gt-sm style="width:80%; top: 0; left: 7px; bottom: 0; right: 0; position: absolute; margin-left: 15px; float: left;"
                             md-input-name = "Assigned User"
                             md-selected-item="assignedUser" 
                             md-search-text="assignedSearchText"
@@ -119,7 +124,7 @@
                             <div class="tab-content " id="resultTabContent">
                                 <div class="tab-pane fade active show" ng-class="{ 'active show' : tab == 'NewRequestCount','': tab != 'NewRequestCount'}" id="NewRequest" role="tabpanel" aria-labelledby="NewRequest">
                                     <div class="row">
-                                        <div class="col-sm-11">
+                                        <div class="col-sm-10">
                                             <div class="text-right">
                                                 <font size="2">Sort :</font>
                                                     <select class="custom-select innerFilterSortBy" ng-change="sorting(option)" ng-model="option">
@@ -128,8 +133,8 @@
                                                     </select>
                                             </div>
                                         </div>
-                                        <div class="col-sm-1">
-                                            <div ng-click="selectAll()" class="align-middle selectline"><a href="javascript:;" id="seltAll" style="font-size:75%;">{{selectall ? 'De-SelectAll' : 'Select All'}}</a></div>
+                                        <div class="col-sm-2">
+                                            <div ng-click="selectAll()" class="align-middle selectline"><a href="javascript:;" id="seltAll" style="font-size:75%;float:right;padding-right:10px">{{selectall ? 'De-SelectAll' : 'Select All'}}</a></div>
                                         </div>
                                     </div>
                                     <table class="table">

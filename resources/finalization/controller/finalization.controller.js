@@ -167,7 +167,7 @@
                 }
             })
             $scope.data = result;
-            ngNotify.set('Selected Batch\'s are finalized successfully...', 'success');
+            ngNotify.set('Selected Claim\'s are finalized successfully...', 'success');
         }
 
         function init() {
