@@ -12,6 +12,7 @@
         $scope.previewIndex = 0;
         $scope.isNew = isNew;
         $scope.search = {};
+        $scope.fileInfos = [];
         $scope.hasMandatory = true;
         $scope.documentTypes = RegistrationService.getDocumentTypes();
         $scope.setDcoumentType = function(documentType) {
@@ -33,62 +34,60 @@
         $scope.uploadFiles = function(files, doc) {
             $scope.files = files;
             $scope.fileInfos = ($scope.fileInfos && $scope.fileInfos.length) ? $scope.fileInfos :[];
-            var fileInfo = $scope.fileInfos;
-            if($scope.hasMandatory) $scope.uploadedId = Math.random();
-            angular.forEach($scope.files, function(file, key) {
-                var f = {};
+            $scope.uploadedId = $scope.hasMandatory ? Math.random() : null;
+            var files = [];
+            angular.forEach($scope.files, function(value, key) {
                 var reader  = new FileReader();
                 $timeout(function() {
-                    file.progress = 20;
-                },300);
+                    value.progress = 20;
+                },150);
                 reader.onload = function(event) {
-                    var base64String = event.target.result;//base64 String..
-                    f.name = file.name;
-                    f.contentType = file.type;
-                    f.ext = 'excel';
-                    f.uploadedDate = new Date();
-                    f.documentTyp = $scope.hasMandatory ? doc.label :  $scope.upload.type//$scope.upload ? $scope.upload.type : '';
-                    f.documentDesc = $scope.upload ? $scope.upload.description : '';
-                    if(file.type.indexOf('image/') > -1)
-                        f.ext = 'image';
-                    if(file.type.indexOf('/pdf') > -1)
-                        f.ext = 'pdf';
-                    if(file.type.indexOf('.document') > -1)
-                        f.ext = 'docx';
-                    
-                    f.previewUrl = base64String;
-                    if($scope.hasMandatory) f.uploadedId = $scope.uploadedId;
-                    fileInfo.push(f);
-                    constructDocByTypes(doc, file.name);
-                    if(!$scope.$$phase) {
-                        $scope.$apply(function() {
-                            $timeout(function() {
-                                file.progress = 100;
-                            },300)    
-                            if(key == $scope.files.length-1) {
-                                if(!$scope.hasMandatory) {
-                                    $scope.noOfSlides = 5;
-                                    $scope.showUpload = false;
-                                    $scope.uploaded = true;
-                                    $scope.fileInfos = fileInfo;
-                                } else {
-                                    $scope.uploaded = true;
-                                    var uploadKey = $scope.fileInfos.length-1;
-                                    $scope.openDocumentModal(uploadKey, $scope.fileInfos[uploadKey].uploadedId);
-                                }
-                            }
-                        });
-                    }    
+                    var file = constructFileObj(value, event, doc);
+                    files.push(file);
+                    $scope.fileInfos.push(file);
+                    $scope.$apply(function() {
+                        $timeout(function() {
+                            value.progress = 100;
+                        },300)
+                        if(files.length == $scope.files.length) documentsUploaded();
+                    });
                 };
-                reader.readAsDataURL(file);
+                reader.readAsDataURL(value);
             });
         }
 
-        function constructDocByTypes(docObj, fileName) {
-            if(docObj.files && docObj.files.length) {
-                docObj.files.push(fileName);
+        function constructFileObj(file, event, doc) {
+            var fileObj = {};
+            fileObj.id = Math.random();
+            var base64String = event.target.result;//base64 String..
+            fileObj.name = file.name;
+            fileObj.contentType = file.type;
+            fileObj.ext = 'excel';
+            fileObj.uploadedDate = new Date();
+            fileObj.documentTyp = $scope.hasMandatory ? doc.label :  $scope.upload.type;
+            fileObj.documentDesc = $scope.upload ? $scope.upload.description : '';
+            if(file.type.indexOf('image/') > -1)
+                fileObj.ext = 'image';
+            if(file.type.indexOf('/pdf') > -1)
+                fileObj.ext = 'pdf';
+            if(file.type.indexOf('.document') > -1)
+                fileObj.ext = 'docx';
+
+            fileObj.previewUrl = base64String;
+            if($scope.hasMandatory) fileObj.uploadedId = $scope.uploadedId;
+
+            return fileObj;
+        }
+
+        function documentsUploaded() {
+            $scope.uploaded = true;
+            $scope.documents = angular.copy($scope.fileInfos);
+            if(!$scope.hasMandatory) {
+                $scope.noOfSlides = 5;
+                $scope.showUpload = false;
             } else {
-                docObj.files = [fileName];
+                var uploadKey = $scope.fileInfos.length-1;
+                $scope.openDocumentModal(uploadKey, $scope.fileInfos[uploadKey].uploadedId);
             }
         }
 
@@ -109,6 +108,7 @@
                 templateUrl: 'resources/registration/view/claim-search-modal.html',
                 size: 'lg',
                 backdrop: 'static',
+                keyboard :false,
                 controller: function ($scope, $uibModalInstance, claims, searchObj) {
                     $scope.searchedList = claims;
                     $scope.searchObj = searchObj;
@@ -147,11 +147,17 @@
                     $scope.setDcoumentType($scope.regDetail.source);
                     $scope.setPaymentWay($scope.regDetail.paymentWay);
                 }
-            })    
+            }, function() {});    
         }
 
-        $scope.deleteFile = function(index) {
-            $scope.fileInfos.splice(index, 1);
+        $scope.deleteFile = function(index, id) {
+            for(var f = 0; f<$scope.fileInfos.length; f++) {
+                console.log($scope.fileInfos[f].id)
+                if($scope.fileInfos[f].id != id) continue;
+                $scope.fileInfos.splice(f, 1);
+                break;
+            }
+            $scope.documents.splice(index, 1);  
         }
 
         $scope.uploadIbanFiles = function(file) {
@@ -170,28 +176,37 @@
         }
 
         $scope.openDocumentModal = function(index, uploadedId) {
-            $scope.docObj = angular.copy($scope.fileInfos[index]);
+            $scope.docObj = angular.copy($scope.documents[index]);
             $scope.isUpload = uploadedId != null ? true : false;
             $scope.uploadModalInstance = $uibModal.open({
                 animation: true,
                 backdrop: 'static',
                 templateUrl: 'resources/registration/view/upload-modal.html',
-                size: 'lg',                
+                size: 'lg',
+                keyboard :false,
                 scope: $scope
             });
 
-            $scope.uploadModalInstance.result.then(function() {
-                if(uploadedId != null) {
-                    angular.forEach($scope.fileInfos, function(value, key) {
-                        if(value.uploadedId == uploadedId) {
-                            value.documentTyp = $scope.docObj.documentTyp;
-                            value.documentDesc = $scope.docObj.documentDesc;
-                        }
-                    })
-                } else {
-                    $scope.fileInfos[index] = $scope.docObj;
-                }
-            });
+            $scope.uploadModalInstance.result.then(
+                function() {
+                    if(uploadedId != null) {
+                        angular.forEach($scope.documents, function(value, key) {
+                            if(value.uploadedId == uploadedId) updateDocument(value);
+                        })
+                    } else {
+                        angular.forEach($scope.fileInfos, function(value, key) {
+                            if(value.id == $scope.docObj.id) updateDocument(value);
+                        })
+                        $scope.documents[index] = $scope.docObj;                        
+                    }
+                    $scope.filterDocuments();
+                }, function() {}
+            );
+        }
+
+        function updateDocument(value) {
+            value.documentTyp = $scope.docObj.documentTyp;
+            value.documentDesc = $scope.docObj.documentDesc;
         }
 
         $scope.cancelModal = function() {
@@ -204,7 +219,7 @@
 
         $scope.documentsUpload = function() {
             $scope.upload = {};
-            $scope.showUpload = true;//!$scope.showUpload;
+            $scope.showUpload = true;
             $scope.noOfSlides = $scope.showUpload ? 3 : 5;
             $scope.isPreview = false;
         }
@@ -213,6 +228,21 @@
             $scope.isPreview = false;
             $scope.showUpload = false;
             $scope.noOfSlides = 5;
+        }
+
+        $scope.filterDocuments = function() {
+            var documents = [];
+            if($scope.docTypes.length) {
+                    $scope.docTypes.forEach(function(type) {
+                        var filteredFiles =  $scope.fileInfos.filter(function(item) {
+                            return (item.documentTyp == type);
+                        })
+                        documents = documents.concat(filteredFiles);
+                    })
+                    $scope.documents = documents;
+            } else {
+                $scope.documents = angular.copy($scope.fileInfos);
+            }
         }
 
         function init() {

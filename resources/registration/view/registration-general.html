@@ -185,10 +185,28 @@
                 </div>
             </div>
             <div class="fldsWrap clearfix docFont p-3">
-                Documents
-                <button type="button" class="btn btn-outline-primary btn-sm float-right" ng-click="documentsUpload()">Upload</button>
-                <div ng-if="fileInfos.length > 0 && uploaded" id="thumbnailSlider" ng-style="{'padding-left' : fileInfos.length > 2 ? '15px' : '0px'}" class="col-sm-11">
-                    <ui-carousel slides="fileInfos" on-init="onCarouselInit()" slides-to-show="noOfSlides" slides-to-scroll="noOfSlides" initial-slide="0" style="margin-bottom:0px;margin-left: 15px;padding-top: 24px;"
+                <b>Documents</b>
+                <div class="row pt-4">
+                    <div class="col-sm-3">
+                        <md-input-container flex-gt-sm style="margin:0px;"> 
+                            <label>Type:</label>   
+                            <md-select ng-model="docTypes" multiple="true" ng-change="filterDocuments()" ng-disabled="fileInfos.length == 0">
+                                <!-- <md-option value="all">All</md-option> -->
+                                <md-option value="Iban" ng-if="paymentWay == 'iban'">Iban</md-option>
+                                <md-option value="Reimbursement Form">Reimbursement form</md-option>
+                                <md-option value="Medical Bills">Medical bills</md-option>
+                                <md-option value="Medical Bills Summary">Medical bills Summary</md-option>
+                                <md-option value="Prescription">Prescription</md-option>
+                                <md-option value="Other Documents">Other Documents</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div class="col-sm-9">
+                        <button type="button" class="btn btn-outline-primary btn-sm float-right" ng-click="documentsUpload()">Upload</button>                        
+                    </div>
+                </div>                
+                <div ng-if="documents.length > 0 && uploaded" id="thumbnailSlider" ng-style="{'padding-left' : fileInfos.length > 2 ? '15px' : '0px'}" class="col-sm-11">
+                    <ui-carousel slides="documents" slides-to-show="noOfSlides" slides-to-scroll="noOfSlides" initial-slide="0" style="margin-bottom:0px;margin-left: 15px;padding-top: 24px;"
                         infinite="false" name="'thumbnailSlider'" ng-class="{'img-padding' : (showUpload && $odd), 'img-padding' : !showUpload}">
                         <carousel-item>
                             <div style="padding:0px 5px 2px 7px;">
@@ -196,7 +214,7 @@
                                     <i class="fa fa-cloud-download"></i>
                                 </span>
                                 <span style="float:right; cursor:pointer;">
-                                    <i class="fa fa-remove" ng-click="deleteFile($index)" style="color:red;"></i>&nbsp;&nbsp;
+                                    <i class="fa fa-remove" ng-click="deleteFile($index, item.id)" style="color:red;"></i>&nbsp;&nbsp;
                                     <i class="fa fa-pencil" ng-click="openDocumentModal($index);" style="color:black;"></i>
                                 </span>
                             </div>
@@ -237,6 +255,8 @@
                         </carousel-next>
                     </ui-carousel>
                 </div>
+
+                <div ng-if="documents.length == 0" style="text-align: center"> No Documents Found</div>
             </div>    
             
             <div class="fldsWrap pr-3 pb-2 pt-2 clearfix">
@@ -323,8 +343,7 @@
                         <span class="oi align-middle mr-1" data-glyph="cloud-upload" style="color:#00aeef"></span>
                         Drop Files or click to upload
                     </div>                        
-                    <!-- <li class="fileName slide-text-truncate" ng-repeat="fileName in doc.files">{{fileName}}</li> -->
-                </div>    
+                </div>
             </uib-accordion> 
         </div>
     </div>
