@@ -152,7 +152,6 @@
 
         $scope.deleteFile = function(index, id) {
             for(var f = 0; f<$scope.fileInfos.length; f++) {
-                console.log($scope.fileInfos[f].id)
                 if($scope.fileInfos[f].id != id) continue;
                 $scope.fileInfos.splice(f, 1);
                 break;
