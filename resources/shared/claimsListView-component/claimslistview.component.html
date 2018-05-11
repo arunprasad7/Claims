@@ -21,12 +21,12 @@
         </div>
         <table class="table">
             <tbody>
-                <tr ng-if="$ctrl.allClaimRecords.length == 0">
+                <tr ng-if="$ctrl.filteredClaims.length == 0">
                     <td style="text-align:center;">
                         <h5>No Records Available...</h5>
                     </td>
                 </tr>
-                <tr ng-repeat="claim in $ctrl.allClaimRecords | filter : $ctrl.filterByStatus | orderBy: $ctrl.orderByField: $ctrl.reverseSort">
+                <tr ng-repeat="claim in $ctrl.filteredClaims | filter : $ctrl.filterByStatus | orderBy: $ctrl.orderByField: $ctrl.reverseSort">
                     <td>
                         <div class="text-nowrap">
                             <span class="d-inline-block pr-2"><strong>Claim No: </strong>
@@ -86,8 +86,8 @@
         </table>
     </div>
 </div>
-<!-- <div class="row pl-4">
+<div class="row pl-4">
     <div style="margin-left: 60%;">
-        <pagination records-to-display="5" records="$ctrl.claimsRecords" total-record-count="{{$ctrl.claimsRecords.length}}"></pagination>
+        <pagination records-to-display="2" records="$ctrl.claimsRecords" total-record-count="$ctrl.claimsRecords.length" refresh-list-view="$ctrl.refreshListView($ctrl.claimsRecords)" filtered-claims="$ctrl.filteredClaims" refresh-component="$ctrl.refreshComponent"></pagination>
     </div>
-</div> -->
+</div>

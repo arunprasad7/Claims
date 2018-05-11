@@ -8,27 +8,39 @@
                     restrict: 'E',
                     templateUrl: 'resources/util/pagination/pagination.html',
                     scope: {
-                        recordsToDisplay: '@',
+                        recordsToDisplay: '=',
                         records: '=',
-                        totalRecordCount: '@'
+                        totalRecordCount: '=',
+                        refreshListView: '&',
+                        filteredClaims: '=',
+                        refreshComponent: '='
                     },
                     link: function(scope, element, attrs) {
                         scope.pager = {};
 
-                        scope.setPage = function(page) {
+                        scope.setPage = function(page, refreshComponent) {
                             if (page < 1 || page > scope.pager.totalPages) {
                                 return;
                             }
-                            scope.pager = PaginationFactory.getPageSettings(scope.totalRecordCount, page);
+                            scope.pager = PaginationFactory.getPageSettings(scope.records.length, page, scope.recordsToDisplay);
                             scope.items = scope.records.slice(scope.pager.startIndex, scope.pager.endIndex + 1);
+                            if (refreshComponent == null || refreshComponent == undefined || refreshComponent) {
+                                scope.filteredClaims = angular.copy(scope.items);
+                            }
                         }
 
                         scope.$watch('records', function(newValue, oldValue, scope) {
-                            init();
+                            scope.setPage(1, true);
+                        })
+
+                        scope.$watch('refreshComponent', function(newValue, oldValue, scope) {
+                            if (newValue != oldValue) {
+                                scope.setPage(1, true);
+                            }
                         })
 
                         function init() {
-                            scope.setPage(1);
+                            scope.setPage(1, false);
                         }
 
                         init();

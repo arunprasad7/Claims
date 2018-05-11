@@ -9,15 +9,18 @@
         this.orderByField = 'requestRecievedOn';
         this.reverseSort = false;
         this.filterByStatus = 'New Request';
+        this.filteredClaims = [];
+        this.refreshComponent = false;
 
         this.$onInit = function() {
             this.tab = this.statuslist ? this.statuslist[0].tab : 'newRequest';
+            this.tabIndex = 0;
             angular.forEach(this.statuslist, (statusRecord, index) => {
                 if (index == 0) {
                     this.filterByStatus = statusRecord.state;
-                    this.countByStatus[statusRecord.state] = angular.copy($filter('filter')(this.allClaimRecords, {status: statusRecord.state}).length);
+                    this.countByStatus[statusRecord.state] = angular.copy($filter('filter')(this.allClaimRecords, { status: statusRecord.state }).length);
                 } else {
-                    this.countByStatus[statusRecord.state] = $filter('filter')(this.allClaimRecords, { status: statusRecord.state }).length;
+                    this.countByStatus[statusRecord.state] = angular.copy($filter('filter')(this.allClaimRecords, { status: statusRecord.state }).length);
                 }
             });
             this.claimsRecords = angular.copy($filter('filter')(this.allClaimRecords, {status: this.filterByStatus}));
@@ -25,7 +28,7 @@
 
         this.selectAllClaims = function() {
             this.selectAll = !this.selectAll;
-            this.allClaimRecords.forEach((claim) => {
+            this.filteredClaims.forEach((claim) => {
                 if (claim['status'] == this.filterByStatus) {
                     claim['selected'] = this.selectAll;
                     if (this.selectAll) {
@@ -42,8 +45,9 @@
             this.reverseSort = (this.sortBy == 'receivedDateDesc') ? false : true;
         }
 
-        this.changeTab = function(tabName, tabindex) {
-            var selectedTab = this.statuslist[tabindex]['tab'];
+        this.changeTab = function(tabName, tabIndex) {
+            this.selectAll = false;
+            var selectedTab = this.statuslist[tabIndex]['tab'];
             switch(selectedTab) {
                 case 'Approved':
                     this.filterByStatus = 'Approved';
@@ -86,9 +90,11 @@
         }
 
         this.$doCheck = function() {
+            this.selectAll = false;
             angular.forEach(this.statuslist, (statusRecord, index) => {
                 this.countByStatus[statusRecord.state] = angular.copy($filter('filter')(this.allClaimRecords, {status: statusRecord.state}).length);
             });
+            // this.changeTab(this.tab, this.tabIndex);
         }
 
         this.redirectTo = function(stateName) {
@@ -104,7 +110,9 @@
                     claimsRecords: '<',
                     selectedClaims: '=',
                     allClaimRecords: '=',
-                    navigateTo: '@'
+                    navigateTo: '@',
+                    refreshComponent: '=',
+                    filteredClaims: '='
                 },
                 templateUrl: "resources/shared/claimsListView-component/claimslistview.component.html",
                 controller: ClaimsListViewController

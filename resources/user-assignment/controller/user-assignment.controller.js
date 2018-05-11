@@ -12,6 +12,8 @@
         $scope.selectedUserToAssign;
         $scope.claimsToAssign = [];
         $scope.claimList = [];
+        $scope.refreshComponent = false;
+        $scope.filteredClaims = [];
 
         $scope.search = function() {
             if (($scope.climeNo == "" || $scope.climeNo == null) && ($scope.memberNumber == "" || $scope.memberNumber == null) && ($scope.voucherNumber == "" || $scope.voucherNumber == null)) {
@@ -39,14 +41,17 @@
         $scope.assignedToSelectedUser = function() {
             if ($scope.selectedUserToAssign != null && $scope.claimsToAssign != null && $scope.claimsToAssign.length > 0) {
                 if ($scope.selectedUserToAssign.assigned < 15) {
-                    // $scope.assigned = $scope.assigned.concat($scope.claimsToAssign);
                     angular.forEach($scope.claimsToAssign, function(claim, claimIndex) {
-                        var claimIndex = $scope.claimList.indexOf(claim);
-                        if (claimIndex != -1) {
-                            $scope.claimList[claimIndex]['status'] = 'Assigned';
-                            $scope.claimList[claimIndex]['selected'] = false;
+                        for(var key in $scope.claimList) {
+                            var actualClaim = $scope.claimList[key];
+                            if (claim['id'] == actualClaim['id']) {
+                                $scope.claimList[key]['status'] = 'Assigned';
+                                $scope.claimList[key]['selected'] = false;
+                                break;
+                            }
                         }
                     })
+                    $scope.refreshComponent = !$scope.refreshComponent;
                     $scope.selectedUserToAssign.assigned += ($scope.claimsToAssign.length);
                     $scope.claimsToAssign = [];
                     ngNotify.set('Request Assigned Succesfully.', 'success');                
