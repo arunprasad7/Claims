@@ -11,12 +11,14 @@
                         recordsToDisplay: '=',
                         records: '=',
                         totalRecordCount: '=',
-                        refreshListView: '&',
-                        filteredClaims: '=',
-                        refreshComponent: '='
+                        filteredClaims: '='
                     },
                     link: function(scope, element, attrs) {
                         scope.pager = {};
+
+                        function init() {
+                            scope.setPage(1, false);
+                        }
 
                         scope.setPage = function(page, refreshComponent) {
                             if (page < 1 || page > scope.pager.totalPages) {
@@ -24,24 +26,12 @@
                             }
                             scope.pager = PaginationFactory.getPageSettings(scope.records.length, page, scope.recordsToDisplay);
                             scope.items = scope.records.slice(scope.pager.startIndex, scope.pager.endIndex + 1);
-                            if (refreshComponent == null || refreshComponent == undefined || refreshComponent) {
-                                scope.filteredClaims = angular.copy(scope.items);
-                            }
+                            scope.filteredClaims = angular.copy(scope.items);
                         }
 
                         scope.$watch('records', function(newValue, oldValue, scope) {
                             scope.setPage(1, true);
                         })
-
-                        scope.$watch('refreshComponent', function(newValue, oldValue, scope) {
-                            if (newValue != oldValue) {
-                                scope.setPage(1, true);
-                            }
-                        })
-
-                        function init() {
-                            scope.setPage(1, false);
-                        }
 
                         init();
                     }

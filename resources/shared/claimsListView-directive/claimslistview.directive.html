@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs row" id="resultTab" role="tablist">
-    <li class="nav-item col-2 pointer" ng-repeat="status in $ctrl.statuslist" ng-class="{'active show' : $ctrl.tab == status.tab}" ng-click="$ctrl.tab=status.tab;$ctrl.changeTab($ctrl.tab, $index);">
-        <a class="nav-link" id="{{status.tab}}" data-toggle="$ctrl.tab" role="$ctrl.tab" aria-controls="{{status.label}}" aria-selected="true">{{status.label}}<span class="resultCount">{{$ctrl.countByStatus[status.state] || 0}}</span></a>
+    <li class="nav-item col-2 pointer" ng-repeat="tabRecord in tabsToDisplay" ng-class="{'active show' : currentTab == tabRecord.tab}" ng-click="changeTab(tabRecord.tab, $index);">
+        <a class="nav-link" id="{{tabRecord.tab}}" data-toggle="currentTab" role="currentTab" aria-controls="{{tabRecord.label}}" aria-selected="true">{{tabRecord.label}}<span class="resultCount">{{countByStatus[tabRecord.state] || 0}}</span></a>
     </li>
 </ul>
 <div class="tab-content" id="resultTabContent">
@@ -9,28 +9,28 @@
             <div class="col-sm-11">
                 <div class="text-right">
                     <font size="2">Sort :</font>
-                    <select class="custom-select innerFilterSortBy" ng-change="$ctrl.sortByValue()" ng-model="$ctrl.sortBy">
+                    <select class="custom-select innerFilterSortBy" ng-change="sortByValue()" ng-model="sortBy">
                         <option value="receivedDateDesc">By Date Asc</option>
                         <option value="receivedDate">By Date Desc</option>
                     </select>
                 </div>
             </div>
             <div class="col-sm-1">
-                <div ng-click="$ctrl.selectAllClaims()" class="align-middle selectline"><a href="javascript:void(0);" id="selectAll" style="font-size:75%;">{{$ctrl.selectAll ? 'De-SelectAll' : 'Select All'}}</a></div>
+                <div ng-click="selectAllClaims()" class="align-middle selectline"><a href="javascript:void(0);" id="selectAll" style="font-size:75%;">{{selectAll ? 'De-SelectAll' : 'Select All'}}</a></div>
             </div>
         </div>
         <table class="table">
             <tbody>
-                <tr ng-if="$ctrl.filteredClaims.length == 0">
+                <tr ng-if="filteredClaims.length == 0">
                     <td style="text-align:center;">
                         <h5>No Records Available...</h5>
                     </td>
                 </tr>
-                <tr ng-repeat="claim in $ctrl.filteredClaims | filter : $ctrl.filterByStatus | orderBy: $ctrl.orderByField: $ctrl.reverseSort">
+                <tr ng-repeat="claim in filteredClaims | filter : filterByStatus | orderBy: orderByField: reverseSort">
                     <td>
                         <div class="text-nowrap">
                             <span class="d-inline-block pr-2"><strong>Claim No: </strong>
-                                <a class="currencyTypeCustom" href="javascript:void(0);"ng-click="$ctrl.redirectTo($ctrl.navigateTo);">#{{claim.claimNo}}</a>
+                                <a class="currencyTypeCustom" href="javascript:void(0);"ng-click="redirectTo(navigateTo);">#{{claim.claimNo}}</a>
                             </span>
                             <span class="d-inline-block pr-2">
                                 <strong>Member No: {{claim.memberNo}}</strong>
@@ -77,7 +77,7 @@
                         </div>
                     </td>
                     <td class="align-middle text-center">
-                        <a href="javascript:void(0);" class="custSelectBtn" ng-class="{custSelectBtnSected : claim.selected}" aria-label="Select Claim" ng-click="claim.selected=!claim.selected;$ctrl.claimsToSelect(claim);">
+                        <a href="javascript:void(0);" class="custSelectBtn" ng-class="{custSelectBtnSected : claim.selected}" aria-label="Select Claim" ng-click="claim.selected=!claim.selected;claimsToSelect(claim);">
                             <span class="oi align-middle" data-glyph="check"></span>
                         </a>
                     </td>
@@ -86,8 +86,9 @@
         </table>
     </div>
 </div>
-<div class="row pl-4">
-    <div style="margin-left: 60%;">
-        <pagination records-to-display="2" records="$ctrl.claimsRecords" total-record-count="$ctrl.claimsRecords.length" refresh-list-view="$ctrl.refreshListView($ctrl.claimsRecords)" filtered-claims="$ctrl.filteredClaims" refresh-component="$ctrl.refreshComponent"></pagination>
+<div class="row">
+    <div class="col-sm-12">
+        <pagination records-to-display="2" records="claimsRecords" total-record-count="claimsRecords.length" filtered-claims="filteredClaims" refresh-component="refreshComponent"></pagination>
     </div>
 </div>
+

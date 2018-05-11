@@ -7,7 +7,7 @@
 
         function ClaimsListViewService() {
 
-            this.getStatusToDisplay = function() {
+            this.getTabsToDisplay = function() {
                 return [
                     {'label': 'New Request', 'tab' : 'newRequest', 'state': 'New Request'},
                     {'label': 'In Progress', 'tab' : 'InProgress', 'state': 'InProgress'},

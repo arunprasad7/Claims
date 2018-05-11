@@ -96,7 +96,7 @@
                 <div class="row">
                     <div class="col-9">
                         <div class="tabOuter">
-                            <claims-list-view-component all-claim-records="claimList" claims-records="claimsRecords" statuslist="statusList" selected-claims="claimsToAssign" navigate-to="{{selectedClaim == 'eclaims' ? 'eclaim' : 'reimbursement-processing'}}" refresh-component="refreshComponent" filtered-claims="filteredClaims"></claims-list-view-component>
+                            <claims-list-view tabs-to-display="tabsToDisplay" all-claim-records="claimList" selected-claims="claimsToAssign" navigate-to="{{selectedClaim == 'eclaims' ? 'eclaim' : 'reimbursement-processing'}}" rerender-view="rerenderView"></claims-list-view>
                         </div>
                     </div>
                     <div class="col-3 innerRight">
