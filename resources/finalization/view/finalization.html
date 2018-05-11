@@ -2,92 +2,13 @@
     <span class="navbar-brand p-0 m-0" ui-sref="claim-registration">Finalization</span>
 </nav>
 <div>
-        <my-search-box  search-info="fieldsObject" drop-down="dropDownValue" search-text="searchValue" callback="filterValues(data)"></my-search-box>
+     <my-search-box search-info="fieldsObject" drop-down="dropDownValue" search-text="searchValue" callback="filterValues(data)"></my-search-box>
 </div>
 <section>
-    
     <div class="leftContainer">
         <div class="contentPart pt-3 pb-3">
             <div class="">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="p-3" id="finilizationCont">
-                            <div class="resultInfo pl-2">
-                                    <span ng-click="selectAll()" class="align-middle selectline"><a href="javascript:;" id="seltAll" style="font-size:75%;">{{selectall ? 'De-SelectAll' : 'Select All'}}</a></span>
-                                <span class="d-inline-block pl-5">Sort:</span>
-                                <select class="custom-select innerFilterSort" ng-change="sorting(option)" ng-model="option">
-                                   
-                                    <option value="receivedDateDesc">By Date Asc</option>
-                                    <option value="receivedDate">By Date Desc</option>
-                                </select>
-                                <a href="javascript:;" class="btn btn-primary btn-sm finlizeBtn btn-finalize float-right" ng-click="finalizeBatch();">Finalize</a>
-                                <finalization-component headers="finalizationHeaders" requests="data" ></finalization-component>
-                            </div>
-                            <table class="table mt-2">
-                                <tbody>
-                                    <tr ng-if="data.length == 0">
-                                        <td style="text-align:center;">
-                                            <h5>No Records Available...</h5>
-                                        </td>
-                                    </tr>
-                                    <tr ng-repeat="d in data | orderBy:orderByField:reverseSort">
-                                            <td class="align-middle">
-                                                    <a href="javascript:;" class="custSelectBtn" ng-class="{custSelectBtnSected : d.selected}" aria-label="Select" ng-click="d.selected = !d.selected;">
-                                                       <span class="oi align-middle l-8" data-glyph="check"></span>
-                                                   </a>
-                                               </td>
-                                        <td>
-                                            <div class="d-inline-block pr-2">Claim Number: 
-                                                <span class="currencyTypeCustom">{{d.batch}}</span>
-                                            </div>
-                                            <div class="text-nowrap clearfix">
-                                                <span class="oi"></span>
-                                                <div class="receiveInfo d-inline-block pr-3 float-left">
-                                                    <span class="oi" data-glyph="timer"></span>Received Date {{d.receivedDate}}
-                                                </div>
-                                                <div class="statusInfo d-inline-block float-left" ng-class="{'text-danger' : d.status == 'Rejected', 'text-success' : d.status == 'Approved'}">
-                                                    <span class="oi" data-glyph="thumb-down"></span> {{d.status == 'Rejected' ? 'Rejected' : 'Approved'}}
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="text-nowrap">
-                                                <span class="tablLal" style="display: contents !important;">Paid To:</span>
-                                                <span class="tablCont">{{d.PaidTo}}</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="text-nowrap">
-                                                <strong class="tablLal tablLal1">{{d.status=="Approved" ? 'ApprovedAmount' : 'RejectedAmount'}}</strong>
-                                                <strong>Rs.{{d.rejectedAmount}}</strong>
-                                            </div>
-                                            <div class="text-nowrap">
-                                                <strong class="tablLal tablLal1">Payment Way:</strong>
-                                                <strong>{{d.paymentWay}}</strong>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="text-nowrap">
-                                                <strong class="tablLal tablLal1">Payment Date:</strong>
-                                                <strong>{{d.paymentDate}} </strong>
-                                            </div>
-                                            <div class="text-nowrap">
-                                                <strong class="tablLal tablLal1">Payment Reference: </strong>
-                                                <strong>{{d.paymentReference}}</strong>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">
-                                            <div class="text-nowrap">
-                                                Total Claims
-                                                <h4>Rs.{{d.totalClaims}}</h4>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                <finalization-list-view finalization-records="finalizationRecords" redirect-to="reimbursement-processing" finalize-selected-claims="finalizeSelectedClaims()" selected-claims="claimsToFinalize" rerender-view="rerenderView"></finalization-list-view>
             </div>
         </div>
     </div>
