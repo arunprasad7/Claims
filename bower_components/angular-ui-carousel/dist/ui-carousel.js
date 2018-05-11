@@ -595,13 +595,30 @@ angular.module('ui.carousel.controllers').controller('CarouselController', ['$sc
     _this.refreshCarousel();
   });
 
-  $scope.$parent.$watch('showUpload', function() {
+  $scope.$parent.$watch('showUpload', function(newValue, oldValue) {
     $timeout(function() {
-      _this.initOptions();
-      _this.refreshCarousel();
-    }, 300)    
+      if(_this.name == "thumbnailSlider") {
+        _this.currentSlide = 0;
+        _this.initOptions();
+        _this.refreshCarousel();
+        _this.moveTrack(0)
+      }      
+    }, 300)
   })
 
+  $scope.$parent.$watch('previewIndex', function(newValue, oldValue) {
+    if(_this.name == "previewSlider") {
+      _this.currentSlide = newValue;
+      _this.refreshCarousel();
+    }  
+  })
+  
+  $scope.$parent.$watch('documents.length', function(){
+    if(_this.name == "thumbnailSlider") {
+      _this.currentSlide = 0;
+      _this.refreshCarousel();
+    }  
+  })
   /**
    * update when resize
    *
@@ -682,12 +699,8 @@ angular.module('ui.carousel.directives').directive('uiCarousel', ['$compile', '$
         $scope.$parent.showPreview(index,item);        
       }
 
-      $scope.hidePreview = function() {
-        $scope.$parent.hidePreview();
-      }
-
-      $scope.deleteFile = function(index) {
-        $scope.$parent.deleteFile(index);
+      $scope.deleteFile = function(index, id) {
+        $scope.$parent.deleteFile(index, id);
       }
 
       $scope.toggleJson = function(item) {

@@ -266,20 +266,20 @@
                             <ui-carousel slides="claimReqList" class="" slides-to-show="1" slides-to-scroll="1" initial-slide="0" style="width:100%;margin:0px">
                                 <carousel-item  class="eclaim-item">
                                     <ul>
-                                        <li style="cursor:pointer" class="col-sm-4">
+                                        <li style="cursor:pointer; width:25%">
                                             <span>
-                                                Request Number:<span class="currencyTypeCustom" ng-click="toggleJson(item);">#{{item.reqNum}}</span> 
+                                                <b>Request Number:</b><span class="currencyTypeCustom" ng-click="toggleJson(item);">#{{item.reqNum}}</span> 
                                             </span>
                                         </li>
-                                        <li class="col-sm-4">
-                                            <span><b>Claim Status :</b> <strong ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</strong></span>
+                                        <li style="width:20%">
+                                            <span><b>Claim Status:</b> <span ng-class="{'text-success' : item.status == 'Approved', 'text-danger' : item.status == 'Rejected'}">{{item.status}}</span></span>
                                         </li>    
-                                        <!-- <li>
+                                        <li style="width:32%;" class="text-elipsis">
                                             <span><b>Claim Status Reason:</b> <span style="color:#4e5e82">{{item.statusReason}}</span></span>
-                                        </li> -->
-                                        <li class="col-sm-4">
-                                            <span ng-show="item.status == 'Approved'"><b>Approved Amount:</b> <span style="color:#4e5e82">{{item.approvedAmount}}</span></span>
-                                            <span ng-show="item.status == 'Rejected'"><b>Rejected Amount:</b> <span style="color:#4e5e82">{{item.rejectedAmount}}</span></span>
+                                        </li>
+                                        <li style="width:20%; text-align:right;">
+                                            <span ng-show="item.status == 'Approved'"><b>Approved Amount:</b> <span style="color:#4e5e82;">{{item.approvedAmount}}</span></span>
+                                            <span ng-show="item.status == 'Rejected'"><b>Rejected Amount:</b> <span style="color:#4e5e82;">{{item.rejectedAmount}}</span></span>
                                         </li>
                                     </ul>
                                 </carousel-item>                
@@ -344,7 +344,7 @@
                         </ul>
                     </div>
                 </div>
-                <div ng-class="{'reimbur-trans-hide' : !createNew, 'reimbur-trans-show' : createNew}">
+                <div ng-show="createNew">
                     <div class="claimRequestDetails">
                         <div class="claimRequestDetInner mb-3 clearfix" style="padding-left:0px;">
                             <div layout-gt-sm="row" class="col-sm-12 pb-1">
@@ -506,6 +506,10 @@
             <button type="button" class="btn btn-outline-primary btn-sm float-right ml-3  mt-3" ng-click="rejectClaim();">Reject</button>
             <ul class="float-right clearfix mt-1">
                 <li class="float-left">
+                    <span>Base Currency</span>
+                    <strong>AED</strong>
+                </li>
+                <li class="float-left">
                     <span>Total deduction</span>
                     <strong>{{totalDeductionAmount | number}}</strong>
                 </li>
@@ -525,7 +529,7 @@
             
             <a href="javascript:;" class="btn-link footerLink mr-3 float-left">
                 <span class="oi" data-glyph="print"></span>
-                Print Rejection
+                Print Package
             </a>
             <a href="javascript:;" class="btn-link footerLink float-left">
                 <span class="oi" data-glyph="envelope-closed"></span>
