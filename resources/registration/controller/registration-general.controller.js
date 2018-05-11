@@ -91,10 +91,6 @@
             }
         }
 
-        $scope.onCarouselInit = function() {
-            $scope.files = [];
-        }
-
         $scope.showPreview = function(index, item) {
             $scope.noOfSlides = 3;
             $scope.previewIndex = index;
@@ -198,7 +194,7 @@
                         })
                         $scope.documents[index] = $scope.docObj;                        
                     }
-                    $scope.filterDocuments();
+                    if($scope.docTypes && $scope.docTypes.length)$scope.filterDocuments();
                 }, function() {}
             );
         }
