@@ -4,10 +4,26 @@
         .module('claims')
         .controller('FinalizationController', FinalizationController)
 
-    FinalizationController.$inject = ['$scope', '$rootScope', '$filter', 'ngNotify', 'FinalizationComponentService'];
+    FinalizationController.$inject = ['$scope', '$rootScope', 'FinalizationService', '$filter', 'ngNotify','$timeout','FinalizationComponentService'];
 
-    function FinalizationController($scope, $rootScope, $filter, ngNotify, FinalizationComponentService) {
-        //$scope.firstName = $scope.batchName;
+    function FinalizationController($scope, $rootScope, FinalizationService, $filter, ngNotify, $timeout, FinalizationComponentService) {
+
+        // $scope.$watch("citySearchText", function(citySearchText) {
+        //     $scope.sample;
+        //     $scope.citySearchResults = [];
+        //     if (citySearchText) {
+        //     //$timeout(function() {
+        //         $scope.isSearchingForCities = false;
+        //         //$scope.citySearchResults = ['New York', 'London', 'Paris', 'Moab'];
+        //         $scope.c = [{Processed: "500000"}, {Processed: "6000"}];
+        //         $scope.citySearchResults = $filter('filter')($scope.c,{Processed : citySearchText});
+        //         //$scope.citySearchResults = $scope.citySearchResults[0].Processed;
+        //     //}, 1000);
+        //     } else {
+        //     $scope.isSearchingForCities = false;
+        //     }
+        // });
+
         $scope.batchName;
         $scope.fileName;
         $scope.Provider;
@@ -170,12 +186,30 @@
             ngNotify.set('Selected Batch\'s are finalized successfully...', 'success');
         }
 
+        $scope.dropDownValue = [{text:'Cheque'},
+                                {text:'Iban'} 
+                               ];
+
+        $scope.fieldsObject = [{label : 'Payment Reference', type  :'text', name :'payRef'},
+                               {label : 'Payment Way', type : 'dropDown', name :'payWay'},
+                               {label : 'Claim Number', type : 'text', name :'claimNumber'}
+                              ];
+
+        $scope.filterValues = function(searchValue) {
+            $scope.data = $scope.result;
+            if (searchValue) {
+                $scope.data = $filter('filter')($scope.data,{paymentReference :searchValue.payRef, paymentWay : searchValue.payWay, batch : searchValue.claimNumber});
+            } else {
+                $scope.data = $scope.result;
+            }
+                $scope.requestType
+        }
+
         function init() {
             $scope.option = "receivedDateDesc";
             $scope.sorting($scope.option);
             $scope.finalizationHeaders = FinalizationComponentService.getFinalizationHeader();
         }
         init();
-      
     }
 })();
