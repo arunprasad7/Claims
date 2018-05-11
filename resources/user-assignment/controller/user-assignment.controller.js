@@ -301,19 +301,16 @@
         $scope.recordTotal = $scope.claim.length;
 
         $scope.click = function() {
-            if (($scope.climeNo == "" || $scope.climeNo == null) && ($scope.memberNumber == "" || $scope.memberNumber == null) && ($scope.voucherNumber == "" || $scope.voucherNumber == null)) {
+            if (($scope.climeNo == "" || $scope.climeNo == null) && ($scope.memberNumber == "" || $scope.memberNumber == null)) {
                 $scope.claimList = $scope.claim;
-            } else {
-                
-                $scope.claimList = $filter('filter')($scope.claim, { climeNo: $scope.climeNo, memberNo: $scope.memberNumber,voucherNo: $scope.voucherNumber});
-
+            } else {                
+                $scope.claimList = $filter('filter')($scope.claim, { climeNo: $scope.climeNo, memberNo: $scope.memberNumber});
             }
 
         }
         $scope.clear=function() {
             $scope.climeNo='';
             $scope.memberNumber='';
-            $scope.voucherNumber='';
             $scope.approvedBy=undefined;
             $scope.assignedUser=undefined;
             $scope.requestedFromDate=undefined;

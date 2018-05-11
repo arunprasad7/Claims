@@ -13,6 +13,8 @@
         $scope.isNew = isNew;
         $scope.search = {};
         $scope.fileInfos = [];
+        $scope.documents = [];
+        $scope.docTypes = [];
         $scope.hasMandatory = true;
         $scope.documentTypes = RegistrationService.getDocumentTypes();
         $scope.setDcoumentType = function(documentType) {
@@ -243,6 +245,11 @@
         function init() {
             $scope.regDetail.paymentWay ? $scope.setPaymentWay($scope.regDetail.paymentWay) : '';
             $scope.regDetail.source ? $scope.setDcoumentType($scope.regDetail.source) : '';
+        }
+
+        $scope.clearDocFilter = function() {
+            $scope.docTypes = [];
+            $scope.documents = angular.copy($scope.fileInfos);
         }
 
         init();
