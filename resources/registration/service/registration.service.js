@@ -199,6 +199,48 @@
 
             ]
         }
+
+        this.getUsers = function() {
+            return [{
+                "memberName" : 'Mahira',
+                "memberNumber" : "98444438851",
+                "email1" : 'mahira65@gmail.com',
+                'mobileNum2' : 98444438851,
+                "email2" : 'mahira32@gmail.com',
+                "serviceFmDate" : new Date(),
+                "requestAmt" : 55555,
+                "reqType" : 'newRequest',
+                "encType" : 'outPatient',
+                "reqReceivedDate" : new Date(),
+                "prevRequest" : 123,
+                "source" : "post",
+                "voucherNumber" : 36978,
+                "ibanNum" : "1909465ABSCSD",
+                "emiratesId":89064,
+                "memberNumber": "7509340916",
+                "policyNumber": "2342344",
+                "paymentWay" : "cheque"
+            },{
+                "memberName" : 'Sumaiya',
+                "memberNumber" : "98444438855",
+                "email1" : 'sumaiya65@gmail.com',
+                'mobileNum2' : 98444438851,
+                "email2" : 'sumaiya32@gmail.com',
+                "serviceFmDate" : new Date(),
+                "requestAmt" : 55555,
+                "reqType" : 'newRequest',
+                "encType" : 'outPatient',
+                "reqReceivedDate" : new Date(),
+                "prevRequest" : 123,
+                "source" : "post",
+                "voucherNumber" : '78915',
+                "ibanNum" : "1856465ABSCSD",
+                "emiratesId":78451,
+                "memberNumber": "8566340416",
+                "policyNumber": "7897878",
+                "paymentWay" : "cheque"
+            }];
+        }
         
         this.searchClaims = function(params) {
             return this.getClaimRegistrationList(params);
@@ -221,6 +263,16 @@
                 {id:'prescription', label:'Prescription', isRequired:true},
                 {id:'otherDocuments', label:'Other Documents', isRequired:false}
             ]
+        }
+
+        this.getSearchFields = function() {
+            return [
+                { label: 'Card Number', type: 'autoSearch', name: 'memberNumber'},
+                { label: 'Member Name', type: 'autoSearch', name: 'memberName'},
+                { label: 'Emirates  Id', type: 'text', name: 'emiratesId'},
+                { label: 'Voucher  Number', type: 'text', name: 'voucherNumber'},
+                { label: 'Policy Number', type: 'autoSearch', name: 'policyNumber'}
+            ];
         }
     }
 })();
