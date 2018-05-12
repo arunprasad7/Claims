@@ -12,7 +12,8 @@
                         redirectTo: '@',
                         finalizeSelectedClaims: '&',
                         selectedClaims: '=',
-                        rerenderView: '='
+                        rerenderView: '=',
+                        searchBy: '='
                     },
                     link: function(scope, element, attrs) {
 
@@ -24,7 +25,8 @@
                         scope.filteredClaims = [];
 
                         function init() {
-                            console.log('finalization list view');    
+                            console.log('finalization list view');
+                            scope.allFinalizationRecords = angular.copy(scope.finalizationRecords);
                         }
 
                         scope.selectAllRecords = function() {
@@ -58,6 +60,14 @@
                         scope.$watch('rerenderView', (newValue, oldValue, scope) => {
                             scope.selectAll = false;
                             scope.finalizationRecords = angular.copy($filter('orderBy')(scope.finalizationRecords, 'receivedDate', false));
+                        });
+
+                        scope.$watch('searchBy', (newValue, oldValue, scope) => {
+                            scope.finalizationRecords = $filter('filter')(scope.allFinalizationRecords, newValue);
+                        });
+
+                        scope.$watch('filteredClaims', (newValue, oldValue, scope) => {
+                            scope.selectAll = false;
                         });
 
                         init();

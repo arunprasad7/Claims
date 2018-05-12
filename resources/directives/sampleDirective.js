@@ -1,88 +1,3 @@
-// var claims = angular.module("claims", []);
-//     claims.directive('student', function() {
-//         var directive = {};
-//         directive.restrict = 'E';
-//         directive.template = "Student: <b>{{student.name}}</b> , Roll No: <b>{{student.rollno}}</b>";
-//         directive.scope = {
-//             student : "=name"
-//         }
-//         directive.compile = function(element, attributes) {
-//             element.css("border", "1px solid #cccccc");
-            
-//             var linkFunction = function($scope, element, attributes) {
-//                 element.html("Student: <b>"+$scope.student.name +"</b> , Roll No: <b>"+$scope.student.rollno+"</b><br/>");
-//                 element.css("background-color", "#ff00ff");
-//             }
-//             return linkFunction;
-//         }
-//         return directive;
-//     });
-
-// (function() {
-//     'use strict';
-//     angular
-//         .module('claims')
-//         .directive('myCustomer', function() {
-//             return {
-//                 template: 'Name: {{customer.name}} Address: {{customer.address}}'
-//             }
-//         });    
-// })();
-
-// (function() {
-//     'use strict';
-//     angular
-//         .module('claims')
-//         .directive('search', function() {
-//             var directive = {};
-//             directive.restrict = 'E';
-//             //directive.template = "Cliam NO: <b>{{search.name}}</b> , Roll No: <b>{{search.rollno}}</b>";
-//             directive.scope = {
-//                 search : "=name"
-//             }
-//             directive.compile = function(element, attributes) {
-//                 element.css("border", "4px solid #cccccc");
-                
-//                 var linkFunction = function($scope, element, attributes) {
-//                    // element.html("Cliam No: <b>"+$scope.search.name +"</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Status: <b>"+$scope.search.rollno+"</b><br/>");
-//                    element.html("Cliam No: <b>"+$scope.search.name +"</b> ::: Status: <b>"+$scope.search.rollno+"</b><br/>");
-//                    element.css("background-color", "#D5DBDB");
-//                 }
-//                 return linkFunction;
-//             }
-//             return directive;
-//         });   
-// })();
-
-
-// (function() {
-//     'use strict';
-//     angular
-//         .module('claims')
-//         .directive('dropdown', function($timeout){
-//             return {
-//                 restrict: 'A',
-//                 require: 'ngModel',
-//                 scope: {
-//                     list: '=dropdown',
-//                     ngModel: '='
-//                 },
-//                 template: '<div class="dropdown" ng-click="open=!open" ng-class="{open:open}"><div ng-repeat="thing in list" style="top: {{($index + 1) * height}}px; -webkit-transition-delay: {{(list.length - $index) * 0.03}}s; z-index: {{list.length - $index}}" ng-hide="!open" ng-click="update(thing)" ng-class="{selected:selected===thing.text}"><span>{{thing.text}}</span></div><span class="title" style="top: 0px; z-index: {{list.length + 1}}"><span>{{selected}}</span></span><span class="clickscreen" ng-hide="!open">&nbsp;</span></div>',
-//                 replace: true,
-//                     link: function(scope, elem, attrs, ngModel) {
-//                         scope.height = elem[0].offsetHeight;
-//                         scope.$watch('ngModel',function(){
-//                         scope.selected = ngModel.$modelValue;  
-//                     });
-//                     scope.update = function(thing) {
-//                         ngModel.$setViewValue(thing.text);
-//                         ngModel.$render(); 
-//                     };
-//                 }
-//             };
-//         });  
-// })();
-
 (function() {
     'use strict';
     angular
@@ -101,22 +16,28 @@
                 searchAuto:'=',
                 callback: '&'
             },
-            controller: function($scope ) {
+            controller: function($scope) {
+
                 $scope.autoSearch = $scope.searchAuto;
-                $scope.paymentWay= "";
+                $scope.paymentWay = "";
                 $scope.search = {};
+
                 $scope.clearSearch = function() {
                     $scope.searchText = "";
                     $scope.localSearchText = "";
                     $scope.search = {};
+                    $scope.callback({'data' : null});
                 };
+
                 $scope.doSearch = function() {
                     var searchText = $scope.search;
                     $scope.callback({'data' : searchText});
                 };
+
                 $scope.querySearch = function(query) {
                     return query ? $scope.autoSearch.filter(createFilterFor(query)) : $scope.autoSearch;
                 }
+
                 function createFilterFor(query) {
                     var lowercaseQuery = angular.lowercase(query);
                     return function filterFn(state) {
