@@ -1,0 +1,5 @@
+<div ng-if="!row.entity.editable || !col.colDef.enableCellEdit" style="padding:3px;">{{COL_FIELD | date:'mediumDate'}}</div>
+<div ng-if="row.entity.editable && col.colDef.enableCellEdit" class="p1px">
+    <md-datepicker class="md-block" md-hide-icons="all" md-open-on-focus aria-label="{{row.entity.name}}" name="{{col.name}}"
+        id="{{row.uid}}-{{col.name}}-edit-cell" ng-model="MODEL_COL_FIELD"></md-datepicker>
+</div>

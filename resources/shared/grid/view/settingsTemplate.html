@@ -1,0 +1,22 @@
+<a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" style="padding:10px 10px 10px 10px;" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false">
+    <span class="oi" data-glyph="wrench"></span>
+</a>&nbsp;
+<a class="eclaimReqSetBtn" href="javascript:;" ng-click="grid.appScope.gridAction('edit', row.entity, rowRenderIndex)"
+    ng-if="!grid.appScope.inlineEdit">
+    <span class="oi mr-1" data-glyph="pencil"></span>
+</a>
+<div class="dropdown-menu eclaimReqSetOption">
+    <a class="dropdown-item" href="javascript:;" ng-click="grid.appScope.gridAction('approve', row.entity, rowRenderIndex)">
+        <span class="oi mr-1" data-glyph="thumb-up"></span> Approve</a>
+    <a class="dropdown-item" href="javascript:;" ng-click="grid.appScope.gridAction('reject' ,row.entity, rowRenderIndex)">
+        <span class="oi mr-1" data-glyph="thumb-down"></span> Reject</a>
+    <a class="dropdown-item" href="javascript:;">
+        <span class="oi mr-1" data-glyph="check"></span> Validate</a>
+    <a class="dropdown-item" href="javascript:;" ng-click="grid.appScope.gridAction('delete' ,row.entity, rowRenderIndex)">
+        <span class="oi mr-1" data-glyph="delete"></span> Delete</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="javascript:;">Reinsurance</a>
+    <a class="dropdown-item" href="javascript:;">History</a>
+    <a class="dropdown-item" href="javascript:;">Policy Rules</a>
+</div>
