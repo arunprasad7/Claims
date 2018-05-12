@@ -1,0 +1,7 @@
+<div ng-if="!row.entity.editable || !col.colDef.enableCellEdit" style="padding:3px;">{{COL_FIELD}}</div>
+<div ng-if="row.entity.editable && col.colDef.enableCellEdit" class="p1px">
+    <md-input-container class="md-block">
+        <input type="number" ng-model="MODEL_COL_FIELD" aria-label="{{row.entity.name}}" name="{{col.name}}" id="{{row.uid}}-{{col.name}}-edit-cell"
+            ui-grid-editor/>
+    </md-input-container>
+</div>
