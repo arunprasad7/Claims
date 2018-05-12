@@ -1852,3 +1852,7 @@ a {
 #mandatoryUpload .dragover {
     border: 2px dashed #00aeef;
 }
+
+.outline-none {
+    outline: none !important;
+}

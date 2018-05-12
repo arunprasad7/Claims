@@ -88,8 +88,8 @@
                                         '</div>'+
                                     "</md-grid-tile>"+
                                     "<md-grid-tile style='border-left: 1px solid #e6e6e6;width: 194% !important;'>"+
-                                        '<button ng-click="doSearch()"    class="searBtn searBtnWithText mt-3 ml-3 mr-3 align-middle">Search</button>' +
-                                        '<button ng-click="clearSearch()" class="searBtn searBtnWithText mt-3 ml-3 mr-3 align-middle">Clear</button>' +
+                                        '<button ng-click="doSearch()"    class="searBtn searBtnWithText mt-3 ml-3 mr-3 align-middle outline-none">Search</button>' +
+                                        '<button ng-click="clearSearch()" class="searBtn searBtnWithText mt-3 ml-3 mr-3 align-middle outline-none">Clear</button>' +
                                 "</md-grid-tile>"+
                             "</md-grid-list>"+
                          '</div>'+
