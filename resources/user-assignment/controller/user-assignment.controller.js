@@ -14,6 +14,7 @@
         $scope.claimList = [];
         $scope.rerenderView = false;
         $scope.filteredClaims = [];
+        $scope.searchBy = {};
 
         $scope.search = function() {
             if (($scope.climeNo == "" || $scope.climeNo == null) && ($scope.memberNumber == "" || $scope.memberNumber == null) && ($scope.voucherNumber == "" || $scope.voucherNumber == null)) {
@@ -93,12 +94,13 @@
         init();
 
         $scope.filterValues = function(searchValue) {
-            $scope.claimList = $scope.claim;
-            $scope.data = $scope.claim;
             if (searchValue) {
-                $scope.claimList = $filter('filter')($scope.claim,{memberNo : searchValue.payRef, voucherNo : searchValue.payWay});
-            } else{ 
-                $scope.claimList = $scope.claim;
+                $scope.searchBy = {
+                    memberNo: searchValue.memberNo,
+                    claimNo: searchValue.cliamNumber
+                };
+            } else {
+                $scope.searchBy = {};
             }
         }
     }    

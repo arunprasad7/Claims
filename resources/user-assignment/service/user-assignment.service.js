@@ -46,8 +46,8 @@
                 'emiratesId': 56787,
                 "id" : new Date().getTime() + 2
             }, {
-                'claimNo': '4388960',
-                'memberNo': '9563509632',
+                'claimNo': '4388906',
+                'memberNo': '95635096312',
                 'voucherNo': '39028',
                 'encounterType': 'Inpatient',
                 'documentLink':'Medical Info',
@@ -528,7 +528,7 @@
 
         this.getSearchFields = function() {
             return [
-                { label: 'Member Number', type: 'text', name: 'payRef'},
+                { label: 'Member Number', type: 'text', name: 'memberNo'},
                 { label: 'Claim Number', type: 'text', name: 'cliamNumber'},
                 { label: 'Approved By', type: 'autoSearch', name: 'approvedUser'},
                 { label: 'Request Recevied From', type: 'date', name: 'receviedFrom'},

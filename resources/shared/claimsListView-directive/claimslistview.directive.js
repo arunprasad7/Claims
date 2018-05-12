@@ -12,7 +12,8 @@
                         allClaimRecords: '=',
                         selectedClaims: '=',
                         navigateTo: '@',
-                        rerenderView: '='
+                        rerenderView: '=',
+                        searchBy: '='
                     },
                     link: function(scope, element, attrs) {
                         
@@ -115,6 +116,14 @@
 
                         scope.$watch('filteredClaims', (newValue, oldValue, scope) => {
                             scope.selectAll = false;
+                        });
+
+                        scope.$watch('searchBy', (newValue, oldValue, scope) => {
+                            if (newValue != null) {
+                                var claimsFilteredBySearch = $filter('filter')(scope.allClaimRecords, newValue);
+                                scope.claimsRecords = angular.copy($filter('filter')(claimsFilteredBySearch, {status: scope.filterByStatus}));
+                                scope.countByStatus[scope.filterByStatus] = angular.copy($filter('filter')(scope.claimsRecords, { status: statusRecord.state }).length);
+                            }
                         });
 
                         init();
