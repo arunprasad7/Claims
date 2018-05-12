@@ -72,6 +72,17 @@
             $state.go($scope.selectedClaim == 'eclaims' ? 'eclaim' : 'reimbursement-processing');
         }
 
+        $scope.filterValues = function(searchValue) {
+            if (searchValue) {
+                $scope.searchBy = {
+                    memberNo: searchValue.memberNo,
+                    claimNo: searchValue.cliamNumber
+                };
+            } else {
+                $scope.searchBy = {};
+            }
+        }
+
         function createFilterFor(query) {
             var lowercaseQuery = angular.lowercase(query);
             return function filterFn(state) {
@@ -92,16 +103,5 @@
         }
 
         init();
-
-        $scope.filterValues = function(searchValue) {
-            if (searchValue) {
-                $scope.searchBy = {
-                    memberNo: searchValue.memberNo,
-                    claimNo: searchValue.cliamNumber
-                };
-            } else {
-                $scope.searchBy = {};
-            }
-        }
     }    
 })();
