@@ -48,7 +48,7 @@
             replace: true,
             template:
             '<form>' +
-                 '<div class="leftContainerSample">'+
+                 '<div class="leftContainer-search">'+
                     '<div class="searchBarSample">'+
                         '<div class="searchBarRowSample">'+
                             "<md-grid-list md-cols='{{searchInfo.length+1}}' md-gutter='0px' md-row-height='60px'style='width:100%;'>"+
