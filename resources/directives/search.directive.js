@@ -34,14 +34,14 @@
                     $scope.callback({'data' : searchText});
                 };
 
-                $scope.querySearch = function(query) {
-                    return query ? $scope.autoSearch.filter(createFilterFor(query)) : $scope.autoSearch;
+                $scope.querySearch = function(query,lable) {
+                    return query ? $scope.autoSearch.filter(createFilterFor(query,lable)) : $scope.autoSearch;
                 }
 
-                function createFilterFor(query) {
+                function createFilterFor(query,lable) {
                     var lowercaseQuery = angular.lowercase(query);
                     return function filterFn(state) {
-                        return (((angular.lowercase(state.name).indexOf(lowercaseQuery) != 0) && angular.lowercase(state.name).indexOf(lowercaseQuery) != -1) || (angular.lowercase(state.name).indexOf(lowercaseQuery) === 0));
+                        return (((angular.lowercase(state[lable]).indexOf(lowercaseQuery) != 0) && angular.lowercase(state[lable]).indexOf(lowercaseQuery) != -1) || (angular.lowercase(state[lable]).indexOf(lowercaseQuery) === 0));
                     };
                 }
             },
@@ -74,12 +74,12 @@
                                             '<md-autocomplete flex-gt-sm style="width:80%; top: 0; left: 7px; bottom: 0; right: 0; position: absolute; margin-left: 15px; float: left; margin-top:10px;"'+
                                                 "md-selected-item='search[x.name]'"+
                                                 "md-search-text='approvedSearchText'"+
-                                                "md-items='item in querySearch(approvedSearchText)'"+
-                                                "md-item-text='item.name'"+
+                                                "md-items='item in querySearch(approvedSearchText, x.name)'"+
+                                                "md-item-text='item[x.name]'"+
                                                 "md-floating-label='{{x.label}}'"+
                                                 "md-clear-button='true'"+
                                                 '<md-item-template>'+
-                                                    "<span md-highlight-text='approvedSearchText'>{{item.name}}</span>"+
+                                                    "<span md-highlight-text='approvedSearchText'>{{item[x.name]}}</span>"+
                                                 '</md-item-template>'+
                                                 '<md-not-found>'+
                                                     'No Result Found'+
