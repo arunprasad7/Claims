@@ -17,10 +17,10 @@
                         scope.pager = {};
 
                         function init() {
-                            scope.setPage(1, false);
+                            scope.setPage(1);
                         }
 
-                        scope.setPage = function(page, refreshComponent) {
+                        scope.setPage = function(page) {
                             if (page < 1 || page > scope.pager.totalPages) {
                                 return;
                             }
@@ -30,7 +30,7 @@
                         }
 
                         scope.$watch('records', function(newValue, oldValue, scope) {
-                            scope.setPage(1, true);
+                            scope.setPage(1);
                         })
 
                         init();
