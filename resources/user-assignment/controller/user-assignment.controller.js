@@ -90,5 +90,37 @@
         }
 
         init();
+        $scope.userNamesObject = [{
+                                    'userId': '0409',
+                                    'name': 'Ashraf',
+                                    'climeNo': '2345790',
+                                },{
+                                    'userId': '4857',
+                                    'name': 'Babu',
+                                    'climeNo': '2345790',
+                                }];
+
+        $scope.dropDownValue = [{text:'Cheque'},
+                                {text:'Iban'} 
+                               ];
+
+        $scope.fieldsObject =  [{label : 'Member Number', type  :'text', name :'payRef'},
+                                {label : 'Voucher Number', type  :'text', name :'voucherNumber'},
+                                {label : 'Claim Number', type  :'text', name :'cliamNumber'},
+                                {label : 'Approved By', type : 'autoSearch', name :'approvedUser'},
+                                {label : 'Request Recevied From', type : 'date', name :'receviedFrom'},
+                                {label : 'Request Recevied To', type : 'date', name :'receviedTo'},
+                                {label : 'Assigned User', type : 'autoSearch', name :'assignedUser'}
+                               ];
+
+        $scope.filterValues = function(searchValue) {
+            $scope.claimList = $scope.claim;
+            $scope.data = $scope.claim;
+            if (searchValue) {
+                $scope.claimList = $filter('filter')($scope.claim,{memberNo : searchValue.payRef, voucherNo : searchValue.payWay});
+            }else{
+                $scope.claimList = $scope.claim;
+            }
+        }
     }    
 })();

@@ -1764,7 +1764,7 @@ footer {
     white-space: nowrap;
 }
 
-.claimRequestDetInner .md-datepicker-input-container {
+.md-datepicker-input-container {
     width: 60% !important;
 }
 
@@ -1803,3 +1803,4 @@ md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-requir
 a {
     cursor: pointer;
 }
+ 
