@@ -18,7 +18,7 @@
                     <a href="javascript:void(0);" ng-click="$ctrl.navigateTo(request);">{{request[header.fieldName]}}</a>
                 </span>
                 <span ng-if="header.isDocument">
-                    <a style="float:left"class="oi" data-glyph="paperclip" href="resources/img/dis.png" download></a>
+                    <a class="float-left fa fa-file-pdf-o" href="resources/img/dis.png" download=""></a>
                 </span>
                 <span ng-if="header.fieldName == 'assigned'">
                     <strong ng-class="{'text-success': request[header.fieldName] < 15,'text-danger': request[header.fieldName] > 14}" class="text-success">{{request[header.fieldName]}}</strong>
