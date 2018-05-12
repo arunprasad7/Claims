@@ -18,7 +18,7 @@
                 isPolicyDetailOpen : false,
                 isMemberDetailOpen : false
             }
-            var staticTemplate = '<a href="javascript:;" class="custCheckboxBtn" ng-class="{\'custCheckboxBtnSected\' : row.entity.isChecked}" ng-click="row.entity.isChecked = !row.entity.isChecked"><span class="oi" data-glyph="check"></span></a>&nbsp;';
+            var staticTemplate = '<a href="javascript:;" class="custCheckboxBtn ui-grid-header-cell-wrapper" ng-class="{\'custCheckboxBtnSected\' : row.entity.isChecked}" ng-click="row.entity.isChecked = !row.entity.isChecked"><span class="oi" data-glyph="check"></span></a>';
 
             var settingsTemplate = '<a href="javascript:;" class="eclaimReqSetBtn dropdown-toggle" style="padding:10px 10px 10px 10px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="oi" data-glyph="wrench"></span></a>&nbsp;'+
             '<a class="eclaimReqSetBtn" href="javascript:;" ng-click="grid.appScope.editClaim(row.entity)"><span class="oi mr-1" data-glyph="pencil"></span></a>'+
@@ -32,9 +32,12 @@
 
             var descriptionTemplate = '<div ng-if="!row.entity.editable || !col.colDef.enableCellEdit" class="text-truncate" style="padding:3px;" ng-click="grid.appScope.editClaim(row.entity)">{{COL_FIELD}}</div>';
 
+            var headerCheckboxTemplate = '<a href="javascript:;" class="custCheckboxBtn ui-grid-header-cell-wrapper" ng-class="{\'custCheckboxBtnSected\' : grid.appScope.isChecked}" ng-click="grid.appScope.toggleSelect();"><span class="oi" data-glyph="check"></span></a>&nbsp;';
+
             function init() {
                 $scope.isInlineEdit = false;
                 $scope.moduleName = 'reimbursement';
+                $scope.currencyType = '1';
                 $scope.claim = ReimbursementProcessingService.createNewReimbursmentObject();
                 $scope.claimReqList = ReimbursementProcessingService.getClaimsRequest();
                 $scope.treatmentCodes = ReimbursementProcessingService.getCodes('T');
@@ -135,7 +138,8 @@
                         {name:'externalRemarks', displayName:'External Remarks', cellTemplate:'descriptionTemplate', width:210},
                         {name:'Settings', displayName:'Settings', cellTemplate:'settingsTemplate',width:75, pinnedRight:true, enableColumnMenu: false}
                     ],
-                    enableSorting: false
+                    enableSorting: false,
+                    enableVerticalScrollbars : 'Never'
                 }
             }
 

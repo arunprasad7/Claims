@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="request in $ctrl.requests | orderBy : $ctrl.fieldName : $ctrl.reverse">
+        <tr ng-repeat="request in filteredClaims | orderBy : $ctrl.fieldName : $ctrl.reverse">
             <td ng-repeat="header in $ctrl.headers" class="{{header.class}}">
                 <span ng-if="!header.redirectable && header.fieldName != 'assigned'">
                     <span ng-if="header.type == 'id'">#</span>
@@ -31,3 +31,8 @@
         </tr>
     </tbody>
 </table>
+<div class="row">
+    <div class="col-sm-12">
+        <pagination records-to-display="3" records="$ctrl.requests" total-record-count="$ctrl.requests.length" filtered-claims="filteredClaims"></pagination>
+    </div>
+</div>

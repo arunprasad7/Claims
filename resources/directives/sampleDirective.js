@@ -16,22 +16,28 @@
                 searchAuto:'=',
                 callback: '&'
             },
-            controller: function($scope ) {
+            controller: function($scope) {
+
                 $scope.autoSearch = $scope.searchAuto;
-                $scope.paymentWay= "";
+                $scope.paymentWay = "";
                 $scope.search = {};
+
                 $scope.clearSearch = function() {
                     $scope.searchText = "";
                     $scope.localSearchText = "";
                     $scope.search = {};
+                    $scope.callback({'data' : null});
                 };
+
                 $scope.doSearch = function() {
                     var searchText = $scope.search;
                     $scope.callback({'data' : searchText});
                 };
+
                 $scope.querySearch = function(query) {
                     return query ? $scope.autoSearch.filter(createFilterFor(query)) : $scope.autoSearch;
                 }
+
                 function createFilterFor(query) {
                     var lowercaseQuery = angular.lowercase(query);
                     return function filterFn(state) {

@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-12">
+        <div class="p-3" id="finilizationCont">
+            <div class="resultInfo pl-2">
+                <span ng-click="selectAllRecords()" class="align-middle selectline"><a href="javascript:void(0);" id="selectAll" style="font-size:75%;">{{selectAll ? 'De-SelectAll' : 'Select All'}}</a></span>
+                <span class="d-inline-block pl-5">Sort:</span>
+                <select class="custom-select innerFilterSort" ng-change="sortByValue(sortBy)" ng-model="sortBy">
+                    <option value="receivedDateDesc">By Date Asc</option>
+                    <option value="receivedDate">By Date Desc</option>
+                </select>
+                <a href="javascript:void(0);" class="btn btn-primary btn-sm finlizeBtn btn-finalize float-right" ng-click="finalizeSelectedClaims();">Finalize</a>
+            </div>
+            <table class="table mt-2">
+                <tbody>
+                    <tr ng-if="filteredClaims.length == 0">
+                        <td style="text-align:center;">
+                            <h5>No Records Available...</h5>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="record in filteredClaims | orderBy: orderByField : reverseSort">
+                        <td class="align-middle">
+                            <a href="javascript:void(0);" class="custSelectBtn" ng-class="{custSelectBtnSected : record.selected}" aria-label="Select" ng-click="record.selected = !record.selected;selectClaimToFinalize(record);">
+                                <span class="oi align-middle l-8" data-glyph="check"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <div class="d-inline-block pr-2">Claim Number: 
+                                <span class="currencyTypeCustom">{{record.batch}}</span>
+                            </div>
+                            <div class="text-nowrap clearfix">
+                                <span class="oi"></span>
+                                <div class="receiveInfo d-inline-block pr-3 float-left">
+                                    <span class="oi" data-glyph="timer"></span>Received Date {{record.receivedDate}}
+                                </div>
+                                <div class="statusInfo d-inline-block float-left" ng-class="{'text-danger' : record.status == 'Rejected', 'text-success' : record.status == 'Approved'}">
+                                    <span class="oi" data-glyph="thumb-down"></span> {{record.status == 'Rejected' ? 'Rejected' : 'Approved'}}
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-nowrap">
+                                <span class="tablLal" style="display: contents !important;">Paid To:</span>
+                                <span class="tablCont">{{record.PaidTo}}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-nowrap">
+                                <strong class="tablLal tablLal1">{{record.status=="Approved" ? 'ApprovedAmount' : 'RejectedAmount'}}</strong>
+                                <strong>Rs.{{record.rejectedAmount}}</strong>
+                            </div>
+                            <div class="text-nowrap">
+                                <strong class="tablLal tablLal1">Payment Way:</strong>
+                                <strong>{{record.paymentWay}}</strong>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-nowrap">
+                                <strong class="tablLal tablLal1">Payment Date:</strong>
+                                <strong>{{record.paymentDate}} </strong>
+                            </div>
+                            <div class="text-nowrap">
+                                <strong class="tablLal tablLal1">Payment Reference: </strong>
+                                <strong>{{record.paymentReference}}</strong>
+                            </div>
+                        </td>
+                        <td class="text-right">
+                            <div class="text-nowrap">
+                                Total Claims
+                                <h4>Rs.{{record.totalClaims}}</h4>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12" style="background-color:white;">
+        <pagination records-to-display="4" records="finalizationRecords" total-record-count="finalizationRecords.length" filtered-claims="filteredClaims"></pagination>
+    </div>
+</div>
