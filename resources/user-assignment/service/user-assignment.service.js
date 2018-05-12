@@ -207,8 +207,7 @@
                 'status': 'Assigned',
                 'emiratesId': 56787,
                 "id" : new Date().getTime() + 11
-            },
-            {
+            }, {
                 'claimNo': '456',
                 'memberNo': '9562467936',
                 'voucherNo': '49228',
@@ -505,6 +504,25 @@
                 'currencyCode': 'AED',
                 'status': 'Assigned',
                 "id" : new Date().getTime() + 5
+            },{
+                'userId': '1239',
+                'name': 'Ashraf',
+                'assigned': 7,
+                'pending': 1,
+                'claimNo': '2345790',
+                'memberNo': '98',
+                'voucherNo': '45628',
+                'encounterType': 'Inpatient',
+                'requestRecievedOn': '23 jan 2018',
+                'prevRequest': 'NA',
+                'payMode': 'Cheque',
+                'payDate': '08 Jan 2018',
+                'payRefNo': '13212',
+                'requestedAmount': ',23,515',
+                'approvedAmount': '1,00,500',
+                'currencyCode': 'AED',
+                'status': 'Assigned',
+                "id" : new Date().getTime() + 6
             }];
         }
     }

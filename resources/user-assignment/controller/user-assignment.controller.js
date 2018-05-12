@@ -105,7 +105,6 @@
                                ];
 
         $scope.fieldsObject =  [{label : 'Member Number', type  :'text', name :'payRef'},
-                                {label : 'Voucher Number', type  :'text', name :'voucherNumber'},
                                 {label : 'Claim Number', type  :'text', name :'cliamNumber'},
                                 {label : 'Approved By', type : 'autoSearch', name :'approvedUser'},
                                 {label : 'Request Recevied From', type : 'date', name :'receviedFrom'},
