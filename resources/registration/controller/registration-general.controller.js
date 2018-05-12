@@ -13,6 +13,8 @@
         $scope.isNew = isNew;
         $scope.search = {};
         $scope.fileInfos = [];
+        $scope.documents = [];
+        $scope.docTypes = [];
         $scope.hasMandatory = true;
         $scope.documentTypes = RegistrationService.getDocumentTypes();
         $scope.setDcoumentType = function(documentType) {
@@ -91,10 +93,6 @@
             }
         }
 
-        $scope.onCarouselInit = function() {
-            $scope.files = [];
-        }
-
         $scope.showPreview = function(index, item) {
             $scope.noOfSlides = 3;
             $scope.previewIndex = index;
@@ -152,7 +150,6 @@
 
         $scope.deleteFile = function(index, id) {
             for(var f = 0; f<$scope.fileInfos.length; f++) {
-                console.log($scope.fileInfos[f].id)
                 if($scope.fileInfos[f].id != id) continue;
                 $scope.fileInfos.splice(f, 1);
                 break;
@@ -199,7 +196,7 @@
                         })
                         $scope.documents[index] = $scope.docObj;                        
                     }
-                    $scope.filterDocuments();
+                    if($scope.docTypes && $scope.docTypes.length)$scope.filterDocuments();
                 }, function() {}
             );
         }
@@ -248,6 +245,11 @@
         function init() {
             $scope.regDetail.paymentWay ? $scope.setPaymentWay($scope.regDetail.paymentWay) : '';
             $scope.regDetail.source ? $scope.setDcoumentType($scope.regDetail.source) : '';
+        }
+
+        $scope.clearDocFilter = function() {
+            $scope.docTypes = [];
+            $scope.documents = angular.copy($scope.fileInfos);
         }
 
         init();

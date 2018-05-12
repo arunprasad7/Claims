@@ -1641,7 +1641,7 @@ footer {
 
 @media (max-width:1400px) {
     .table td, .table th {
-        padding: 7px 5px;
+        padding: 7px 2px;
     }
 }
 
