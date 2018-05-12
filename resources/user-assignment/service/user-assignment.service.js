@@ -525,5 +525,16 @@
                 "id" : new Date().getTime() + 6
             }];
         }
+
+        this.getSearchFields = function() {
+            return [
+                { label: 'Member Number', type: 'text', name: 'payRef'},
+                { label: 'Claim Number', type: 'text', name: 'cliamNumber'},
+                { label: 'Approved By', type: 'autoSearch', name: 'approvedUser'},
+                { label: 'Request Recevied From', type: 'date', name: 'receviedFrom'},
+                { label: 'Request Recevied To', type: 'date', name: 'receviedTo'},
+                { label: 'Assigned User', type: 'autoSearch', name: 'assignedUser'}
+            ];
+        }
     }
 })();
