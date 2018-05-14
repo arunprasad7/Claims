@@ -30,6 +30,7 @@
                         }
 
                         scope.$watch('records', function(newValue, oldValue, scope) {
+                            scope.pager = {};
                             scope.setPage(1);
                         })
 
