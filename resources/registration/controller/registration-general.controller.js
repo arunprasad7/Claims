@@ -30,7 +30,7 @@
 
         $scope.registerClaim = function() {
             RegistrationService.registerClaim($scope.regDetail);
-            $state.go('claim-registrationList');
+            $state.go('claim-registration');
         }
 
         $scope.uploadFiles = function(files, doc) {

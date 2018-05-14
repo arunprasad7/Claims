@@ -418,31 +418,31 @@
                                     <div class="col-sm-2 float-left">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">   
                                             <label>Policy Ded Amount</label>
-                                            <input type="number" ng-model="claim.policyDedAmount">
+                                            <input type="number" ng-model="claim.policyDedAmount" ng-init="claim.policyDedAmount=0" ng-disabled="true">
                                         </md-input-container>
                                     </div>
                                     <div class="col-sm-2 float-left">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">
                                             <label>Penalty Amount</label>
-                                            <input type="number" ng-model="claim.penaltyAmount">
+                                            <input type="number" ng-model="claim.penaltyAmount" ng-init="claim.penaltyAmount=0" ng-disabled="true">
                                         </md-input-container>
                                     </div>
                                     <div class="col-sm-2 float-left">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">
                                             <label>Suggessted Amt</label>
-                                            <input type="number" ng-model="claim.suggesstedAmount" ng-init="claim.suggesstedAmount=1000" ng-disabled="true">
+                                            <input type="number" ng-model="claim.suggesstedAmount" ng-init="claim.suggesstedAmount=0" ng-disabled="true">
                                         </md-input-container>
                                     </div>
                                     <div class="col-sm-2 float-left">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">
                                             <label>Approved Amount</label>
-                                            <input type="number" ng-model="claim.approvedAmount" ng-init="claim.approvedAmount=2000" ng-disabled="true">
+                                            <input type="number" ng-model="claim.approvedAmount" ng-init="claim.approvedAmount=0" ng-disabled="true">
                                         </md-input-container>
                                     </div>
                                     <div class="col-sm-2 float-left">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">
                                             <label>Rejected Amount</label>
-                                            <input type="number" ng-model="claim.rejectedAmount" ng-init="claim.rejectedAmount=3000" ng-disabled="true">
+                                            <input type="number" ng-model="claim.rejectedAmount" ng-init="claim.rejectedAmount=0" ng-disabled="true">
                                         </md-input-container>
                                     </div>
                                     <div class="col-sm-2 float-left" style="width: auto !important;">
@@ -455,12 +455,6 @@
                             </div>
                             <div class="col-sm-12 withBorGrayTxtWrap clearfix pb-1">
                                 <div layout-gt-sm="row" class="pb-1">
-                                    <!-- <div class="col-sm-3 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px;">
-                                        <md-input-container flex-gt-sm style="margin-top: 18px;">
-                                            <label>Rejection Description</label>
-                                            <textarea class="claimReqIput" maxlength="120" ng-model="claim.rejectionDesc" rows="2"></textarea>
-                                        </md-input-container>
-                                    </div> -->
                                     <div class="col-sm-4 float-left" style="border: 1px solid #b3b3b3;margin: 0 3px 0 0;">
                                         <md-input-container flex-gt-sm style="margin-top: 18px;">
                                             <label>Internal Remarks</label>

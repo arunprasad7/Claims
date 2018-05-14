@@ -503,6 +503,10 @@ input.fileupload {
     background: #f7fcff;
 }
 
+#reimbListTabl th {
+    outline: none;
+}
+
 .statusInfo {
     font: normal 13px/24px "open_sanssemibold";
 }
@@ -1338,7 +1342,6 @@ footer li strong {
 
 .createNewBtn {
     border-radius: 18px;
-    text-transform: uppercase;
     padding: .375rem 1.25rem;
 }
 
