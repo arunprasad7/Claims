@@ -1,0 +1,38 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th ng-click="sortBy(header.fieldName)" ng-repeat="header in headers" class="{{header.class}}">
+                {{header.label}}
+                <span class="fa fa-sort" ng-show="fieldName == header.fieldName" ng-class="{'fa fa-sort-desc': reverse, 'fa fa-sort-asc' : !reverse}"></span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="record in filteredRecords | orderBy : fieldName : reverse">
+            <td ng-repeat="header in headers" class="{{header.class}}">
+                <span ng-if="!header.redirectable && header.fieldName != 'assigned'">
+                    <span ng-if="header.type == 'id'">#</span>
+                    {{record[header.fieldName]}}
+                </span>
+                <span ng-if="header.redirectable">
+                    <a href="javascript:void(0);" ng-click="navigateTo(record);">{{record[header.fieldName]}}</a>
+                </span>
+                <span ng-if="header.isDocument">
+                    <a class="float-left fa fa-file-pdf-o" href="resources/img/dis.png" download=""></a>
+                </span>
+                <span ng-if="header.fieldName == 'assigned'">
+                    <strong ng-class="{'text-success': record[header.fieldName] < 15,'text-danger': record[header.fieldName] > 14}" class="text-success">{{record[header.fieldName]}}</strong>
+                </span>
+                <div ng-if="header.isCheckBox" class="custom-control custom-radio" ng-click="getSelectedData(record);">
+                    <input type="radio" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label"></label>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-sm-12">
+        <pagination records-to-display="4" records="records" total-record-count="records.length" filtered-claims="filteredRecords"></pagination>
+    </div>
+</div>
