@@ -1,5 +1,6 @@
 <nav class="navbar pt-1 pb-1">
-    <span class="navbar-brand p-0 m-0" ui-sref="claim-registration"><i class="fa fa-arrow-left" style="cursor:pointer"></i>&nbsp;&nbsp;Claim Registration</span>
+    <span class="navbar-brand p-0 m-0" ui-sref="claim-registration">
+        <i class="fa fa-arrow-left" style="cursor:pointer"></i>&nbsp;&nbsp;Claim Registration</span>
     <!-- <span class="navbar-brand p-0 m-0" ng-click="toggleUpload();"><i class="fa fa-plus-square-o" style="font-size: larger"></i></span> -->
 </nav>
 <section class="">
@@ -12,7 +13,7 @@
                             <label>Member Number</label>
                             <input ng-model="search.memberNumber">
                         </md-input-container>
-                    </div>    
+                    </div>
                     <div style="border-left: 1px solid #e6e6e6; width: 100% !important;">
                         <md-input-container flex-gt-sm>
                             <label>Policy Number</label>
@@ -44,23 +45,39 @@
             <div class="fldsWrap clearfix">
                 <div layout-gt-sm="row">
                     <div class="col-sm-6">
-                        <md-input-container flex-gt-sm>    
-                            <label>Member Name</label>
-                            <input type="text" ng-model="regDetail.memberName"/>
+                        <md-input-container flex-gt-sm>
+                            <label>Policy Number</label>
+                            <input type="text" ng-model="regDetail.policyNumber" />
                         </md-input-container>
                     </div>
                     <div class="col-sm-6 colborder">
-                            <md-input-container flex-gt-sm>    
-                                <label>Emirates ID</label>
-                                <input type="text" ng-model="regDetail.emiratesId"/>
-                            </md-input-container>
+                        <md-input-container flex-gt-sm>
+                            <label>Member Number</label>
+                            <input type="text" ng-model="regDetail.memberNumber" />
+                        </md-input-container>
                     </div>
-                </div>    
+                </div>
             </div>
             <div class="fldsWrap clearfix">
                 <div layout-gt-sm="row">
                     <div class="col-sm-6">
-                        <md-input-container flex-gt-sm>    
+                        <md-input-container flex-gt-sm>
+                            <label>Member Name</label>
+                            <input type="text" ng-model="regDetail.memberName" />
+                        </md-input-container>
+                    </div>
+                    <div class="col-sm-6 colborder">
+                        <md-input-container flex-gt-sm>
+                            <label>Emirates ID</label>
+                            <input type="text" ng-model="regDetail.emiratesId" />
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+            <div class="fldsWrap clearfix">
+                <div layout-gt-sm="row">
+                    <div class="col-sm-6">
+                        <md-input-container flex-gt-sm>
                             <label>Mobile Number 1</label>
                             <input type="number" ng-model="regDetail.mobileNum1" />
                         </md-input-container>
@@ -68,7 +85,7 @@
                     <div class="col-sm-6 colborder">
                         <md-input-container flex-gt-sm>
                             <label>Email ID 1</label>
-                            <input type="email" ng-model="regDetail.email1"/>
+                            <input type="email" ng-model="regDetail.email1" />
                         </md-input-container>
                     </div>
                 </div>
@@ -84,25 +101,25 @@
                     <div class="col-sm-6 colborder">
                         <md-input-container flex-gt-sm>
                             <label>Email ID 2</label>
-                            <input type="email" ng-model="regDetail.email2"/>
+                            <input type="email" ng-model="regDetail.email2" />
                         </md-input-container>
                     </div>
-                </div>    
+                </div>
             </div>
             <div class="fldsWrap clearfix">
                 <div layout-gt-sm="row">
                     <div class="col-sm-6">
                         <md-input-container flex-gt-sm>
                             <label>Previous Request</label>
-                            <input type="text" ng-model="regDetail.prevRequest"/>
-                        </md-input-container>                        
-                    </div>    
+                            <input type="text" ng-model="regDetail.prevRequest" />
+                        </md-input-container>
+                    </div>
                     <div class="col-sm-6 colborder">
                         <md-input-container flex-gt-sm>
                             <label>Requested Amount</label>
                             <input type="number" ng-model="regDetail.requestAmt" />
                         </md-input-container>
-                    </div>    
+                    </div>
                 </div>
             </div>
             <div class="fldsWrap clearfix">
@@ -125,23 +142,25 @@
                             </md-select>
                         </md-input-container>
                     </div>
-                </div>        
+                </div>
             </div>
             <div class="fldsWrap clearfix">
                 <div layout-gt-sm="row">
                     <div class="col-sm-6">
                         <md-input-container>
                             <label>Request Received Date</label>
-                            <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="regDetail.reqReceivedDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
+                            <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="regDetail.reqReceivedDate" md-hide-icons="triangle"
+                                md-open-on-focus></md-datepicker>
                         </md-input-container>
                     </div>
                     <div class="col-sm-6 colborder">
                         <md-input-container>
                             <label>Service From Date</label>
-                            <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="regDetail.serviceFmDate" md-hide-icons="triangle" md-open-on-focus></md-datepicker>
+                            <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="regDetail.serviceFmDate" md-hide-icons="triangle"
+                                md-open-on-focus></md-datepicker>
                         </md-input-container>
-                    </div>    
-                </div>        
+                    </div>
+                </div>
             </div>
             <div class="fldsWrap clearfix">
                 <div class="fieldsCol fieldsFilledCol">
@@ -166,7 +185,7 @@
                     <div class="col-sm-4">
                         <div layout-gt-sm="row">
                             <div class="pb-1 iban-box">
-                                <md-input-container flex-gt-sm class="iban-input">    
+                                <md-input-container flex-gt-sm class="iban-input">
                                     <label>IBAN Number</label>
                                     <input type="text" ng-model="regDetail.ibanNum" />
                                 </md-input-container>
@@ -178,7 +197,7 @@
                         <div class="fileuploadWrap" style="float:left;">
                             <div ngf-select="uploadIbanFiles($file)" ng-disabled="ibanFile.isUploading">
                                 <span class="oi align-middle mr-1" data-glyph="cloud-upload"></span> Browse Files
-                            </div>                            
+                            </div>
                         </div>
                         <a href="{{ibanFile.url}}" download="{{ibanFile.name}}" class="iban-filename-elipsis"> {{ibanFile.name}} </a>
                     </div>
@@ -200,13 +219,14 @@
                         </md-input-container>
                     </div>
                     <div class="col-sm-2">
-                        <button type="button" class="btn btn-outline-primary btn-sm p1" ng-click="clearDocFilter()">Clear</button>                                                   
+                        <button type="button" class="btn btn-outline-primary btn-sm p1" ng-click="clearDocFilter()">Clear</button>
                     </div>
                     <div class="col-sm-7">
                         <button type="button" class="btn btn-outline-primary btn-sm float-right" ng-click="documentsUpload()">Upload</button>
                     </div>
-                </div>                
-                <div ng-if="documents.length > 0 && uploaded" id="thumbnailSlider" ng-style="{'padding-left' : fileInfos.length > 2 ? '15px' : '0px'}" class="col-sm-11">
+                </div>
+                <div ng-if="documents.length > 0 && uploaded" id="thumbnailSlider" ng-style="{'padding-left' : fileInfos.length > 2 ? '15px' : '0px'}"
+                    class="col-sm-11">
                     <ui-carousel slides="documents" slides-to-show="noOfSlides" slides-to-scroll="noOfSlides" initial-slide="0" style="margin-bottom:0px;margin-left: 15px;padding-top: 24px;"
                         infinite="false" name="'thumbnailSlider'" ng-class="{'img-padding' : (showUpload && $odd), 'img-padding' : !showUpload}">
                         <carousel-item>
@@ -221,8 +241,10 @@
                             </div>
                             <div class="thumbnail-card" ng-class="{'img-padding' : $odd}">
                                 <div style="height:127px;padding:10px;">
-                                    <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}"  max-height="118" max-width="195" class="pdf-view" ng-show="item.ext == 'image'" style="padding:5px;"></thumbnail>
-                                    <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}" class="pdf-view" max-height="118" max-width="195" ng-show="item.ext == 'pdf'" style="padding:5px;"></thumbnail>
+                                    <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}" max-height="118" max-width="195" class="pdf-view" ng-show="item.ext == 'image'"
+                                        style="padding:5px;"></thumbnail>
+                                    <thumbnail file-type="{{ item.ext }}" source="{{ item.previewUrl }}" class="pdf-view" max-height="118" max-width="195" ng-show="item.ext == 'pdf'"
+                                        style="padding:5px;"></thumbnail>
                                     <div ng-show="item.ext == 'docx'">
                                         <i class="fa fa-file-word-o center" style="font-size:90px; color:#26559a; width:160px; height: 95px; text-align:center"></i>
                                     </div>
@@ -230,21 +252,23 @@
                                         <i class="fa fa-file-excel-o center" style="font-size:90px; color:green; width:160px; height: 95px; text-align:center"></i>
                                     </div>
                                 </div>
-                                <div class="upload-details">                            
+                                <div class="upload-details">
                                     <p class="slide-text-truncate">
                                         <a href="" ng-click="showPreview($index, item)">
-                                            <span>{{item.name}}</span><br>
-                                        </a>    
-                                        <span>Uploaded on {{item.uploadedDate | date: 'mediumDate'}}</span><br>
+                                            <span>{{item.name}}</span>
+                                            <br>
+                                        </a>
+                                        <span>Uploaded on {{item.uploadedDate | date: 'mediumDate'}}</span>
+                                        <br>
                                         <!-- Type:<span>{{item.documentTyp}}</span><br>
                                         Desc:<span>{{item.documentDesc}}</span><br> -->
                                     </p>
                                     <p>
-                                        <i class="fa fa-file-picture-o upload-file-icon" ng-show = "item.ext == 'image'" style="color:#00aeef;"></i>
-                                        <i class="fa fa-file-pdf-o upload-file-icon" ng-show = "item.ext == 'pdf'" style="color:red;"></i>
-                                        <i class="fa fa-file-word-o upload-file-icon" ng-show = "item.ext == 'docx'" style="color:#26559a;"></i>
-                                        <i class="fa fa-file-excel-o upload-file-icon" ng-show = "item.ext == 'excel'" style="color:green"></i>
-                                    </p>                                    
+                                        <i class="fa fa-file-picture-o upload-file-icon" ng-show="item.ext == 'image'" style="color:#00aeef;"></i>
+                                        <i class="fa fa-file-pdf-o upload-file-icon" ng-show="item.ext == 'pdf'" style="color:red;"></i>
+                                        <i class="fa fa-file-word-o upload-file-icon" ng-show="item.ext == 'docx'" style="color:#26559a;"></i>
+                                        <i class="fa fa-file-excel-o upload-file-icon" ng-show="item.ext == 'excel'" style="color:green"></i>
+                                    </p>
                                 </div>
                             </div>
                         </carousel-item>
@@ -257,8 +281,8 @@
                     </ui-carousel>
                 </div>
                 <div ng-if="documents.length == 0" class="pt-5" style="text-align: center"> No Documents Found</div>
-            </div>    
-            
+            </div>
+
             <div class="fldsWrap pr-3 pb-2 pt-2 clearfix">
                 <button type="button" class="btn btn-primary float-right" ng-click="registerClaim()">Submit</button>
             </div>
@@ -266,17 +290,21 @@
 
     </div>
     <div class="rightContainer col-sm-5" ng-if="showUpload" style="height: 95vh;">
-        <a href="javascript:;" class="infoToggleBtn" ng-click="toggleInfo();" style="margin-left:17px;position: absolute;top:0"><span class="oi" data-glyph="arrow-right"></span> <br />hide</a>
+        <a href="javascript:;" class="infoToggleBtn" ng-click="toggleInfo();" style="margin-left:17px;position: absolute;top:0">
+            <span class="oi" data-glyph="arrow-right"></span>
+            <br />hide</a>
         <ui-carousel slides="documents" slides-to-show="1" slides-to-scroll="1" initial-slide="previewIndex" style="width:98%;height:100%; margin:39px 0px 0px 18px;"
-            infinite="false" name="'previewSlider'" ng-if = "documents.length > 0 && isPreview">
+            infinite="false" name="'previewSlider'" ng-if="documents.length > 0 && isPreview">
             <carousel-item>
-               <div style="width:96%; padding:5px;">
+                <div style="width:96%; padding:5px;">
                     <div ng-show="item.ext != 'docx' && item.ext != 'excel'" style="padding-left:5px;">
                         <iframe ng-src="{{trustUrl(item)}}" width="98%" height="590px;" ng-show="item.ext == 'pdf'"></iframe>
-                        <img ng-src="{{trustUrl(item)}}" ng-show="item.ext != 'pdf'" style="width:98%;height:590px"/>
+                        <img ng-src="{{trustUrl(item)}}" ng-show="item.ext != 'pdf'" style="width:98%;height:590px" />
                     </div>
                     <div ng-show="item.ext == 'docx' || item.ext == 'excel'" style="width:98%; height:500px;color:white;font-size:25px;text-align:center">
-                        <br><br><br>No Preview Available
+                        <br>
+                        <br>
+                        <br>No Preview Available
                     </div>
                 </div>
             </carousel-item>
@@ -291,7 +319,7 @@
             <h2>Upload your Claim scaned copy</h2>
             <div style="padding: 0px 4px 4px 4px;">
                 <div class="fldsWrap clearfix">
-                    <md-input-container flex-gt-sm>    
+                    <md-input-container flex-gt-sm>
                         <label>Upload Type</label>
                         <md-select ng-model="upload.type">
                             <md-option value="Iban" ng-if="paymentWay == 'iban'">Iban</md-option>
@@ -304,12 +332,12 @@
                     </md-input-container>
                 </div>
                 <div class="fldsWrap clearfix">
-                    <md-input-container flex-gt-sm>    
+                    <md-input-container flex-gt-sm>
                         <label>Upload Description</label>
                         <input type="text" ng-model="upload.description">
                     </md-input-container>
                 </div>
-            </div>    
+            </div>
             <div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
                 ngf-change="uploadFiles($files, null)" ng-show="upload.type">
                 <span class="oi align-middle mr-1" data-glyph="cloud-upload" style="color:#00aeef"></span>
@@ -325,26 +353,25 @@
         <div id="mandatoryUpload" class="uploadPlaceHolder" ng-hide="isPreview" ng-if="hasMandatory">
             <h2>Upload your Claim scaned copy</h2>
             <uib-accordion close-others="false">
-                <div uib-accordion-group class="panel-default" is-open="isOpen" ng-init="isOpen = (doc.isRequired && !doc.files)" 
-                ng-repeat="doc in documentTypes | orderBy:'isRequired' : true"  ngf-drop="uploadFiles($files, doc)" ngf-drag-over-class="'dragover'" 
-                ngf-multiple="true" ngf-allow-dir="true">
+                <div uib-accordion-group class="panel-default" is-open="isOpen" ng-init="isOpen = (doc.isRequired && !doc.files)" ng-repeat="doc in documentTypes | orderBy:'isRequired' : true"
+                    ngf-drop="uploadFiles($files, doc)" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true">
                     <uib-accordion-heading>
                         <div class="acc-header">
-                            {{doc.label}} 
+                            {{doc.label}}
                             <!-- ({{!doc.files ? 0 : doc.files.length}}) -->
                             <span style="color:red;" ng-show="doc.isRequired">*</span>
                             <span class="oi expanded" data-glyph="chevron-bottom"></span>
                             <span class="oi collapsed" data-glyph="chevron-top"></span>
                         </div>
-                        
+
                     </uib-accordion-heading>
                     <div ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-                    ngf-change="uploadFiles($files, doc)">
+                        ngf-change="uploadFiles($files, doc)">
                         <span class="oi align-middle mr-1" data-glyph="cloud-upload" style="color:#00aeef"></span>
                         Drop Files or click to upload
-                    </div>                        
+                    </div>
                 </div>
-            </uib-accordion> 
+            </uib-accordion>
         </div>
     </div>
 </section>
