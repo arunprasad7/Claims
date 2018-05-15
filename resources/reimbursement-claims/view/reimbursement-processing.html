@@ -515,26 +515,27 @@
                                         <md-option value="3">EUR</md-option>
                                     </md-select>
                                 </md-input-container>
-                            </span> 
+                            </span>
                         </div>
                         <span class="fa fa-info-circle" style="color: #4e5e82;">
-                                <md-tooltip md-direction="{{demo.tipDirection}}">
-                                    <table>
-                                        <tr>
-                                            <td><strong>United Arab Emirates(AED):</strong></td>
-                                            <td>&nbsp; 1</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>United States Dollar(USD):</strong></td>
-                                            <td>&nbsp; 2</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Euro(EUR):</strong></td>
-                                            <td>&nbsp; 3</td>
-                                        </tr>                
-                                    </table>
-                                </md-tooltip>
+                            <md-tooltip md-direction="{{demo.tipDirection}}">
+                                <table>
+                                    <tr>
+                                        <td><strong>United Arab Emirates(AED):</strong></td>
+                                        <td>&nbsp; 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>United States Dollar(USD):</strong></td>
+                                        <td>&nbsp; 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Euro(EUR):</strong></td>
+                                        <td>&nbsp; 3</td>
+                                    </tr>                
+                                </table>
+                            </md-tooltip>
                         </span>
+                        <button type="button" class="btn btn-outline-primary btn-sm ml-3" ng-click="isLocalCurrency = !isLocalCurrency">{{ isLocalCurrency ? 'Convert To LocalCurrency' : 'Convert To BaseCurrency'}}</button>
                         <a href="javascript:;" class="tablColmArrow float-right mt-2 mb-2 mr-3 ml-2" ng-click="createNewClaim();">
                             <span class="oi" data-glyph="plus"></span>
                         </a>
@@ -585,9 +586,13 @@
                 <span class="oi" data-glyph="print"></span>
                 Print Package
             </a>
-            <a href="javascript:;" class="btn-link footerLink float-left">
+            <a href="javascript:;" class="btn-link footerLink float-left mr-3">
                 <span class="oi" data-glyph="envelope-closed"></span>
                 Send Rejection
+            </a>
+            <a href="javascript:;" class="btn-link footerLink float-left">
+                <span class="oi" data-glyph="document"></span>
+                Documents & Correspondence
             </a>
         </footer>
     </div>
