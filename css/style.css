@@ -1809,3 +1809,6 @@ md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-requir
     width: 65% !important;
     text-overflow: ellipsis;
 }
+.md-tooltip{
+    height: auto;
+}
