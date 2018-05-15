@@ -127,6 +127,9 @@
                                         <th ng-click="sortBy('mobileNum1')">Mobile Number
                                             <span class="fa fa-sort" ng-show="propertyName == 'mobileNum1'"ng-class="{'fa fa-sort-desc': reverse, 'fa fa-sort-asc' : !reverse}"></span>
                                         </th>
+                                        <th ng-click="sortBy('serviceFmDate')">Service From Date
+                                            <span class="fa fa-sort" ng-show="propertyName == 'serviceFmDate'"ng-class="{'fa fa-sort-desc': reverse, 'fa fa-sort-asc' : !reverse}"></span>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -137,6 +140,7 @@
                                         <td>{{claim.voucherNumber}}</td>
                                         <td>{{claim.policyNumber}}</td>
                                         <td>{{claim.mobileNum1}}</td>
+                                        <td>{{claim.serviceFmDate | date: 'mediumDate'}}</td>
                                     </tr>
                                 </tbody> 
                             </table>
