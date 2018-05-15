@@ -116,9 +116,7 @@
                     }
 
                     $scope.newClaim = function() {
-                        var newClaim = RegistrationService.createRegDetailObj();
-                        var claimObj = {'claim' : newClaim, 'isNew' : true};
-                        $uibModalInstance.close(claimObj);
+                        $scope.registerNew = true;
                     }
 
                     $scope.continue = function(claim) {
