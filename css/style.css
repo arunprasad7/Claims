@@ -1596,7 +1596,7 @@ footer {
 
 .eclaim .slide {
     margin-left: -18px;
-    margin-right: 18px;
+    margin-right: 18px; 
 }
 
 .currencyTypeCustom {
@@ -1612,7 +1612,7 @@ footer {
 
 .dropdown-menu {
     position: fixed !important;
-    left: 97% !important;
+    left: 96% !important;
     top: 30px !important;
 }
 
@@ -1811,3 +1811,7 @@ md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-requir
 .md-tooltip{
     height: auto;
 }
+
+.md-datepicker-calendar-pane {
+    z-index: 22222;
+} 

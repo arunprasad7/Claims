@@ -5,7 +5,7 @@
     <div class="leftContainer">
         <div class="row m-0">
             <div class="leftContentPart float-left pl-0" id="detailAccWrap" ng-class="{'detailAccWrapClose' : !infoToggle}">
-                <div id="detailAcc">
+                <div id="detailAcc" style="height:90%; overflow-y: auto;">
                     <form name="reimbursementForm" novalidate>
                         <uib-accordion close-others="isCloseOthers">
                             <div uib-accordion-group class="panel-default" is-open="accordionToggle.isProviderDetailOpen">
@@ -143,10 +143,16 @@
                                                 <input type="text" ng-model="policyDetails.policyName" ng-value="'Medic Policy'" ng-disabled="true">
                                             </md-input-container>
                                         </div>
-                                        <div class="fldsWrap clearfix">
+                                        <div class="fldsWrap clearfix" 
                                             <md-input-container flex-gt-sm>    
                                                 <label>Policy Start</label>
-                                                <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="policyDetails.policyStart" md-hide-icons="all" md-open-on-focus ng-disabled="true"></md-datepicker>
+                                                <md-datepicker  ng-keyup="clearDatepickerKeyupValue($event);" ng-model="policyDetails.policyStart" md-hide-icons="triangle" md-open-on-focus ng-disabled="true"></md-datepicker>
+                                            </md-input-container>
+                                        </div>
+                                        <div class="fldsWrap clearfix">
+                                            <md-input-container flex-gt-sm>    
+                                                <label>Policy End</label>
+                                                <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="policyDetails.policyEnd" md-hide-icons="triangle" md-open-on-focus ng-disabled="true"></md-datepicker>
                                             </md-input-container>
                                         </div>
                                         <div class="fldsWrap clearfix">
@@ -212,13 +218,13 @@
                                         <div class="fldsWrap clearfix">
                                             <md-input-container flex-gt-sm>    
                                                 <label>Member Terminated Date</label>
-                                                <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="memberDetails.memberTerminatedDate" md-hide-icons="all" md-open-on-focus></md-datepicker>
+                                                <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="memberDetails.memberTerminatedDate" md-hide-icons="triangle" md-open-on-focus ng-disabled="true"></md-datepicker>
                                             </md-input-container>
                                         </div>
                                         <div class="fldsWrap clearfix">
                                             <md-input-container flex-gt-sm>    
                                                 <label>Member Start Date</label>
-                                                <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="memberDetails.memberStartDate" md-hide-icons="all" md-open-on-focus></md-datepicker>
+                                                <md-datepicker ng-keyup="clearDatepickerKeyupValue($event);" ng-model="memberDetails.memberStartDate" md-hide-icons="triangle" md-open-on-focus ng-disabled="true"></md-datepicker>
                                             </md-input-container>
                                         </div>
                                         <div class="fldsWrap clearfix">

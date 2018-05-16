@@ -134,7 +134,7 @@
                         {name:'status', displayName:'Status', width:155},
                         {name:'internalRemarks', displayName:'Internal Remarks', cellTemplate:descriptionTemplate, width:210},
                         {name:'externalRemarks', displayName:'External Remarks', cellTemplate:descriptionTemplate, width:210},
-                        {name:'Settings', displayName:'Settings', cellTemplate:settingsTemplate,width:175, pinnedRight:true, enableColumnMenu: false}
+                        {name:'Settings', displayName:'Settings', cellTemplate:settingsTemplate,width:75, pinnedRight:true, enableColumnMenu: false}
                     ],
                     enableSorting: false,
                     enableVerticalScrollbars : 'Never'
