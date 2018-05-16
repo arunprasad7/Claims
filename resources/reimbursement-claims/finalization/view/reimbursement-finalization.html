@@ -1,0 +1,15 @@
+<nav class="navbar pt-1 pb-1">
+    <span class="navbar-brand p-0 m-0" ui-sref="reimbursement-registration" data-translate="finalization.title">Finalization</span>
+</nav>
+<section>
+    <div class="leftContainer pl-20-pr-20">
+        <div>
+                <my-search-box search-info="fieldsObject" drop-down="dropDownValue" search-text="searchValue" callback="filterValues(data)"></my-search-box>
+        </div>
+        <div class="contentPart pt-3 pb-3">
+            <div class="">
+                <finalization-list-view finalization-records="finalizationRecords" redirect-to="reimbursement-processing" finalize-selected-claims="finalizeSelectedClaims()" selected-claims="claimsToFinalize" rerender-view="rerenderView" search-by="searchBy"></finalization-list-view>
+            </div>
+        </div>
+    </div>
+</section>

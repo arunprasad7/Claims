@@ -1,0 +1,26 @@
+<nav class="navbar pt-1 pb-1">
+    <span class="navbar-brand p-0 m-0" data-translate="reImbUserAssignment.title">User Assignment</span>
+</nav>
+<section>
+    <div class="leftContainer leftuser">
+        <toaster-container></toaster-container>
+        <div>
+            <my-search-box search-info="fieldsObject" search-auto="userNamesObject" drop-down="dropDownValue" search-text="searchValue" callback="filterValues(data)"></my-search-box>
+        </div>
+        <div class="contentPart pb-3">
+            <h2 class="title">Total {{claimList.length}} available</h2>
+            <div class="container-fluid" style="padding-left:0px;">
+                <div class="row">
+                    <div class="col-9">
+                        <div class="tabOuter">
+                            <claims-list-view tabs-to-display="tabsToDisplay" all-claim-records="claimList" selected-claims="claimsToAssign" navigate-to="reimbursement-processing" rerender-view="rerenderView" search-by="searchBy"></claims-list-view>
+                        </div>
+                    </div>
+                    <div class="col-3 innerRight">
+                        <user-assignment-component headers="userAssignmentHeader" users="users" selected-user="selectedUserToAssign" assigned-to-selected-user="assignedToSelectedUser()"></user-assignment-component>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
