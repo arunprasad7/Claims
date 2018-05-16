@@ -53,11 +53,6 @@ angular
                 }
             })
 
-            .state('claim-registrationList', {
-                url: "/claim-registrationList",
-                templateUrl: "resources/registration/view/registration.html",
-                controller: 'RegistrationController'
-            })
             .state('finalization', {
                 url: "/finalization",
                 templateUrl: "resources/finalization/view/finalization.html",

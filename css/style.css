@@ -521,6 +521,10 @@ input.fileupload {
     background: #f7fcff;
 }
 
+#reimbListTabl th {
+    outline: none;
+}
+
 .statusInfo {
     font: normal 13px/24px "open_sanssemibold";
 }
@@ -1360,7 +1364,6 @@ footer li strong {
 
 .createNewBtn {
     border-radius: 18px;
-    text-transform: uppercase;
     padding: .375rem 1.25rem;
 }
 
@@ -1859,4 +1862,11 @@ a {
 .pl-20-pr-20 {
     padding-left:20px;
     padding-right:20px;
+}
+.truncate .md-input {
+    width: 65% !important;
+    text-overflow: ellipsis;
+}
+.md-tooltip{
+    height: auto;
 }

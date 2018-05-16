@@ -30,7 +30,7 @@
 
         $scope.registerClaim = function() {
             RegistrationService.registerClaim($scope.regDetail);
-            $state.go('claim-registrationList');
+            $state.go('claim-registration');
         }
 
         $scope.uploadFiles = function(files, doc) {
@@ -116,9 +116,7 @@
                     }
 
                     $scope.newClaim = function() {
-                        var newClaim = RegistrationService.createRegDetailObj();
-                        var claimObj = {'claim' : newClaim, 'isNew' : true};
-                        $uibModalInstance.close(claimObj);
+                        $scope.registerNew = true;
                     }
 
                     $scope.continue = function(claim) {
