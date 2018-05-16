@@ -149,6 +149,11 @@
                     swal("", "No Records to Reject", "warning");
                 }
             }
+            
+            $scope.demo = {
+                showTooltip: true,
+                tipDirection: 'right'
+            };
 
             $scope.saveRecord = function(saveType) {
                 processClaim($scope.claim);
