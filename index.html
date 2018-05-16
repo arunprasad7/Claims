@@ -25,6 +25,9 @@
                 <span ><img class="headLeft float-left" src="img/Beyontec_logo1.png" alt=""/></span>
                 <span>&nbsp;</span>
                 <span ><img class="headRight float-right" src="img/Beyontec_Identity_CMYK_Y60p-Horizontal-BG-Alpha.png" alt=""/></span>
+                <span class="headRight float-right" ng-controller="LanguageController">
+                    <select ng-options="key as value for (key, value) in languages" ng-model="selectedLanguage" ng-change="changelanguage()"></select>
+                </span>
             </div>
         </header>
         <nav id="navbar" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" ng-class="{'menu-open' : navbar}">
@@ -103,7 +106,8 @@
     <script src="lib/ui-bootstrap-tpls-3.0.3.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="bower_components/ng-notify/dist/ng-notify.min.js"></script>
-    <!-- <script src="bower_components/angular-translate/angular-translate.min.js"></script> -->
+    <script src="bower_components/angular-translate/angular-translate.min.js"></script>
+    <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
     <!-- External Libraies -->
 
     <script src="app.js"></script>

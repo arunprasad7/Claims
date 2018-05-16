@@ -77,19 +77,24 @@
                         scope.onGridAction({info});
                     }                    
 
-                    $('#right-button').click(function() {
+                    $('#right-button').click(function(event) {
                         event.preventDefault();
                         $('.ui-grid-content').animate({
                         scrollLeft: "+=322px"
                         }, "slow");
                     });
                     
-                    $('#left-button').click(function() {
+                    $('#left-button').click(function(event) {
                         event.preventDefault();
                         $('.ui-grid-content').animate({
                             scrollLeft: "-=322px"
                         }, "slow");
                     });
+
+                    scope.demo = {
+                        showTooltip: true,
+                        tipDirection: 'right'
+                    };
 
                     scope.$watch('gridOptions.data.length', function(newValue, oldValue) {
                         if(newValue != null) scope.noRecordsAvailable = (newValue == 0);

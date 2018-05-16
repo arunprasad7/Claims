@@ -23,6 +23,25 @@
                 </md-input-container>
             </span> 
         </div>
+        <span class="fa fa-info-circle" style="color: #4e5e82;">
+            <md-tooltip md-direction="{{demo.tipDirection}}">
+                <table>
+                    <tr>
+                        <td><strong>United Arab Emirates(AED):</strong></td>
+                        <td>&nbsp; 1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>United States Dollar(USD):</strong></td>
+                        <td>&nbsp; 2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Euro(EUR):</strong></td>
+                        <td>&nbsp; 3</td>
+                    </tr>                
+                </table>
+            </md-tooltip>
+        </span>
+        <button type="button" class="btn btn-outline-primary btn-sm ml-3" ng-click="isLocalCurrency = !isLocalCurrency">{{ isLocalCurrency ? 'Convert To LocalCurrency' : 'Convert To BaseCurrency'}}</button>
         <a href="javascript:;" class="tablColmArrow float-right mt-2 mb-2 mr-3 ml-2" ng-click="gridAction('new', null, null);">
             <span class="oi" data-glyph="plus"></span>
         </a>

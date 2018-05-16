@@ -106,8 +106,8 @@
                     columnDefs: [
                         {name:'action', displayName:'', headerCellTemplate:'headerCheckboxTemplate.html', cellTemplate:'staticTemplate.html',width:40, pinnedLeft:true, enableColumnMenu: false},
                         {name:'treatmentCodeOrSubBenefit.name', displayName:'Treatment Code/SubBenefit',width:200},
-                        {name:'serviceFrom', displayName:'Service From', cellTemplate:'dateTemplate',width:120},
-                        {name:'serviceTo', displayName:'Service To', cellTemplate:'dateTemplate',width:110},
+                        {name:'serviceFrom', displayName:'Service From', cellTemplate:'dateTemplate.html',width:120},
+                        {name:'serviceTo', displayName:'Service To', cellTemplate:'dateTemplate.html',width:110},
                         {name:'days', displayName:'Days', width:90},
                         {name:'requestAmount', displayName:'Request Amount', width:140, convertCurrency:true},
                         {name:'policyDedAmount', displayName:'Policy Ded Amount',width:150, convertCurrency:true},
@@ -119,9 +119,9 @@
                         {name:'rejectionCode.name', displayName:'Rejection Code',width:140},
                         {name:'rejectionDesc', displayName:'Rejection Description',width:210},
                         {name:'status', displayName:'Status', width:155},
-                        {name:'internalRemarks', displayName:'Internal Remarks', cellTemplate:'descriptionTemplate', width:210},
-                        {name:'externalRemarks', displayName:'External Remarks', cellTemplate:'descriptionTemplate', width:210},
-                        {name:'Settings', displayName:'Settings', cellTemplate:'settingsTemplate',width:75, pinnedRight:true, enableColumnMenu: false}
+                        {name:'internalRemarks', displayName:'Internal Remarks', cellTemplate:'descriptionTemplate.html', width:210},
+                        {name:'externalRemarks', displayName:'External Remarks', cellTemplate:'descriptionTemplate.html', width:210},
+                        {name:'Settings', displayName:'Settings', cellTemplate:'settingsTemplate.html',width:75, pinnedRight:true, enableColumnMenu: false}
                     ],
                     enableSorting: false,
                     enableVerticalScrollbars : 'Never'
@@ -150,11 +150,6 @@
                 }
             }
             
-            $scope.demo = {
-                showTooltip: true,
-                tipDirection: 'right'
-            };
-
             $scope.saveRecord = function(saveType) {
                 processClaim($scope.claim);
                 $scope.claim = ReimbursementProcessingService.createNewReimbursmentObject();

@@ -12,13 +12,13 @@
 
             this.getRegistrationListViewHeader = function() {
                 return [
-                    {'label': 'Card Number', 'fieldName' : 'memberNumber', 'isDocument':false, 'redirectable' : true},
-                    {'label': 'Member Name', 'fieldName' : 'memberName', 'isDocument':false, 'redirectable' : false},
-                    {'label': 'Emirates ID', 'fieldName' : 'emiratesId', 'isDocument':false, 'redirectable' : false},
-                    {'label': 'Policy Number', 'fieldName' : 'policyNumber', 'isDocument':false, 'redirectable' : false},
-                    {'label': 'Voucher Number', 'fieldName' : 'voucherNumber', 'isDocument':false, 'redirectable' : false},
-                    {'label': 'IBAN Number', 'fieldName' : 'ibanNum', 'isDocument':false, 'redirectable' : false},
-                    {'label': 'IBAN Document', 'fieldName' : 'ibanDocument', 'isDocument':true, 'redirectable' : false}
+                    {'label': 'Card Number', 'fieldName' : 'memberNumber', 'redirectable' : true},
+                    {'label': 'Member Name', 'fieldName' : 'memberName', 'redirectable' : false},
+                    {'label': 'Emirates ID', 'fieldName' : 'emiratesId', 'redirectable' : false},
+                    {'label': 'Policy Number', 'fieldName' : 'policyNumber', 'redirectable' : false},
+                    {'label': 'Voucher Number', 'fieldName' : 'voucherNumber', 'redirectable' : false},
+                    {'label': 'Mobile Number', 'fieldName' : 'mobileNum1', 'redirectable' : false},
+                    {'label': 'Service From Date', 'fieldName' : 'serviceFmDate', 'redirectable' : false, type:"date"}
                 ];
             }
 

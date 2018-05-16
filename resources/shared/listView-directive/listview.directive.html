@@ -12,13 +12,11 @@
             <td ng-repeat="header in headers" class="{{header.class}}">
                 <span ng-if="!header.redirectable && header.fieldName != 'assigned'">
                     <span ng-if="header.type == 'id'">#</span>
-                    {{record[header.fieldName]}}
+                    <span ng-if="!header.type">{{record[header.fieldName]}}</span>
+                    <span ng-if="header.type == 'date'">{{record[header.fieldName] | date: 'mediumDate'}}</span>
                 </span>
                 <span ng-if="header.redirectable">
                     <a href="javascript:void(0);" ng-click="navigateTo(record);">{{record[header.fieldName]}}</a>
-                </span>
-                <span ng-if="header.isDocument">
-                    <a class="float-left fa fa-file-pdf-o" href="resources/img/dis.png" download=""></a>
                 </span>
                 <span ng-if="header.fieldName == 'assigned'">
                     <strong ng-class="{'text-success': record[header.fieldName] < 15,'text-danger': record[header.fieldName] > 14}" class="text-success">{{record[header.fieldName]}}</strong>
