@@ -12,9 +12,11 @@ angular
         'ngMaterial',
         'daterangepicker',
         'ui.bootstrap',
-        'ngNotify'
+        'ngNotify',
+        'pascalprecht.translate'
     ])
     .config(stateConfig)
+    .config(translationConfig)
     .run(appConfig)
 
     stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -23,8 +25,27 @@ angular
         $stateProvider
             .state('home', {
                 url: "/",
-                template: "<h4 style=\"text-align: center; padding: 150px;\">Claim Home</h4>"                
+                template: "<h4 style=\"text-align: center; padding: 150px;\" data-translate=\"home.title\">Claim Home</h4>",
+                resolve : {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('home');
+                        return $translate.refresh();
+                    }]
+                }
             })
+
+            .state('claim-registration', {
+                url: "/claim-registration",
+                templateUrl: "resources/registration/view/registration.html",
+                controller: 'RegistrationController',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('reimbursement-registration');
+                        return $translate.refresh();
+                    }]
+                }
+            })
+
             .state('claim-registration-new', {
                 url: "/claim-registration-general",
                 templateUrl: "resources/registration/view/registration-general.html",
@@ -56,29 +77,52 @@ angular
             .state('finalization', {
                 url: "/finalization",
                 templateUrl: "resources/finalization/view/finalization.html",
-                controller: 'FinalizationController'
+                controller: 'FinalizationController',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('reimbursement-finalization');
+                        return $translate.refresh();
+                    }]
+                }
             })
+
             .state('user-assignment', {
                 url: "/user-assignment/:param",
                 templateUrl: "resources/user-assignment/view/user-assignment.html",
-                controller: 'UserAssignmentController'
+                controller: 'UserAssignmentController',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('reimbursement-user-assignment');
+                        return $translate.refresh();
+                    }]
+                }
             })
+
             .state('eclaim', {
                 url: "/eclaim",
                 templateUrl: "resources/eclaim/view/eclaim-processing.html",
                 controller: 'EclaimProcessingController'
             })
-            .state('claim-registration', {
-                url: "/claim-registration",
-                templateUrl: "resources/registration/view/registration.html",
-                controller: 'RegistrationController'
-            })
+            
             .state('reimbursement-processing', {
                 url: "/reimbursement-processing",
                 templateUrl: "resources/reimbursement-claims/view/reimbursement-processing.html",
-                controller: 'ReimbursmentProcessingController'
+                controller: 'ReimbursmentProcessingController',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('reimbursement-processing');
+                        return $translate.refresh();
+                    }]
+                }
             })
         $urlRouterProvider.otherwise("/");    
+    }
+    
+    function translationConfig($translateProvider) {
+        $translateProvider.preferredLanguage('en-US');
+        $translateProvider.useLoader('$translatePartialLoader', {
+            urlTemplate: 'i18n/{lang}/{part}.json'
+        });
     }
 
     function appConfig ($transitions, $rootScope, ngNotify, $state) {
@@ -101,6 +145,30 @@ angular
         
         $rootScope.navigateTo = function(stateName) {
             $state.go(stateName);
+        }
+    }
+
+})();
+
+(function() {
+    'use strict';
+
+    angular
+        .module('claims')
+        .controller('LanguageController', LanguageController)
+
+    LanguageController.$inject = ['$translate', '$scope'];
+
+    function LanguageController($translate, $scope) {
+        $scope.languages = {
+            'en-US' : 'English',
+            'ar-AR' : 'Arabic'
+        }
+        $scope.selectedLanguage = 'en-US';
+        $scope.changelanguage = function() {
+            $translate.use($scope.selectedLanguage).then(function() {
+                $translate.refresh();
+            });
         }
     }
 })();
