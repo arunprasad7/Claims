@@ -76,9 +76,17 @@
                                                 <div class="receiveInfo d-inline-block pr-3 float-left">
                                                     <span class="oi" data-glyph="timer"></span>Received Date {{d.receivedDate}}
                                                 </div>
-                                                <div class="statusInfo d-inline-block float-left" ng-class="{'text-danger' : d.status == 'Rejected', 'text-success' : d.status == 'Approved'}">
+                                                <!-- <div class="statusInfo d-inline-block float-left" ng-class="{'text-danger' : d.status == 'Rejected', 'text-success' : d.status == 'Approved'}">
                                                     <span class="oi" data-glyph="thumb-down"></span> {{d.status == 'Rejected' ? 'Rejected' : 'Approved'}}
-                                                </div>
+                                                </div> -->
+                                                                
+                                           <div ng-if="d.status == 'Rejected'" class="statusInfo d-inline-block float-left" ng-class="{'text-danger' : d.status== 'Rejected'}">
+                                            <span class="oi" data-glyph="thumb-down"></span> {{d.status == 'Rejected' ? 'Rejected' : 'Approved'}}
+                                        </div>
+                                        <div ng-if="d.status== 'Approved'" class="statusInfo d-inline-block float-left" ng-class="{'text-success' :d.status== 'Approved'}">
+                                            <span class="oi" data-glyph="thumb-up"></span> {{d.status == 'Rejected' ? 'Rejected' : 'Approved'}}
+                                        </div>
+                                                   
                                             </div>
                                         </td>
                                         <td>

@@ -171,7 +171,7 @@
                 }
             }
             
-            $scope.demo = {
+            $scope.info = {
                 showTooltip: true,
                 tipDirection: 'right'
             };
