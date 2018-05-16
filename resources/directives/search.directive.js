@@ -48,7 +48,7 @@
             replace: true,
             template:
             '<form>' +
-                 '<div class="leftContainer-search">'+
+                 '<div class="">'+
                     '<div class="searchBarSample">'+
                         '<div class="searchBarRowSample">'+
                             "<md-grid-list md-cols='{{searchInfo.length+1}}' md-gutter='0px' md-row-height='60px'style='width:100%;'>"+
@@ -88,8 +88,8 @@
                                         '</div>'+
                                     "</md-grid-tile>"+
                                     "<md-grid-tile style='border-left: 1px solid #e6e6e6;width: 194% !important;'>"+
-                                        '<button ng-click="doSearch()"    class="searBtn searBtnWithText mt-3 ml-3 mr-3 align-middle outline-none">Search</button>' +
-                                        '<button ng-click="clearSearch()" class="searBtn searBtnWithText mt-3 ml-3 mr-3 align-middle outline-none">Clear</button>' +
+                                        '<button ng-click="doSearch()"    class="searBtn searBtnWithText mt-1 ml-3 mr-3 align-middle outline-none suja">Search</button>' +
+                                        '<button ng-click="clearSearch()" class="searBtn searBtnWithText mt-1 ml-3 mr-3 align-middle outline-none suja">Clear</button>' +
                                 "</md-grid-tile>"+
                             "</md-grid-list>"+
                          '</div>'+
