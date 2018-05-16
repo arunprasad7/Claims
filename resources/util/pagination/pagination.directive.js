@@ -25,8 +25,12 @@
                                 return;
                             }
                             scope.pager = PaginationFactory.getPageSettings(scope.records.length, page, scope.recordsToDisplay);
-                            scope.items = scope.records.slice(scope.pager.startIndex, scope.pager.endIndex + 1);
-                            scope.filteredClaims = angular.copy(scope.items);
+                            if (scope.pager['pages'].length == 1) {
+                                scope.filteredClaims = angular.copy(scope.records);     
+                            } else {
+                                scope.items = scope.records.slice(scope.pager.startIndex, scope.pager.endIndex + 1);
+                                scope.filteredClaims = angular.copy(scope.items);
+                            }
                         }
 
                         scope.$watch('records', function(newValue, oldValue, scope) {
