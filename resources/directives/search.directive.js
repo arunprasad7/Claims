@@ -34,14 +34,14 @@
                     $scope.callback({'data' : searchText});
                 };
 
-                $scope.querySearch = function(query,lable) {
-                    return query ? $scope.autoSearch.filter(createFilterFor(query,lable)) : $scope.autoSearch;
+                $scope.querySearch = function(query,label) {
+                    return query ? $scope.autoSearch.filter(createFilterFor(query,label)) : $scope.autoSearch;
                 }
 
-                function createFilterFor(query,lable) {
+                function createFilterFor(query,label) {
                     var lowercaseQuery = angular.lowercase(query);
                     return function filterFn(state) {
-                        return (((angular.lowercase(state[lable]).indexOf(lowercaseQuery) != 0) && angular.lowercase(state[lable]).indexOf(lowercaseQuery) != -1) || (angular.lowercase(state[lable]).indexOf(lowercaseQuery) === 0));
+                        return (((angular.lowercase(state[label]).indexOf(lowercaseQuery) != 0) && angular.lowercase(state[label]).indexOf(lowercaseQuery) != -1) || (angular.lowercase(state[label]).indexOf(lowercaseQuery) === 0));
                     };
                 }
             },

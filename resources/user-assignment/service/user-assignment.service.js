@@ -530,10 +530,10 @@
             return [
                 { label: 'Member Number', type: 'text', name: 'memberNo'},
                 { label: 'Claim Number', type: 'text', name: 'cliamNumber'},
-                { label: 'Approved By', type: 'autoSearch', name: 'approvedUser'},
+                { label: 'Approved By', type: 'autoSearch', name: 'name'},
                 { label: 'Request Recevied From', type: 'date', name: 'receviedFrom'},
                 { label: 'Request Recevied To', type: 'date', name: 'receviedTo'},
-                { label: 'Assigned User', type: 'autoSearch', name: 'assignedUser'}
+                { label: 'Assigned User', type: 'autoSearch', name: 'name'}
             ];
         }
     }
