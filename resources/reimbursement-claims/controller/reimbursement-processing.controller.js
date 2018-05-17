@@ -150,6 +150,35 @@
                 }
             }
             
+<<<<<<< HEAD
+=======
+            $scope.info = {
+                showTooltip: true,
+                tipDirection: 'right'
+            };
+
+            $scope.toggleSelect = function() {
+                $scope.isChecked = !$scope.isChecked;
+                angular.forEach($scope.gridOptions.data, function(value,key) {
+                    value.isChecked = $scope.isChecked;
+                })
+            }
+
+            $('#right-button').click(function() {
+                event.preventDefault();
+                $('.ui-grid-content').animate({
+                scrollLeft: "+=322px"
+                }, "slow");
+            });
+            
+            $('#left-button').click(function() {
+                event.preventDefault();
+                $('.ui-grid-content').animate({
+                    scrollLeft: "-=322px"
+                }, "slow");
+            });
+
+>>>>>>> dfeebbc8e6b8e5766413cd697885ee956b6974b1
             $scope.saveRecord = function(saveType) {
                 processClaim($scope.claim);
                 $scope.claim = ReimbursementProcessingService.createNewReimbursmentObject();

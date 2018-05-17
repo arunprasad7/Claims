@@ -1238,7 +1238,6 @@ footer li strong {
     height: 97%;
     background: #e9ecf4;
     white-space: nowrap;
-    overflow-y: auto;
     -webkit-transition: all 700ms ease-in;
     -moz-transition: all 700ms ease-in;
     -ms-transition: all 700ms ease-in;
@@ -1618,7 +1617,7 @@ footer {
 
 .eclaim .slide {
     margin-left: -18px;
-    margin-right: 18px;
+    margin-right: 18px; 
 }
 
 .currencyTypeCustom {
@@ -1634,7 +1633,7 @@ footer {
 
 .dropdown-menu {
     position: fixed !important;
-    left: 97% !important;
+    left: 96% !important;
     top: 30px !important;
 }
 
@@ -1874,3 +1873,7 @@ a {
 .md-tooltip{
     height: auto;
 }
+
+.md-datepicker-calendar-pane {
+    z-index: 22222;
+} 
