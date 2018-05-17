@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="bower_components/Font-Awesome-4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="bower_components/angular-ui-carousel/dist/ui-carousel.css">
         <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.min.css">
-        <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css"/>
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"/>
         <link rel="stylesheet" href="bower_components/ng-notify/dist/ng-notify.min.css"/>
         <link rel="stylesheet" href="css/open-iconic.css" />
@@ -71,9 +70,9 @@
                         <h3>E-Claims</h3>
                         <div uib-accordion-group class="panel-default child-panel">
                             <uib-accordion-heading> <h3>Reimbursement Claims</h3> </uib-accordion-heading>
-                            <h4 ui-sref="claim-registration">Registration</h4>
-                            <h4 ui-sref="user-assignment({ param: 'reimburs' })">User Assignment</h4>
-                            <h4 ui-sref="finalization">Finalization</h4>
+                            <h4 ui-sref="reimbursement-registration">Registration</h4>
+                            <h4 ui-sref="reimbursement-user-assignment">User Assignment</h4>
+                            <h4 ui-sref="reimbursement-finalization">Finalization</h4>
                         </div>
                         <h3>PBM Claims</h3>
                         <h3>Provider Paper Claims</h3>
@@ -94,62 +93,50 @@
     <script src="bower_components/pdfjs-dist/build/pdf.js"></script>
     <script src="bower_components/angular-ui-carousel/dist/ui-carousel.js"></script>
     <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
-    <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="bower_components/angular-messages/angular-messages.min.js"></script>
     <script src="bower_components/angular-material/angular-material.min.js"></script>
-    <script src="bower_components/moment/moment.js"></script>
-    <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="bower_components/angular-daterangepicker/js/angular-daterangepicker.min.js"></script>
     <script src="bower_components/ng-notify/dist/ng-notify.min.js"></script>
-    <script src="lib/ui-bootstrap-tpls-3.0.3.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="bower_components/ng-notify/dist/ng-notify.min.js"></script>
     <script src="bower_components/angular-translate/angular-translate.min.js"></script>
     <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
-    <!-- External Libraies -->
+    <script src="lib/ui-bootstrap-tpls-3.0.3.min.js"></script>
 
     <script src="app.js"></script>
-    <!-- Registration -->
-    <script src="resources/registration/controller/registration-general.controller.js"></script>
-    <script src="resources/registration/controller/registration.controller.js"></script>
-    <script src="resources/registration/service/registration.service.js"></script>
-    <!-- Finalization -->
-    <script src="resources/finalization/controller/finalization.controller.js"></script>
-    <script src="resources/finalization/service/finalization.service.js"></script>
-    <!-- User Assignment -->    
-    <script src="resources/user-assignment/controller/user-assignment.controller.js"></script>
-    <script src="resources/user-assignment/service/user-assignment.service.js"></script>
-    <!-- Eclaim -->    
-    <script src="resources/eclaim/controller/eclaim-processing.controller.js"></script>
-    <script src="resources/eclaim/service/eclaim.service.js"></script>
-    <!-- Reimbursement Claims : processing -->
-    <script src="resources/reimbursement-claims/controller/reimbursement-processing.controller.js"></script>
-    <script src="resources/reimbursement-claims/service/reimbursement-processing.service.js"></script>
 
-    <!-- listView Component -->
-    <script src="resources/shared/listView-component/listview.component.js"></script>
-    <script src="resources/shared/listView-component/listview.component.service.js"></script>
+    <!-- EClaims -->
+    <script src="resources/eclaim/user-assignment/script/eclaim-user-assignment.controller.js"></script>
+    <script src="resources/eclaim/user-assignment/script/eclaim-user-assignment.service.js"></script>
+    <script src="resources/eclaim/processing/script/eclaim-processing.controller.js"></script>
+    <script src="resources/eclaim/processing/script/eclaim-processing.service.js"></script>
+    <script src="resources/eclaim/finalization/script/eclaim-finalization.controller.js"></script>
+    <script src="resources/eclaim/finalization/script/eclaim-finalization.service.js"></script>
 
-    <!-- User Assignment Component -->
-    <script src="resources/shared/userAssignment-component/userAssignment.component.js"></script>
+    <!-- Reimbursement Claims -->
+    <script src="resources/reimbursement-claims/registration/script/reimbursement-registration-general.controller.js"></script>
+    <script src="resources/reimbursement-claims/registration/script/reimbursement-registration.controller.js"></script>
+    <script src="resources/reimbursement-claims/registration/script/reimbursement-registration.service.js"></script>
+    <script src="resources/reimbursement-claims/user-assignment/script/reimbursement-user-assignment.controller.js"></script>
+    <script src="resources/reimbursement-claims/user-assignment/script/reimbursement-user-assignment.service.js"></script>
+    <script src="resources/reimbursement-claims/processing/script/reimbursement-processing.controller.js"></script>
+    <script src="resources/reimbursement-claims/processing/script/reimbursement-processing.service.js"></script>
+    <script src="resources/reimbursement-claims/finalization/script/reimbursement-finalization.controller.js"></script>
+    <script src="resources/reimbursement-claims/finalization/script/reimbursement-finalization.service.js"></script>
+    
 
-    <!-- shared -->
-    <script src="resources/shared/grid/grid-wrapper.js"></script>
+    <!-- Components -->
+    <script src="resources/component/listView-component/listview.component.js"></script>
+    <script src="resources/component/listView-component/listview.component.service.js"></script>
+    <script src="resources/component/userAssignment-component/userAssignment.component.js"></script>
+    
+    <!-- Directives -->
+    <script src="resources/directives/grid-directive/script/grid-wrapper.directive.js"></script>
     <script src="resources/util/pagination/pagination.directive.js"></script>
-
-    <!-- Claims List View Directive -->
-    <script src="resources/shared/claimsListView-directive/claimslistview.directive.js"></script>
-    <script src="resources/shared/claimsListView-directive/claimslistview.directive.service.js"></script>
-
-    <!-- Finalization List View Directive -->
-    <script src="resources/shared/finalization-directive/finalizationlistview.directive.js"></script>
-
-    <!-- List View Directive -->
-    <script src="resources/shared/listView-directive/listview.directive.js"></script>
-
-    <!-- Custome Directive -->
-    <script src="resources/directives/search.directive.js"></script>
+    <script src="resources/directives/claimsListView-directive/script/claimslistview.directive.js"></script>
+    <script src="resources/directives/claimsListView-directive/script/claimslistview.directive.service.js"></script>
+    <script src="resources/directives/finalization-directive/script/finalizationlistview.directive.js"></script>
+    <script src="resources/directives/listView-directive/script/listview.directive.js"></script>
+    <script src="resources/directives/search-directive/script/search.directive.js"></script>
 </html>

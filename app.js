@@ -10,7 +10,6 @@ angular
         'ui.grid.edit',
         'ui.grid.pinning',
         'ngMaterial',
-        'daterangepicker',
         'ui.bootstrap',
         'ngNotify',
         'pascalprecht.translate'
@@ -34,10 +33,10 @@ angular
                 }
             })
 
-            .state('claim-registration', {
-                url: "/claim-registration",
-                templateUrl: "resources/registration/view/registration.html",
-                controller: 'RegistrationController',
+            .state('reimbursement-registration', {
+                url: "/reimbursement-registration",
+                templateUrl: "resources/reimbursement-claims/registration/view/reimbursement-registration.html",
+                controller: 'ReimbursementRegistrationController',
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('reimbursement-registration');
@@ -46,13 +45,13 @@ angular
                 }
             })
 
-            .state('claim-registration-new', {
-                url: "/claim-registration-general",
-                templateUrl: "resources/registration/view/registration-general.html",
-                controller: 'RegistrationGeneralController',
+            .state('reimbursement-registration-new', {
+                url: "/reimbursement-registration-general",
+                templateUrl: "resources/reimbursement-claims/registration/view/reimbursement-registration-general.html",
+                controller: 'ReimbursementRegistrationGeneralController',
                 resolve : {
-                    claim : function(RegistrationService) {
-                        return RegistrationService.createRegDetailObj();
+                    claim : function(ReimbursementRegistrationService) {
+                        return ReimbursementRegistrationService.createRegDetailObj();
                     },
                     isNew : function() {
                         return true;
@@ -60,10 +59,10 @@ angular
                 }
             })
 
-            .state('claim-registration-edit', {
-                url: "/claim-registration-general",
-                templateUrl: "resources/registration/view/registration-general.html",
-                controller: 'RegistrationGeneralController',
+            .state('reimbursement-registration-edit', {
+                url: "/reimbursement-registration-general",
+                templateUrl: "resources/reimbursement-claims/registration/view/reimbursement-registration-general.html",
+                controller: 'ReimbursementRegistrationGeneralController',
                 resolve : {
                     claim : function(ListViewService) {
                         return ListViewService.getRequestData();
@@ -74,10 +73,10 @@ angular
                 }
             })
 
-            .state('finalization', {
-                url: "/finalization",
-                templateUrl: "resources/finalization/view/finalization.html",
-                controller: 'FinalizationController',
+            .state('reimbursement-finalization', {
+                url: "/reimbursement-finalization",
+                templateUrl: "resources/reimbursement-claims/finalization/view/reimbursement-finalization.html",
+                controller: 'ReimbursementFinalizationController',
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('reimbursement-finalization');
@@ -86,10 +85,10 @@ angular
                 }
             })
 
-            .state('user-assignment', {
-                url: "/user-assignment/:param",
-                templateUrl: "resources/user-assignment/view/user-assignment.html",
-                controller: 'UserAssignmentController',
+            .state('reimbursement-user-assignment', {
+                url: "/reimbursement-user-assignment",
+                templateUrl: "resources/reimbursement-claims/user-assignment/view/reimbursement-user-assignment.html",
+                controller: 'ReimbursementUserAssignmentController',
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('reimbursement-user-assignment');
@@ -98,15 +97,15 @@ angular
                 }
             })
 
-            .state('eclaim', {
-                url: "/eclaim",
+            .state('eclaim-processing', {
+                url: "/eclaim-processing",
                 templateUrl: "resources/eclaim/view/eclaim-processing.html",
                 controller: 'EclaimProcessingController'
             })
             
             .state('reimbursement-processing', {
                 url: "/reimbursement-processing",
-                templateUrl: "resources/reimbursement-claims/view/reimbursement-processing.html",
+                templateUrl: "resources/reimbursement-claims/processing/view/reimbursement-processing.html",
                 controller: 'ReimbursmentProcessingController',
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function($translate, $translatePartialLoader) {
